@@ -10,7 +10,7 @@ const utils = require('@iobroker/adapter-core');
 
 const Registers = require(__dirname + '/lib/register.js');
 const ModbusConnect = require(__dirname + '/lib/modbus_connect.js');
-const {modbusErrorMessages,dataRefreshRate} = require(__dirname + '/lib/types.js');
+const {dataRefreshRate} = require(__dirname + '/lib/types.js');
 
 
 // Load your modules here, e.g.:
@@ -26,9 +26,9 @@ class Sun2000 extends utils.Adapter {
 			...options,
 			name: 'sun2000',
 		});
-		
+
 		this.lastUpdated = 0;
-        
+
 		//this.semaphore = false;
 		this.on('ready', this.onReady.bind(this));
 		this.on('stateChange', this.onStateChange.bind(this));
@@ -40,123 +40,123 @@ class Sun2000 extends utils.Adapter {
 
 	async initPath() {
 		await this.setObjectNotExistsAsync('info', {
-            type: 'channel',
-            common: {
-                name: 'info',
-                role: 'info'
-            },
-            native: {}
-        });
+			type: 'channel',
+			common: {
+				name: 'info',
+				role: 'info'
+			},
+			native: {}
+		});
 
-        await this.setObjectNotExistsAsync('grid', {
-            type: 'channel',
-            common: {
-                name: 'grid',
-                role: 'info'
-            },
-            native: {}
-        });
+		await this.setObjectNotExistsAsync('grid', {
+			type: 'channel',
+			common: {
+				name: 'grid',
+				role: 'info'
+			},
+			native: {}
+		});
 
 		await this.setObjectNotExistsAsync('meter', {
-            type: 'channel',
-            common: {
-                name: 'meter',
-                role: 'info'
-            },
-            native: {}
-        });
+			type: 'channel',
+			common: {
+				name: 'meter',
+				role: 'info'
+			},
+			native: {}
+		});
 
 		await this.setObjectNotExistsAsync('battery', {
-            type: 'channel',
-            common: {
-                name: 'battery',
-                role: 'info'
-            },
-            native: {}
-        });
+			type: 'channel',
+			common: {
+				name: 'battery',
+				role: 'info'
+			},
+			native: {}
+		});
 
-        await this.setObjectNotExistsAsync('info.connection', {
-            type: 'state',
-            common: {
-                name: 'Inverter connected',
-                type: 'boolean',
-                role: 'indicator.connected',
-                read: true,
-                write: false,
-                desc: 'Is the inverter connected?'
-            },
-            native: {},
-        });
+		await this.setObjectNotExistsAsync('info.connection', {
+			type: 'state',
+			common: {
+				name: 'Inverter connected',
+				type: 'boolean',
+				role: 'indicator.connected',
+				read: true,
+				write: false,
+				desc: 'Is the inverter connected?'
+			},
+			native: {},
+		});
 
 	}
 
 	async InitProcess() {
-        try {       
-			await this.initPath(); 
+		try {
+			await this.initPath();
 			await this.checkAndPrepare();
-			await this.state.initStates(); 
-            //await this.state.updateStates(this.modbusClient);
-            /*
+			await this.state.initStates();
+			//await this.state.updateStates(this.modbusClient);
+			/*
             await processBatterie();
-             */  
-        } catch (err) {
-            console.warn(err);
-        } 
+             */
+		} catch (err) {
+			console.warn(err);
+		}
 		await this.dataPolling();
-    }
+	}
 
-    async checkAndPrepare() {
-        // Time of Using charging and discharging periodes (siehe Table 5-6) 
-        // tCDP[3]= 127  
-        var tCDP = [1,0,1440,383,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]; //nicht aus dem Netz laden
-        const data = await this.modbusClient.readHoldingRegisters(this.config.modbusInverterId,47086,4); //
-        /* 
-         127 - Working mode settings  
+	async checkAndPrepare() {
+		// Time of Using charging and discharging periodes (siehe Table 5-6)
+		// tCDP[3]= 127
+		const tCDP = [1,0,1440,383,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]; //nicht aus dem Netz laden
+		const data = await this.modbusClient.readHoldingRegisters(this.config.modbusInverterId,47086,4); //
+		/*
+         127 - Working mode settings
           2 : Maximise self consumptions (default)
           5 : Time Of Use(Luna) - hilfreich bei dynamischem Stromtarif (z.B Tibber)
-        */  
-        const workingMode = data[0];         // Working mode settings  2:Maximise self consumptio5=)
-        const chargeFromGrid = data[1];      // Voraussetzung für Netzbezug in den Speicher (Luna)  
-        const gridChargeCutOff = data[2]/10; // Ab welcher Schwelle wird der Netzbezug beendet (default 50 %)
-        const storageModel = data[3];        // Modell/Herrsteller des Speichers, 2 : HUAWEI-LUNA2000
-       
-        if (storageModel == 2) { //wurde nur mit Luna getestet!
-             if (workingMode != 5 || chargeFromGrid != 1 ) {
-               console.debug('Row '+data+'  Workingmode '+workingMode+ ' Charge from Grid '+chargeFromGrid+ ' Grid Cut Off '+gridChargeCutOff+'%'); 
-               await this.modbusClient.writeRegisters(this.config.modbusInverterId,47086,[5,1,500]);
-               //await writeRegistersAsync(1,47086,[5,1,500]); //[TOU,chargeFromGrid,50%]
-               await this.modbusClient.writeRegisters(this.config.modbusInverterId,47255,tCDP);
-               //await writeRegistersAsync(1,47255,tCDP);      //Plan:1,StartZeit:00:00,EndZeit: 24:00,Endladen/täglich
-               /* ggf. sinnvoll 
-               await writeRegistersAsync(1,47075,[0,5000]); //max. charging power 
-               await writeRegistersAsync(1,47077,[0,5000]); //max. discharging power 
-               */
-             }
-        }
-   }
+        */
+		const workingMode = data[0];         // Working mode settings  2:Maximise self consumptio5=)
+		const chargeFromGrid = data[1];      // Voraussetzung für Netzbezug in den Speicher (Luna)
+		const gridChargeCutOff = data[2]/10; // Ab welcher Schwelle wird der Netzbezug beendet (default 50 %)
+		const storageModel = data[3];        // Modell/Herrsteller des Speichers, 2 : HUAWEI-LUNA2000
 
-   async ReadInderval() { 
+		if (storageModel == 2) { //wurde nur mit Luna getestet!
+			if (workingMode != 5 || chargeFromGrid != 1 ) {
+				console.debug('Row '+data+'  Workingmode '+workingMode+ ' Charge from Grid '+chargeFromGrid+ ' Grid Cut Off '+gridChargeCutOff+'%');
+				await this.modbusClient.writeRegisters(this.config.modbusInverterId,47086,[5,1,500]);
+				//await writeRegistersAsync(1,47086,[5,1,500]); //[TOU,chargeFromGrid,50%]
+				await this.modbusClient.writeRegisters(this.config.modbusInverterId,47255,tCDP);
+				//await writeRegistersAsync(1,47255,tCDP);      //Plan:1,StartZeit:00:00,EndZeit: 24:00,Endladen/täglich
+				/* ggf. sinnvoll
+               await writeRegistersAsync(1,47075,[0,5000]); //max. charging power
+               await writeRegistersAsync(1,47077,[0,5000]); //max. discharging power
+               */
+			}
+		}
+	}
+
+	async ReadInderval() {
 
 		if (this.semaphore) return;
 		this.log.info('Start to Interval...');
 		this.semaphore = true;
-		
-			/*
+
+		/*
 			await readRegisters(RegToReadFirstly);
 			for (let id = 1; id <= ModBusIDs.length; id++) {
 				forcesetState(SHI + id + ".Battery.ChargeAndDischargePower", getI32(Buffer[id-1], 37765) / 1, {name: "", unit: "W"});
 				forcesetState(SHI + id + ".Battery.SOC", getU16(Buffer[id-1], 37760) / 10, {name: "", unit: "%"});
-				forcesetState(SHM + "ActivePower",  getI32(Buffer[PowerMeterID], 37113) / 1, {name: "", unit: "W"}); 
+				forcesetState(SHM + "ActivePower",  getI32(Buffer[PowerMeterID], 37113) / 1, {name: "", unit: "W"});
 				forcesetState(SHI + id + ".InputPower",  getI32(Buffer[id-1], 32064) / 1000, {name: "", unit: "kW"});
 			}
 			await readRegisters(RegToRead);
-			ProcessData();     
-			await processBatterie();   
+			ProcessData();
+			await processBatterie();
 			*/
-		
+
 		await this.state.updateStates(this.modbusClient,dataRefreshRate.normal);
 		await this.state.updateStates(this.modbusClient,dataRefreshRate.fast);
-		
+
 		this.semaphore = false;
 		this.log.info('Stop to Interval');
 	}
@@ -174,10 +174,10 @@ class Sun2000 extends utils.Adapter {
 				try {
 					this.modbusClient.close();
 				} catch {
-					this.log.info('modbusClient already cloded!');	
+					this.log.info('modbusClient already cloded!');
 				}
 				this.modbusClient = new ModbusConnect(this,this.config.address,this.config.port);
-				this.intervalId = this.setInterval(this.ReadInderval.bind(this),30000); 
+				this.intervalId = this.setInterval(this.ReadInderval.bind(this),30000);
 				this.lastUpdated = new Date().getTime();
 				this.semaphore = false;
 			}
@@ -191,20 +191,20 @@ class Sun2000 extends utils.Adapter {
 		// Initialize your adapter here
 
 		await this.setStateAsync('info.ip', {val: this.config.address, ack: true});
-        await this.setStateAsync('info.port', {val: this.config.port, ack: true});
-        await this.setStateAsync('info.inverterID', {val: this.config.modbusInverterId, ack: true});
+		await this.setStateAsync('info.port', {val: this.config.port, ack: true});
+		await this.setStateAsync('info.inverterID', {val: this.config.modbusInverterId, ack: true});
 		//await this.setStateAsync('info.meterID', {val: this.config.modbusMeterId, ack: true});
-        await this.setStateAsync('info.modbusUpdateInterval', {val: this.config.updateInterval, ack: true});
-        
+		await this.setStateAsync('info.modbusUpdateInterval', {val: this.config.updateInterval, ack: true});
+
 		// The adapters config (in the instance object everything under the attribute "native") is accessible via
 		// this.config:
 		this.log.info('config address: ' + this.config.address);
 		this.log.info('config Port: ' + this.config.port);
 		this.log.info('config inverter id: ' + this.config.modbusInverterId);
-		
+
 		this.state = new Registers(this);
-        this.modbusClient = new ModbusConnect(this,this.config.address,this.config.port);
-		
+		this.modbusClient = new ModbusConnect(this,this.config.address,this.config.port);
+
 		await this.InitProcess();
 		//await this.runWatchDog();
 	}
@@ -217,25 +217,25 @@ class Sun2000 extends utils.Adapter {
 
 		if (refreshRate !== dataRefreshRate.high) {
 			this.log.debug('Start "LOW"');
-		  	if (await this.state.readRegisters(this.modbusClient,refreshRate,refreshRate==undefined)) {
-			  this.lastUpdated = new Date().getTime();
-			  this.log.debug('OK!!')
+			if (await this.state.readRegisters(this.modbusClient,refreshRate,refreshRate==undefined)) {
+				this.lastUpdated = new Date().getTime();
+				this.log.debug('OK!!');
 			}
-		  	this.state.updateStates(this.modbusClient,refreshRate);
+			this.state.updateStates(this.modbusClient,refreshRate);
 		} else {
 			this.log.debug('Start "HIGH"');
 		}
-		var nextTick = 0;
+		let nextTick = 0;
 		if (await this.state.readRegisters(this.modbusClient,dataRefreshRate.high,false)) {
-		  nextTick = this.config.updateInterval - new Date().getTime()/1000 % this.config.updateInterval;
+			nextTick = this.config.updateInterval - new Date().getTime()/1000 % this.config.updateInterval;
 		}
 
 		this.state.updateStates(this.modbusClient,dataRefreshRate.high);
 		const now = new Date().getTime();
-		
+
 		//const nextTick = this.config.updateInterval - (now-this.firstUpdate)/1000 % this.config.updateInterval;
 		let nextRefresh = dataRefreshRate.high;
-		if (now + nextTick - this.lastUpdated > 5*60000) nextRefresh = dataRefreshRate.low;	
+		if (now + nextTick - this.lastUpdated > 5*60000) nextRefresh = dataRefreshRate.low;
 		this.log.debug('Next Tick in '+nextTick);
 		this.log.debug('Start before '+(now-start)/1000);
 		if (this.timer) this.clearTimeout(this.timer);
@@ -251,11 +251,9 @@ class Sun2000 extends utils.Adapter {
 	onUnload(callback) {
 		try {
 			if (this.intervalId) this.clearInterval(this.intervalId);
-			try {
-			  this.modbusClient.close();
-			} catch {
-			  	
-			} 
+
+			this.modbusClient.close();
+
 			callback();
 		} catch (e) {
 			callback();
