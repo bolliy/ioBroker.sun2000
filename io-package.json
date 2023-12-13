@@ -1,132 +1,207 @@
 {
-	"common": {
-		"name": "sun2000",
-		"version": "0.0.1",
-		"news": {
-			"0.0.1": {
-				"en": "initial release",
-				"de": "Erstveröffentlichung",
-				"ru": "Начальная версия",
-				"pt": "lançamento inicial",
-				"nl": "Eerste uitgave",
-				"fr": "Première version",
-				"it": "Versione iniziale",
-				"es": "Versión inicial",
-				"pl": "Pierwsze wydanie",
-				"uk": "Початкова версія",
-				"zh-cn": "首次出版"
-			}
-		},
-		"title": "sun2000",
-		"titleLang": {
-			"en": "sun2000",
-			"de": "sun2000",
-			"ru": "солнце2000",
-			"pt": "sol2000",
-			"nl": "zon2000",
-			"fr": "soleil2000",
-			"it": "sole2000",
-			"es": "sol2000",
-			"pl": "słońce2000",
-			"uk": "sun2000",
-			"zh-cn": "太阳2000"
-		},
-		"desc": {
-			"en": "sun2000",
-			"de": "sun2000",
-			"ru": "солнце2000",
-			"pt": "sol2000",
-			"nl": "zon2000",
-			"fr": "soleil2000",
-			"it": "sole2000",
-			"es": "sol2000",
-			"pl": "słońce2000",
-			"uk": "sun2000",
-			"zh-cn": "太阳2000"
-		},
-		"authors": [
-			"bolliy <stephan@mante.info>"
-		],
-		"keywords": [
-			"ioBroker",
-			"template",
-			"Smart Home",
-			"home automation"
-		],
-		"license": "MIT",
-		"platform": "Javascript/Node.js",
-		"main": "main.js",
-		"icon": "sun2000.png",
-		"enabled": true,
-		"extIcon": "https://raw.githubusercontent.com/bolliy/ioBroker.sun2000/main/admin/sun2000.png",
-		"readme": "https://github.com/bolliy/ioBroker.sun2000/blob/main/README.md",
-		"loglevel": "info",
-		"mode": "daemon",
-		"type": "energy",
-		"compact": true,
-		"connectionType": "local",
-		"dataSource": "poll",
-		"adminUI": {
-			"config": "json"
-		},
-		"dependencies": [
-			{
-				"js-controller": ">=3.3.22"
-			}
-		],
-		"globalDependencies": [
-			{
-				"admin": ">=5.1.13"
-			}
-		],
-		"adminColumns": [
-            {
-                "name": {
-                    "en": "Inverter IP Address",
-                    "de": "Wechselrichter IP Adresse"
-                },
-                "path": "native.address",
-                "width": 500,
-                "align": "left"
-            },
-            {
-                "name": {
-                    "en": "Port",
-                    "de": "Port"
-                },
-                "path": "native.port",
-                "width": 100,
-                "align": "left"
-            },
-            {
-                "name": {
-                    "en": "Modbus unitID",
-                    "de": "Modbus unitID"
-                },
-                "path": "native.modbusUnitId",
-                "width": 100,
-                "align": "left"
-            },
-            {
-                "name": {
-                    "en": "Update interval fast",
-                    "de": "Update Intervall Schnell"
-                },
-                "path": "native.updateIntervalHigh",
-                "width": 100,
-                "align": "left"
+    "common": {
+        "name": "sun2000",
+        "version": "0.0.1",
+        "news": {
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "uk": "Початкова версія",
+                "zh-cn": "首次出版"
             }
-        ]
-	},
-	"native": {
-		"address": "192.168.2.20",
+        },
+        "title": "sun2000",
+        "titleLang": {
+            "en": "sun2000",
+            "de": "sun2000",
+            "ru": "солнце2000",
+            "pt": "sol2000",
+            "nl": "zon2000",
+            "fr": "soleil2000",
+            "it": "sole2000",
+            "es": "sol2000",
+            "pl": "słońce2000",
+            "uk": "sun2000",
+            "zh-cn": "太阳2000"
+        },
+        "desc": {
+            "en": "sun2000",
+            "de": "sun2000",
+            "ru": "солнце2000",
+            "pt": "sol2000",
+            "nl": "zon2000",
+            "fr": "soleil2000",
+            "it": "sole2000",
+            "es": "sol2000",
+            "pl": "słońce2000",
+            "uk": "sun2000",
+            "zh-cn": "太阳2000"
+        },
+        "authors": [
+            "bolliy <stephan@mante.info>"
+        ],
+        "keywords": [
+            "ioBroker",
+            "template",
+            "Smart Home",
+            "home automation"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "main.js",
+        "icon": "sun2000.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/bolliy/ioBroker.sun2000/main/admin/sun2000.png",
+        "readme": "https://github.com/bolliy/ioBroker.sun2000/blob/main/README.md",
+        "loglevel": "info",
+        "mode": "daemon",
+        "type": "energy",
+        "compact": true,
+        "connectionType": "local",
+        "dataSource": "poll",
+        "adminUI": {
+            "config": "json"
+        },
+        "dependencies": [
+            {
+                "js-controller": ">=3.3.22"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=5.1.13"
+            }
+        ]    
+    },
+    "native": {
+        "address": "192.168.2.20",
         "port": 502,
-        "modbusUnitId": 1,
-        "updateIntervalHigh": 5,
-        "updateIntervalLow": 20,
-		"option1": true,
-		"option2": "42"
-	},
-	"objects": [],
-	"instanceObjects": []
+        "modbusInverterId": 1,
+        "updateInterval": 30
+    },
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": {
+                  "en": "Information",
+                  "de": "Informationen",
+                  "ru": "Информация",
+                  "pt": "Informação",
+                  "nl": "Informatie",
+                  "fr": "Information",
+                  "it": "Informazioni",
+                  "es": "Información",
+                  "pl": "Informacja",
+                  "uk": "Інформація",
+                  "zh-cn": "信息"
+                },
+                "role": "info"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "name": {
+                  "en": "Inverter connected",
+                  "de": "Wechselrichter angeschlossen"     
+                },
+                "type": "boolean",
+                "role": "indicator.connected",
+                "read": true,
+                "write": false,
+                "desc": "Is the inverter connected?"
+            }
+        },
+        {
+            "_id": "info.ip",
+            "type": "state",
+            "common": {
+                "name": {
+                  "en": "Inverter IP",
+                  "de": "Inverter IP"
+                },
+                "type": "string",
+                "role": "indicator.ip",
+                "read": true,
+                "write": false,
+                "desc": "Inverter IP address"
+            }
+        },
+        {
+            "_id": "info.port",
+            "type": "state",
+            "common": {
+                "name": {
+                  "en": "Modbus port",
+                  "de": "Modbusport"                
+                },
+                "type": "number",
+                "role": "indicator.port",
+                "read": true,
+                "write": false,
+                "desc": "Inverter modbus port"
+            }
+        },
+        {
+            "_id": "info.inverterID",
+            "type": "state",
+            "common": {
+                "name": {
+                  "en": "Modbus inverter ID",
+                  "de": "Modbus Wechselrichter ID"
+                },
+                "type": "number",
+                "role": "indicator.id",
+                "read": true,
+                "write": false,
+                "desc": "Inverter modbus inverter id"
+            }
+        },
+        {
+            "_id": "info.modbusUpdateInterval",
+            "type": "state",
+            "common": {
+                "name": {
+                  "en": "modbus update interval",
+                  "de": "modbus Update Intervall"
+                 
+                },
+                "type": "number",
+                "role": "value",
+                "read": true,
+                "write": true,
+                "desc": "High inverter modbus update interval",
+                "unit": "sec"
+            }
+        },
+        {
+            "_id": "totalPowerUse",
+            "type": "state",
+            "common": {
+                "name": {
+                  "en": "Total power use",
+                  "de": "Gesamtverbrauch"
+                },
+                "role": "value",
+                "type": "number",
+                "unit":  "W",
+                "read": true,
+                "write": false,
+                "desc": "Total power use ('inputPower' + 'grid.supplyFrom')"
+            },
+            "native": {}
+        }       
+    ]
 }

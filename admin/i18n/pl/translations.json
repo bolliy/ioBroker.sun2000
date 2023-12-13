@@ -1,5 +1,8 @@
 {
-	"sun2000 adapter settings": "Ustawienia adaptera dla sun2000",
-	"option1": "opcja 1",
-	"option2": "Opcja 2"
+    "sun2000 adapter settings": "Ustawienia adaptera dla sun2000",
+    "option1": "opcja 1",
+    "option2": "Opcja 2",
+    "Address": "Adres IP falownika",
+    "Port": "port Modbus TCP",
+    "Modbus unit ID": "Identyfikator jednostki Modbus"
 }

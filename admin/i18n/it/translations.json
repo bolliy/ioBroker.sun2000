@@ -1,5 +1,8 @@
 {
-	"sun2000 adapter settings": "Impostazioni dell'adattatore per sun2000",
-	"option1": "opzione 1",
-	"option2": "opzione 2"
+    "sun2000 adapter settings": "Impostazioni dell'adattatore per sun2000",
+    "option1": "opzione 1",
+    "option2": "opzione 2",
+    "Address": "Indirizzo IP dell'inverter",
+    "Port": "porta tcp modbus",
+    "Modbus unit ID": "ID unità Modbus"
 }

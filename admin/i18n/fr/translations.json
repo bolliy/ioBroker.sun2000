@@ -1,5 +1,8 @@
 {
-	"sun2000 adapter settings": "Paramètres d'adaptateur pour sun2000",
-	"option1": "Option 1",
-	"option2": "Option 2"
+    "sun2000 adapter settings": "Paramètres d'adaptateur pour sun2000",
+    "option1": "Option 1",
+    "option2": "Option 2",
+    "Address": "Adresse IP de l'onduleur",
+    "Port": "port TCP Modbus",
+    "Modbus unit ID": "ID de l'unité Modbus"
 }

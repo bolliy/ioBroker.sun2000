@@ -1,5 +1,7 @@
 {
-	"sun2000 adapter settings": "Adaptereinstellungen für sun2000",
-	"option1": "Option 1",
-	"option2": "Option 2"
+    "sun2000 adapter settings": "Adaptereinstellungen für sun2000",
+    "Address": "IP-Adresse des Wechselrichters",
+    "address": "IP-Adresse (koien) des Wechselrichters",
+    "Port": "Modbus-TCP-Port",
+    "Modbus unit ID": "Modbus-Einheits-ID"
 }

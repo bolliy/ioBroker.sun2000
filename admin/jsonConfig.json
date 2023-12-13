@@ -4,33 +4,30 @@
     "items": {
         "address": {
             "type": "text",
-            "label": "Address",
+            "label": "address",
             "newLine": false,
             "tooltip": "The inverters ip address"
         },
         "port": {
             "type": "number",
-            "label": "Port",
+            "label": "port",
+            "default": 502,
             "newLine": true,
             "tooltip": "The modbus TCP port"
         },
-        "modbusUnitId": {
+        "modbusInverterId": {
             "type": "number",
-            "label": "Modbus unit ID",
+            "label": "Modbus Inverter ID",
+            "default": 1,
             "newLine": true,
-            "tooltip": "The modbus unit id"
+            "tooltip": "The modbus inverter id"
         },
-        "updateIntervalHigh": {
+        "updateInterval": {
             "type": "number",
             "label": "Update interval (s)",
+            "default": 30,
             "newLine": true,
-            "tooltip": "Fast update interval to update the values from the inverter"
-        },
-        "updateIntervalLow": {
-            "type": "number",
-            "label": "Low Update interval (s)",
-            "newLine": true,
-            "tooltip": "Slower update interval for values which do not need a fast update"
+            "tooltip": "Update interval to update the values from the inverter"
         }
     }
 }

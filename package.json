@@ -22,7 +22,8 @@
     "node": ">= 16"
   },
   "dependencies": {
-    "@iobroker/adapter-core": "^3.0.4"
+    "@iobroker/adapter-core": "^3.0.4",
+    "modbus-serial": "^8.0.13"
   },
   "devDependencies": {
     "@alcalzone/release-script": "^3.6.0",

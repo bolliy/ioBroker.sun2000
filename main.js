@@ -8,6 +8,11 @@
 // you need to create an adapter
 const utils = require('@iobroker/adapter-core');
 
+const Registers = require(__dirname + '/lib/register.js');
+const ModbusConnect = require(__dirname + '/lib/modbus_connect.js');
+const {modbusErrorMessages,dataRefreshRate} = require(__dirname + '/lib/types.js');
+
+
 // Load your modules here, e.g.:
 // const fs = require("fs");
 
@@ -21,11 +26,162 @@ class Sun2000 extends utils.Adapter {
 			...options,
 			name: 'sun2000',
 		});
+		
+		this.lastUpdated = 0;
+        
+		//this.semaphore = false;
 		this.on('ready', this.onReady.bind(this));
 		this.on('stateChange', this.onStateChange.bind(this));
 		// this.on('objectChange', this.onObjectChange.bind(this));
 		// this.on('message', this.onMessage.bind(this));
 		this.on('unload', this.onUnload.bind(this));
+
+	}
+
+	async initPath() {
+		await this.setObjectNotExistsAsync('info', {
+            type: 'channel',
+            common: {
+                name: 'info',
+                role: 'info'
+            },
+            native: {}
+        });
+
+        await this.setObjectNotExistsAsync('grid', {
+            type: 'channel',
+            common: {
+                name: 'grid',
+                role: 'info'
+            },
+            native: {}
+        });
+
+		await this.setObjectNotExistsAsync('meter', {
+            type: 'channel',
+            common: {
+                name: 'meter',
+                role: 'info'
+            },
+            native: {}
+        });
+
+		await this.setObjectNotExistsAsync('battery', {
+            type: 'channel',
+            common: {
+                name: 'battery',
+                role: 'info'
+            },
+            native: {}
+        });
+
+        await this.setObjectNotExistsAsync('info.connection', {
+            type: 'state',
+            common: {
+                name: 'Inverter connected',
+                type: 'boolean',
+                role: 'indicator.connected',
+                read: true,
+                write: false,
+                desc: 'Is the inverter connected?'
+            },
+            native: {},
+        });
+
+	}
+
+	async InitProcess() {
+        try {       
+			await this.initPath(); 
+			await this.checkAndPrepare();
+			await this.state.initStates(); 
+            //await this.state.updateStates(this.modbusClient);
+            /*
+            await processBatterie();
+             */  
+        } catch (err) {
+            console.warn(err);
+        } 
+		await this.dataPolling();
+    }
+
+    async checkAndPrepare() {
+        // Time of Using charging and discharging periodes (siehe Table 5-6) 
+        // tCDP[3]= 127  
+        var tCDP = [1,0,1440,383,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]; //nicht aus dem Netz laden
+        const data = await this.modbusClient.readHoldingRegisters(this.config.modbusInverterId,47086,4); //
+        /* 
+         127 - Working mode settings  
+          2 : Maximise self consumptions (default)
+          5 : Time Of Use(Luna) - hilfreich bei dynamischem Stromtarif (z.B Tibber)
+        */  
+        const workingMode = data[0];         // Working mode settings  2:Maximise self consumptio5=)
+        const chargeFromGrid = data[1];      // Voraussetzung für Netzbezug in den Speicher (Luna)  
+        const gridChargeCutOff = data[2]/10; // Ab welcher Schwelle wird der Netzbezug beendet (default 50 %)
+        const storageModel = data[3];        // Modell/Herrsteller des Speichers, 2 : HUAWEI-LUNA2000
+       
+        if (storageModel == 2) { //wurde nur mit Luna getestet!
+             if (workingMode != 5 || chargeFromGrid != 1 ) {
+               console.debug('Row '+data+'  Workingmode '+workingMode+ ' Charge from Grid '+chargeFromGrid+ ' Grid Cut Off '+gridChargeCutOff+'%'); 
+               await this.modbusClient.writeRegisters(this.config.modbusInverterId,47086,[5,1,500]);
+               //await writeRegistersAsync(1,47086,[5,1,500]); //[TOU,chargeFromGrid,50%]
+               await this.modbusClient.writeRegisters(this.config.modbusInverterId,47255,tCDP);
+               //await writeRegistersAsync(1,47255,tCDP);      //Plan:1,StartZeit:00:00,EndZeit: 24:00,Endladen/täglich
+               /* ggf. sinnvoll 
+               await writeRegistersAsync(1,47075,[0,5000]); //max. charging power 
+               await writeRegistersAsync(1,47077,[0,5000]); //max. discharging power 
+               */
+             }
+        }
+   }
+
+   async ReadInderval() { 
+
+		if (this.semaphore) return;
+		this.log.info('Start to Interval...');
+		this.semaphore = true;
+		
+			/*
+			await readRegisters(RegToReadFirstly);
+			for (let id = 1; id <= ModBusIDs.length; id++) {
+				forcesetState(SHI + id + ".Battery.ChargeAndDischargePower", getI32(Buffer[id-1], 37765) / 1, {name: "", unit: "W"});
+				forcesetState(SHI + id + ".Battery.SOC", getU16(Buffer[id-1], 37760) / 10, {name: "", unit: "%"});
+				forcesetState(SHM + "ActivePower",  getI32(Buffer[PowerMeterID], 37113) / 1, {name: "", unit: "W"}); 
+				forcesetState(SHI + id + ".InputPower",  getI32(Buffer[id-1], 32064) / 1000, {name: "", unit: "kW"});
+			}
+			await readRegisters(RegToRead);
+			ProcessData();     
+			await processBatterie();   
+			*/
+		
+		await this.state.updateStates(this.modbusClient,dataRefreshRate.normal);
+		await this.state.updateStates(this.modbusClient,dataRefreshRate.fast);
+		
+		this.semaphore = false;
+		this.log.info('Stop to Interval');
+	}
+
+	async runWatchDog() {
+		this.watchDogHandle && this.clearInterval(this.watchDogHandle);
+		this.log.info('Start watchdog...');
+		this.watchDogHandle = this.setInterval( async () => {
+			if (!this.lastUpdated) this.lastUpdated = 0;
+			const sinceLastUpdate = (new Date().getTime() - this.lastUpdated);
+			this.log.debug('Watchdog: time to last update '+sinceLastUpdate/1000+' sec');
+			if (sinceLastUpdate > 3 * 30000) {
+				this.log.warn('watchdog: restart interval ...');
+				if (this.intervalId) this.clearInterval(this.intervalId);
+				try {
+					this.modbusClient.close();
+				} catch {
+					this.log.info('modbusClient already cloded!');	
+				}
+				this.modbusClient = new ModbusConnect(this,this.config.address,this.config.port);
+				this.intervalId = this.setInterval(this.ReadInderval.bind(this),30000); 
+				this.lastUpdated = new Date().getTime();
+				this.semaphore = false;
+			}
+		},10000);
 	}
 
 	/**
@@ -34,56 +190,58 @@ class Sun2000 extends utils.Adapter {
 	async onReady() {
 		// Initialize your adapter here
 
+		await this.setStateAsync('info.ip', {val: this.config.address, ack: true});
+        await this.setStateAsync('info.port', {val: this.config.port, ack: true});
+        await this.setStateAsync('info.inverterID', {val: this.config.modbusInverterId, ack: true});
+		//await this.setStateAsync('info.meterID', {val: this.config.modbusMeterId, ack: true});
+        await this.setStateAsync('info.modbusUpdateInterval', {val: this.config.updateInterval, ack: true});
+        
 		// The adapters config (in the instance object everything under the attribute "native") is accessible via
 		// this.config:
 		this.log.info('config address: ' + this.config.address);
-		this.log.info('config option2: ' + this.config.option2);
-		this.log.warn('Dies ist eine Warnung2!');
+		this.log.info('config Port: ' + this.config.port);
+		this.log.info('config inverter id: ' + this.config.modbusInverterId);
+		
+		this.state = new Registers(this);
+        this.modbusClient = new ModbusConnect(this,this.config.address,this.config.port);
+		
+		await this.InitProcess();
+		//await this.runWatchDog();
+	}
 
-		/*
-		For every state in the system there has to be also an object of type state
-		Here a simple template for a boolean variable named "testVariable"
-		Because every adapter instance uses its own unique namespace variable names can't collide with other adapters variables
-		*/
-		await this.setObjectNotExistsAsync('testVariable', {
-			type: 'state',
-			common: {
-				name: 'testVariable',
-				type: 'boolean',
-				role: 'indicator',
-				read: true,
-				write: true,
-			},
-			native: {},
-		});
+	async dataPolling(refreshRate) {
+		if (!this.firstUpdate) this.firstUpdate = new Date().getTime();
 
-		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
-		this.subscribeStates('testVariable');
-		// You can also add a subscription for multiple states. The following line watches all states starting with "lights."
-		// this.subscribeStates('lights.*');
-		// Or, if you really must, you can also watch all states. Don't do this if you don't need to. Otherwise this will cause a lot of unnecessary load on the system:
-		// this.subscribeStates('*');
+		const start = new Date().getTime();
+		if (!this.lastUpdated) this.lastUpdated = new Date().getTime();
 
-		/*
-			setState examples
-			you will notice that each setState will cause the stateChange event to fire (because of above subscribeStates cmd)
-		*/
-		// the variable testVariable is set to true as command (ack=false)
-		await this.setStateAsync('testVariable', true);
+		if (refreshRate !== dataRefreshRate.high) {
+			this.log.debug('Start "LOW"');
+		  	if (await this.state.readRegisters(this.modbusClient,refreshRate,refreshRate==undefined)) {
+			  this.lastUpdated = new Date().getTime();
+			  this.log.debug('OK!!')
+			}
+		  	this.state.updateStates(this.modbusClient,refreshRate);
+		} else {
+			this.log.debug('Start "HIGH"');
+		}
+		var nextTick = 0;
+		if (await this.state.readRegisters(this.modbusClient,dataRefreshRate.high,false)) {
+		  nextTick = this.config.updateInterval - new Date().getTime()/1000 % this.config.updateInterval;
+		}
 
-		// same thing, but the value is flagged "ack"
-		// ack should be always set to true if the value is received from or acknowledged from the target system
-		await this.setStateAsync('testVariable', { val: false, ack: true });
-
-		// same thing, but the state is deleted after 30s (getState will return null afterwards)
-		await this.setStateAsync('testVariable', { val: true, ack: true, expire: 30 });
-
-		// examples for the checkPassword/checkGroup functions
-		let result = await this.checkPasswordAsync('admin', 'iobroker');
-		this.log.info('check user admin pw iobroker: ' + result);
-
-		result = await this.checkGroupAsync('admin', 'admin');
-		this.log.info('check group user admin group admin: ' + result);
+		this.state.updateStates(this.modbusClient,dataRefreshRate.high);
+		const now = new Date().getTime();
+		
+		//const nextTick = this.config.updateInterval - (now-this.firstUpdate)/1000 % this.config.updateInterval;
+		let nextRefresh = dataRefreshRate.high;
+		if (now + nextTick - this.lastUpdated > 5*60000) nextRefresh = dataRefreshRate.low;	
+		this.log.debug('Next Tick in '+nextTick);
+		this.log.debug('Start before '+(now-start)/1000);
+		if (this.timer) this.clearTimeout(this.timer);
+		this.timer = this.setTimeout(() => {
+			this.dataPolling(nextRefresh); //rerursiv
+		}, nextTick*1000);
 	}
 
 	/**
@@ -92,12 +250,12 @@ class Sun2000 extends utils.Adapter {
 	 */
 	onUnload(callback) {
 		try {
-			// Here you must clear all timeouts or intervals that may still be active
-			// clearTimeout(timeout1);
-			// clearTimeout(timeout2);
-			// ...
-			// clearInterval(interval1);
-
+			if (this.intervalId) this.clearInterval(this.intervalId);
+			try {
+			  this.modbusClient.close();
+			} catch {
+			  	
+			} 
 			callback();
 		} catch (e) {
 			callback();
