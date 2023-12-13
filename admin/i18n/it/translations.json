@@ -4,5 +4,8 @@
     "option2": "opzione 2",
     "Address": "Indirizzo IP dell'inverter",
     "Port": "porta tcp modbus",
-    "Modbus unit ID": "ID unità Modbus"
+    "Modbus unit ID": "ID unità Modbus",
+    "address": "Indirizzo IP dell'inverter",
+    "port": "porta TCP Modbus",
+    "Update interval (s)": "Intervallo di aggiornamento"
 }

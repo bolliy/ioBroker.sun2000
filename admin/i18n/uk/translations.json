@@ -4,5 +4,8 @@
     "option2": "варіант2",
     "Address": "IP-адреса інвертора",
     "Port": "порт modbus tcp",
-    "Modbus unit ID": "ID пристрою Modbus"
+    "Modbus unit ID": "ID пристрою Modbus",
+    "address": "IP-адреса інвертора",
+    "port": "порт Modbus TCP",
+    "Update interval (s)": "Інтервал оновлення"
 }

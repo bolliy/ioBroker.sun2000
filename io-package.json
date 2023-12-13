@@ -78,7 +78,7 @@
             {
                 "admin": ">=5.1.13"
             }
-        ]    
+        ]
     },
     "native": {
         "address": "192.168.2.20",
@@ -93,17 +93,17 @@
             "type": "channel",
             "common": {
                 "name": {
-                  "en": "Information",
-                  "de": "Informationen",
-                  "ru": "Информация",
-                  "pt": "Informação",
-                  "nl": "Informatie",
-                  "fr": "Information",
-                  "it": "Informazioni",
-                  "es": "Información",
-                  "pl": "Informacja",
-                  "uk": "Інформація",
-                  "zh-cn": "信息"
+                    "en": "Information",
+                    "de": "Informationen",
+                    "ru": "Информация",
+                    "pt": "Informação",
+                    "nl": "Informatie",
+                    "fr": "Information",
+                    "it": "Informazioni",
+                    "es": "Información",
+                    "pl": "Informacja",
+                    "uk": "Інформація",
+                    "zh-cn": "信息"
                 },
                 "role": "info"
             },
@@ -114,8 +114,8 @@
             "type": "state",
             "common": {
                 "name": {
-                  "en": "Inverter connected",
-                  "de": "Wechselrichter angeschlossen"     
+                    "en": "Inverter connected",
+                    "de": "Wechselrichter angeschlossen"
                 },
                 "type": "boolean",
                 "role": "indicator.connected",
@@ -129,8 +129,8 @@
             "type": "state",
             "common": {
                 "name": {
-                  "en": "Inverter IP",
-                  "de": "Inverter IP"
+                    "en": "Inverter IP",
+                    "de": "Inverter IP"
                 },
                 "type": "string",
                 "role": "indicator.ip",
@@ -144,8 +144,8 @@
             "type": "state",
             "common": {
                 "name": {
-                  "en": "Modbus port",
-                  "de": "Modbusport"                
+                    "en": "Modbus port",
+                    "de": "Modbusport"
                 },
                 "type": "number",
                 "role": "indicator.port",
@@ -159,8 +159,8 @@
             "type": "state",
             "common": {
                 "name": {
-                  "en": "Modbus inverter ID",
-                  "de": "Modbus Wechselrichter ID"
+                    "en": "Modbus inverter ID",
+                    "de": "Modbus Wechselrichter ID"
                 },
                 "type": "number",
                 "role": "indicator.id",
@@ -174,9 +174,8 @@
             "type": "state",
             "common": {
                 "name": {
-                  "en": "modbus update interval",
-                  "de": "modbus Update Intervall"
-                 
+                    "en": "modbus update interval",
+                    "de": "modbus Update Intervall"
                 },
                 "type": "number",
                 "role": "value",
@@ -191,17 +190,17 @@
             "type": "state",
             "common": {
                 "name": {
-                  "en": "Total power use",
-                  "de": "Gesamtverbrauch"
+                    "en": "Total power use",
+                    "de": "Gesamtverbrauch"
                 },
                 "role": "value",
                 "type": "number",
-                "unit":  "W",
+                "unit": "W",
                 "read": true,
                 "write": false,
                 "desc": "Total power use ('inputPower' + 'grid.supplyFrom')"
             },
             "native": {}
-        }       
+        }
     ]
 }

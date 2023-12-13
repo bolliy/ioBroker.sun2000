@@ -4,5 +4,8 @@
     "option2": "Opcja 2",
     "Address": "Adres IP falownika",
     "Port": "port Modbus TCP",
-    "Modbus unit ID": "Identyfikator jednostki Modbus"
+    "Modbus unit ID": "Identyfikator jednostki Modbus",
+    "address": "Adres IP falownika",
+    "port": "portu Modbus TCP",
+    "Update interval (s)": "Interwał aktualizacji"
 }

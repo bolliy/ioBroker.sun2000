@@ -109,7 +109,7 @@ class Sun2000 extends utils.Adapter {
 		// Time of Using charging and discharging periodes (siehe Table 5-6)
 		// tCDP[3]= 127
 		const tCDP = [1,0,1440,383,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]; //nicht aus dem Netz laden
-		const data = await this.modbusClient.readHoldingRegisters(this.config.modbusInverterId,47086,4); //
+		const data = await this.modbusClient.readHoldingRegisters(47086,4); //
 		/*
          127 - Working mode settings
           2 : Maximise self consumptions (default)
@@ -123,9 +123,9 @@ class Sun2000 extends utils.Adapter {
 		if (storageModel == 2) { //wurde nur mit Luna getestet!
 			if (workingMode != 5 || chargeFromGrid != 1 ) {
 				console.debug('Row '+data+'  Workingmode '+workingMode+ ' Charge from Grid '+chargeFromGrid+ ' Grid Cut Off '+gridChargeCutOff+'%');
-				await this.modbusClient.writeRegisters(this.config.modbusInverterId,47086,[5,1,500]);
+				await this.modbusClient.writeRegisters(47086,[5,1,500]);
 				//await writeRegistersAsync(1,47086,[5,1,500]); //[TOU,chargeFromGrid,50%]
-				await this.modbusClient.writeRegisters(this.config.modbusInverterId,47255,tCDP);
+				await this.modbusClient.writeRegisters(47255,tCDP);
 				//await writeRegistersAsync(1,47255,tCDP);      //Plan:1,StartZeit:00:00,EndZeit: 24:00,Endladen/täglich
 				/* ggf. sinnvoll
                await writeRegistersAsync(1,47075,[0,5000]); //max. charging power
@@ -203,7 +203,7 @@ class Sun2000 extends utils.Adapter {
 		this.log.info('config inverter id: ' + this.config.modbusInverterId);
 
 		this.state = new Registers(this);
-		this.modbusClient = new ModbusConnect(this,this.config.address,this.config.port);
+		this.modbusClient = new ModbusConnect(this,this.config.address,this.config.port,this.config.modbusInverterId);
 
 		await this.InitProcess();
 		//await this.runWatchDog();

@@ -3,5 +3,7 @@
     "Address": "IP-Adresse des Wechselrichters",
     "address": "IP-Adresse (koien) des Wechselrichters",
     "Port": "Modbus-TCP-Port",
-    "Modbus unit ID": "Modbus-Einheits-ID"
+    "Modbus unit ID": "Modbus-Einheits-ID",
+    "port": "modbus TCP port",
+    "Update interval (s)": "Update interval"
 }

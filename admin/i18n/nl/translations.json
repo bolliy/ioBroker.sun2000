@@ -4,5 +4,8 @@
     "option2": "Optie 2",
     "Address": "IP-adres van de omvormer",
     "Port": "modbus tcp-poort",
-    "Modbus unit ID": "Modbus-eenheid-ID"
+    "Modbus unit ID": "Modbus-eenheid-ID",
+    "address": "IP-adres van de omvormer",
+    "port": "modbus TCP-poort",
+    "Update interval (s)": "Bijwerkingsonderbreking"
 }

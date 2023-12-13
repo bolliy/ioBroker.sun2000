@@ -4,5 +4,8 @@
     "option2": "Option 2",
     "Address": "Adresse IP de l'onduleur",
     "Port": "port TCP Modbus",
-    "Modbus unit ID": "ID de l'unité Modbus"
+    "Modbus unit ID": "ID de l'unité Modbus",
+    "address": "Adresse IP de l'onduleur",
+    "port": "port TCP Modbus",
+    "Update interval (s)": "Intervalle de mise à jour"
 }

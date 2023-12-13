@@ -4,5 +4,8 @@
     "option2": "选项2",
     "Address": "逆变器IP地址",
     "Port": "MODBUS TCP 端口",
-    "Modbus unit ID": "Modbus 单元 ID"
+    "Modbus unit ID": "Modbus 单元 ID",
+    "address": "逆变器IP地址",
+    "port": "Modbus TCP 端口",
+    "Update interval (s)": "更新间隔"
 }
