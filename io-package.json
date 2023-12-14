@@ -5,44 +5,17 @@
         "news": {
             "0.0.1": {
                 "en": "initial release",
-                "de": "Erstveröffentlichung",
-                "ru": "Начальная версия",
-                "pt": "lançamento inicial",
-                "nl": "Eerste uitgave",
-                "fr": "Première version",
-                "it": "Versione iniziale",
-                "es": "Versión inicial",
-                "pl": "Pierwsze wydanie",
-                "uk": "Початкова версія",
-                "zh-cn": "首次出版"
+                "de": "Erstveröffentlichung"
             }
         },
         "title": "sun2000",
         "titleLang": {
             "en": "sun2000",
-            "de": "sun2000",
-            "ru": "солнце2000",
-            "pt": "sol2000",
-            "nl": "zon2000",
-            "fr": "soleil2000",
-            "it": "sole2000",
-            "es": "sol2000",
-            "pl": "słońce2000",
-            "uk": "sun2000",
-            "zh-cn": "太阳2000"
+            "de": "sun2000"
         },
         "desc": {
             "en": "sun2000",
-            "de": "sun2000",
-            "ru": "солнце2000",
-            "pt": "sol2000",
-            "nl": "zon2000",
-            "fr": "soleil2000",
-            "it": "sole2000",
-            "es": "sol2000",
-            "pl": "słońce2000",
-            "uk": "sun2000",
-            "zh-cn": "太阳2000"
+            "de": "sun2000"
         },
         "authors": [
             "bolliy <stephan@mante.info>"
@@ -81,7 +54,7 @@
         ]
     },
     "native": {
-        "address": "192.168.2.20",
+        "address": "",
         "port": 502,
         "modbusInverterId": 1,
         "updateInterval": 30
