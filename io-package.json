@@ -8,7 +8,6 @@
                 "de": "Erstveröffentlichung"
             }
         },
-        "title": "sun2000",
         "titleLang": {
             "en": "sun2000",
             "de": "sun2000"
@@ -21,10 +20,11 @@
             "bolliy <stephan@mante.info>"
         ],
         "keywords": [
-            "ioBroker",
-            "template",
-            "Smart Home",
-            "home automation"
+            "huawei",
+            "modbus",
+            "sun2000",
+            "luna2000",
+            "inverter"
         ],
         "license": "MIT",
         "platform": "Javascript/Node.js",
