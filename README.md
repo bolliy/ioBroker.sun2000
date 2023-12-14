@@ -12,7 +12,8 @@
 
 ## sun2000 adapter for ioBroker
 
-Read register data from Huawei SUN2000 inverter, energy meter and LUNA2000 energy storage using Modbus TCP.
+Read register data from Huawei SUN2000 inverter, energy meter and LUNA2000 energy storage using Modbus TCP. 
+
 
 ## Settings
 
