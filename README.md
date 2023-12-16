@@ -14,11 +14,20 @@
 
 Read register data from Huawei SUN2000 inverter and LUNA2000 battery using Modbus TCP. 
 
-Supported hardware
+## Supported hardware
 
-* HUAWEI Inverter (SUN2000 Serie) M1, Software SDongle min. version 133
+* HUAWEI Inverter (SUN2000 Serie) M1 with 
+* HUAWEI Smart Dongle-WLAN-FE / Min. Softwareversion: xxxSPC133 (SDongleA-05)
 * HUAWEI Luna2000 Battery
 * HUAWEI Smart Power Sensor DTSU666-H or DDSU666-H
+
+## Configure inverters
+
+In order to use the Modbus connection, all Huawei devices must have the latest firmware
+feature. You can perform latest firmware directly in the FusionSolar portal under “Upgrades”.
+In the FusionSolar setup you still have to activate the Modbus on the WLAN dongle and set the access authorization. Download the FusionSolar-App onto your cell phone and use it to connect via the inverter's WLAN hotspot directly.  
+After that click on Me/Ich “Commissionin Device” ("Inbetriebnahme des Geräts“) > log in to the inverter (am Wechselrichter anmelden)> Settings (Einstellungen) > Communication configuration (Kommunikationskonfiguration) > Dongle parameter settings (Dongle‐Parametereinstellungen) > Modbus TCP > Activate the connection without restriction (Verbindung uneingeschränkt aktivieren). You can also enter the Modbus comm address at the same time read out. 
+If you use two inverters, then connect to the second inverter and read the communication address there too. A maximum of 2 inverters can be connected via Modbus. 
 
 
 ## Settings
@@ -30,6 +39,10 @@ Supported hardware
 * `updateInterval`: Fast update interval (default: 30 sec)
 
 ## Changelog
+<!--
+	Placeholder for the next version (at the beginning of the line):
+	### **WORK IN PROGRESS**
+-->
 
 ### **WORK IN PROGRESS**
 * (bolliy) Increase stability
