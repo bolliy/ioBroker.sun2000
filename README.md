@@ -12,24 +12,33 @@
 
 ## sun2000 adapter for ioBroker
 
-Read register data from Huawei SUN2000 inverter, energy meter and LUNA2000 energy storage using Modbus TCP. 
+Read register data from Huawei SUN2000 inverter and LUNA2000 battery using Modbus TCP. 
+
+Supported hardware
+
+* HUAWEI Inverter (SUN2000 Serie) M1, Software SDongle min. version 133
+* HUAWEI Luna2000 Battery
+* HUAWEI Smart Power Sensor DTSU666-H or DDSU666-H
 
 
 ## Settings
 
 * `address`: Inverter IP address
 * `port`: Inverter modbus port (default: 502)
-* `modbusInverterId`: Modbus unit id (default: 1)
+* `modbusId`: Primary Modbus inverter id (default: 1)
+* `modbusId2`: Secondary Modbus inverter id (default: 0)
 * `updateInterval`: Fast update interval (default: 30 sec)
 
 ## Changelog
-<!--
-	Placeholder for the next version (at the beginning of the line):
-	### **WORK IN PROGRESS**
--->
 
 ### **WORK IN PROGRESS**
-* (bolliy) initial release
+* (bolliy) Increase stability
+
+### 0.0.2 (2023-12-19)
+Dependency and configuration updates
+
+### 0.0.1 
+initial release
 
 ## License
 MIT License

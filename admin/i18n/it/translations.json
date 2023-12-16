@@ -7,5 +7,6 @@
     "Modbus unit ID": "ID unità Modbus",
     "address": "Indirizzo IP dell'inverter",
     "port": "porta TCP Modbus",
-    "Update interval (s)": "Intervallo di aggiornamento"
+    "Update interval (s)": "Intervallo di aggiornamento",
+    "Modbus Inverter ID": "ID dell'inverter Modbus"
 }

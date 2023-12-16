@@ -7,5 +7,6 @@
     "Modbus unit ID": "Identyfikator jednostki Modbus",
     "address": "Adres IP falownika",
     "port": "portu Modbus TCP",
-    "Update interval (s)": "Interwał aktualizacji"
+    "Update interval (s)": "Interwał aktualizacji",
+    "Modbus Inverter ID": "Identyfikator falownika Modbus"
 }

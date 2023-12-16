@@ -7,5 +7,6 @@
     "Modbus unit ID": "Modbus-eenheid-ID",
     "address": "IP-adres van de omvormer",
     "port": "modbus TCP-poort",
-    "Update interval (s)": "Bijwerkingsonderbreking"
+    "Update interval (s)": "Bijwerkingsonderbreking",
+    "Modbus Inverter ID": "Modbus-omvormer-ID"
 }

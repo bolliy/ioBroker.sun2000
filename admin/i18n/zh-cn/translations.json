@@ -7,5 +7,6 @@
     "Modbus unit ID": "Modbus 单元 ID",
     "address": "逆变器IP地址",
     "port": "Modbus TCP 端口",
-    "Update interval (s)": "更新间隔"
+    "Update interval (s)": "更新间隔",
+    "Modbus Inverter ID": "Modbus 逆变器 ID"
 }

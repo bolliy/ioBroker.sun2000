@@ -7,5 +7,6 @@
     "Modbus unit ID": "ID de l'unité Modbus",
     "address": "Adresse IP de l'onduleur",
     "port": "port TCP Modbus",
-    "Update interval (s)": "Intervalle de mise à jour"
+    "Update interval (s)": "Intervalle de mise à jour",
+    "Modbus Inverter ID": "ID de l'onduleur Modbus"
 }

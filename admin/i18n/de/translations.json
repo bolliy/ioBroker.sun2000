@@ -5,5 +5,6 @@
     "Port": "Modbus-TCP-Port",
     "Modbus unit ID": "Modbus-Einheits-ID",
     "port": "modbus TCP port",
-    "Update interval (s)": "Update interval"
+    "Update interval (s)": "Update interval",
+    "Modbus Inverter ID": "Modbus-Wechselrichter-ID"
 }

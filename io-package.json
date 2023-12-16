@@ -1,21 +1,61 @@
 {
     "common": {
         "name": "sun2000",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "news": {
             "0.0.1": {
                 "en": "initial release",
-                "de": "Erstveröffentlichung"
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "uk": "початковий випуск",
+                "zh-cn": "初始发行"
+            },
+            "0.0.2": {
+                "en": "Dependency and configuration updates",
+                "de": "Abhängigkeits- und Konfigurationsupdates",
+                "ru": "В зависимости и обновления конфигурации",
+                "pt": "Atualizações de dependência e configuração",
+                "nl": "Afhankelijkheid en configuratie updates",
+                "fr": "Mise à jour de dépendance et de configuration",
+                "it": "Dipendenza e aggiornamenti di configurazione",
+                "es": "Actualizaciones de dependencia y configuración",
+                "pl": "Zależność i aktualizacja konfiguracji",
+                "uk": "Залежність та оновлення конфігурації",
+                "zh-cn": "B. 扶养和配置的最新情况"
             }
         },
         "titleLang": {
             "en": "sun2000",
-            "de": "sun2000"
+            "de": "sun2000",
+            "ru": "солнце2000",
+            "pt": "sol2000",
+            "nl": "zon2000",
+            "fr": "soleil2000",
+            "it": "sole2000",
+            "es": "sol2000",
+            "pl": "słońce2000",
+            "uk": "sun2000",
+            "zh-cn": "太阳2000"
         },
         "desc": {
-            "en": "sun2000",
-            "de": "sun2000"
-        },
+            "en": "Read data from Huawei SUN2000 inverter and LUNA2000 battery using Modbus TCP\n",
+            "de": "Lesen Sie die Daten von Huawei SUN2000 Wechselrichter und LUNA2000 Akku mit Modbus TCP\n",
+            "ru": "Прочитайте данные от Huawei SUN2000 inverter и LUNA2000 батареи с помощью Modbus TCP\n",
+            "pt": "Leia dados do inversor Huawei SUN2000 e da bateria LUNA2000 usando Modbus TCP\n",
+            "nl": "Lees gegevens van Huawei SUN2000 inverter en LUNA2000 batterij met Modbus TCP\n",
+            "fr": "Lire les données de Huawei SUN2000 inverter et batterie LUNA2000 en utilisant Modbus TCP\n",
+            "it": "Leggi i dati dell'inverter Huawei SUN2000 e della batteria LUNA2000 utilizzando Modbus TCP\n",
+            "es": "Lea los datos de la batería Huawei SUN2000 inverter y LUNA2000 utilizando Modbus TCP\n",
+            "pl": "Dane z inwersatora Huawei SUN2000 i baterii LUNA2000 za pomocą modułu TCP\n",
+            "uk": "Читання даних від Huawei SUN2000 і LUNA2000 батареї за допомогою Modbus TCP\n",
+            "zh-cn": "使用Modbus TCPT2000 verter和LUN2000电池的阅读数据\n"
+          },
         "authors": [
             "bolliy <stephan@mante.info>"
         ],
@@ -56,7 +96,8 @@
     "native": {
         "address": "",
         "port": 502,
-        "modbusInverterId": 1,
+        "modbusId": 1,
+        "modbusId2": 0,
         "updateInterval": 30
     },
     "objects": [],
@@ -128,12 +169,27 @@
             }
         },
         {
-            "_id": "info.inverterID",
+            "_id": "info.modbusId",
             "type": "state",
             "common": {
                 "name": {
-                    "en": "Modbus inverter ID",
-                    "de": "Modbus Wechselrichter ID"
+                    "en": "Primary Modbus inverter ID",
+                    "de": "Modbus ID des primären Wechselrichters"
+                },
+                "type": "number",
+                "role": "indicator.id",
+                "read": true,
+                "write": false,
+                "desc": "Inverter modbus inverter id"
+            }
+        },
+        {
+            "_id": "info.modbusId2",
+            "type": "state",
+            "common": {
+                "name": {
+                    "en": "Secondary Modbus inverter ID",
+                    "de": "Modbus ID des 2ten Wechselrichters"
                 },
                 "type": "number",
                 "role": "indicator.id",
@@ -154,26 +210,9 @@
                 "role": "value",
                 "read": true,
                 "write": true,
-                "desc": "High inverter modbus update interval",
+                "desc": "modbus update interval",
                 "unit": "sec"
             }
-        },
-        {
-            "_id": "totalPowerUse",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "Total power use",
-                    "de": "Gesamtverbrauch"
-                },
-                "role": "value",
-                "type": "number",
-                "unit": "W",
-                "read": true,
-                "write": false,
-                "desc": "Total power use ('inputPower' + 'grid.supplyFrom')"
-            },
-            "native": {}
         }
     ]
 }
