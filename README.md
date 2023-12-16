@@ -14,9 +14,12 @@
 
 Read register data from Huawei SUN2000 inverter and LUNA2000 battery using Modbus TCP. 
 
+Modbus interface definition (Issue 5, 2023-02-16):
+https://forum.iobroker.net/assets/uploads/files/1699119419919-solar-inverter-modbus-interface-definitions-v5.pdf
+
 ## Supported hardware
 
-* HUAWEI Inverter (SUN2000 Serie) M1 with 
+* HUAWEI Inverter (SUN2000 Serie) M1 
 * HUAWEI Smart Dongle-WLAN-FE / Min. Softwareversion: xxxSPC133 (SDongleA-05)
 * HUAWEI Luna2000 Battery
 * HUAWEI Smart Power Sensor DTSU666-H or DDSU666-H
@@ -46,6 +49,7 @@ If you use two inverters, then connect to the second inverter and read the commu
 
 ### **WORK IN PROGRESS**
 * (bolliy) Increase stability
+* (booliy)
 
 ### 0.0.2 (2023-12-19)
 Dependency and configuration updates
