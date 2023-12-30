@@ -27,7 +27,9 @@ class Sun2000 extends utils.Adapter {
 			name: 'sun2000',
 		});
 
-		this.lastUpdated = 0;
+		this.lastTimeUpdated = 0;
+		this.lastStateUpdated = 0;
+		this.isConnected = false;
 		this.inverters = [];
 		this.settings = {
 			intervall : 30000,
@@ -40,7 +42,7 @@ class Sun2000 extends utils.Adapter {
 		// this.on('objectChange', this.onObjectChange.bind(this));
 		// this.on('message', this.onMessage.bind(this));
 		this.on('unload', this.onUnload.bind(this));
-
+		//this.runWatchDog();
 	}
 
 	getInverterInfo(id) {
@@ -61,6 +63,14 @@ class Sun2000 extends utils.Adapter {
 			type: 'channel',
 			common: {
 				name: 'meter',
+				role: 'info'
+			},
+			native: {}
+		});
+		await this.setObjectNotExistsAsync('combined', {
+			type: 'channel',
+			common: {
+				name: 'combined',
 				role: 'info'
 			},
 			native: {}
@@ -106,6 +116,16 @@ class Sun2000 extends utils.Adapter {
 				},
 				native: {}
 			});
+
+			await this.setObjectNotExistsAsync(path+'.derived', {
+				type: 'channel',
+				common: {
+					name: 'derived',
+					role: 'indicator'
+				},
+				native: {}
+			});
+
 		}
 
 		await this.setObjectNotExistsAsync('info.connection', {
@@ -133,8 +153,8 @@ class Sun2000 extends utils.Adapter {
 		} catch (err) {
 			console.warn(err);
 		}
-		//this.state.updateStates2(this.modbusClient);
 		this.dataPolling();
+		this.runWatchDog();
 	}
 
 	async checkAndPrepare() {
@@ -168,11 +188,32 @@ class Sun2000 extends utils.Adapter {
 		}
 	}
 
+	runWatchDog() {
+		this.watchDogHandle && this.clearInterval(this.watchDogHandle);
+		this.watchDogHandle = this.setInterval( () => {
+			if (!this.lastTimeUpdated) this.lastUpdated = 0;
+			if (this.lastTimeUpdated > 0) {
+				const sinceLastUpdate = (new Date().getTime() - this.lastTimeUpdated)/1000;
+				this.log.debug('Watchdog: time to last update '+sinceLastUpdate+' sec');
+				const lastIsConnected = this.isConnected;
+				this.isConnected = this.lastStateUpdated > 0 && sinceLastUpdate < this.config.updateInterval*2;
+				this.log.debug('lastIsConncted '+lastIsConnected+' isConnectetd '+this.isConnected+' lastStateupdated '+this.lastStateUpdated);
+
+				if (this.isConnected !== lastIsConnected ) 	this.setState('info.connection', this.isConnected, true);
+				if (sinceLastUpdate > this.config.updateInterval*10) {
+					this.log.warn('Restart Adapter...');
+					this.restart();
+				}
+			}
+		},30000);
+	}
+
 
 	/**
 	 * Is called when databases are connected and adapter received configuration.
 	 */
 	async onReady() {
+
 		// Initialize your adapter here
 		await this.setStateAsync('info.ip', {val: this.config.address, ack: true});
 		await this.setStateAsync('info.port', {val: this.config.port, ack: true});
@@ -187,12 +228,10 @@ class Sun2000 extends utils.Adapter {
 			this.settings.port = this.config.port;
 
 			if (this.settings.intervall < 10000 ) this.config.updateInterval = 30000;
-			this.inverters.push({modbusId: this.config.modbusId,meter: false});
+			this.inverters.push({modbusId: this.config.modbusId,meter: true});
 			if (this.config.modbusId2 > 0 && this.config.modbusId2 !== this.config.modbusId) {
 				this.inverters.push({modbusId: this.config.modbusId2,meter: false});
 			}
-			//Reference on Object
-			//this.conf.push({modbusId: 16, meter: false});
 
 			this.state = new Registers(this);
 			this.modbusClient = new ModbusConnect(this,this.config.address,this.config.port);
@@ -205,6 +244,7 @@ class Sun2000 extends utils.Adapter {
 
 	async dataPolling() {
 		this.log.debug('### DataPolling start ###');
+		let stateUpdated = 0;
 		const start = new Date().getTime();
 		let nextTick = this.config.updateInterval*1000 - start % (this.config.updateInterval*1000);
 
@@ -213,17 +253,18 @@ class Sun2000 extends utils.Adapter {
 			this.modbusClient.setID(item.modbusId);
 			const timeLeft = start+nextTick - new Date().getTime();
 			//this.log.info('### Left Time '+timeLeft/1000);
-			await this.state.updateStates(this.modbusClient,dataRefreshRate.high,timeLeft);
+			stateUpdated += await this.state.updateStates(this.modbusClient,dataRefreshRate.high,timeLeft);
 		}
 		//Low Loop
 		for (const item of this.inverters) {
 			this.modbusClient.setID(item.modbusId);
 			const timeLeft = start+nextTick - new Date().getTime();
 			//this.log.info('### Left Time '+timeLeft/1000);
-			await this.state.updateStates(this.modbusClient,dataRefreshRate.low,timeLeft);
+			stateUpdated += await this.state.updateStates(this.modbusClient,dataRefreshRate.low,timeLeft);
 		}
-
 		const now = new Date().getTime();
+		this.lastTimeUpdated = now;
+		this.lastStateUpdated  = stateUpdated;
 		nextTick = this.config.updateInterval*1000 - now % (this.config.updateInterval*1000);
 		/*
 		this.log.debug('### Next Tick in '+nextTick/1000);
@@ -241,7 +282,8 @@ class Sun2000 extends utils.Adapter {
 	 */
 	onUnload(callback) {
 		try {
-			if (this.modbusClient) this.modbusClient.close();
+			this.watchDogHandle && this.clearInterval(this.watchDogHandle);
+			this.modbusClient && this.modbusClient.close();
 			this.setState('info.connection', false, true);
 			this.log.info('cleaned everything up...');
 			callback();
