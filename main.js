@@ -67,10 +67,10 @@ class Sun2000 extends utils.Adapter {
 			},
 			native: {}
 		});
-		await this.setObjectNotExistsAsync('combined', {
+		await this.setObjectNotExistsAsync('collected', {
 			type: 'channel',
 			common: {
-				name: 'combined',
+				name: 'collected',
 				role: 'info'
 			},
 			native: {}
@@ -146,15 +146,33 @@ class Sun2000 extends utils.Adapter {
 	async InitProcess() {
 		try {
 			await this.initPath();
-			await this.checkAndPrepare();
 			/*
+			await this.checkAndPrepare();
             await processBatterie();
-             */
+            */
 		} catch (err) {
 			console.warn(err);
 		}
 		this.dataPolling();
 		this.runWatchDog();
+		this.atMidnight();
+	}
+
+	atMidnight() {
+		const now = new Date();
+		const night = new Date(
+			now.getFullYear(),
+			now.getMonth(),
+			now.getDate() + 1, // the next day, ...
+			0, 0, 0 // ...at 00:00:00 hours
+		);
+		const msToMidnight = night.getTime() - now.getTime();
+
+		if (this.mitnightTimer) this.clearTimeout(this.mitnightTimer);
+		this.mitnightTimer = this.setTimeout(async () => {
+			await this.state.mitnightProcess();   //      the function being called at midnight.
+			this.atMidnight();    	              //      reset again next midnight.
+		}, msToMidnight);
 	}
 
 	async checkAndPrepare() {
@@ -255,6 +273,8 @@ class Sun2000 extends utils.Adapter {
 			//this.log.info('### Left Time '+timeLeft/1000);
 			stateUpdated += await this.state.updateStates(this.modbusClient,dataRefreshRate.high,timeLeft);
 		}
+		this.state.runProcessHooks(dataRefreshRate.high); //fire and forget
+
 		//Low Loop
 		for (const item of this.inverters) {
 			this.modbusClient.setID(item.modbusId);
@@ -262,6 +282,9 @@ class Sun2000 extends utils.Adapter {
 			//this.log.info('### Left Time '+timeLeft/1000);
 			stateUpdated += await this.state.updateStates(this.modbusClient,dataRefreshRate.low,timeLeft);
 		}
+		this.state.runProcessHooks(dataRefreshRate.low); //fire and forget
+
+
 		const now = new Date().getTime();
 		this.lastTimeUpdated = now;
 		this.lastStateUpdated  = stateUpdated;
@@ -274,6 +297,7 @@ class Sun2000 extends utils.Adapter {
 		this.timer = this.setTimeout(() => {
 			this.dataPolling(); //recursiv
 		}, nextTick);
+		//this.state.mitnightProcess();
 	}
 
 	/**
@@ -282,6 +306,8 @@ class Sun2000 extends utils.Adapter {
 	 */
 	onUnload(callback) {
 		try {
+			this.timer && this.clearTimeout(this.timer);
+			this.mitnightTimer && this.clearTimeout(this.mitnightTimer);
 			this.watchDogHandle && this.clearInterval(this.watchDogHandle);
 			this.modbusClient && this.modbusClient.close();
 			this.setState('info.connection', false, true);

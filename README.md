@@ -56,9 +56,13 @@ If you use two inverters, then connect to the second inverter and read the commu
 
 ### **WORK IN PROGRESS**
 * (bolliy) Increase stability
-* (booliy) new states
+* (bolliy) severeals states
 
 ### 0.0.3 (2024-01-01)
+* watchdog implemented #11
+* state values are cached - only changed data should be stored 
+* derived and collected values for example `inputPowerEffective` or `inputYield`
+* more states
 
 ### 0.0.2 (2023-12-19)
 Dependency and configuration updates
