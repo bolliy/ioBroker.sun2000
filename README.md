@@ -55,8 +55,6 @@ If you use two inverters, then connect to the second inverter and read the commu
 -->
 
 ### **WORK IN PROGRESS**
-* (bolliy) Increase stability
-* (bolliy) severeals states
 
 ### 0.0.3 (2024-01-01)
 * watchdog implemented #11
