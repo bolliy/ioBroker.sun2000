@@ -40,7 +40,6 @@ class Sun2000 extends utils.Adapter {
 		// this.on('objectChange', this.onObjectChange.bind(this));
 		// this.on('message', this.onMessage.bind(this));
 		this.on('unload', this.onUnload.bind(this));
-		//this.runWatchDog();
 	}
 
 	getInverterInfo(id) {

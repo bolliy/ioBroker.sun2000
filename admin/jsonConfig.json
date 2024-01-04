@@ -31,7 +31,7 @@
         "updateInterval": {
             "type": "number",
             "label": "Update interval (s)",
-            "default": 30,
+            "default": 20,
             "newLine": true,
             "tooltip": "Update interval to update the values from the inverters"
         }
