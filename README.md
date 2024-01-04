@@ -56,7 +56,7 @@ If you use two inverters, then connect to the second inverter and read the commu
 
 ### **WORK IN PROGRESS**
 
-### 0.0.3 (2024-01-01)
+### 0.1.0 (2024-01-06)
 * watchdog implemented #11
 * state values are cached - only changed data should be stored 
 * derived and collected values for example `inputPowerEffective` or `inputYield`

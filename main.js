@@ -12,9 +12,7 @@ const Registers = require(__dirname + '/lib/register.js');
 const ModbusConnect = require(__dirname + '/lib/modbus_connect.js');
 const {dataRefreshRate} = require(__dirname + '/lib/types.js');
 
-
 // Load your modules here, e.g.:
-// const fs = require("fs");
 
 class Sun2000 extends utils.Adapter {
 
