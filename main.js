@@ -242,7 +242,7 @@ class Sun2000 extends utils.Adapter {
 			this.settings.address = this.config.address;
 			this.settings.port = this.config.port;
 
-			if (this.settings.intervall < 10000 ) this.config.updateInterval = 30000;
+			if (this.settings.intervall < 10000 ) this.config.updateInterval = 20000;
 			this.inverters.push({modbusId: this.config.modbusId,meter: true});
 			if (this.config.modbusId2 > 0 && this.config.modbusId2 !== this.config.modbusId) {
 				this.inverters.push({modbusId: this.config.modbusId2,meter: false});
