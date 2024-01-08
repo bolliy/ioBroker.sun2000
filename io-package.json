@@ -1,33 +1,11 @@
 {
     "common": {
         "name": "sun2000",
-        "version": "0.0.2",
+        "version": "0.1.1",
         "news": {
-            "0.0.1": {
-                "en": "initial release",
-                "de": "Erstveröffentlichung",
-                "ru": "Начальная версия",
-                "pt": "lançamento inicial",
-                "nl": "Eerste uitgave",
-                "fr": "Première version",
-                "it": "Versione iniziale",
-                "es": "Versión inicial",
-                "pl": "Pierwsze wydanie",
-                "uk": "початковий випуск",
-                "zh-cn": "初始发行"
-            },
-            "0.0.2": {
-                "en": "Dependency and configuration updates",
-                "de": "Abhängigkeits- und Konfigurationsupdates",
-                "ru": "В зависимости и обновления конфигурации",
-                "pt": "Atualizações de dependência e configuração",
-                "nl": "Afhankelijkheid en configuratie updates",
-                "fr": "Mise à jour de dépendance et de configuration",
-                "it": "Dipendenza e aggiornamenti di configurazione",
-                "es": "Actualizaciones de dependencia y configuración",
-                "pl": "Zależność i aktualizacja konfiguracji",
-                "uk": "Залежність та оновлення конфігурації",
-                "zh-cn": "B. 扶养和配置的最新情况"
+            "0.1.1": {
+                "en": "fix some collected values",
+                "de": "Korrektur einiger der gesammelten Werte (collected values)"
             }
         },
         "titleLang": {
@@ -209,7 +187,7 @@
                 "type": "number",
                 "role": "value",
                 "read": true,
-                "write": true,
+                "write": false,
                 "desc": "modbus update interval",
                 "unit": "sec"
             }

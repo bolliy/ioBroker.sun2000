@@ -12,9 +12,7 @@ const Registers = require(__dirname + '/lib/register.js');
 const ModbusConnect = require(__dirname + '/lib/modbus_connect.js');
 const {dataRefreshRate} = require(__dirname + '/lib/types.js');
 
-
 // Load your modules here, e.g.:
-// const fs = require("fs");
 
 class Sun2000 extends utils.Adapter {
 
@@ -42,7 +40,6 @@ class Sun2000 extends utils.Adapter {
 		// this.on('objectChange', this.onObjectChange.bind(this));
 		// this.on('message', this.onMessage.bind(this));
 		this.on('unload', this.onUnload.bind(this));
-		//this.runWatchDog();
 	}
 
 	getInverterInfo(id) {

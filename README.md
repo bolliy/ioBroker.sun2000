@@ -46,7 +46,7 @@ If you use two inverters, then connect to the second inverter and read the commu
 * `port`: Inverter modbus port (default: 502)
 * `modbusId`: Primary Modbus inverter id (default: 1)
 * `modbusId2`: Secondary Modbus inverter id (default: 0)
-* `updateInterval`: Fast update interval (default: 30 sec)
+* `updateInterval`: Fast update interval (default: 20 sec)
 
 ## Changelog
 <!--
@@ -55,15 +55,16 @@ If you use two inverters, then connect to the second inverter and read the commu
 -->
 
 ### **WORK IN PROGRESS**
-* (bolliy) Increase stability
-* (bolliy) severeals states
+prepare collected values more precisely
 
-### 0.0.3 (2024-01-01)
+### 0.1.1 (2024-01-07)
+* fix some collected values
+
+### 0.1.0 (2024-01-06)
 * watchdog implemented #11
 * state values are cached - only changed data should be stored 
 * derived and collected values for example `inputPowerEffective` or `inputYield`
-* more states
-
+* deploy more register
 ### 0.0.2 (2023-12-19)
 Dependency and configuration updates
 
