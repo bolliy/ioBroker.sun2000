@@ -48,7 +48,7 @@ class Sun2000 extends utils.Adapter {
 	}
 
 	async initPath() {
-		await this.setObjectNotExistsAsync('info', {
+		await this.extendObjectAsync('info', {
 			type: 'channel',
 			common: {
 				name: 'info',
@@ -56,7 +56,7 @@ class Sun2000 extends utils.Adapter {
 			},
 			native: {}
 		});
-		await this.setObjectNotExistsAsync('meter', {
+		await this.extendObjectAsync('meter', {
 			type: 'channel',
 			common: {
 				name: 'meter',
@@ -64,7 +64,7 @@ class Sun2000 extends utils.Adapter {
 			},
 			native: {}
 		});
-		await this.setObjectNotExistsAsync('collected', {
+		await this.extendObjectAsync('collected', {
 			type: 'channel',
 			common: {
 				name: 'collected',
@@ -73,7 +73,7 @@ class Sun2000 extends utils.Adapter {
 			native: {}
 		});
 
-		await this.setObjectNotExistsAsync('inverter', {
+		await this.extendObjectAsync('inverter', {
 			type: 'device',
 			common: {
 				name: 'meter',
@@ -87,7 +87,7 @@ class Sun2000 extends utils.Adapter {
 		for (const [i, item] of this.inverters.entries()) {
 			const path = 'inverter.'+String(i);
 			item.path = path;
-			await this.setObjectNotExistsAsync(path, {
+			await this.extendObjectAsync(path, {
 				type: 'channel',
 				common: {
 					name: 'modbus'+i,
@@ -96,7 +96,7 @@ class Sun2000 extends utils.Adapter {
 				native: {}
 			});
 
-			await this.setObjectNotExistsAsync(path+'.grid', {
+			await this.extendObjectAsync(path+'.grid', {
 				type: 'channel',
 				common: {
 					name: 'grid',
@@ -105,7 +105,7 @@ class Sun2000 extends utils.Adapter {
 				native: {}
 			});
 
-			await this.setObjectNotExistsAsync(path+'.battery', {
+			await this.extendObjectAsync(path+'.battery', {
 				type: 'channel',
 				common: {
 					name: 'battery',
@@ -114,7 +114,7 @@ class Sun2000 extends utils.Adapter {
 				native: {}
 			});
 
-			await this.setObjectNotExistsAsync(path+'.derived', {
+			await this.extendObjectAsync(path+'.derived', {
 				type: 'channel',
 				common: {
 					name: 'derived',
@@ -125,7 +125,7 @@ class Sun2000 extends utils.Adapter {
 
 		}
 
-		await this.setObjectNotExistsAsync('info.connection', {
+		await this.extendObjectAsync('info.connection', {
 			type: 'state',
 			common: {
 				name: 'Inverter connected',

@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "sun2000",
-        "version": "0.1.1",
+        "version": "0.1.2",
         "news": {
             "0.1.1": {
                 "en": "fix some collected values",
