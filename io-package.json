@@ -1,180 +1,193 @@
 {
-    "common": {
-        "name": "sun2000",
-        "version": "0.1.1",
-        "news": {
-            "0.1.1": {
-                "en": "fix some collected values",
-                "de": "Korrektur einiger der gesammelten Werte (collected values)"
-            }
-        },
-        "titleLang": {
-            "en": "sun2000",
-            "de": "sun2000",
-            "ru": "солнце2000",
-            "pt": "sol2000",
-            "nl": "zon2000",
-            "fr": "soleil2000",
-            "it": "sole2000",
-            "es": "sol2000",
-            "pl": "słońce2000",
-            "uk": "sun2000",
-            "zh-cn": "太阳2000"
-        },
-        "desc": {
-            "en": "Read data from Huawei SUN2000 inverter and LUNA2000 battery using Modbus TCP\n",
-            "de": "Lesen Sie die Daten von Huawei SUN2000 Wechselrichter und LUNA2000 Akku mit Modbus TCP\n",
-            "ru": "Прочитайте данные от Huawei SUN2000 inverter и LUNA2000 батареи с помощью Modbus TCP\n",
-            "pt": "Leia dados do inversor Huawei SUN2000 e da bateria LUNA2000 usando Modbus TCP\n",
-            "nl": "Lees gegevens van Huawei SUN2000 inverter en LUNA2000 batterij met Modbus TCP\n",
-            "fr": "Lire les données de Huawei SUN2000 inverter et batterie LUNA2000 en utilisant Modbus TCP\n",
-            "it": "Leggi i dati dell'inverter Huawei SUN2000 e della batteria LUNA2000 utilizzando Modbus TCP\n",
-            "es": "Lea los datos de la batería Huawei SUN2000 inverter y LUNA2000 utilizando Modbus TCP\n",
-            "pl": "Dane z inwersatora Huawei SUN2000 i baterii LUNA2000 za pomocą modułu TCP\n",
-            "uk": "Читання даних від Huawei SUN2000 і LUNA2000 батареї за допомогою Modbus TCP\n",
-            "zh-cn": "使用Modbus TCPT2000 verter和LUN2000电池的阅读数据\n"
-          },
-        "authors": [
-            "bolliy <stephan@mante.info>"
-        ],
-        "keywords": [
-            "huawei",
-            "modbus",
-            "sun2000",
-            "luna2000",
-            "inverter"
-        ],
-        "license": "MIT",
-        "platform": "Javascript/Node.js",
-        "main": "main.js",
-        "icon": "sun2000.png",
-        "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/bolliy/ioBroker.sun2000/main/admin/sun2000.png",
-        "readme": "https://github.com/bolliy/ioBroker.sun2000/blob/main/README.md",
-        "loglevel": "info",
-        "mode": "daemon",
-        "type": "energy",
-        "compact": true,
-        "connectionType": "local",
-        "dataSource": "poll",
-        "adminUI": {
-            "config": "json"
-        },
-        "dependencies": [
-            {
-                "js-controller": ">=3.3.22"
-            }
-        ],
-        "globalDependencies": [
-            {
-                "admin": ">=5.1.13"
-            }
-        ]
+  "common": {
+    "name": "sun2000",
+    "version": "0.1.2-alpha.0",
+    "news": {
+      "0.1.2-alpha.0": {
+        "en": "prepare collected values more precisely\nexpand up to 5 inverters #18\nfix problems with multiple inverters",
+        "de": "die gesammelten werte genauer\nbis zu 5 wechselrichtern #18 erweitern\nprobleme mit mehreren wechselrichtern beheben",
+        "ru": "готовить собранные значения точнее\n#18\nисправить проблемы с несколькими инверторами",
+        "pt": "preparar valores coletados mais precisamente\nexpandir até 5 inversores #18\ncorrigir problemas com vários inversores",
+        "nl": "verzamelde waarden nauwkeuriger voorbereiden\nuit te breiden tot 5 omvormers #18\nproblemen oplossen met meerdere inverters",
+        "fr": "préparer plus précisément les valeurs collectées\nétendre jusqu'à 5 onduleurs #18\nrésoudre les problèmes avec plusieurs onduleurs",
+        "it": "preparare i valori raccolti più precisamente\nespandere fino a 5 inverter #18\nrisolvere problemi con più inverter",
+        "es": "preparar los valores recogidos con mayor precisión\nampliar hasta 5 inversores #18\nsolucionar problemas con múltiples inversores",
+        "pl": "dokładniej przygotować zebrane wartości\nrozszerzyć do 5 inwerterów # 18\nrozwiązać problemy z wieloma inwerterami",
+        "uk": "підготовка зібраних значень точно\nрозширити до 5 інверторів #18\nвиправити проблеми з декількома інверторами",
+        "zh-cn": "更准确地编制收集的数值\n扩展至5个反转器 # 18\n解决多个反转器的问题"
+      },
+      "0.1.1": {
+        "en": "fix some collected values",
+        "de": "Korrektur einiger der gesammelten Werte (collected values)"
+      }
     },
-    "native": {
-        "address": "",
-        "port": 502,
-        "modbusIds": "1",
-        "updateInterval": 20
+    "titleLang": {
+      "en": "sun2000",
+      "de": "sun2000",
+      "ru": "солнце2000",
+      "pt": "sol2000",
+      "nl": "zon2000",
+      "fr": "soleil2000",
+      "it": "sole2000",
+      "es": "sol2000",
+      "pl": "słońce2000",
+      "uk": "sun2000",
+      "zh-cn": "太阳2000"
     },
-    "objects": [],
-    "instanceObjects": [
-        {
-            "_id": "info",
-            "type": "channel",
-            "common": {
-                "name": {
-                    "en": "Information",
-                    "de": "Informationen",
-                    "ru": "Информация",
-                    "pt": "Informação",
-                    "nl": "Informatie",
-                    "fr": "Information",
-                    "it": "Informazioni",
-                    "es": "Información",
-                    "pl": "Informacja",
-                    "uk": "Інформація",
-                    "zh-cn": "信息"
-                },
-                "role": "info"
-            },
-            "native": {}
-        },
-        {
-            "_id": "info.connection",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "Inverter connected",
-                    "de": "Wechselrichter angeschlossen"
-                },
-                "type": "boolean",
-                "role": "indicator.connected",
-                "read": true,
-                "write": false,
-                "desc": "Is the inverter connected?"
-            }
-        },
-        {
-            "_id": "info.ip",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "Inverter IP",
-                    "de": "Inverter IP"
-                },
-                "type": "string",
-                "role": "indicator.ip",
-                "read": true,
-                "write": false,
-                "desc": "Inverter IP address"
-            }
-        },
-        {
-            "_id": "info.port",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "Modbus port",
-                    "de": "Modbusport"
-                },
-                "type": "number",
-                "role": "indicator.port",
-                "read": true,
-                "write": false,
-                "desc": "Inverter modbus port"
-            }
-        },
-        {
-            "_id": "info.modbusIds",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "Secondary Modbus inverter ID",
-                    "de": "Modbus ID des 2ten Wechselrichters"
-                },
-                "type": "string",
-                "role": "indicator.id",
-                "read": true,
-                "write": false,
-                "desc": "Inverter modbus inverter IDs"
-            }
-        },
-        {
-            "_id": "info.modbusUpdateInterval",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "modbus update interval",
-                    "de": "modbus Update Intervall"
-                },
-                "type": "number",
-                "role": "value",
-                "read": true,
-                "write": false,
-                "desc": "modbus update interval",
-                "unit": "sec"
-            }
-        }
+    "desc": {
+      "en": "Read data from Huawei SUN2000 inverter and LUNA2000 battery using Modbus TCP\n",
+      "de": "Lesen Sie die Daten von Huawei SUN2000 Wechselrichter und LUNA2000 Akku mit Modbus TCP\n",
+      "ru": "Прочитайте данные от Huawei SUN2000 inverter и LUNA2000 батареи с помощью Modbus TCP\n",
+      "pt": "Leia dados do inversor Huawei SUN2000 e da bateria LUNA2000 usando Modbus TCP\n",
+      "nl": "Lees gegevens van Huawei SUN2000 inverter en LUNA2000 batterij met Modbus TCP\n",
+      "fr": "Lire les données de Huawei SUN2000 inverter et batterie LUNA2000 en utilisant Modbus TCP\n",
+      "it": "Leggi i dati dell'inverter Huawei SUN2000 e della batteria LUNA2000 utilizzando Modbus TCP\n",
+      "es": "Lea los datos de la batería Huawei SUN2000 inverter y LUNA2000 utilizando Modbus TCP\n",
+      "pl": "Dane z inwersatora Huawei SUN2000 i baterii LUNA2000 za pomocą modułu TCP\n",
+      "uk": "Читання даних від Huawei SUN2000 і LUNA2000 батареї за допомогою Modbus TCP\n",
+      "zh-cn": "使用Modbus TCPT2000 verter和LUN2000电池的阅读数据\n"
+    },
+    "authors": [
+      "bolliy <stephan@mante.info>"
+    ],
+    "keywords": [
+      "huawei",
+      "modbus",
+      "sun2000",
+      "luna2000",
+      "inverter"
+    ],
+    "license": "MIT",
+    "platform": "Javascript/Node.js",
+    "main": "main.js",
+    "icon": "sun2000.png",
+    "enabled": true,
+    "extIcon": "https://raw.githubusercontent.com/bolliy/ioBroker.sun2000/main/admin/sun2000.png",
+    "readme": "https://github.com/bolliy/ioBroker.sun2000/blob/main/README.md",
+    "loglevel": "info",
+    "mode": "daemon",
+    "type": "energy",
+    "compact": true,
+    "connectionType": "local",
+    "dataSource": "poll",
+    "adminUI": {
+      "config": "json"
+    },
+    "dependencies": [
+      {
+        "js-controller": ">=3.3.22"
+      }
+    ],
+    "globalDependencies": [
+      {
+        "admin": ">=5.1.13"
+      }
     ]
+  },
+  "native": {
+    "address": "",
+    "port": 502,
+    "modbusIds": "1",
+    "updateInterval": 20
+  },
+  "objects": [],
+  "instanceObjects": [
+    {
+      "_id": "info",
+      "type": "channel",
+      "common": {
+        "name": {
+          "en": "Information",
+          "de": "Informationen",
+          "ru": "Информация",
+          "pt": "Informação",
+          "nl": "Informatie",
+          "fr": "Information",
+          "it": "Informazioni",
+          "es": "Información",
+          "pl": "Informacja",
+          "uk": "Інформація",
+          "zh-cn": "信息"
+        },
+        "role": "info"
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.connection",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Inverter connected",
+          "de": "Wechselrichter angeschlossen"
+        },
+        "type": "boolean",
+        "role": "indicator.connected",
+        "read": true,
+        "write": false,
+        "desc": "Is the inverter connected?"
+      }
+    },
+    {
+      "_id": "info.ip",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Inverter IP",
+          "de": "Inverter IP"
+        },
+        "type": "string",
+        "role": "indicator.ip",
+        "read": true,
+        "write": false,
+        "desc": "Inverter IP address"
+      }
+    },
+    {
+      "_id": "info.port",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Modbus port",
+          "de": "Modbusport"
+        },
+        "type": "number",
+        "role": "indicator.port",
+        "read": true,
+        "write": false,
+        "desc": "Inverter modbus port"
+      }
+    },
+    {
+      "_id": "info.modbusIds",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Secondary Modbus inverter ID",
+          "de": "Modbus ID des 2ten Wechselrichters"
+        },
+        "type": "string",
+        "role": "indicator.id",
+        "read": true,
+        "write": false,
+        "desc": "Inverter modbus inverter IDs"
+      }
+    },
+    {
+      "_id": "info.modbusUpdateInterval",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "modbus update interval",
+          "de": "modbus Update Intervall"
+        },
+        "type": "number",
+        "role": "value",
+        "read": true,
+        "write": false,
+        "desc": "modbus update interval",
+        "unit": "sec"
+      }
+    }
+  ]
 }
