@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.1.2-alpha.0",
+    "version": "0.1.2-alpha.1",
     "news": {
+      "0.1.2-alpha.1": {
+        "en": "deploy npm package",
+        "de": "npm paket bereitstellen",
+        "ru": "развернуть пакет npm",
+        "pt": "implementar pacote npm",
+        "nl": "npm-pakket implementeren",
+        "fr": "déployer le paquet npm",
+        "it": "distribuire il pacchetto npm",
+        "es": "paquete npm",
+        "pl": "rozmieszczenie pakietu npm",
+        "uk": "пакет npm",
+        "zh-cn": "部署 npm 软件包"
+      },
       "0.1.2-alpha.0": {
         "en": "prepare collected values more precisely\nexpand up to 5 inverters #18\nfix problems with multiple inverters",
         "de": "die gesammelten werte genauer\nbis zu 5 wechselrichtern #18 erweitern\nprobleme mit mehreren wechselrichtern beheben",
