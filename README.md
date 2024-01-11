@@ -29,7 +29,7 @@ The development of this adapter was inspired by discussions from the forum threa
 ## Feature list
 
 * Maximum 5 inverters (master/slave) can be processed, each with a battery module (max. 30kWh).
-* Live data such as input power , output power , battery charging/discharging power and the grid consumption (meter.activePower) are read out at a fixed interval (default 20 seconds).
+* Live data such as input power, output power, charging/discharging power and the grid consumption are read out at a fixed interval. 
 * States are only written for changed data from the inverter. This relieves the burden on the iobroker instance.
 * The states “inputPower” or “activePower” in the “collected” path can be monitored with a “was updated” trigger element. Because these states are always written within the set interval.
 
