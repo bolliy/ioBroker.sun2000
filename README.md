@@ -33,7 +33,6 @@ The development of this adapter was inspired by discussions from the forum threa
 * States are only written for changed data from the inverter. This relieves the burden on the iobroker instance.
 * The states “inputPower” or “activePower” in the “collected” path can be monitored with a “was updated” trigger element. Because these states are always written within the set interval.
 
-* test
 
 ## Configure inverters
 
@@ -54,7 +53,7 @@ If you use two inverters, then connect to the second inverter and read the commu
 * `address`: Inverter IP address
 * `port`: Inverter modbus port (default: 502)
 * `modbusIds`: inverter IDs, separated with "," (default: 1, max. 5 inverters)
-* `updateInterval`: Fast update interval (default: 20 sec)
+* `updateInterval`: Fast update interval (default: 20 sec, smallest 5 seconds per inverter)
 
 ## Changelog
 <!--
