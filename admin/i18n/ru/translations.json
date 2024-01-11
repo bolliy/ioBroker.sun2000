@@ -1,12 +1,11 @@
 {
-    "sun2000 adapter settings": "Настройки адаптера для sun2000",
-    "option1": "Опция 1",
-    "option2": "вариант 2",
-    "Address": "IP-адрес инвертора",
-    "Port": "TCP-порт Modbus",
-    "Modbus unit ID": "Идентификатор устройства Modbus",
+    "sun2000 adapter settings": "Настройки адаптера для инвертора huawei sun2000",
     "address": "IP-адрес инвертора",
     "port": "TCP-порт Modbus",
-    "Update interval (s)": "Интервал обновления",
-    "Modbus Inverter ID": "Идентификатор преобразователя Modbus"
+    "Modbus Inverter IDs": "Идентификаторы преобразователей Modbus",
+    "Update interval (s)": "Интервал обновления [сек]",
+    "The inverters ip address": "IP-адрес инвертора",
+    "The modbus TCP port": "TCP-порт Modbus",
+    "The modbus inverter IDs, separated with character ,": "Идентификаторы инверторов Modbus, разделенные символом ,",
+    "Update interval to update the values from the inverters": "Интервал обновления для обновления значений инверторов."
 }

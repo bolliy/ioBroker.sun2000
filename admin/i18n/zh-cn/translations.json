@@ -1,12 +1,11 @@
 {
-    "sun2000 adapter settings": "sun2000的适配器设置",
-    "option1": "选项1",
-    "option2": "选项2",
-    "Address": "逆变器IP地址",
-    "Port": "MODBUS TCP 端口",
-    "Modbus unit ID": "Modbus 单元 ID",
+    "sun2000 adapter settings": "华为逆变器sun2000的适配器设置",
     "address": "逆变器IP地址",
     "port": "Modbus TCP 端口",
-    "Update interval (s)": "更新间隔",
-    "Modbus Inverter ID": "Modbus 逆变器 ID"
+    "Modbus Inverter IDs": "Modbus 逆变器 ID",
+    "Update interval (s)": "更新间隔[秒]",
+    "The inverters ip address": "逆变器ip地址",
+    "The modbus TCP port": "Modbus TCP 端口",
+    "The modbus inverter IDs, separated with character ,": "modbus逆变器ID，用字符分隔，",
+    "Update interval to update the values from the inverters": "更新逆变器值的更新间隔"
 }

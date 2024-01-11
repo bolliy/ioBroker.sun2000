@@ -1,12 +1,11 @@
 {
-    "sun2000 adapter settings": "Налаштування адаптера для sun2000",
-    "option1": "варіант1",
-    "option2": "варіант2",
-    "Address": "IP-адреса інвертора",
-    "Port": "порт modbus tcp",
-    "Modbus unit ID": "ID пристрою Modbus",
+    "sun2000 adapter settings": "Налаштування адаптера huawai inverter sun2000",
     "address": "IP-адреса інвертора",
     "port": "порт Modbus TCP",
-    "Update interval (s)": "Інтервал оновлення",
-    "Modbus Inverter ID": "Ідентифікатор інвертора Modbus"
+    "Modbus Inverter IDs": "Ідентифікатори інвертора Modbus",
+    "Update interval (s)": "Інтервал оновлення [с]",
+    "The inverters ip address": "IP адреса інверторів",
+    "The modbus TCP port": "Порт Modbus TCP",
+    "The modbus inverter IDs, separated with character ,": "Ідентифікатори інвертора Modbus, розділені символом ,",
+    "Update interval to update the values from the inverters": "Інтервал оновлення для оновлення значень з інверторів"
 }

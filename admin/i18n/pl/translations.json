@@ -1,12 +1,11 @@
 {
-    "sun2000 adapter settings": "Ustawienia adaptera dla sun2000",
-    "option1": "opcja 1",
-    "option2": "Opcja 2",
-    "Address": "Adres IP falownika",
-    "Port": "port Modbus TCP",
-    "Modbus unit ID": "Identyfikator jednostki Modbus",
+    "sun2000 adapter settings": "Ustawienia adaptera dla falownika Huawei Sun2000",
     "address": "Adres IP falownika",
     "port": "portu Modbus TCP",
-    "Update interval (s)": "Interwał aktualizacji",
-    "Modbus Inverter ID": "Identyfikator falownika Modbus"
+    "Modbus Inverter IDs": "Identyfikatory falowników Modbus",
+    "Update interval (s)": "Interwał aktualizacji [s]",
+    "The inverters ip address": "Adres IP falowników",
+    "The modbus TCP port": "Port Modbus TCP",
+    "The modbus inverter IDs, separated with character ,": "Identyfikatory falowników Modbus, oddzielone znakiem ,",
+    "Update interval to update the values from the inverters": "Częstotliwość aktualizacji w celu aktualizacji wartości z falowników"
 }

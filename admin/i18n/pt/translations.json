@@ -1,12 +1,11 @@
 {
-    "sun2000 adapter settings": "Configurações do adaptador para sun2000",
-    "option1": "Opção 1",
-    "option2": "opção 2",
-    "Address": "Endereço IP do inversor",
-    "Port": "porta modbus tcp",
-    "Modbus unit ID": "ID da unidade Modbus",
+    "sun2000 adapter settings": "Configurações do adaptador para inversor huawai sun2000",
     "address": "Endereço IP do inversor",
     "port": "porta modbus TCP",
-    "Update interval (s)": "Intervalo de atualização",
-    "Modbus Inverter ID": "ID do inversor Modbus"
+    "Modbus Inverter IDs": "IDs do inversor Modbus",
+    "Update interval (s)": "Intervalo de atualização [seg]",
+    "The inverters ip address": "O endereço IP dos inversores",
+    "The modbus TCP port": "A porta modbus TCP",
+    "The modbus inverter IDs, separated with character ,": "Os IDs do inversor modbus, separados pelo caractere ,",
+    "Update interval to update the values from the inverters": "Intervalo de atualização para atualizar os valores dos inversores"
 }

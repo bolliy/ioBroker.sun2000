@@ -20,7 +20,7 @@
             "label": "Modbus Inverter IDs",
             "default": "1",
             "newLine": true,
-            "tooltip": "The modbus inverter IDs, separated with character \",\""
+            "tooltip": "The modbus inverter IDs, separated with character ,"
         },
         "updateInterval": {
             "type": "number",

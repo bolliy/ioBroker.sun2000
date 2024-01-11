@@ -2,6 +2,10 @@
 	"sun2000 adapter settings": "Adapter settings for huawai inverter sun2000",
 	"address": "Inverter IP address",
 	"port": "modbus TCP port",
-	"Modbus Inverter ID" : "Modbus Inverter ID",
-	"Update interval (s)": "Update interval [sec]"
+	"Modbus Inverter IDs" : "Modbus Inverter IDs",
+	"Update interval (s)": "Update interval [sec]",
+	"The inverters ip address": "The inverters ip address",
+	"The modbus TCP port" : "The modbus TCP port",
+	"The modbus inverter IDs, separated with character ," : "The modbus inverter IDs, separated with character ,",
+	"Update interval to update the values from the inverters" : "Update interval to update the values from the inverters"
 }
