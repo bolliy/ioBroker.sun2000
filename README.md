@@ -59,10 +59,13 @@ If you use two inverters, then connect to the second inverter and read the commu
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### 0.1.2-alpha.1 (2024-01-11)
+* deploy npm package
 
-### **WORK IN PROGRESS**
+### 0.1.2-alpha.0 (2024-01-11)
 * prepare collected values more precisely
 * expand up to 5 inverters #18
+* fix problems with multiple inverters
 
 ### 0.1.1 (2024-01-07)
 * fix some collected values
@@ -72,6 +75,7 @@ If you use two inverters, then connect to the second inverter and read the commu
 * state values are cached - only changed data should be stored 
 * derived and collected values for example `inputPowerEffective` or `inputYield`
 * deploy more register
+
 ### 0.0.2 (2023-12-19)
 Dependency and configuration updates
 
@@ -81,7 +85,7 @@ initial release
 ## License
 MIT License
 
-Copyright (c) 2023 bolliy <stephan@mante.info>
+Copyright (c) 2024 bolliy <stephan@mante.info>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

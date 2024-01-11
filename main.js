@@ -308,7 +308,7 @@ class Sun2000 extends utils.Adapter {
 				//this.log.info('### Left Time '+timeLeft/1000);
 				stateUpdated += await this.state.updateStates(item,this.modbusClient,dataRefreshRate.low,timeLeft(target));
 			}
-			if (timeLeft(target) > 3000) {
+			if (timeLeft(target) > 2000) {
 				await this.state.runProcessHooks(dataRefreshRate.low);
 			}
 		}
