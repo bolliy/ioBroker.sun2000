@@ -15,18 +15,12 @@
             "newLine": true,
             "tooltip": "The modbus TCP port"
         },
-        "modbusId": {
-            "type": "number",
-            "label": "Modbus Inverter ID",
-            "default": 1,
+        "modbusIds": {
+            "type": "text",
+            "label": "Modbus Inverter IDs",
+            "default": "1",
             "newLine": true,
-            "tooltip": "The primary modbus inverter id"
-        },
-        "modbusId2": {
-            "type": "number",
-            "label": "Secondary Modbus Inverter ID",
-            "newLine": true,
-            "tooltip": "The secondary modbus inverter id"
+            "tooltip": "The modbus inverter IDs, separated with character \",\""
         },
         "updateInterval": {
             "type": "number",

@@ -26,6 +26,13 @@ The development of this adapter was inspired by discussions from the forum threa
 * HUAWEI Luna2000 Battery
 * HUAWEI Smart Power Sensor DTSU666-H or DDSU666-H
 
+## Feature list
+
+* Maximum 5 inverters (master/slave) can be processed, each with a battery module (max. 30kWh).
+* Live data such as input power , output power , battery charging/discharging power and the grid consumption (meter.activePower) are read out at a fixed interval (default 20 seconds).
+* States are only written for changed data from the inverter. This relieves the burden on the iobroker instance.
+* The states “inputPower” or “activePower” in the “collected” path can be monitored with a “was updated” trigger element. Because these states are always written within the set interval.
+
 ## Configure inverters
 
 In order to use the Modbus connection, all Huawei devices must use the latest firmware
@@ -44,8 +51,7 @@ If you use two inverters, then connect to the second inverter and read the commu
 
 * `address`: Inverter IP address
 * `port`: Inverter modbus port (default: 502)
-* `modbusId`: Primary Modbus inverter id (default: 1)
-* `modbusId2`: Secondary Modbus inverter id (default: 0)
+* `modbusIds`: inverter IDs, separated with "," (default: 1, max. 5 inverters)
 * `updateInterval`: Fast update interval (default: 20 sec)
 
 ## Changelog
@@ -55,7 +61,8 @@ If you use two inverters, then connect to the second inverter and read the commu
 -->
 
 ### **WORK IN PROGRESS**
-prepare collected values more precisely
+* prepare collected values more precisely
+* expand up to 5 inverters #18
 
 ### 0.1.1 (2024-01-07)
 * fix some collected values
