@@ -56,12 +56,14 @@ If you use two inverters, then connect to the second inverter and read the commu
 * `updateInterval`: Fast update interval (default: 20 sec, smallest 5 seconds per inverter)
 
 ## Changelog
+
 <!--
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-**WORK IN PROGRESS**
-* fix no Data if interval less 20 sec (#24)
+
+### **WORK IN PROGRESS**
+* fix: no Data if interval less 20 sec (#24)
 
 ### 0.1.2-alpha.1 (2024-01-11)
 * deploy npm package
