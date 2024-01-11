@@ -1,12 +1,11 @@
 {
-    "sun2000 adapter settings": "Adapterinstellingen voor sun2000",
-    "option1": "Optie 1",
-    "option2": "Optie 2",
-    "Address": "IP-adres van de omvormer",
-    "Port": "modbus tcp-poort",
-    "Modbus unit ID": "Modbus-eenheid-ID",
+    "sun2000 adapter settings": "Adapterinstellingen voor huawai omvormer sun2000",
     "address": "IP-adres van de omvormer",
     "port": "modbus TCP-poort",
-    "Update interval (s)": "Bijwerkingsonderbreking",
-    "Modbus Inverter ID": "Modbus-omvormer-ID"
+    "Modbus Inverter IDs": "Modbus-omvormer-ID's",
+    "Update interval (s)": "Update-interval [sec]",
+    "The inverters ip address": "Het IP-adres van de omvormer",
+    "The modbus TCP port": "De modbus TCP-poort",
+    "The modbus inverter IDs, separated with character ,": "De ID's van de Modbus-omvormer, gescheiden door het teken ,",
+    "Update interval to update the values from the inverters": "Update-interval om de waarden van de omvormers bij te werken"
 }

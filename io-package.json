@@ -5,7 +5,16 @@
         "news": {
             "0.1.1": {
                 "en": "fix some collected values",
-                "de": "Korrektur einiger der gesammelten Werte (collected values)"
+                "de": "Korrektur einiger der gesammelten Werte (collected values)",
+                "ru": "исправить некоторые собранные значения",
+                "pt": "corrigir alguns valores coletados",
+                "nl": "herstel enkele verzamelde waarden",
+                "fr": "corriger certaines valeurs collectées",
+                "it": "correggere alcuni valori raccolti",
+                "es": "arreglar algunos valores recopilados",
+                "pl": "napraw niektóre zebrane wartości",
+                "uk": "виправити деякі зібрані значення",
+                "zh-cn": "修复一些收集的值"
             }
         },
         "titleLang": {
@@ -33,7 +42,7 @@
             "pl": "Dane z inwersatora Huawei SUN2000 i baterii LUNA2000 za pomocą modułu TCP\n",
             "uk": "Читання даних від Huawei SUN2000 і LUNA2000 батареї за допомогою Modbus TCP\n",
             "zh-cn": "使用Modbus TCPT2000 verter和LUN2000电池的阅读数据\n"
-          },
+        },
         "authors": [
             "bolliy <stephan@mante.info>"
         ],
