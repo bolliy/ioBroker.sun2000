@@ -63,6 +63,7 @@ If you use two inverters, then connect to the second inverter and read the commu
 ### **WORK IN PROGRESS**
 * prepare collected values more precisely
 * expand up to 5 inverters #18
+* fix problems with multiple inverters
 
 ### 0.1.1 (2024-01-07)
 * fix some collected values
@@ -81,7 +82,7 @@ initial release
 ## License
 MIT License
 
-Copyright (c) 2023 bolliy <stephan@mante.info>
+Copyright (c) 2024 bolliy <stephan@mante.info>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
