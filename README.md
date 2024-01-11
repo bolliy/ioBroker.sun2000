@@ -33,6 +33,8 @@ The development of this adapter was inspired by discussions from the forum threa
 * States are only written for changed data from the inverter. This relieves the burden on the iobroker instance.
 * The states “inputPower” or “activePower” in the “collected” path can be monitored with a “was updated” trigger element. Because these states are always written within the set interval.
 
+* test
+
 ## Configure inverters
 
 In order to use the Modbus connection, all Huawei devices must use the latest firmware
