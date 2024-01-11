@@ -55,7 +55,8 @@ If you use two inverters, then connect to the second inverter and read the commu
 -->
 
 ### **WORK IN PROGRESS**
-prepare collected values more precisely
+* prepare collected values more precisely
+* enable to use of 3 inverters #18
 
 ### 0.1.1 (2024-01-07)
 * fix some collected values

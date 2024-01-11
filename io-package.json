@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "sun2000",
-        "version": "0.1.2",
+        "version": "0.1.1",
         "news": {
             "0.1.1": {
                 "en": "fix some collected values",
@@ -74,9 +74,8 @@
     "native": {
         "address": "",
         "port": 502,
-        "modbusId": 1,
-        "modbusId2": 0,
-        "updateInterval": 30
+        "modbusIds": "1",
+        "updateInterval": 20
     },
     "objects": [],
     "instanceObjects": [
@@ -147,33 +146,18 @@
             }
         },
         {
-            "_id": "info.modbusId",
-            "type": "state",
-            "common": {
-                "name": {
-                    "en": "Primary Modbus inverter ID",
-                    "de": "Modbus ID des primären Wechselrichters"
-                },
-                "type": "number",
-                "role": "indicator.id",
-                "read": true,
-                "write": false,
-                "desc": "Inverter modbus inverter id"
-            }
-        },
-        {
-            "_id": "info.modbusId2",
+            "_id": "info.modbusIds",
             "type": "state",
             "common": {
                 "name": {
                     "en": "Secondary Modbus inverter ID",
                     "de": "Modbus ID des 2ten Wechselrichters"
                 },
-                "type": "number",
+                "type": "string",
                 "role": "indicator.id",
                 "read": true,
                 "write": false,
-                "desc": "Inverter modbus inverter id"
+                "desc": "Inverter modbus inverter IDs"
             }
         },
         {
