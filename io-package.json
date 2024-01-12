@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.1.2-alpha.2",
+    "version": "0.1.2-alpha.3",
     "news": {
+      "0.1.2-alpha.3": {
+        "en": "fix: wrong deploying date",
+        "de": "fix: falsches bereitstellungsdatum",
+        "ru": "исправить: неправильная дата развертывания",
+        "pt": "correção: data de implantação errada",
+        "nl": "fix: verkeerde datum voor ingebruikname",
+        "fr": "correction : mauvaise date de déploiement",
+        "it": "fix: la data di distribuzione sbagliata",
+        "es": "fijado: fecha de despliegue incorrecta",
+        "pl": "fix: nieprawidłowa data rozmieszczenia",
+        "uk": "виправити: неправильна дата розгортання",
+        "zh-cn": "固定: 部署日期错误"
+      },
       "0.1.2-alpha.2": {
         "en": "fix: no Data if interval less 20 sec (#24)",
         "de": "fix: keine Daten, wenn Intervall weniger 20 sec (#24)",

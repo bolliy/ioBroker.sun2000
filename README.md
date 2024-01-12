@@ -61,8 +61,7 @@ If you use two inverters, then connect to the second inverter and read the commu
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 0.1.2-alpha.3 (2024-01-12)
 * fix: wrong deploying date
 
 ### 0.1.2-alpha.2 (2024-01-12)
