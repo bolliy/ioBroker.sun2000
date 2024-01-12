@@ -45,8 +45,7 @@ To log into the app as an `installer` you need usually the password:`00000a` or 
 You may also need a password to connect to the inverters own WLAN: `Changeme` 
 
 After login on the inverter go to `Settings` (Einstellungen) > `Communication configuration` (Kommunikationskonfiguration) > `Dongle parameter settings` (Dongle‐Parametereinstellungen) > `Modbus TCP` > Activate the `connection without restriction` (Verbindung uneingeschränkt aktivieren). You can also enter the Modbus comm address at the same time read out. 
-If you use two inverters, then connect to the second inverter and read the communication address there too. A maximum of 2 inverters can be connected via Modbus. 
-
+If you use two inverters, then connect to the second inverter and read the communication address there too. 
 
 ## Settings
 
@@ -61,16 +60,8 @@ If you use two inverters, then connect to the second inverter and read the commu
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### 0.1.2-alpha.3 (2024-01-12)
-* fix: wrong deploying date
-
-### 0.1.2-alpha.2 (2024-01-12)
+### **WORK IN PROGRESS**
 * fix: no Data if interval less 20 sec (#24)
-
-### 0.1.2-alpha.1 (2024-01-11)
-* deploy npm package
-
-### 0.1.2-alpha.0 (2024-01-11)
 * prepare collected values more precisely
 * expand up to 5 inverters #18
 * fix problems with multiple inverters
