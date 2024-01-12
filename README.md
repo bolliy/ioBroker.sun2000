@@ -60,11 +60,11 @@ If you use two inverters, then connect to the second inverter and read the commu
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.1.2 (2024-01-12)
 * fix: no Data if interval less 20 sec (#24)
 * prepare collected values more precisely
 * expand up to 5 inverters #18
-* fix problems with multiple inverters
+* fix: problems with multiple inverters
 
 ### 0.1.1 (2024-01-07)
 * fix some collected values

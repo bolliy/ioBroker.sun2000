@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.1.2-alpha.3",
+    "version": "0.1.2",
     "news": {
+      "0.1.2": {
+        "en": "fix: no Data if interval less 20 sec (#24)\nprepare collected values more precisely\nexpand up to 5 inverters #18\nfix problems with multiple inverters",
+        "de": "fix: keine Daten, wenn Intervall weniger 20 sec (#24)\ndie gesammelten werte genauer\nbis zu 5 wechselrichtern #18 erweitern\nprobleme mit mehreren wechselrichtern beheben",
+        "ru": "исправление: нет данных, если интервал менее 20 секунд (#24)\nготовить собранные значения точнее\n#18\nисправить проблемы с несколькими инверторами",
+        "pt": "correção: não Dados se intervalo menos 20 segundos (#24)\npreparar valores coletados mais precisamente\nexpandir até 5 inversores #18\ncorrigir problemas com vários inversores",
+        "nl": "fix: geen Gegevens indien interval minder 20 sec (#24)\nverzamelde waarden nauwkeuriger voorbereiden\nuit te breiden tot 5 omvormers #18\nproblemen oplossen met meerdere inverters",
+        "fr": "correction : pas de données si l'intervalle est inférieur à 20 secondes (#24)\npréparer plus précisément les valeurs collectées\nétendre jusqu'à 5 onduleurs #18\nrésoudre les problèmes avec plusieurs onduleurs",
+        "it": "correzione: no Dati se intervallo meno 20 sec (#24)\npreparare i valori raccolti più precisamente\nespandere fino a 5 inverter #18\nrisolvere problemi con più inverter",
+        "es": "fijado: no Datos si intervalo menos 20 segundos (#24)\npreparar los valores recogidos con mayor precisión\nampliar hasta 5 inversores #18\nsolucionar problemas con múltiples inversores",
+        "pl": "fix: no Data if interval less 20 sec (# 24)\ndokładniej przygotować zebrane wartości\nrozszerzyć do 5 inwerterów # 18\nrozwiązać problemy z wieloma inwerterami",
+        "uk": "виправити: немає даних, якщо інтервал менше 20 сек (#24)\nпідготовка зібраних значень точно\nрозширити до 5 інверторів #18\nвиправити проблеми з декількома інверторами",
+        "zh-cn": "固定: 如果间隔小于20秒(# 24) 则无数据\n更准确地编制收集的数值\n扩展至5个反转器 # 18\n解决多个反转器的问题"
+      },
       "0.1.2-alpha.3": {
         "en": "fix: wrong deploying date",
         "de": "fix: falsches bereitstellungsdatum",
