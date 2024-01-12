@@ -2,6 +2,7 @@
     "sun2000 adapter settings": "Adaptereinstellungen für Huawei Inverter Sun2000",
     "address": "IP-Adresse des Wechselrichters",
     "port": "Modbus TCP-Port",
+
     "Modbus Inverter IDs": "Modbus Wechselrichter IDs",
     "Update interval (s)": "Aktualisierungsintervall [Sek.]",
     "The inverters ip address": "Die IP-Adresse des Wechselrichters",
