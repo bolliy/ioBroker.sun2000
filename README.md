@@ -33,7 +33,6 @@ The development of this adapter was inspired by discussions from the forum threa
 * States are only written for changed data from the inverter. This relieves the burden on the iobroker instance.
 * The states “inputPower” or “activePower” in the “collected” path can be monitored with a “was updated” trigger element. Because these states are always written within the set interval.
 
-* test
 
 ## Configure inverters
 
@@ -46,25 +45,23 @@ To log into the app as an `installer` you need usually the password:`00000a` or 
 You may also need a password to connect to the inverters own WLAN: `Changeme` 
 
 After login on the inverter go to `Settings` (Einstellungen) > `Communication configuration` (Kommunikationskonfiguration) > `Dongle parameter settings` (Dongle‐Parametereinstellungen) > `Modbus TCP` > Activate the `connection without restriction` (Verbindung uneingeschränkt aktivieren). You can also enter the Modbus comm address at the same time read out. 
-If you use two inverters, then connect to the second inverter and read the communication address there too. A maximum of 2 inverters can be connected via Modbus. 
-
+If you use two inverters, then connect to the second inverter and read the communication address there too. 
 
 ## Settings
 
 * `address`: Inverter IP address
 * `port`: Inverter modbus port (default: 502)
 * `modbusIds`: inverter IDs, separated with "," (default: 1, max. 5 inverters)
-* `updateInterval`: Fast update interval (default: 20 sec)
+* `updateInterval`: Fast update interval (default: 20 sec, smallest 5 seconds per inverter)
 
 ## Changelog
+
 <!--
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### 0.1.2-alpha.1 (2024-01-11)
-* deploy npm package
-
-### 0.1.2-alpha.0 (2024-01-11)
+### **WORK IN PROGRESS**
+* fix: no Data if interval less 20 sec (#24)
 * prepare collected values more precisely
 * expand up to 5 inverters #18
 * fix problems with multiple inverters
