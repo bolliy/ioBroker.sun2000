@@ -265,6 +265,7 @@ class Sun2000 extends utils.Adapter {
 	}
 
 	async dataPolling() {
+
 		function timeLeft(target) {
 			const left = target - new Date().getTime();
 			if (left < 0) return 0;
@@ -273,7 +274,7 @@ class Sun2000 extends utils.Adapter {
 
 		const start = new Date().getTime();
 
-		this.log.debug('### DataPolling START <> '+ Math.round((start-this.lastTimeUpdated)/1000)+' sec ###');
+		this.log.debug('### DataPolling START '+ Math.round((start-this.lastTimeUpdated)/1000)+' sec ###');
 		if (this.lastTimeUpdated > 0 && (start-this.lastTimeUpdated)/1000 > this.settings.intervall/1000 + 1) {
 			this.log.warn('time intervall '+(start-this.lastTimeUpdated)/1000+' sec');
 		}
@@ -289,18 +290,17 @@ class Sun2000 extends utils.Adapter {
 			stateUpdated += await this.state.updateStates(item,this.modbusClient,dataRefreshRate.high,timeLeft(nextLoop));
 		}
 
-		if (timeLeft(nextLoop) > 2000) {
+		if (timeLeft(nextLoop) > 500) {
 			await this.state.runProcessHooks(dataRefreshRate.high);
-
 			//Low Loop
 			for (const item of this.inverters) {
 				this.modbusClient.setID(item.modbusId);
 				//this.log.info('### Left Time '+timeLeft/1000);
 				stateUpdated += await this.state.updateStates(item,this.modbusClient,dataRefreshRate.low,timeLeft(nextLoop));
 			}
-			if (timeLeft(nextLoop) > 1000) {
-				await this.state.runProcessHooks(dataRefreshRate.low);
-			}
+			//if (timeLeft(nextLoop) > 1000) {
+			await this.state.runProcessHooks(dataRefreshRate.low);
+			//}
 		}
 
 		this.lastStateUpdated  = stateUpdated;
