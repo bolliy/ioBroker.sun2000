@@ -99,8 +99,7 @@ class Sun2000 extends utils.Adapter {
 			native: {}
 		});
 
-		//ES6 use a for (const [index, item] of array.entries())  of loop
-		//for (const [i, item] of this.conf.entries()) {
+		//ES6 use a for (const [index, item] of array.entries()) of loop
 		for (const [i, item] of this.inverters.entries()) {
 			const path = 'inverter.'+String(i);
 			item.path = path;
