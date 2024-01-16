@@ -35,6 +35,8 @@ Huawei product information: [Test and Release](https://solar.huawei.com/en/profe
 * States are only written for changed data from the inverter. This relieves the burden on the iobroker instance.
 * The states “inputPower” or “activePower” in the “collected” path can be monitored with a “was updated” trigger element. Because these states are always written within the set interval.
 
+[How activate 'Modbus TCP' - from huawei forum](https://forum.huawei.com/enterprise/en/modbus-tcp-guide/thread/789585-100027)
+
 ## Configure inverters
 
 In order to use the Modbus connection, all Huawei devices must use the latest firmware
