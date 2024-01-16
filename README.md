@@ -35,8 +35,6 @@ The development of this adapter was inspired by discussions from the forum threa
 * States are only written for changed data from the inverter. This relieves the burden on the iobroker instance.
 * The states “inputPower” or “activePower” in the “collected” path can be monitored with a “was updated” trigger element. Because these states are always written within the set interval.
 
-[How activate 'Modbus TCP' - from huawei forum](https://forum.huawei.com/enterprise/en/modbus-tcp-guide/thread/789585-100027)
-
 ## Configure inverters
 
 In order to use the Modbus connection, all Huawei devices must use the latest firmware
@@ -49,6 +47,8 @@ You may also need a password to connect to the inverters own WLAN: `Changeme`
 
 After login on the inverter go to `Settings` (Einstellungen) > `Communication configuration` (Kommunikationskonfiguration) > `Dongle parameter settings` (Dongle‐Parametereinstellungen) > `Modbus TCP` > Activate the `connection without restriction` (Verbindung uneingeschränkt aktivieren). You can also enter the Modbus comm address at the same time read out. 
 If you use two inverters, then connect to the second inverter and read the communication address there too. 
+
+[How activate 'Modbus TCP' - from huawei forum](https://forum.huawei.com/enterprise/en/modbus-tcp-guide/thread/789585-100027)
 
 ## Settings
 
