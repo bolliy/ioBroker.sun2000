@@ -26,13 +26,14 @@ The development of this adapter was inspired by discussions from the forum threa
 * HUAWEI Luna2000 Battery
 * HUAWEI Smart Power Sensor DTSU666-H or DDSU666-H
 
+Huawei product information: [Test and Release](https://solar.huawei.com/en/professionals/all-products?residential-smart-pv)
+
 ## Feature list
 
 * Maximum 5 inverters (master/slave) can be processed, each with a battery module (max. 30kWh).
 * Live data such as input power, output power, charging/discharging power and the grid consumption are read out at a fixed interval. 
 * States are only written for changed data from the inverter. This relieves the burden on the iobroker instance.
 * The states “inputPower” or “activePower” in the “collected” path can be monitored with a “was updated” trigger element. Because these states are always written within the set interval.
-
 
 ## Configure inverters
 
@@ -63,7 +64,7 @@ If you use two inverters, then connect to the second inverter and read the commu
 
 ### **WORK IN PROGRESS**
 * display the data from PV strings (#27)
-* optimize the timing of the interval loop
+* optimize the timing of interval loop
 
 ### 0.1.2 (2024-01-12)
 * fix: no Data if interval less 20 sec (#24)
