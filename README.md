@@ -64,6 +64,7 @@ If you use two inverters, then connect to the second inverter and read the commu
 	### **WORK IN PROGRESS**
 -->
 
+
 ### **WORK IN PROGRESS**
 * display the data from PV strings (#27)
 * optimize the timing of interval loop
