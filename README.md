@@ -48,6 +48,8 @@ You may also need a password to connect to the inverters own WLAN: `Changeme`
 After login on the inverter go to `Settings` (Einstellungen) > `Communication configuration` (Kommunikationskonfiguration) > `Dongle parameter settings` (Dongle‐Parametereinstellungen) > `Modbus TCP` > Activate the `connection without restriction` (Verbindung uneingeschränkt aktivieren). You can also enter the Modbus comm address at the same time read out. 
 If you use two inverters, then connect to the second inverter and read the communication address there too. 
 
+['Modbus TCP' guide from the huawei forum](https://forum.huawei.com/enterprise/en/modbus-tcp-guide/thread/789585-100027)
+
 ## Settings
 
 * `address`: Inverter IP address
