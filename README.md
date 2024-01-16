@@ -26,7 +26,7 @@ The development of this adapter was inspired by discussions from the forum threa
 * HUAWEI Luna2000 Battery
 * HUAWEI Smart Power Sensor DTSU666-H or DDSU666-H
 
-Huawei product information: [Test and Release](https://solar.huawei.com/en/professionals/all-products?residential-smart-pv)
+[Huawei product information](https://solar.huawei.com/en/professionals/all-products?residential-smart-pv)
 
 ## Feature list
 
