@@ -55,7 +55,7 @@ class Sun2000 extends utils.Adapter {
 		await this.extendObjectAsync('info', {
 			type: 'channel',
 			common: {
-				name: 'info',
+				name: 'channel info',
 				role: 'info'
 			},
 			native: {}
@@ -104,7 +104,7 @@ class Sun2000 extends utils.Adapter {
 			await this.extendObjectAsync(path, {
 				type: 'channel',
 				common: {
-					name: 'modbus'+i,
+					name: 'channel modbus'+i,
 					role: 'indicator'
 				},
 				native: {}
@@ -114,6 +114,15 @@ class Sun2000 extends utils.Adapter {
 				type: 'channel',
 				common: {
 					name: 'channel grid'
+				},
+				native: {}
+			});
+
+			await this.extendObjectAsync(path+'.info', {
+				type: 'channel',
+				common: {
+					name: 'channel info',
+					role: 'info'
 				},
 				native: {}
 			});
