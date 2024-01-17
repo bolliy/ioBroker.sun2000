@@ -26,7 +26,8 @@ class Sun2000 extends utils.Adapter {
 		});
 
 		this.lastTimeUpdated = 0;
-		this.lastStateUpdated = 0;
+		this.lastStateUpdatedHigh = 0;
+		this.lastStateUpdatedLow = 0;
 		this.isConnected = false;
 		this.inverters = [];
 		this.settings = {
@@ -54,7 +55,7 @@ class Sun2000 extends utils.Adapter {
 		await this.extendObjectAsync('info', {
 			type: 'channel',
 			common: {
-				name: 'info',
+				name: 'channel info',
 				role: 'info'
 			},
 			native: {}
@@ -76,16 +77,14 @@ class Sun2000 extends utils.Adapter {
 		await this.extendObjectAsync('meter', {
 			type: 'device',
 			common: {
-				name: 'meter',
-				role: 'info'
+				name: 'device meter'
 			},
 			native: {}
 		});
 		await this.extendObjectAsync('collected', {
 			type: 'channel',
 			common: {
-				name: 'collected',
-				role: 'info'
+				name: 'channel collected'
 			},
 			native: {}
 		});
@@ -93,8 +92,7 @@ class Sun2000 extends utils.Adapter {
 		await this.extendObjectAsync('inverter', {
 			type: 'device',
 			common: {
-				name: 'meter',
-				role: 'info'
+				name: 'device inverter'
 			},
 			native: {}
 		});
@@ -106,7 +104,7 @@ class Sun2000 extends utils.Adapter {
 			await this.extendObjectAsync(path, {
 				type: 'channel',
 				common: {
-					name: 'modbus'+i,
+					name: 'channel modbus'+i,
 					role: 'indicator'
 				},
 				native: {}
@@ -115,7 +113,15 @@ class Sun2000 extends utils.Adapter {
 			await this.extendObjectAsync(path+'.grid', {
 				type: 'channel',
 				common: {
-					name: 'grid',
+					name: 'channel grid'
+				},
+				native: {}
+			});
+
+			await this.extendObjectAsync(path+'.info', {
+				type: 'channel',
+				common: {
+					name: 'channel info',
 					role: 'info'
 				},
 				native: {}
@@ -124,8 +130,15 @@ class Sun2000 extends utils.Adapter {
 			await this.extendObjectAsync(path+'.battery', {
 				type: 'channel',
 				common: {
-					name: 'battery',
-					role: 'info'
+					name: 'channel battery'
+				},
+				native: {}
+			});
+
+			await this.extendObjectAsync(path+'.string', {
+				type: 'channel',
+				common: {
+					name: 'channel string'
 				},
 				native: {}
 			});
@@ -133,8 +146,7 @@ class Sun2000 extends utils.Adapter {
 			await this.extendObjectAsync(path+'.derived', {
 				type: 'channel',
 				common: {
-					name: 'derived',
-					role: 'indicator'
+					name: 'channel derived'
 				},
 				native: {}
 			});
@@ -212,18 +224,26 @@ class Sun2000 extends utils.Adapter {
 			if (!this.lastTimeUpdated) this.lastUpdated = 0;
 			if (this.lastTimeUpdated > 0) {
 				const sinceLastUpdate = new Date().getTime() - this.lastTimeUpdated; //ms
-				this.log.debug('Watchdog: time to last update '+sinceLastUpdate/1000+' sec');
+				this.log.debug('Watchdog: time of last update '+sinceLastUpdate/1000+' sec');
 				const lastIsConnected = this.isConnected;
-				this.isConnected = this.lastStateUpdated > 0 && sinceLastUpdate < this.settings.intervall*2;
-				this.log.debug('lastIsConncted '+lastIsConnected+' isConnectetd '+this.isConnected+' lastStateupdated '+this.lastStateUpdated);
+				this.isConnected = this.lastStateUpdatedHigh > 0 && sinceLastUpdate < this.settings.intervall*3;
+				if (this.lastStateUpdatedLow == 0) {
+					if (this.lastStateUpdatedHigh == 0) {
+						this.log.warn('Not data can be read! Please check your settings.');
+					} else {
+						this.log.warn('Not all data can be read! Please reduce the intervall value.');
+					}
+				}
+				if (this.isConnected !== lastIsConnected ) this.setState('info.connection', this.isConnected, true);
+				this.lastStateUpdatedLow = 0;
+				this.lastStateUpdatedHigh = 0;
 
-				if (this.isConnected !== lastIsConnected ) 	this.setState('info.connection', this.isConnected, true);
 				if (sinceLastUpdate > this.settings.intervall*10) {
 					this.log.warn('watchdog: restart Adapter...');
 					this.restart();
 				}
 			}
-		},30000);
+		},60000);
 	}
 
 
@@ -265,44 +285,36 @@ class Sun2000 extends utils.Adapter {
 
 	async dataPolling() {
 
-		function timeLeft(target) {
-			const left = target - new Date().getTime();
+		function timeLeft(target,factor =1) {
+			const left = Math.round((target - new Date().getTime())*factor);
 			if (left < 0) return 0;
 			return left;
 		}
 
 		const start = new Date().getTime();
-
 		this.log.debug('### DataPolling START '+ Math.round((start-this.lastTimeUpdated)/1000)+' sec ###');
 		if (this.lastTimeUpdated > 0 && (start-this.lastTimeUpdated)/1000 > this.settings.intervall/1000 + 1) {
 			this.log.warn('time intervall '+(start-this.lastTimeUpdated)/1000+' sec');
 		}
 		this.lastTimeUpdated = start;
-		let stateUpdated = 0;
-
 		const nextLoop = this.settings.intervall - start % (this.settings.intervall) + start;
 
 		//High Loop
 		for (const item of this.inverters) {
 			this.modbusClient.setID(item.modbusId);
-			//this.log.info('### Left Time '+timeLeft/1000);
-			stateUpdated += await this.state.updateStates(item,this.modbusClient,dataRefreshRate.high,timeLeft(nextLoop));
+			this.lastStateUpdatedHigh += await this.state.updateStates(item,this.modbusClient,dataRefreshRate.high,timeLeft(nextLoop));
 		}
 
 		if (timeLeft(nextLoop) > 500) {
 			await this.state.runProcessHooks(dataRefreshRate.high);
 			//Low Loop
-			for (const item of this.inverters) {
+			for (const [i,item] of this.inverters.entries()) {
 				this.modbusClient.setID(item.modbusId);
-				//this.log.info('### Left Time '+timeLeft/1000);
-				stateUpdated += await this.state.updateStates(item,this.modbusClient,dataRefreshRate.low,timeLeft(nextLoop));
+				//this.log.debug('+++++ Loop: '+i+' Left Time: '+timeLeft(nextLoop,(i+1)/this.inverters.length)+' Faktor '+((i+1)/this.inverters.length));
+				this.lastStateUpdatedLow += await this.state.updateStates(item,this.modbusClient,dataRefreshRate.low,timeLeft(nextLoop,(i+1)/this.inverters.length));
 			}
-			//if (timeLeft(nextLoop) > 1000) {
 			await this.state.runProcessHooks(dataRefreshRate.low);
-			//}
 		}
-
-		this.lastStateUpdated  = stateUpdated;
 
 		if (this.pollingTimer) this.clearTimeout(this.pollingTimer);
 		this.pollingTimer = this.setTimeout(() => {
