@@ -68,6 +68,7 @@ If you use two inverters, then connect to the second inverter and read the commu
 ### **WORK IN PROGRESS**
 * display the data from PV strings (#27)
 * optimize the timing of interval loop
+* improved handling of timeout reading from multiple inverters 
 
 ### 0.1.2 (2024-01-12)
 * fix: no Data if interval less 20 sec (#24)
