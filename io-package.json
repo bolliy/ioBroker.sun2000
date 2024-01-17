@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "news": {
+      "0.1.3": {
+        "en": "display the data from PV strings (#27)\noptimize the timing of interval loop\nimproved handling of read timeouts from more then 2 inverters",
+        "de": "die Daten von PV-Strings anzeigen (#27)\noptimieren sie das timing der intervallschleife\nverbesserte handhabung von lesezeitausgängen von mehr als 2 wechselrichtern",
+        "ru": "отобразить данные из строк PV (#27)\nоптимизировать время интервального цикла\nулучшенная обработка считываемых таймаутов от более чем 2 инверторов",
+        "pt": "exibir os dados de strings PV (#27)\notimizar o tempo de loop de intervalo\nmelhor manuseio de leitura timeouts de mais, em seguida, 2 inversores",
+        "nl": "weergave van de gegevens van PV strings (#27)\noptimaliseren van de timing van intervallus\nverbeterde behandeling van leestijd-outs van meer dan 2 inverters",
+        "fr": "afficher les données des chaînes PV (#27)\noptimiser le timing de la boucle d'intervalle\namélioration de la gestion des temps de lecture de plus de 2 onduleurs",
+        "it": "visualizzare i dati dalle stringhe PV (#27)\nottimizzare la tempistica del loop di intervallo\nmigliore gestione dei timeout di lettura da più di 2 inverter",
+        "es": "mostrar los datos de cadenas PV (#27)\noptimizar el tiempo del bucle de intervalo\nmejor manejo de tiempo de lectura de más de 2 inversores",
+        "pl": "wyświetla dane z łańcuchów fotowoltaicznych (# 27)\noptymalizacja czasu pętli interwałowej\nulepszona obsługa timeout odczytu z więcej niż 2 inwerterów",
+        "uk": "відображення даних з ПВ-рядок (#27)\nоптимізуйте частимізацію інтервалної петлі\nполіпшена обробка часу читання з більш ніж 2 інверторів",
+        "zh-cn": "显示 PV 字符串中的数据 (# 27)\n优化间隔循环的时间\n改进对超过2个反转器的断读处理"
+      },
       "0.1.2": {
         "en": "fix: no Data if interval less 20 sec (#24)\nprepare collected values more precisely\nexpand up to 5 inverters #18\nfix problems with multiple inverters",
         "de": "fix: keine Daten, wenn Intervall weniger 20 sec (#24)\ndie gesammelten werte genauer\nbis zu 5 wechselrichtern #18 erweitern\nprobleme mit mehreren wechselrichtern beheben",
