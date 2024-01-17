@@ -77,16 +77,14 @@ class Sun2000 extends utils.Adapter {
 		await this.extendObjectAsync('meter', {
 			type: 'device',
 			common: {
-				name: 'meter',
-				role: 'info'
+				name: 'device meter'
 			},
 			native: {}
 		});
 		await this.extendObjectAsync('collected', {
 			type: 'channel',
 			common: {
-				name: 'collected',
-				role: 'info'
+				name: 'channel collected'
 			},
 			native: {}
 		});
@@ -94,8 +92,7 @@ class Sun2000 extends utils.Adapter {
 		await this.extendObjectAsync('inverter', {
 			type: 'device',
 			common: {
-				name: 'meter',
-				role: 'info'
+				name: 'device inverter'
 			},
 			native: {}
 		});
@@ -116,8 +113,7 @@ class Sun2000 extends utils.Adapter {
 			await this.extendObjectAsync(path+'.grid', {
 				type: 'channel',
 				common: {
-					name: 'grid',
-					role: 'info'
+					name: 'channel grid'
 				},
 				native: {}
 			});
@@ -125,8 +121,15 @@ class Sun2000 extends utils.Adapter {
 			await this.extendObjectAsync(path+'.battery', {
 				type: 'channel',
 				common: {
-					name: 'battery',
-					role: 'info'
+					name: 'channel battery'
+				},
+				native: {}
+			});
+
+			await this.extendObjectAsync(path+'.string', {
+				type: 'channel',
+				common: {
+					name: 'channel string'
 				},
 				native: {}
 			});
@@ -134,8 +137,7 @@ class Sun2000 extends utils.Adapter {
 			await this.extendObjectAsync(path+'.derived', {
 				type: 'channel',
 				common: {
-					name: 'derived',
-					role: 'indicator'
+					name: 'channel derived'
 				},
 				native: {}
 			});
@@ -213,7 +215,7 @@ class Sun2000 extends utils.Adapter {
 			if (!this.lastTimeUpdated) this.lastUpdated = 0;
 			if (this.lastTimeUpdated > 0) {
 				const sinceLastUpdate = new Date().getTime() - this.lastTimeUpdated; //ms
-				this.log.debug('Watchdog: time to last update '+sinceLastUpdate/1000+' sec');
+				this.log.debug('Watchdog: time of last update '+sinceLastUpdate/1000+' sec');
 				const lastIsConnected = this.isConnected;
 				this.isConnected = this.lastStateUpdatedHigh > 0 && sinceLastUpdate < this.settings.intervall*3;
 				if (this.lastStateUpdatedLow == 0) {
