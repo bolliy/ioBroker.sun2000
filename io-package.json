@@ -28,80 +28,37 @@
         "pl": "fix: no Data if interval less 20 sec (# 24)\ndokładniej przygotować zebrane wartości\nrozszerzyć do 5 inwerterów # 18\nrozwiązać problemy z wieloma inwerterami",
         "uk": "виправити: немає даних, якщо інтервал менше 20 сек (#24)\nпідготовка зібраних значень точно\nрозширити до 5 інверторів #18\nвиправити проблеми з декількома інверторами",
         "zh-cn": "固定: 如果间隔小于20秒(# 24) 则无数据\n更准确地编制收集的数值\n扩展至5个反转器 # 18\n解决多个反转器的问题"
-      },
-      "0.1.2-alpha.3": {
-        "en": "fix: wrong deploying date",
-        "de": "fix: falsches bereitstellungsdatum",
-        "ru": "исправить: неправильная дата развертывания",
-        "pt": "correção: data de implantação errada",
-        "nl": "fix: verkeerde datum voor ingebruikname",
-        "fr": "correction : mauvaise date de déploiement",
-        "it": "fix: la data di distribuzione sbagliata",
-        "es": "fijado: fecha de despliegue incorrecta",
-        "pl": "fix: nieprawidłowa data rozmieszczenia",
-        "uk": "виправити: неправильна дата розгортання",
-        "zh-cn": "固定: 部署日期错误"
-      },
-      "0.1.2-alpha.2": {
-        "en": "fix: no Data if interval less 20 sec (#24)",
-        "de": "fix: keine Daten, wenn Intervall weniger 20 sec (#24)",
-        "ru": "исправление: нет данных, если интервал менее 20 секунд (#24)",
-        "pt": "correção: não Dados se intervalo menos 20 segundos (#24)",
-        "nl": "fix: geen Gegevens indien interval minder 20 sec (#24)",
-        "fr": "correction : pas de données si l'intervalle est inférieur à 20 secondes (#24)",
-        "it": "correzione: no Dati se intervallo meno 20 sec (#24)",
-        "es": "fijado: no Datos si intervalo menos 20 segundos (#24)",
-        "pl": "fix: no Data if interval less 20 sec (# 24)",
-        "uk": "виправити: немає даних, якщо інтервал менше 20 сек (#24)",
-        "zh-cn": "固定: 如果间隔小于20秒(# 24) 则无数据"
-      },
-      "0.1.2-alpha.1": {
-        "en": "deploy npm package",
-        "de": "npm paket bereitstellen",
-        "ru": "развернуть пакет npm",
-        "pt": "implementar pacote npm",
-        "nl": "npm-pakket implementeren",
-        "fr": "déployer le paquet npm",
-        "it": "distribuire il pacchetto npm",
-        "es": "paquete npm",
-        "pl": "rozmieszczenie pakietu npm",
-        "uk": "пакет npm",
-        "zh-cn": "部署 npm 软件包"
-      },
-      "0.1.2-alpha.0": {
-        "en": "prepare collected values more precisely\nexpand up to 5 inverters #18\nfix problems with multiple inverters",
-        "de": "die gesammelten werte genauer\nbis zu 5 wechselrichtern #18 erweitern\nprobleme mit mehreren wechselrichtern beheben",
-        "ru": "готовить собранные значения точнее\n#18\nисправить проблемы с несколькими инверторами",
-        "pt": "preparar valores coletados mais precisamente\nexpandir até 5 inversores #18\ncorrigir problemas com vários inversores",
-        "nl": "verzamelde waarden nauwkeuriger voorbereiden\nuit te breiden tot 5 omvormers #18\nproblemen oplossen met meerdere inverters",
-        "fr": "préparer plus précisément les valeurs collectées\nétendre jusqu'à 5 onduleurs #18\nrésoudre les problèmes avec plusieurs onduleurs",
-        "it": "preparare i valori raccolti più precisamente\nespandere fino a 5 inverter #18\nrisolvere problemi con più inverter",
-        "es": "preparar los valores recogidos con mayor precisión\nampliar hasta 5 inversores #18\nsolucionar problemas con múltiples inversores",
-        "pl": "dokładniej przygotować zebrane wartości\nrozszerzyć do 5 inwerterów # 18\nrozwiązać problemy z wieloma inwerterami",
-        "uk": "підготовка зібраних значень точно\nрозширити до 5 інверторів #18\nвиправити проблеми з декількома інверторами",
-        "zh-cn": "更准确地编制收集的数值\n扩展至5个反转器 # 18\n解决多个反转器的问题"
-      },
+      },  
       "0.1.1": {
         "en": "fix some collected values",
-        "de": "Korrektur einiger der gesammelten Werte (collected values)"
+        "de": "Korrektur einiger der gesammelten Werte (collected values)",  
+        "ru": "исправить некоторые собранные значения",
+        "pt": "corrigir alguns valores coletados",
+        "nl": "sommige verzamelde waarden vast te stellen",
+        "fr": "fixer certaines valeurs collectées",
+        "it": "correggere alcuni valori raccolti",
+        "es": "fijar algunos valores recogidos",
+        "pl": "naprawić niektóre zebrane wartości",
+        "uk": "виправити деякі зібрані значення",
+        "zh-cn": "固定一些收集的值"       
       }
     },
     "titleLang": {
-      "en": "sun2000",
-      "de": "sun2000",
-      "ru": "солнце2000",
-      "pt": "sol2000",
-      "nl": "zon2000",
-      "fr": "soleil2000",
-      "it": "sole2000",
-      "es": "sol2000",
-      "pl": "słońce2000",
-      "uk": "sun2000",
-      "zh-cn": "太阳2000"
+      "en": "Huawei sun2000 inverters",
+      "de": "Huawei sun2000 Wechselrichtern",
+      "ru": "Huawei sun2000 inverters",
+      "pt": "Huawei sun2000 inverters",
+      "nl": "Huawei sun2000 inverters",
+      "fr": "Huawei sun2000 inverters",
+      "it": "Huawei sun2000 inverters",
+      "es": "Huawei sun2000 inverters",
+      "pl": "Huawei sun2000 inverters",
+      "uk": "Huawei sun2000 inverters",
+      "zh-cn": "Huawei sun2000 inverters"
     },
     "desc": {
       "en": "Read data from Huawei SUN2000 inverter and LUNA2000 battery using Modbus TCP\n",
-      "de": "Lesen Sie die Daten von Huawei SUN2000 Wechselrichter und LUNA2000 Akku mit Modbus TCP\n",
+      "de": "Auslesen von Huawei SUN2000 Wechselrichter und LUNA2000 Akku über Modbus TCP\n",
       "ru": "Прочитайте данные от Huawei SUN2000 inverter и LUNA2000 батареи с помощью Modbus TCP\n",
       "pt": "Leia dados do inversor Huawei SUN2000 e da bateria LUNA2000 usando Modbus TCP\n",
       "nl": "Lees gegevens van Huawei SUN2000 inverter en LUNA2000 batterij met Modbus TCP\n",
@@ -199,7 +156,7 @@
       "common": {
         "name": {
           "en": "Inverter IP",
-          "de": "Inverter IP"
+          "de": "Wechselrichter IP"
         },
         "type": "string",
         "role": "indicator.ip",
@@ -228,8 +185,8 @@
       "type": "state",
       "common": {
         "name": {
-          "en": "Secondary Modbus inverter ID",
-          "de": "Modbus ID des 2ten Wechselrichters"
+          "en": "Modbus IDs of inverters",
+          "de": "Modbus IDs der Wechselrichters"
         },
         "type": "string",
         "role": "indicator.id",
