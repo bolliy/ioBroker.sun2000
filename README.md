@@ -63,6 +63,10 @@ If you use two inverters, then connect to the second inverter and read the commu
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* changes from requirements [Add sun2000 to latest](https://github.com/ioBroker/ioBroker.repositories/pull/3219)
+* improve error handling
+
 ### 0.1.3 (2024-01-17)
 * display the data from PV strings (#27)
 * optimize the timing of interval loop
