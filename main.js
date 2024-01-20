@@ -163,8 +163,6 @@ class Sun2000 extends utils.Adapter {
 	}
 
 	async InitProcess() {
-		this.state = new Registers(this);
-		this.modbusClient = new ModbusConnect(this,this.settings.address,this.settings.port);
 		try {
 			await this.initPath();
 			/*
@@ -173,6 +171,8 @@ class Sun2000 extends utils.Adapter {
 		} catch (err) {
 			this.log.warn(err);
 		}
+		this.modbusClient = new ModbusConnect(this,this.settings.address,this.settings.port);
+		this.state = new Registers(this);
 		this.dataPolling();
 		this.runWatchDog();
 		this.atMidnight();
