@@ -151,6 +151,14 @@ class Sun2000 extends utils.Adapter {
 				native: {}
 			});
 
+			await this.extendObjectAsync(path+'.optimizer', {
+				type: 'channel',
+				common: {
+					name: 'channel optimizer'
+				},
+				native: {}
+			});
+
 		}
 	}
 

@@ -31,7 +31,7 @@ The development of this adapter was inspired by discussions from the forum threa
 ## Feature list
 
 * Maximum 5 inverters (master/slave) can be processed, each with a battery module (max. 30kWh).
-* Live data such as input power, output power, charging/discharging power and the grid consumption are read out at a fixed interval. 
+* Real-time values such as input power, output power, charging/discharging power and the grid consumption are read out at a fixed interval. 
 * States are only written for changed data from the inverter. This relieves the burden on the iobroker instance.
 * The states “inputPower” or “activePower” in the “collected” path can be monitored with a “was updated” trigger element. Because these states are always written within the set interval.
 
@@ -66,6 +66,7 @@ If you use two inverters, then connect to the second inverter and read the commu
 ### **WORK IN PROGRESS**
 * changes from requirements [Add sun2000 to latest](https://github.com/ioBroker/ioBroker.repositories/pull/3219)
 * improve error handling
+* add simple optimizer info
 
 ### 0.1.3 (2024-01-17)
 * display the data from PV strings (#27)
