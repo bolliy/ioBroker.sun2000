@@ -239,7 +239,7 @@ class Sun2000 extends utils.Adapter {
 					if (this.lastStateUpdatedHigh == 0) {
 						this.log.warn('Not data can be read! Please check your settings.');
 					} else {
-						this.log.warn('Not all data can be read! Please reduce the intervall value.');
+						//this.log.warn('Not all data can be read! Please reduce the intervall value.');
 					}
 				}
 				if (this.isConnected !== lastIsConnected ) this.setState('info.connection', this.isConnected, true);
