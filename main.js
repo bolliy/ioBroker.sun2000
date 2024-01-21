@@ -235,13 +235,10 @@ class Sun2000 extends utils.Adapter {
 				this.log.debug('Watchdog: time of last update '+sinceLastUpdate/1000+' sec');
 				const lastIsConnected = this.isConnected;
 				this.isConnected = this.lastStateUpdatedHigh > 0 && sinceLastUpdate < this.settings.intervall*3;
-				if (this.lastStateUpdatedLow == 0) {
-					if (this.lastStateUpdatedHigh == 0) {
-						this.log.warn('Not data can be read! Please check your settings.');
-					} else {
-						//this.log.warn('Not all data can be read! Please reduce the intervall value.');
-					}
-				}
+
+				const ret = this.state.wasAllRead(60000*2);
+				if (ret.errno !== 0) this.log.warn(ret.message);
+
 				if (this.isConnected !== lastIsConnected ) this.setState('info.connection', this.isConnected, true);
 				this.lastStateUpdatedLow = 0;
 				this.lastStateUpdatedHigh = 0;
