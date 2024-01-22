@@ -272,7 +272,7 @@ class Sun2000 extends utils.Adapter {
 				}
 				await this.setStateAsync('info.modbusUpdateInterval', {val: this.settings.intervall/1000, ack: true});
 				for (const [i,id] of this.settings.modbusIds.entries()) {
-					this.inverters.push({index: i, modbusId: id, energyLoss: 0.045, meter: (i==0)}); //own energy consumption of inverter 11 W
+					this.inverters.push({index: i, modbusId: id, energyLoss: 0.02, meter: (i==0)}); //own energy consumption of inverter 11 W
 				}
 				await this.InitProcess();
 			} else {
