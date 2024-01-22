@@ -231,7 +231,7 @@ class Sun2000 extends utils.Adapter {
 				if (!this.isConnected) {
 					this.setStateAsync('info.health', {val: '{errno:1, message: "Can\'t connect to inverter"}', ack: true});
 				} else {
-					const ret = this.state.wasAllRead(65000);
+					const ret = this.state.wasAllRead(60000*2);
 					if (ret?.errno !== 0) this.log.warn(ret.message);
 					this.setStateAsync('info.health', {val: JSON.stringify(ret), ack: true});
 				}
