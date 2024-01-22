@@ -210,6 +210,22 @@
         "desc": "modbus update interval",
         "unit": "sec"
       }
+    },
+    {
+      "_id": "info.health",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "health information",
+          "de": "Gesundheitsinformation"
+        },
+        "type": "string",
+        "role": "indicator.alarm.health",
+        "read": true,
+        "write": false,
+        "desc": "",
+        "unit": ""
+      }
     }
   ]
 }
