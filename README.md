@@ -14,12 +14,12 @@
 
 Read register data from Huawei SUN2000 inverter and LUNA2000 battery using Modbus TCP. 
 
+Feel free to follow the discussions in the [iobroker forum](https://forum.iobroker.net/topic/71768/test-adapter-sun2000-v0-1-x-huawei-wechselrichter)
+
 Modbus interface definition (Issue 5, 2023-02-16):
 https://forum.iobroker.net/assets/uploads/files/1699119419919-solar-inverter-modbus-interface-definitions-v5.pdf
 
-Feel free to follow the discussions in the [iobroker forum](https://forum.iobroker.net/topic/71768/test-adapter-sun2000-v0-1-x-huawei-wechselrichter)
-
-## Motivation
+## Inspiration
 
 The development of this adapter was inspired by discussions from the forum thread https://forum.iobroker.net/topic/53005/huawei-sun2000-iobroker-via-js-script-funktioniert and the iobroker javascript https://github.com/ChrisBCH/SunLuna2000_iobroker.
 
