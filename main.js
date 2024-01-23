@@ -31,7 +31,8 @@ class Sun2000 extends utils.Adapter {
 		this.isConnected = false;
 		this.inverters = [];
 		this.settings = {
-			intervall : 20000,
+			highIntervall : 20000,
+			lowIntervall : 60000,
 			address : '',
 			port : 520
 		};
@@ -226,25 +227,26 @@ class Sun2000 extends utils.Adapter {
 				const sinceLastUpdate = new Date().getTime() - this.lastTimeUpdated; //ms
 				this.log.debug('Watchdog: time of last update '+sinceLastUpdate/1000+' sec');
 				const lastIsConnected = this.isConnected;
-				this.isConnected = this.lastStateUpdatedHigh > 0 && sinceLastUpdate < this.settings.intervall*3;
+				this.isConnected = this.lastStateUpdatedHigh > 0 && sinceLastUpdate < this.settings.highIntervall*3;
 				if (this.isConnected !== lastIsConnected ) this.setState('info.connection', this.isConnected, true);
 				if (!this.isConnected) {
-					this.setStateAsync('info.health', {val: '{errno:1, message: "Can\'t connect to inverter"}', ack: true});
+					this.setStateAsync('info.JSONhealth', {val: '{errno:1, message: "Can\'t connect to inverter"}', ack: true});
 				} else {
-					const ret = this.state.wasAllRead(60000*2);
+					const ret = this.state.ChechReadError(this.settings.lowIntervall*2);
 					if (ret?.errno !== 0) this.log.warn(ret.message);
-					this.setStateAsync('info.health', {val: JSON.stringify(ret), ack: true});
+					this.setStateAsync('info.JSONhealth', {val: JSON.stringify(ret), ack: true});
 				}
 
 				this.lastStateUpdatedLow = 0;
 				this.lastStateUpdatedHigh = 0;
 
-				if (sinceLastUpdate > this.settings.intervall*10) {
+				if (sinceLastUpdate > this.settings.highIntervall*10) {
+					this.setStateAsync('info.JSONhealth', {val: '{errno:2, message: "Internal loop error"}', ack: true});
 					this.log.warn('watchdog: restart Adapter...');
 					this.restart();
 				}
 			}
-		},60000);
+		},this.settings.lowIntervall);
 	}
 
 
@@ -257,22 +259,25 @@ class Sun2000 extends utils.Adapter {
 		await this.setStateAsync('info.ip', {val: this.config.address, ack: true});
 		await this.setStateAsync('info.port', {val: this.config.port, ack: true});
 		await this.setStateAsync('info.modbusIds', {val: this.config.modbusIds, ack: true});
-		await this.setStateAsync('info.health', {val: '{}', ack: true});
+		await this.setStateAsync('info.JSONhealth', {val: '{message : "Information is collected"}', ack: true});
 
 		// Load user settings
 		if (this.config.address !== '' || this.config.port > 0 || this.config.updateInterval > 0 ) {
-			this.settings.intervall = this.config.updateInterval*1000; //ms
+			this.settings.highIntervall = this.config.updateInterval*1000; //ms
 			this.settings.address = this.config.address;
 			this.settings.port = this.config.port;
 			this.settings.modbusIds = this.config.modbusIds.split(',').map((n) => {return Number(n);});
 
 			if (this.settings.modbusIds.length > 0 && this.settings.modbusIds.length < 6) {
-				if (this.settings.intervall < 5000*this.settings.modbusIds.length ) {
-					this.settings.intervall = 5000*this.settings.modbusIds.length;
+				if (this.settings.highIntervall < 5000*this.settings.modbusIds.length ) {
+					this.settings.highIntervall = 5000*this.settings.modbusIds.length;
 				}
-				await this.setStateAsync('info.modbusUpdateInterval', {val: this.settings.intervall/1000, ack: true});
+				if (this.settings.highIntervall >= this.settings.lowIntervall) {
+					this.settings.lowIntervall = this.settings.highIntervall;
+				}
+				await this.setStateAsync('info.modbusUpdateInterval', {val: this.settings.highIntervall/1000, ack: true});
 				for (const [i,id] of this.settings.modbusIds.entries()) {
-					this.inverters.push({index: i, modbusId: id, energyLoss: 0.03, meter: (i==0)}); //own energy consumption of inverter 11 W
+					this.inverters.push({index: i, modbusId: id, energyLoss: 0.010, meter: (i==0)}); //own energy consumption of inverter 11 W
 				}
 				await this.InitProcess();
 			} else {
@@ -295,11 +300,11 @@ class Sun2000 extends utils.Adapter {
 
 		const start = new Date().getTime();
 		this.log.debug('### DataPolling START '+ Math.round((start-this.lastTimeUpdated)/1000)+' sec ###');
-		if (this.lastTimeUpdated > 0 && (start-this.lastTimeUpdated)/1000 > this.settings.intervall/1000 + 1) {
+		if (this.lastTimeUpdated > 0 && (start-this.lastTimeUpdated)/1000 > this.settings.highIntervall/1000 + 1) {
 			this.log.warn('time intervall '+(start-this.lastTimeUpdated)/1000+' sec');
 		}
 		this.lastTimeUpdated = start;
-		const nextLoop = this.settings.intervall - start % (this.settings.intervall) + start;
+		const nextLoop = this.settings.highIntervall - start % (this.settings.highIntervall) + start;
 
 		//High Loop
 		for (const item of this.inverters) {
@@ -323,7 +328,6 @@ class Sun2000 extends utils.Adapter {
 			this.dataPolling(); //recursiv
 		}, timeLeft(nextLoop));
 		this.log.debug('### DataPolling STOP ###');
-		//this.state.mitnightProcess();
 	}
 
 	/**

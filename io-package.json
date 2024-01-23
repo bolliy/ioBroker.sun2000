@@ -212,7 +212,7 @@
       }
     },
     {
-      "_id": "info.health",
+      "_id": "info.JSONhealth",
       "type": "state",
       "common": {
         "name": {
