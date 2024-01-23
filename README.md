@@ -71,7 +71,8 @@ If you use two inverters, then connect to the second inverter and read the commu
 * changes from requirements [Add sun2000 to latest](https://github.com/ioBroker/ioBroker.repositories/pull/3219)
 * improve error handling (#34)
 * add simple optimizer info 
-* Riemann sum of input power for new state `dailySolarYield`
+* Riemann sum of input power with energy loss for new state `dailySolarYield`
+* try to recreate the `yield today` from the fusion portal
 
 ### 0.1.3 (2024-01-17)
 * display the data from PV strings (#27)

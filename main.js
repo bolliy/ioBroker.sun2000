@@ -279,7 +279,7 @@ class Sun2000 extends utils.Adapter {
 				}
 				await this.setStateAsync('info.modbusUpdateInterval', {val: this.settings.highIntervall/1000, ack: true});
 				for (const [i,id] of this.settings.modbusIds.entries()) {
-					this.inverters.push({index: i, modbusId: id, energyLoss: 0.010, meter: (i==0)}); //own energy consumption of inverter 11 W
+					this.inverters.push({index: i, modbusId: id, energyLoss: 0.008, meter: (i==0)}); //own energy consumption of inverter 8 W
 				}
 				await this.InitProcess();
 			} else {
@@ -303,7 +303,7 @@ class Sun2000 extends utils.Adapter {
 		const start = new Date().getTime();
 		this.log.debug('### DataPolling START '+ Math.round((start-this.lastTimeUpdated)/1000)+' sec ###');
 		if (this.lastTimeUpdated > 0 && (start-this.lastTimeUpdated)/1000 > this.settings.highIntervall/1000 + 1) {
-			this.log.warn('time intervall '+(start-this.lastTimeUpdated)/1000+' sec');
+			this.log.info('time intervall '+(start-this.lastTimeUpdated)/1000+' sec');
 		}
 		this.lastTimeUpdated = start;
 		const nextLoop = this.settings.highIntervall - start % (this.settings.highIntervall) + start;
@@ -313,17 +313,17 @@ class Sun2000 extends utils.Adapter {
 			this.modbusClient.setID(item.modbusId);
 			this.lastStateUpdatedHigh += await this.state.updateStates(item,this.modbusClient,dataRefreshRate.high,timeLeft(nextLoop));
 		}
+		await this.state.runProcessHooks(dataRefreshRate.high);
 
 		if (timeLeft(nextLoop) > 500) {
-			await this.state.runProcessHooks(dataRefreshRate.high);
 			//Low Loop
 			for (const [i,item] of this.inverters.entries()) {
 				this.modbusClient.setID(item.modbusId);
 				//this.log.debug('+++++ Loop: '+i+' Left Time: '+timeLeft(nextLoop,(i+1)/this.inverters.length)+' Faktor '+((i+1)/this.inverters.length));
 				this.lastStateUpdatedLow += await this.state.updateStates(item,this.modbusClient,dataRefreshRate.low,timeLeft(nextLoop,(i+1)/this.inverters.length));
 			}
-			await this.state.runProcessHooks(dataRefreshRate.low);
 		}
+		await this.state.runProcessHooks(dataRefreshRate.low);
 
 		if (this.pollingTimer) this.clearTimeout(this.pollingTimer);
 		this.pollingTimer = this.setTimeout(() => {
