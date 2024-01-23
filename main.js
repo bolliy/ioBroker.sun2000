@@ -25,7 +25,7 @@ class Sun2000 extends utils.Adapter {
 			name: 'sun2000',
 		});
 
-		this.lastTimeUpdated = 0;
+		this.lastTimeUpdated = new Date().getTime();
 		this.lastStateUpdatedHigh = 0;
 		this.lastStateUpdatedLow = 0;
 		this.isConnected = false;
@@ -222,30 +222,32 @@ class Sun2000 extends utils.Adapter {
 	runWatchDog() {
 		this.watchDogHandle && this.clearInterval(this.watchDogHandle);
 		this.watchDogHandle = this.setInterval( () => {
-			if (!this.lastTimeUpdated) this.lastUpdated = 0;
-			if (this.lastTimeUpdated > 0) {
-				const sinceLastUpdate = new Date().getTime() - this.lastTimeUpdated; //ms
-				this.log.debug('Watchdog: time of last update '+sinceLastUpdate/1000+' sec');
-				const lastIsConnected = this.isConnected;
-				this.isConnected = this.lastStateUpdatedHigh > 0 && sinceLastUpdate < this.settings.highIntervall*3;
-				if (this.isConnected !== lastIsConnected ) this.setState('info.connection', this.isConnected, true);
-				if (!this.isConnected) {
-					this.setStateAsync('info.JSONhealth', {val: '{errno:1, message: "Can\'t connect to inverter"}', ack: true});
-				} else {
+			const sinceLastUpdate = new Date().getTime() - this.lastTimeUpdated; //ms
+			this.log.debug('Watchdog: time of last update '+sinceLastUpdate/1000+' sec');
+			const lastIsConnected = this.isConnected;
+			this.isConnected = this.lastStateUpdatedHigh > 0 && sinceLastUpdate < this.settings.highIntervall*3;
+			if (this.isConnected !== lastIsConnected ) this.setState('info.connection', this.isConnected, true);
+			if (!this.isConnected) {
+				this.setStateAsync('info.JSONhealth', {val: '{errno:1, message: "Can\'t connect to inverter"}', ack: true});
+			} else {
+				if (this.alreadyRunWatchDog) {
 					const ret = this.state.ChechReadError(this.settings.lowIntervall*2);
-					if (ret?.errno !== 0) this.log.warn(ret.message);
+					if (ret.errno) this.log.warn(ret.message);
 					this.setStateAsync('info.JSONhealth', {val: JSON.stringify(ret), ack: true});
-				}
-
-				this.lastStateUpdatedLow = 0;
-				this.lastStateUpdatedHigh = 0;
-
-				if (sinceLastUpdate > this.settings.highIntervall*10) {
-					this.setStateAsync('info.JSONhealth', {val: '{errno:2, message: "Internal loop error"}', ack: true});
-					this.log.warn('watchdog: restart Adapter...');
-					this.restart();
+				} else {
+					this.alreadyRunWatchDog = true;
 				}
 			}
+
+			this.lastStateUpdatedLow = 0;
+			this.lastStateUpdatedHigh = 0;
+
+			if (sinceLastUpdate > this.settings.highIntervall*10) {
+				this.setStateAsync('info.JSONhealth', {val: '{errno:2, message: "Internal loop error"}', ack: true});
+				this.log.warn('watchdog: restart Adapter...');
+				this.restart();
+			}
+
 		},this.settings.lowIntervall);
 	}
 
