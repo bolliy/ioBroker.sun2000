@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.1.3",
+    "version": "0.2.0",
     "news": {
+      "0.2.0": {
+        "en": "improve error handling (#34)\nadd simple optimizer info \nRiemann sum of input power with energy loss for new state `dailySolarYield`\ntry to recreate the `yield today` from the fusion portal",
+        "de": "fehlerbehandlung verbessern (#34)\neinfache optimierer-info hinzufügen\nRiemann Summe der Eingangsleistung mit Energieverlust für neuen Zustand `dailySolarYield `\nversuchen, den `yield heute` aus dem fusionsportal wiederherzustellen",
+        "ru": "улучшить обработку ошибок (#34)\nдобавить простую информацию о оптимизации\nRiemann Сумма входной мощности с потерей энергии для нового состояния `dailySolarYield \"\nпопытаться воссоздать «урожай сегодня» с портала синтеза",
+        "pt": "melhorar o manuseio de erros (#34)\nadicionar informações de otimização simples\nRiemann soma de energia de entrada com perda de energia para novo estado `dailySolarYield \"\ntentar recriar o `yield hoje` do portal de fusão",
+        "nl": "verbetering van de foutafhandeling (#34)\nvoeg eenvoudige optimalisatie info toe\nRiemann-som van het ingangsvermogen met energieverlies voor nieuwe toestand Wat\nproberen om de te recreëren van vandaag van de fusie portal",
+        "fr": "améliorer la gestion des erreurs (#34)\najouter des informations d'optimisation simples\nRiemann somme de puissance d'entrée avec perte d'énergie pour le nouvel état `dailySolarYield \"\nessayer de recréer le « rendement aujourd'hui » du portail de fusion",
+        "it": "migliorare la gestione degli errori (#34)\naggiungere semplici informazioni di ottimizzazione\nRiemann somma di potenza di ingresso con perdita di energia per nuovo stato `dailySolarYield #\ncercare di ricreare il `yield oggi` dal portale fusion",
+        "es": "mejorar el manejo de errores (#34)\nañadir información de optimización simple\nRiemann suma de poder de entrada con pérdida de energía para el nuevo estado `dailySolarYield `\ntratar de recrear el `yield hoy' del portal de fusión",
+        "pl": "poprawić obsługę błędów (# 34)\ndodaj proste informacje o optymalizacji\nRiemann suma mocy wejściowej z utratą energii dla nowego stanu \"dailySolarYeld '\nspróbuj odtworzyć \"wydajność dzisiaj\" z portalu syntezy jądrowej",
+        "uk": "поліпшення обробки помилок (#34)\nдодати просту оптимізацію\nСума вхідної енергії з втратою енергії для нового стану `dailySolarYield й\nнамагатися відтворити `yield сьогодні` з порталу fusion",
+        "zh-cn": "改进错误处理(# 34)\n添加简单的优化信息\nRiemann 输入功率总和, `\n尝试从聚变门户重现“今天”"
+      },
       "0.1.3": {
         "en": "display the data from PV strings (#27)\noptimize the timing of interval loop\nimproved handling of read timeouts from more then 2 inverters",
         "de": "die Daten von PV-Strings anzeigen (#27)\noptimieren sie das timing der intervallschleife\nverbesserte handhabung von lesezeitausgängen von mehr als 2 wechselrichtern",
@@ -28,10 +41,10 @@
         "pl": "fix: no Data if interval less 20 sec (# 24)\ndokładniej przygotować zebrane wartości\nrozszerzyć do 5 inwerterów # 18\nrozwiązać problemy z wieloma inwerterami",
         "uk": "виправити: немає даних, якщо інтервал менше 20 сек (#24)\nпідготовка зібраних значень точно\nрозширити до 5 інверторів #18\nвиправити проблеми з декількома інверторами",
         "zh-cn": "固定: 如果间隔小于20秒(# 24) 则无数据\n更准确地编制收集的数值\n扩展至5个反转器 # 18\n解决多个反转器的问题"
-      },  
+      },
       "0.1.1": {
         "en": "fix some collected values",
-        "de": "Korrektur einiger der gesammelten Werte (collected values)",  
+        "de": "Korrektur einiger der gesammelten Werte (collected values)",
         "ru": "исправить некоторые собранные значения",
         "pt": "corrigir alguns valores coletados",
         "nl": "sommige verzamelde waarden vast te stellen",
@@ -40,7 +53,7 @@
         "es": "fijar algunos valores recogidos",
         "pl": "naprawić niektóre zebrane wartości",
         "uk": "виправити деякі зібрані значення",
-        "zh-cn": "固定一些收集的值"       
+        "zh-cn": "固定一些收集的值"
       }
     },
     "titleLang": {
