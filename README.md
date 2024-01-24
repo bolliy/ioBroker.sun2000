@@ -14,14 +14,10 @@
 
 Read register data from Huawei SUN2000 inverter and LUNA2000 battery using Modbus TCP. 
 
-Feel free to follow the discussions in the [iobroker forum](https://forum.iobroker.net/topic/71768/test-adapter-sun2000-v0-1-x-huawei-wechselrichter)
+Feel free to follow the discussions in the german [iobroker forum](https://forum.iobroker.net/topic/71768/test-adapter-sun2000-v0-1-x-huawei-wechselrichter)
 
 Modbus interface definition (Issue 5, 2023-02-16):
 https://forum.iobroker.net/assets/uploads/files/1699119419919-solar-inverter-modbus-interface-definitions-v5.pdf
-
-## Inspiration
-
-The development of this adapter was inspired by discussions from the forum thread https://forum.iobroker.net/topic/53005/huawei-sun2000-iobroker-via-js-script-funktioniert and the iobroker javascript https://github.com/ChrisBCH/SunLuna2000_iobroker.
 
 ## Supported hardware
 
@@ -39,6 +35,13 @@ The development of this adapter was inspired by discussions from the forum threa
 * States are only written for changed data from the inverter. This relieves the burden on the iobroker instance.
 * The states “inputPower” or “activePower” in the “collected” path can be monitored with a “was updated” trigger element. Because these states are always written within the set interval.
 
+## Settings
+
+* `address`: Inverter IP address
+* `port`: Inverter modbus port (default: 502)
+* `modbusIds`: inverter IDs, separated with "," (default: 1, max. 5 inverters)
+* `updateInterval`: Fast update interval (default: 20 sec, smallest 5 seconds per inverter)
+
 ## Configure inverters
 
 In order to use the Modbus connection, all Huawei devices must use the latest firmware
@@ -54,12 +57,10 @@ If you use two inverters, then connect to the second inverter and read the commu
 
 [How activate 'Modbus TCP' - from huawei forum](https://forum.huawei.com/enterprise/en/modbus-tcp-guide/thread/789585-100027)
 
-## Settings
+## Inspiration
 
-* `address`: Inverter IP address
-* `port`: Inverter modbus port (default: 502)
-* `modbusIds`: inverter IDs, separated with "," (default: 1, max. 5 inverters)
-* `updateInterval`: Fast update interval (default: 20 sec, smallest 5 seconds per inverter)
+The development of this adapter was inspired by discussions from the forum thread https://forum.iobroker.net/topic/53005/huawei-sun2000-iobroker-via-js-script-funktioniert and the iobroker javascript https://github.com/ChrisBCH/SunLuna2000_iobroker.
+
 
 ## Changelog
 
@@ -68,7 +69,7 @@ If you use two inverters, then connect to the second inverter and read the commu
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* changes from requirements [Add sun2000 to latest](https://github.com/ioBroker/ioBroker.repositories/pull/3219)
+* [Add sun2000 to latest](https://github.com/ioBroker/ioBroker.repositories/pull/3219)
 * improve error handling (#34)
 * add simple optimizer info 
 * Riemann sum of input power with energy loss for new state `dailySolarYield`
