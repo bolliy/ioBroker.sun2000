@@ -68,7 +68,7 @@ The development of this adapter was inspired by discussions from the forum threa
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.2.0 (2024-01-24)
 * [Add sun2000 to latest](https://github.com/ioBroker/ioBroker.repositories/pull/3219)
 * improve error handling (#34)
 * add simple optimizer info 
