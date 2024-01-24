@@ -14,8 +14,12 @@
 
 Read register data from Huawei SUN2000 inverter and LUNA2000 battery using Modbus TCP. 
 
+Feel free to follow the discussions in the [iobroker forum](https://forum.iobroker.net/topic/71768/test-adapter-sun2000-v0-1-x-huawei-wechselrichter)
+
 Modbus interface definition (Issue 5, 2023-02-16):
 https://forum.iobroker.net/assets/uploads/files/1699119419919-solar-inverter-modbus-interface-definitions-v5.pdf
+
+## Inspiration
 
 The development of this adapter was inspired by discussions from the forum thread https://forum.iobroker.net/topic/53005/huawei-sun2000-iobroker-via-js-script-funktioniert and the iobroker javascript https://github.com/ChrisBCH/SunLuna2000_iobroker.
 
@@ -31,7 +35,7 @@ The development of this adapter was inspired by discussions from the forum threa
 ## Feature list
 
 * Maximum 5 inverters (master/slave) can be processed, each with a battery module (max. 30kWh).
-* Live data such as input power, output power, charging/discharging power and the grid consumption are read out at a fixed interval. 
+* Real-time values such as input power, output power, charging/discharging power and the grid consumption are read out at a fixed interval. 
 * States are only written for changed data from the inverter. This relieves the burden on the iobroker instance.
 * The states “inputPower” or “activePower” in the “collected” path can be monitored with a “was updated” trigger element. Because these states are always written within the set interval.
 
@@ -63,6 +67,13 @@ If you use two inverters, then connect to the second inverter and read the commu
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* changes from requirements [Add sun2000 to latest](https://github.com/ioBroker/ioBroker.repositories/pull/3219)
+* improve error handling (#34)
+* add simple optimizer info 
+* Riemann sum of input power with energy loss for new state `dailySolarYield`
+* try to recreate the `yield today` from the fusion portal
+
 ### 0.1.3 (2024-01-17)
 * display the data from PV strings (#27)
 * optimize the timing of interval loop

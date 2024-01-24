@@ -57,8 +57,8 @@
       "zh-cn": "Huawei sun2000 inverters"
     },
     "desc": {
-      "en": "Read data from Huawei SUN2000 inverter and LUNA2000 battery using Modbus TCP\n",
-      "de": "Auslesen von Huawei SUN2000 Wechselrichter und LUNA2000 Akku über Modbus TCP\n",
+      "en": "Read data from Huawei SUN2000 inverters and LUNA2000 battery using Modbus TCP\n",
+      "de": "Auslesen von Huawei SUN2000 Wechselrichtern und LUNA2000 Akkus über Modbus TCP\n",
       "ru": "Прочитайте данные от Huawei SUN2000 inverter и LUNA2000 батареи с помощью Modbus TCP\n",
       "pt": "Leia dados do inversor Huawei SUN2000 e da bateria LUNA2000 usando Modbus TCP\n",
       "nl": "Lees gegevens van Huawei SUN2000 inverter en LUNA2000 batterij met Modbus TCP\n",
@@ -209,6 +209,22 @@
         "write": false,
         "desc": "modbus update interval",
         "unit": "sec"
+      }
+    },
+    {
+      "_id": "info.JSONhealth",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "health information",
+          "de": "Gesundheitsinformation"
+        },
+        "type": "string",
+        "role": "indicator.alarm.health",
+        "read": true,
+        "write": false,
+        "desc": "",
+        "unit": ""
       }
     }
   ]
