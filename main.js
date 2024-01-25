@@ -34,7 +34,8 @@ class Sun2000 extends utils.Adapter {
 			highIntervall : 20000,
 			lowIntervall : 60000,
 			address : '',
-			port : 520
+			port : 520,
+			modbusDelay : 200
 		};
 
 		this.on('ready', this.onReady.bind(this));
@@ -164,7 +165,7 @@ class Sun2000 extends utils.Adapter {
 		} catch (err) {
 			this.log.warn(err);
 		}
-		this.modbusClient = new ModbusConnect(this,this.settings.address,this.settings.port);
+		this.modbusClient = new ModbusConnect(this,this.settings);
 		this.state = new Registers(this);
 		this.dataPolling();
 		this.runWatchDog();
