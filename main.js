@@ -315,7 +315,7 @@ class Sun2000 extends utils.Adapter {
 		}
 		await this.state.runProcessHooks(dataRefreshRate.high);
 
-		if (timeLeft(nextLoop) > 500) {
+		if (timeLeft(nextLoop) > 750) {
 			//Low Loop
 			for (const [i,item] of this.inverters.entries()) {
 				this.modbusClient.setID(item.modbusId);
@@ -338,11 +338,11 @@ class Sun2000 extends utils.Adapter {
 	 */
 	onUnload(callback) {
 		try {
+			this.setState('info.connection', false, true);
 			this.pollingTimer && this.clearTimeout(this.pollingTimer);
 			this.mitnightTimer && this.clearTimeout(this.mitnightTimer);
 			this.watchDogHandle && this.clearInterval(this.watchDogHandle);
 			this.modbusClient && this.modbusClient.close();
-			this.setState('info.connection', false, true);
 			this.log.info('cleaned everything up...');
 			callback();
 		} catch (e) {
