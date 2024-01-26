@@ -57,17 +57,17 @@
       }
     },
     "titleLang": {
-      "en": "Huawei sun2000 inverters",
-      "de": "Huawei sun2000 Wechselrichtern",
-      "ru": "Huawei sun2000 inverters",
-      "pt": "Huawei sun2000 inverters",
-      "nl": "Huawei sun2000 inverters",
-      "fr": "Huawei sun2000 inverters",
-      "it": "Huawei sun2000 inverters",
-      "es": "Huawei sun2000 inverters",
-      "pl": "Huawei sun2000 inverters",
-      "uk": "Huawei sun2000 inverters",
-      "zh-cn": "Huawei sun2000 inverters"
+      "en": "Huawei sun2000 inverter",
+      "de": "Huawei sun2000 Wechselrichter",
+      "ru": "Huawei sun2000 inverter",
+      "pt": "Huawei sun2000 inverter",
+      "nl": "Huawei sun2000 inverter",
+      "fr": "Huawei sun2000 inverter",
+      "it": "Huawei sun2000 inverter",
+      "es": "Huawei sun2000 inverter",
+      "pl": "Huawei sun2000 inverter",
+      "uk": "Huawei sun2000 inverter",
+      "zh-cn": "Huawei sun2000 inverter"
     },
     "desc": {
       "en": "Read data from Huawei SUN2000 inverters and LUNA2000 battery using Modbus TCP\n",
@@ -123,7 +123,9 @@
     "address": "",
     "port": 502,
     "modbusIds": "1",
-    "updateInterval": 20
+    "updateInterval": 20,
+    "timeout": 5,
+    "delay" : 20
   },
   "objects": [],
   "instanceObjects": [
@@ -222,6 +224,38 @@
         "write": false,
         "desc": "modbus update interval",
         "unit": "sec"
+      }
+    },
+    {
+      "_id": "info.modbusTimeout",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "modbus timeout",
+          "de": "modbus timeout"
+        },
+        "type": "number",
+        "role": "value",
+        "read": true,
+        "write": false,
+        "desc": "modbus timeout",
+        "unit": "sec"
+      }
+    },
+    {
+      "_id": "info.modbusDelay",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "modbus delay",
+          "de": "modbus delay"
+        },
+        "type": "number",
+        "role": "value",
+        "read": true,
+        "write": false,
+        "desc": "delay between modbus requests",
+        "unit": "ms"
       }
     },
     {

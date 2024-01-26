@@ -37,7 +37,8 @@ class Sun2000 extends utils.Adapter {
 			lowIntervall : 60000,
 			address : '',
 			port : 520,
-			modbusDelay : 200
+			modbusDelay : 50,
+			modbusTimeout : 5000
 		};
 
 		this.on('ready', this.onReady.bind(this));
@@ -158,7 +159,7 @@ class Sun2000 extends utils.Adapter {
 		}
 	}
 
-	async InitProcess() {
+	async StartProcess() {
 		try {
 			await this.initPath();
 			/*
@@ -169,9 +170,9 @@ class Sun2000 extends utils.Adapter {
 		}
 		this.modbusClient = new ModbusConnect(this,this.settings);
 		this.state = new Registers(this);
+		await this.atMidnight();
 		this.dataPolling();
 		this.runWatchDog();
-		this.atMidnight();
 	}
 
 	async atMidnight() {
@@ -263,13 +264,13 @@ class Sun2000 extends utils.Adapter {
 	 * Is called when databases are connected and adapter received configuration.
 	 */
 	async onReady() {
-		//sunrise and sunset
-		//await this.setSystemData();
 
 		// Initialize your adapter here
 		await this.setStateAsync('info.ip', {val: this.config.address, ack: true});
 		await this.setStateAsync('info.port', {val: this.config.port, ack: true});
 		await this.setStateAsync('info.modbusIds', {val: this.config.modbusIds, ack: true});
+		await this.setStateAsync('info.modbusTimeout', {val: this.config.timeout, ack: true});
+		await this.setStateAsync('info.modbusDelay', {val: this.config.delay, ack: true});
 		await this.setStateAsync('info.JSONhealth', {val: '{message : "Information is collected"}', ack: true});
 
 		// Load user settings
@@ -277,6 +278,8 @@ class Sun2000 extends utils.Adapter {
 			this.settings.highIntervall = this.config.updateInterval*1000; //ms
 			this.settings.address = this.config.address;
 			this.settings.port = this.config.port;
+			this.settings.modbusTimeout = this.config.timeout*1000; //ms
+			this.settings.modbusDelay = this.config.delay; //ms
 			this.settings.modbusIds = this.config.modbusIds.split(',').map((n) => {return Number(n);});
 
 			if (this.settings.modbusIds.length > 0 && this.settings.modbusIds.length < 6) {
@@ -290,7 +293,7 @@ class Sun2000 extends utils.Adapter {
 				for (const [i,id] of this.settings.modbusIds.entries()) {
 					this.inverters.push({index: i, modbusId: id, energyLoss: 0.060, meter: (i==0)}); //own energy consumption of inverter 8 W
 				}
-				await this.InitProcess();
+				await this.StartProcess();
 			} else {
 				this.log.error('*** Adapter deactivated, can\'t parse modbusIds ! ***');
 				this.setForeignState('system.' + this.namespace + '.alive', false);
