@@ -52,9 +52,8 @@
                 "timeout": {
                     "type": "number",
                     "label": "timeout (sec)",
-                    "min" : 1,
+                    "min" : 2,
                     "max" : 15,
-                    "default": 5,
                     "newLine": true,
                     "tooltip": "modbus connection timeout"
                 },            
