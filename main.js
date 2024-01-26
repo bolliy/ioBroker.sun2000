@@ -1,3 +1,4 @@
+/* eslint-disable no-empty */
 'use strict';
 
 /*
@@ -11,6 +12,7 @@ const utils = require('@iobroker/adapter-core');
 const Registers = require(__dirname + '/lib/register.js');
 const ModbusConnect = require(__dirname + '/lib/modbus_connect.js');
 const {dataRefreshRate} = require(__dirname + '/lib/types.js');
+const {getSystemData,getAstroDate } = require(__dirname + '/lib/tools.js');
 
 // Load your modules here, e.g.:
 
@@ -172,7 +174,11 @@ class Sun2000 extends utils.Adapter {
 		this.atMidnight();
 	}
 
-	atMidnight() {
+	async atMidnight() {
+		await getSystemData(this); //Get longitude an latidude from system config
+		this.settings.sunrise = getAstroDate(this,'sunrise');
+		this.settings.sunset = getAstroDate(this,'sunset');
+
 		const now = new Date();
 		const night = new Date(
 			now.getFullYear(),
@@ -257,6 +263,8 @@ class Sun2000 extends utils.Adapter {
 	 * Is called when databases are connected and adapter received configuration.
 	 */
 	async onReady() {
+		//sunrise and sunset
+		//await this.setSystemData();
 
 		// Initialize your adapter here
 		await this.setStateAsync('info.ip', {val: this.config.address, ack: true});
@@ -280,7 +288,7 @@ class Sun2000 extends utils.Adapter {
 				}
 				await this.setStateAsync('info.modbusUpdateInterval', {val: this.settings.highIntervall/1000, ack: true});
 				for (const [i,id] of this.settings.modbusIds.entries()) {
-					this.inverters.push({index: i, modbusId: id, energyLoss: 0.008, meter: (i==0)}); //own energy consumption of inverter 8 W
+					this.inverters.push({index: i, modbusId: id, energyLoss: 0.060, meter: (i==0)}); //own energy consumption of inverter 8 W
 				}
 				await this.InitProcess();
 			} else {

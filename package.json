@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@iobroker/adapter-core": "^3.0.4",
+    "suncalc2": "^1.8.1",
     "modbus-serial": "^8.0.16"
   },
   "devDependencies": {
