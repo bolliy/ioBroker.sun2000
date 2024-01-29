@@ -239,7 +239,7 @@ class Sun2000 extends utils.Adapter {
 				this.setStateAsync('info.JSONhealth', {val: '{errno:1, message: "Can\'t connect to inverter"}', ack: true});
 			} else {
 				if (this.alreadyRunWatchDog) {
-					const ret = this.state.ChechReadError(this.settings.lowIntervall*2);
+					const ret = this.state.CheckReadError(this.settings.lowIntervall*2);
 					if (ret.errno) this.log.warn(ret.message);
 					this.setStateAsync('info.JSONhealth', {val: JSON.stringify(ret), ack: true});
 				} else {
@@ -291,7 +291,7 @@ class Sun2000 extends utils.Adapter {
 				}
 				await this.setStateAsync('info.modbusUpdateInterval', {val: this.settings.highIntervall/1000, ack: true});
 				for (const [i,id] of this.settings.modbusIds.entries()) {
-					this.inverters.push({index: i, modbusId: id, energyLoss: 0.060, meter: (i==0)}); //own energy consumption of inverter 8 W
+					this.inverters.push({index: i, modbusId: id, energyLoss: 0.022, meter: (i==0)}); //own energy consumption of inverter 8 W
 				}
 				await this.StartProcess();
 			} else {
@@ -325,7 +325,7 @@ class Sun2000 extends utils.Adapter {
 			this.modbusClient.setID(item.modbusId);
 			this.lastStateUpdatedHigh += await this.state.updateStates(item,this.modbusClient,dataRefreshRate.high,timeLeft(nextLoop));
 		}
-		await this.state.runProcessHooks(dataRefreshRate.high);
+		await this.state.runPostProcessHooks(dataRefreshRate.high);
 
 		if (timeLeft(nextLoop) > 750) {
 			//Low Loop
@@ -335,7 +335,7 @@ class Sun2000 extends utils.Adapter {
 				this.lastStateUpdatedLow += await this.state.updateStates(item,this.modbusClient,dataRefreshRate.low,timeLeft(nextLoop,(i+1)/this.inverters.length));
 			}
 		}
-		await this.state.runProcessHooks(dataRefreshRate.low);
+		await this.state.runPostProcessHooks(dataRefreshRate.low);
 
 		if (this.pollingTimer) this.clearTimeout(this.pollingTimer);
 		this.pollingTimer = this.setTimeout(() => {
