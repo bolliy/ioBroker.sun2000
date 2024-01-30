@@ -12,7 +12,7 @@ const utils = require('@iobroker/adapter-core');
 const Registers = require(__dirname + '/lib/register.js');
 const ModbusConnect = require(__dirname + '/lib/modbus_connect.js');
 const {dataRefreshRate} = require(__dirname + '/lib/types.js');
-const {getSystemData,getAstroDate } = require(__dirname + '/lib/tools.js');
+const {getAstroDate} = require(__dirname + '/lib/tools.js');
 
 // Load your modules here, e.g.:
 
@@ -25,6 +25,7 @@ class Sun2000 extends utils.Adapter {
 		super({
 			...options,
 			name: 'sun2000',
+			useFormatDate: true
 		});
 
 		this.lastTimeUpdated = new Date().getTime();
@@ -176,7 +177,6 @@ class Sun2000 extends utils.Adapter {
 	}
 
 	async atMidnight() {
-		await getSystemData(this); //Get longitude an latidude from system config
 		this.settings.sunrise = getAstroDate(this,'sunrise');
 		this.settings.sunset = getAstroDate(this,'sunset');
 
@@ -319,7 +319,6 @@ class Sun2000 extends utils.Adapter {
 			if (left < 0) return 0;
 			return left;
 		}
-
 		const start = new Date().getTime();
 		this.log.debug('### DataPolling START '+ Math.round((start-this.lastTimeUpdated)/1000)+' sec ###');
 		if (this.lastTimeUpdated > 0 && (start-this.lastTimeUpdated)/1000 > this.settings.highIntervall/1000 + 1) {
