@@ -38,7 +38,7 @@ class Sun2000 extends utils.Adapter {
 			address : '',
 			port : 520,
 			modbusDelay : 50,
-			modbusTimeout : 5000
+			modbusTimeout : 5000,
 		};
 
 		this.on('ready', this.onReady.bind(this));
@@ -291,7 +291,15 @@ class Sun2000 extends utils.Adapter {
 				}
 				await this.setStateAsync('info.modbusUpdateInterval', {val: this.settings.highIntervall/1000, ack: true});
 				for (const [i,id] of this.settings.modbusIds.entries()) {
-					this.inverters.push({index: i, modbusId: id, energyLoss: 0.022, meter: (i==0)}); //own energy consumption of inverter 8 W
+					this.inverters.push({
+						index: i,
+						modbusId: id,
+						energyLoss: 0.022,
+						meter: (i==0),
+						numberBatteryUnits : 0,
+						deviceStatus : 0,
+						preventWarnings : false
+					});
 				}
 				await this.StartProcess();
 			} else {

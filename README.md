@@ -22,7 +22,7 @@ https://forum.iobroker.net/assets/uploads/files/1699119419919-solar-inverter-mod
 ## Supported hardware
 
 * HUAWEI Inverter (SUN2000 Serie) M1 
-* HUAWEI Smart Dongle-WLAN-FE / min. Softwareversion: xxxSPC133 (SDongleA-05)
+* HUAWEI Smart Dongle-WLAN-FE / min. Softwareversion: V100R001C00SPC133 (SDongleA-05)
 * HUAWEI Luna2000 Battery
 * HUAWEI Smart Power Sensor DTSU666-H or DDSU666-H
 
