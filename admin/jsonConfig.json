@@ -53,18 +53,26 @@
                     "type": "number",
                     "label": "timeout (sec)",
                     "min" : 2,
-                    "max" : 15,
+                    "max" : 10,
                     "newLine": true,
                     "tooltip": "modbus connection timeout"
-                },            
+                },      
                 "delay": {
                     "type": "number",
                     "label": "delay (ms)",
                     "min" : 0,
-                    "max" : 500,
+                    "max" : 5000,
                     "newLine": true,
                     "tooltip": "delay between modbus requests"
-                }
+                },
+                "startDelay": {
+                    "type": "number",
+                    "label": "start delay (ms)",
+                    "min" : 1000,
+                    "max" : 15000,
+                    "newLine": true,
+                    "tooltip": "delay after modbus connected"
+                }     
             }
         }        
     }

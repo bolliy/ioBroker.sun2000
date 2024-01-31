@@ -125,7 +125,8 @@
     "modbusIds": "1",
     "updateInterval": 20,
     "timeout": 5,
-    "delay" : 20
+    "delay" : 0,
+    "startDelay" : 2000
   },
   "objects": [],
   "instanceObjects": [
@@ -248,13 +249,29 @@
       "common": {
         "name": {
           "en": "modbus delay",
-          "de": "modbus delay"
+          "de": "modbus Verzögerung"
         },
         "type": "number",
         "role": "value",
         "read": true,
         "write": false,
         "desc": "delay between modbus requests",
+        "unit": "ms"
+      }
+    },
+    {
+      "_id": "info.modbusStartDelay",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "modbus start delay",
+          "de": "modbus Verzögerung nach Verbindungsaufbau"
+        },
+        "type": "number",
+        "role": "value",
+        "read": true,
+        "write": false,
+        "desc": "delay after modbus connected",
         "unit": "ms"
       }
     },
