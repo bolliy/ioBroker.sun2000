@@ -124,9 +124,9 @@
     "port": 502,
     "modbusIds": "1",
     "updateInterval": 20,
-    "timeout": 5,
-    "delay" : 0,
-    "startDelay" : 2000
+    "timeout": 5000,
+    "delay" : 1000,
+    "connectDelay" : 2000
   },
   "objects": [],
   "instanceObjects": [
@@ -240,7 +240,7 @@
         "read": true,
         "write": false,
         "desc": "modbus timeout",
-        "unit": "sec"
+        "unit": "ms"
       }
     },
     {
@@ -249,7 +249,7 @@
       "common": {
         "name": {
           "en": "modbus delay",
-          "de": "modbus Verzögerung"
+          "de": "modbus delay"
         },
         "type": "number",
         "role": "value",
@@ -260,12 +260,12 @@
       }
     },
     {
-      "_id": "info.modbusStartDelay",
+      "_id": "info.modbusConnectDelay",
       "type": "state",
       "common": {
         "name": {
-          "en": "modbus start delay",
-          "de": "modbus Verzögerung nach Verbindungsaufbau"
+          "en": "modbus connect delay",
+          "de": "modbus connect delay"
         },
         "type": "number",
         "role": "value",

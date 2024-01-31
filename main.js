@@ -8,13 +8,11 @@
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 const utils = require('@iobroker/adapter-core');
-
+// Load your modules here, e.g.:
 const Registers = require(__dirname + '/lib/register.js');
 const ModbusConnect = require(__dirname + '/lib/modbus_connect.js');
 const {dataRefreshRate} = require(__dirname + '/lib/types.js');
 const {getAstroDate} = require(__dirname + '/lib/tools.js');
-
-// Load your modules here, e.g.:
 
 class Sun2000 extends utils.Adapter {
 
@@ -40,7 +38,7 @@ class Sun2000 extends utils.Adapter {
 			port : 520,
 			modbusDelay : 50,
 			modbusTimeout : 5000,
-			modbusStartDelay : 2000
+			modbusConnectDelay : 2000
 		};
 
 		this.on('ready', this.onReady.bind(this));
@@ -164,9 +162,7 @@ class Sun2000 extends utils.Adapter {
 	async StartProcess() {
 		try {
 			await this.initPath();
-			/*
-			await this.checkAndPrepare();
-            */
+			//await this.checkAndPrepare();
 		} catch (err) {
 			this.log.warn(err);
 		}
@@ -236,6 +232,7 @@ class Sun2000 extends utils.Adapter {
 			const lastIsConnected = this.isConnected;
 			this.isConnected = this.lastStateUpdatedHigh > 0 && sinceLastUpdate < this.settings.highIntervall*3;
 			if (this.isConnected !== lastIsConnected ) this.setState('info.connection', this.isConnected, true);
+			//this.connected = this.isConnected;
 			if (!this.isConnected) {
 				this.setStateAsync('info.JSONhealth', {val: '{errno:1, message: "Can\'t connect to inverter"}', ack: true});
 			} else {
@@ -265,13 +262,17 @@ class Sun2000 extends utils.Adapter {
 	 * Is called when databases are connected and adapter received configuration.
 	 */
 	async onReady() {
-
 		// Initialize your adapter here
+		// tiemout now in ms
+		if (this.config.timeout <= 10) {
+			this.config.timeout = this.config.timeout*1000;
+			this.updateConfig(this.config);
+		}
 		await this.setStateAsync('info.ip', {val: this.config.address, ack: true});
 		await this.setStateAsync('info.port', {val: this.config.port, ack: true});
 		await this.setStateAsync('info.modbusIds', {val: this.config.modbusIds, ack: true});
 		await this.setStateAsync('info.modbusTimeout', {val: this.config.timeout, ack: true});
-		await this.setStateAsync('info.modbusStartDelay', {val: this.config.startDelay, ack: true});
+		await this.setStateAsync('info.modbusConnectDelay', {val: this.config.connectDelay, ack: true});
 		await this.setStateAsync('info.modbusDelay', {val: this.config.delay, ack: true});
 		await this.setStateAsync('info.JSONhealth', {val: '{message : "Information is collected"}', ack: true});
 
@@ -280,26 +281,25 @@ class Sun2000 extends utils.Adapter {
 			this.settings.highIntervall = this.config.updateInterval*1000; //ms
 			this.settings.address = this.config.address;
 			this.settings.port = this.config.port;
-			this.settings.modbusTimeout = this.config.timeout*1000; //ms
+			this.settings.modbusTimeout = this.config.timeout; //ms
 			this.settings.modbusDelay = this.config.delay; //ms
-			this.settings.modbusStartDelay = this.config.startDelay; //ms
+			this.settings.modbusConnectDelay = this.config.connectDelay; //ms
 			this.settings.modbusIds = this.config.modbusIds.split(',').map((n) => {return Number(n);});
 
 			if (this.settings.modbusIds.length > 0 && this.settings.modbusIds.length < 6) {
-				const minInterval = 8*this.settings.modbusDelay*this.settings.modbusIds.length+this.settings.modbusStartDelay;
+				const minInterval = 6*this.settings.modbusDelay*this.settings.modbusIds.length;
 				if (minInterval> this.settings.highIntervall) {
 					this.settings.highIntervall = minInterval;
 				}
-				if (this.settings.highIntervall < 5000*this.settings.modbusIds.length) {
-					this.settings.highIntervall = 5000*this.settings.modbusIds.length;
-				}
-				if (this.settings.highIntervall > this.settings.lowIntervall) {
-					this.settings.lowIntervall = this.settings.highIntervall;
+				if (this.settings.highIntervall*4 > this.settings.lowIntervall) {
+					this.settings.lowIntervall = this.settings.highIntervall*4;
 				}
 
 				if (this.config.updateInterval !== Math.round(this.settings.highIntervall/1000)) {
 					this.config.updateInterval = Math.round(this.settings.highIntervall/1000);
-					this.updateConfig(this.config);
+					this.log.warn('The interval is too small. The value has been changed on '+this.config.updateInterval+' sec.');
+					this.log.warn('Please check your configuration!');
+					//this.updateConfig(this.config);
 				}
 				await this.setStateAsync('info.modbusUpdateInterval', {val: this.config.updateInterval, ack: true});
 
@@ -326,7 +326,6 @@ class Sun2000 extends utils.Adapter {
 	}
 
 	async dataPolling() {
-
 		function timeLeft(target,factor =1) {
 			const left = Math.round((target - new Date().getTime())*factor);
 			if (left < 0) return 0;
@@ -347,7 +346,7 @@ class Sun2000 extends utils.Adapter {
 		}
 		await this.state.runPostProcessHooks(dataRefreshRate.high);
 
-		if (timeLeft(nextLoop) > this.settings.modbusDelay*this.settings.modbusIds.length) {
+		if (timeLeft(nextLoop) > 0) {
 			//Low Loop
 			for (const [i,item] of this.inverters.entries()) {
 				this.modbusClient.setID(item.modbusId);

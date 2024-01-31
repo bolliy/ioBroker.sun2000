@@ -51,9 +51,9 @@
             "items": {
                 "timeout": {
                     "type": "number",
-                    "label": "timeout (sec)",
-                    "min" : 2,
-                    "max" : 10,
+                    "label": "timeout (ms)",
+                    "min" : 1000,
+                    "max" : 10000,
                     "newLine": true,
                     "tooltip": "modbus connection timeout"
                 },      
@@ -65,9 +65,9 @@
                     "newLine": true,
                     "tooltip": "delay between modbus requests"
                 },
-                "startDelay": {
+                "connectDelay": {
                     "type": "number",
-                    "label": "start delay (ms)",
+                    "label": "connect delay (ms)",
                     "min" : 1000,
                     "max" : 15000,
                     "newLine": true,
