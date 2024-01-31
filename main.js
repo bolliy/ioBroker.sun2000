@@ -45,6 +45,7 @@ class Sun2000 extends utils.Adapter {
 	}
 
 	async initPath() {
+		/*
 		await this.extendObjectAsync('info', {
 			type: 'channel',
 			common: {
@@ -66,7 +67,7 @@ class Sun2000 extends utils.Adapter {
 			},
 			native: {},
 		});
-
+		*/
 		await this.extendObjectAsync('meter', {
 			type: 'device',
 			common: {
@@ -367,11 +368,12 @@ class Sun2000 extends utils.Adapter {
 	// 	}
 	// }
 
-	/**
-	 * Is called if a subscribed state changes
-	 * @param {string} id
-	 * @param {ioBroker.State | null | undefined} state
-	 */
+	// /**
+	// * Is called if a subscribed state changes
+	// * @param {string} id
+	// * @param {ioBroker.State | null | undefined} state
+	// **/
+	/*
 	onStateChange(id, state) {
 		if (state) {
 			// The state was changed
@@ -381,7 +383,7 @@ class Sun2000 extends utils.Adapter {
 			this.log.info(`state ${id} deleted`);
 		}
 	}
-
+    */
 	// If you need to accept messages in your adapter, uncomment the following block and the corresponding line in the constructor.
 	// /**
 	//  * Some message was sent to this instance over message box. Used by email, pushover, text2speech, ...
