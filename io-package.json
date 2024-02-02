@@ -125,8 +125,8 @@
     "modbusIds": "1",
     "updateInterval": 20,
     "timeout": 5000,
-    "delay" : 0,
-    "connectDelay" : 1500
+    "delay" : 1000,
+    "connectDelay" : 2000
   },
   "objects": [],
   "instanceObjects": [
