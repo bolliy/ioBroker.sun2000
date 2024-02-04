@@ -73,6 +73,7 @@ The development of this adapter was inspired by discussions from the forum threa
 * modbus timeout and delay can be configured
 * device status as plain text `sun2000.0.inverter.x.derived.deviceStatus`
 * restructuring the program code to support different devices
+* Einführung eines Treibermodels. Für jedes Gerät kann ein eigener Treiber erstellt werden.
 
 ### 0.2.0 (2024-01-24)
 * [Add sun2000 to latest](https://github.com/ioBroker/ioBroker.repositories/pull/3219)

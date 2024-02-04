@@ -124,9 +124,10 @@
     "port": 502,
     "modbusIds": "1",
     "updateInterval": 20,
-    "timeout": 5000,
-    "delay" : 1000,
-    "connectDelay" : 2000
+    "timeout": 10000,
+    "delay" : 2000,
+    "connectDelay" : 0,
+    "adjust" : true
   },
   "objects": [],
   "instanceObjects": [

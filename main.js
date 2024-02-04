@@ -38,7 +38,8 @@ class Sun2000 extends utils.Adapter {
 			port : 520,
 			modbusDelay : 50,
 			modbusTimeout : 5000,
-			modbusConnectDelay : 2000
+			modbusConnectDelay : 2000,
+			modbusAdjust : false
 		};
 
 		this.on('ready', this.onReady.bind(this));
@@ -147,15 +148,6 @@ class Sun2000 extends utils.Adapter {
 				},
 				native: {}
 			});
-			/*
-			await this.extendObjectAsync(path+'.optimizer', {
-				type: 'channel',
-				common: {
-					name: 'channel optimizer'
-				},
-				native: {}
-			});
-			*/
 
 		}
 	}
@@ -168,6 +160,7 @@ class Sun2000 extends utils.Adapter {
 			this.log.warn(err);
 		}
 		this.modbusClient = new ModbusConnect(this,this.settings);
+		this.modbusClient.setCallback(this.endOfmodbusAdjust.bind(this));
 		this.state = new Registers(this);
 		await this.atMidnight();
 		this.dataPolling();
@@ -229,22 +222,23 @@ class Sun2000 extends utils.Adapter {
 		this.watchDogHandle && this.clearInterval(this.watchDogHandle);
 		this.watchDogHandle = this.setInterval( () => {
 			const sinceLastUpdate = new Date().getTime() - this.lastTimeUpdated; //ms
-			this.log.debug('Watchdog: time of last update '+sinceLastUpdate/1000+' sec');
+			this.log.debug('Watchdog: time since last update '+sinceLastUpdate/1000+' sec');
 			const lastIsConnected = this.isConnected;
 			this.isConnected = this.lastStateUpdatedHigh > 0 && sinceLastUpdate < this.settings.highIntervall*3;
 			if (this.isConnected !== lastIsConnected ) this.setState('info.connection', this.isConnected, true);
 			//this.connected = this.isConnected;
-			if (!this.isConnected) {
-				this.setStateAsync('info.JSONhealth', {val: '{errno:1, message: "Can\'t connect to inverter"}', ack: true});
-			} else {
+			if (!this.settings.modbusAdjust) {
+				if (!this.isConnected && !this.settings.modbusAdjust) {
+					this.setStateAsync('info.JSONhealth', {val: '{errno:1, message: "Can\'t connect to inverter"}', ack: true});
+				}
 				if (this.alreadyRunWatchDog) {
 					const ret = this.state.CheckReadError(this.settings.lowIntervall*2);
 					if (ret.errno) this.log.warn(ret.message);
 					this.setStateAsync('info.JSONhealth', {val: JSON.stringify(ret), ack: true});
-				} else {
-					this.alreadyRunWatchDog = true;
 				}
 			}
+
+			if (!this.alreadyRunWatchDog) this.alreadyRunWatchDog = true;
 
 			this.lastStateUpdatedLow = 0;
 			this.lastStateUpdatedHigh = 0;
@@ -255,9 +249,49 @@ class Sun2000 extends utils.Adapter {
 				this.restart();
 			}
 
+		// @ts-ignore
 		},this.settings.lowIntervall);
 	}
 
+	async endOfmodbusAdjust (info) {
+		if (!info.modbusAdjust) {
+			this.settings.modbusAdjust = info.modbusAdjust;
+			this.settings.modbusDelay = info.delay;
+			this.settings.modbusTimeout = info.timeout;
+			this.settings.modbusConnectDelay = info.connectDelay;
+			//orignal Interval
+			this.settings.highIntervall = this.config.updateInterval*1000;
+			await this.adjustInverval();
+			this.config.adjust = this.settings.modbusAdjust;
+			this.config.connectDelay = this.settings.modbusConnectDelay;
+			this.config.delay = this.settings.modbusDelay;
+			this.config.timeout = this.settings.modbusTimeout;
+			this.updateConfig(this.config);
+			this.log.info(JSON.stringify(info));
+			this.log.info('New modbus values are stored.');
+		}
+	}
+
+	async adjustInverval () {
+		const minInterval = this.settings.modbusIds.length*(5000+5*this.settings.modbusDelay);
+		if (this.settings.modbusAdjust) {
+			this.settings.highIntervall = 10000*this.settings.modbusIds.length;
+		}
+		if (minInterval> this.settings.highIntervall) {
+			this.settings.highIntervall = minInterval;
+		}
+		this.settings.lowIntervall = 60000;
+		if (this.settings.highIntervall > this.settings.lowIntervall) {
+			this.settings.lowIntervall = this.settings.highIntervall;
+		}
+		if (!this.settings.modbusAdjust) {
+			if (this.config.updateInterval < Math.round(this.settings.highIntervall/1000)) {
+				this.log.warn('The interval is too small. The value has been changed on '+this.config.updateInterval+' sec.');
+				this.log.warn('Please check your configuration!');
+			}
+		}
+		await this.setStateAsync('info.modbusUpdateInterval', {val: Math.round(this.settings.highIntervall/1000), ack: true});
+	}
 
 	/**
 	 * Is called when databases are connected and adapter received configuration.
@@ -275,34 +309,24 @@ class Sun2000 extends utils.Adapter {
 		await this.setStateAsync('info.modbusTimeout', {val: this.config.timeout, ack: true});
 		await this.setStateAsync('info.modbusConnectDelay', {val: this.config.connectDelay, ack: true});
 		await this.setStateAsync('info.modbusDelay', {val: this.config.delay, ack: true});
-		await this.setStateAsync('info.JSONhealth', {val: '{message : "Information is collected"}', ack: true});
-
 		// Load user settings
 		if (this.config.address !== '' || this.config.port > 0 || this.config.updateInterval > 0 ) {
-			this.settings.highIntervall = this.config.updateInterval*1000; //ms
 			this.settings.address = this.config.address;
 			this.settings.port = this.config.port;
 			this.settings.modbusTimeout = this.config.timeout; //ms
 			this.settings.modbusDelay = this.config.delay; //ms
 			this.settings.modbusConnectDelay = this.config.connectDelay; //ms
+			this.settings.modbusAdjust = this.config.adjust;
 			this.settings.modbusIds = this.config.modbusIds.split(',').map((n) => {return Number(n);});
+			this.settings.highIntervall = this.config.updateInterval*1000; //ms
+			if (this.settings.modbusAdjust) {
+				await this.setStateAsync('info.JSONhealth', {val: '{ message: "Adjust modbus settings"}', ack: true});
+			} else {
+				await this.setStateAsync('info.JSONhealth', {val: '{message : "Information is collected"}', ack: true});
+			}
 
 			if (this.settings.modbusIds.length > 0 && this.settings.modbusIds.length < 6) {
-				const minInterval = 6*this.settings.modbusDelay*this.settings.modbusIds.length;
-				if (minInterval> this.settings.highIntervall) {
-					this.settings.highIntervall = minInterval;
-				}
-				if (this.settings.highIntervall*4 > this.settings.lowIntervall) {
-					this.settings.lowIntervall = this.settings.highIntervall*4;
-				}
-
-				if (this.config.updateInterval !== Math.round(this.settings.highIntervall/1000)) {
-					this.config.updateInterval = Math.round(this.settings.highIntervall/1000);
-					this.log.warn('The interval is too small. The value has been changed on '+this.config.updateInterval+' sec.');
-					this.log.warn('Please check your configuration!');
-					//this.updateConfig(this.config);
-				}
-				await this.setStateAsync('info.modbusUpdateInterval', {val: this.config.updateInterval, ack: true});
+				this.adjustInverval();
 
 				for (const [i,id] of this.settings.modbusIds.entries()) {
 					this.inverters.push({

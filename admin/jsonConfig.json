@@ -72,7 +72,13 @@
                     "max" : 15000,
                     "newLine": true,
                     "tooltip": "delay after modbus connected"
-                }     
+                },
+                "adjust": {
+                    "type": "checkbox",
+                    "label": "adjust",
+                    "newLine": true,
+                    "tooltip": "adjust tooltip"
+                }          
             }
         }        
     }
