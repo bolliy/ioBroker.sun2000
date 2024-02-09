@@ -221,7 +221,7 @@ class Sun2000 extends utils.Adapter {
 	async endOfmodbusAdjust (info) {
 		if (!info.modbusAdjust) {
 			this.settings.modbusAdjust = info.modbusAdjust;
-			this.settings.modbusDelay = info.delay;
+			this.settings.modbusDelay = Math.round(info.delay);
 			//siehe jsonConfig.json
 			if (this.settings.modbusDelay > 6000) this.settings.modbusDelay = 6000; //siehe jsonConfig.json
 			this.settings.modbusTimeout = info.timeout;
@@ -237,17 +237,18 @@ class Sun2000 extends utils.Adapter {
 			this.config.timeout = this.settings.modbusTimeout;
 			this.updateConfig(this.config);
 			this.log.info(JSON.stringify(info));
-			this.log.info('New modbus values are stored.');
+			this.log.info('New modbus settings are stored.');
 		}
 	}
 
 	async adjustInverval () {
-		const minInterval = this.settings.modbusIds.length*(4000+5*this.settings.modbusDelay);
-		if (minInterval> this.settings.highIntervall) {
-			this.settings.highIntervall = minInterval;
-		}
 		if (this.settings.modbusAdjust) {
 			this.settings.highIntervall = 10000*this.settings.modbusIds.length;
+		} else {
+			const minInterval = this.settings.modbusIds.length*(5000+5*this.settings.modbusDelay);
+			if (minInterval> this.settings.highIntervall) {
+				this.settings.highIntervall = minInterval;
+			}
 		}
 		this.settings.lowIntervall = 60000;
 		if (this.settings.highIntervall > this.settings.lowIntervall) {
