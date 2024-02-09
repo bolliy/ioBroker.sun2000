@@ -218,51 +218,20 @@ class Sun2000 extends utils.Adapter {
 		}
 	}
 
-	runWatchDog() {
-		this.watchDogHandle && this.clearInterval(this.watchDogHandle);
-		this.watchDogHandle = this.setInterval( () => {
-			const sinceLastUpdate = new Date().getTime() - this.lastTimeUpdated; //ms
-			this.log.debug('Watchdog: time since last update '+sinceLastUpdate/1000+' sec');
-			const lastIsConnected = this.isConnected;
-			this.isConnected = this.lastStateUpdatedHigh > 0 && sinceLastUpdate < this.settings.highIntervall*3;
-			if (this.isConnected !== lastIsConnected ) this.setState('info.connection', this.isConnected, true);
-			//this.connected = this.isConnected;
-			if (!this.settings.modbusAdjust) {
-				if (!this.isConnected && !this.settings.modbusAdjust) {
-					this.setStateAsync('info.JSONhealth', {val: '{errno:1, message: "Can\'t connect to inverter"}', ack: true});
-				}
-				if (this.alreadyRunWatchDog) {
-					const ret = this.state.CheckReadError(this.settings.lowIntervall*2);
-					if (ret.errno) this.log.warn(ret.message);
-					this.setStateAsync('info.JSONhealth', {val: JSON.stringify(ret), ack: true});
-				}
-			}
-
-			if (!this.alreadyRunWatchDog) this.alreadyRunWatchDog = true;
-
-			this.lastStateUpdatedLow = 0;
-			this.lastStateUpdatedHigh = 0;
-
-			if (sinceLastUpdate > this.settings.highIntervall*10) {
-				this.setStateAsync('info.JSONhealth', {val: '{errno:2, message: "Internal loop error"}', ack: true});
-				this.log.warn('watchdog: restart Adapter...');
-				this.restart();
-			}
-
-		// @ts-ignore
-		},this.settings.lowIntervall);
-	}
-
 	async endOfmodbusAdjust (info) {
 		if (!info.modbusAdjust) {
 			this.settings.modbusAdjust = info.modbusAdjust;
 			this.settings.modbusDelay = info.delay;
+			//siehe jsonConfig.json
+			if (this.settings.modbusDelay > 6000) this.settings.modbusDelay = 6000; //siehe jsonConfig.json
 			this.settings.modbusTimeout = info.timeout;
+			if (this.settings.modbusTimeout > 20000) this.settings.modbusTimeout = 20000;
 			this.settings.modbusConnectDelay = info.connectDelay;
+			if (this.settings.modbusConnectDelay > 15000) this.settings.modbusConnectDelay = 15000;
 			//orignal Interval
 			this.settings.highIntervall = this.config.updateInterval*1000;
 			await this.adjustInverval();
-			this.config.adjust = this.settings.modbusAdjust;
+			this.config.autoAdjust = this.settings.modbusAdjust;
 			this.config.connectDelay = this.settings.modbusConnectDelay;
 			this.config.delay = this.settings.modbusDelay;
 			this.config.timeout = this.settings.modbusTimeout;
@@ -273,12 +242,12 @@ class Sun2000 extends utils.Adapter {
 	}
 
 	async adjustInverval () {
-		const minInterval = this.settings.modbusIds.length*(5000+5*this.settings.modbusDelay);
-		if (this.settings.modbusAdjust) {
-			this.settings.highIntervall = 10000*this.settings.modbusIds.length;
-		}
+		const minInterval = this.settings.modbusIds.length*(4000+5*this.settings.modbusDelay);
 		if (minInterval> this.settings.highIntervall) {
 			this.settings.highIntervall = minInterval;
+		}
+		if (this.settings.modbusAdjust) {
+			this.settings.highIntervall = 10000*this.settings.modbusIds.length;
 		}
 		this.settings.lowIntervall = 60000;
 		if (this.settings.highIntervall > this.settings.lowIntervall) {
@@ -316,7 +285,7 @@ class Sun2000 extends utils.Adapter {
 			this.settings.modbusTimeout = this.config.timeout; //ms
 			this.settings.modbusDelay = this.config.delay; //ms
 			this.settings.modbusConnectDelay = this.config.connectDelay; //ms
-			this.settings.modbusAdjust = this.config.adjust;
+			this.settings.modbusAdjust = this.config.autoAdjust;
 			this.settings.modbusIds = this.config.modbusIds.split(',').map((n) => {return Number(n);});
 			this.settings.highIntervall = this.config.updateInterval*1000; //ms
 			if (this.settings.modbusAdjust) {
@@ -386,6 +355,40 @@ class Sun2000 extends utils.Adapter {
 			this.dataPolling(); //recursiv
 		}, timeLeft(nextLoop));
 		this.log.debug('### DataPolling STOP ###');
+	}
+
+	runWatchDog() {
+		this.watchDogHandle && this.clearInterval(this.watchDogHandle);
+		this.watchDogHandle = this.setInterval( () => {
+			const sinceLastUpdate = new Date().getTime() - this.lastTimeUpdated; //ms
+			this.log.debug('Watchdog: time since last update '+sinceLastUpdate/1000+' sec');
+			const lastIsConnected = this.isConnected;
+			this.isConnected = this.lastStateUpdatedHigh > 0 && sinceLastUpdate < this.settings.highIntervall*3;
+			if (this.isConnected !== lastIsConnected ) this.setState('info.connection', this.isConnected, true);
+			//this.connected = this.isConnected;
+			if (!this.settings.modbusAdjust) {
+				if (!this.isConnected && !this.settings.modbusAdjust) {
+					this.setStateAsync('info.JSONhealth', {val: '{errno:1, message: "Can\'t connect to inverter"}', ack: true});
+				}
+				if (this.alreadyRunWatchDog) {
+					const ret = this.state.CheckReadError(this.settings.lowIntervall*2);
+					if (ret.errno) this.log.warn(ret.message);
+					this.setStateAsync('info.JSONhealth', {val: JSON.stringify(ret), ack: true});
+				}
+			}
+
+			if (!this.alreadyRunWatchDog) this.alreadyRunWatchDog = true;
+
+			this.lastStateUpdatedLow = 0;
+			this.lastStateUpdatedHigh = 0;
+
+			if (sinceLastUpdate > this.settings.highIntervall*10) {
+				this.setStateAsync('info.JSONhealth', {val: '{errno:2, message: "Internal loop error"}', ack: true});
+				this.log.warn('watchdog: restart Adapter...');
+				this.restart();
+			}
+
+		},this.settings.lowIntervall);
 	}
 
 	/**

@@ -52,8 +52,8 @@
                 "timeout": {
                     "type": "number",
                     "label": "timeout (ms)",
-                    "min" : 1000,
-                    "max" : 10000,
+                    "min" : 5000,
+                    "max" : 20000,
                     "newLine": true,
                     "tooltip": "modbus connection timeout"
                 },      
@@ -61,7 +61,7 @@
                     "type": "number",
                     "label": "delay (ms)",
                     "min" : 0,
-                    "max" : 5000,
+                    "max" : 6000,
                     "newLine": true,
                     "tooltip": "delay between modbus requests"
                 },
@@ -73,11 +73,11 @@
                     "newLine": true,
                     "tooltip": "delay after modbus connected"
                 },
-                "adjust": {
+                "autoAdjust": {
                     "type": "checkbox",
-                    "label": "adjust",
+                    "label": "auto-adjust",
                     "newLine": true,
-                    "tooltip": "adjust tooltip"
+                    "tooltip": "automatic adjustment of the modbus settings"
                 }          
             }
         }        
