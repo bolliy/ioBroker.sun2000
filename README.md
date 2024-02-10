@@ -35,17 +35,16 @@ https://forum.iobroker.net/assets/uploads/files/1699119419919-solar-inverter-mod
 * States are only written for changed data from the inverter. This relieves the burden on the iobroker instance.
 * The states “inputPower” or “activePower” in the “collected” path can be monitored with a “was updated” trigger element. Because these states are always written within the set interval.
 
-## Settings
-
+## Main Settings
 * `address`: Inverter IP address
 * `port`: Inverter modbus port (default: 502)
 * `modbusIds`: inverter IDs, separated with "," (default: 1, max. 5 inverters)
 * `updateInterval`: Fast update interval (default: 20 sec, smallest 5 seconds per inverter)
-- modbus timing -
+## Modbus timing 
 * `timeout`: modbus connection timeout (default: 10000 ms)
 * `delay`: delay between modbus requests (default: 0 ms)
 * `connect delay`: delay after modbus connected (default: 5000 ms)
-* `auto-adjust`: automatic adjustment of the modbus settings. 
+* `auto-adjust`: automatic adjustment of the modbus settings
 
 ## Configure inverters
 
