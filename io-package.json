@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.2.1",
+    "version": "0.3.0",
     "news": {
+      "0.3.0": {
+        "en": "add battery unit information for example temperature #40\nmodbus timeout, connect delay and delay can be configured #34\ndevice status as plain text `sun2000.0.inverter.x.derived.deviceStatus`\nIntroduction of a driver model. A separate driver can be created for each device #41",
+        "de": "batterieeinheitsinformationen hinzufügen, zum beispiel temperatur #40\nmodbus timeout, verbinden verzögerung und verzögerung kann #34 konfiguriert werden\ngerätestatus als Klartext `sun2000.0.inverter.x.derived.deviceStatus `\nEinführung eines Fahrermodells. Ein separater Treiber kann für jedes Gerät #41 erstellt werden",
+        "ru": "добавить информацию аккумулятора, например, температуру #40\nmodbus timeout, подключить задержку и задержку можно настроить #34\nстатус устройства как простой текст `sun2000.0.inverter.x.derived.deviceStatus \"\nВведение модели водителя. Для каждого устройства может быть создан отдельный драйвер #41",
+        "pt": "adicionar informações da unidade de bateria, por exemplo, temperatura #40\nmodbus timeout, conectar delay e delay pode ser configurado #34\nstatus do dispositivo como texto simples `sun2000.0.inverter.x.derived.deviceStatus \"\nIntrodução de um modelo de driver. Um driver separado pode ser criado para cada dispositivo #41",
+        "nl": "toe te voegen batterij eenheid informatie bijvoorbeeld temperatuur #40\nmodbus timeout, verbind vertraging en vertraging kan worden geconfigureerd #34\napparaatstatus als platte tekst  Wat\nInvoering van een bestuurdersmodel. Voor elk apparaat kan een aparte driver #41 aangemaakt worden",
+        "fr": "ajouter des informations sur l'unité de batterie par exemple température #40\nmodbus timeout, connecter le délai et le délai peuvent être configurés #34\nstatut du périphérique comme texte simple `sun2000.0.inverter.x.derived.deviceStatus \"\nIntroduction d'un modèle de pilote. Un pilote séparé peut être créé pour chaque périphérique #41",
+        "it": "aggiungere le informazioni dell'unità della batteria per esempio la temperatura #40\nmodbus timeout, collegare ritardo e ritardo può essere configurato #34\nstato del dispositivo come testo normale `sun2000.0.inverter.x.derived.deviceStatus #\nIntroduzione di un modello di driver. Un driver separato può essere creato per ogni dispositivo #41",
+        "es": "añadir información de la unidad de la batería por ejemplo temperatura #40\nmodbus timeout, conectar retraso y retraso se puede configurar #34\nestado del dispositivo como texto simple `sun2000.0.inverter.x.derived.deviceStatus `\nIntroducción de un modelo de piloto. Un controlador separado se puede crear para cada dispositivo #41",
+        "pl": "dodaj informacje o akumulatorze np. temperatura # 40\nmodbus timeout, connect opóźnienie i opóźnienie można skonfigurować # 34\nstatus urządzenia jako zwykłego tekstu 'Sun2000.0.inverter.x.derived.deviceStatus'\nWprowadzenie modelu kierowcy. Dla każdego urządzenia # 41 można utworzyć oddzielny sterownik",
+        "uk": "додати інформацію акумулятора для прикладної температури #40\nмодульний час, затримки з'єднання та затримки можна налаштувати #34\nстатус на сервери й\nВступ моделі драйвера. Для кожного пристрою No41 призначений окремий драйвер",
+        "zh-cn": "添加电池单位信息, 如温度# 40\nmodbus 超时, 连接延迟和延迟可以配置 # 34\n设备状态为纯文本 `sun2000.0.inverter.x. exterm.device status ' `\n引入驱动模式. 每个设备都可以创建单独的驱动程序 # 41"
+      },
       "0.2.1": {
         "en": "Requirements from [Add sun2000 to latest](https://github.com/ioBroker/ioBroker.repositories/pull/3219)",
         "de": "Anforderungen von [Sonnen 2000 bis spätestens](https://github.com/ioBroker/ioBroker.repositories/pull/3219)",
@@ -138,9 +151,9 @@
     "modbusIds": "1",
     "updateInterval": 20,
     "timeout": 10000,
-    "delay" : 0,
-    "connectDelay" : 5000,
-    "autoAdjust" : true
+    "delay": 0,
+    "connectDelay": 5000,
+    "autoAdjust": true
   },
   "objects": [],
   "instanceObjects": [

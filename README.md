@@ -72,11 +72,11 @@ The development of this adapter was inspired by discussions from the forum threa
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.3.0 (2024-02-10)
 * add battery unit information for example temperature #40
 * modbus timeout, connect delay and delay can be configured #34
 * device status as plain text `sun2000.0.inverter.x.derived.deviceStatus`
-* Introduction of a driver model. A separate driver can be created for each device #41 
+* Introduction of a driver model. A separate driver can be created for each device #41
 
 ### 0.2.1 (2024-02-02)
 * Requirements from [Add sun2000 to latest](https://github.com/ioBroker/ioBroker.repositories/pull/3219)
