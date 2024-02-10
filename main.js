@@ -434,7 +434,7 @@ class Sun2000 extends utils.Adapter {
 	// * @param {ioBroker.State | null | undefined} state
 	// **/
 
-  /*
+	/*
 	onStateChange(id, state) {
 		if (state) {
 			// The state was changed
