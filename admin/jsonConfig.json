@@ -53,7 +53,7 @@
                     "type": "number",
                     "label": "timeout (ms)",
                     "min" : 5000,
-                    "max" : 20000,
+                    "max" : 30000,
                     "newLine": true,
                     "tooltip": "modbus connection timeout"
                 },      
