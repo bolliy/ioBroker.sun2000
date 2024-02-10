@@ -138,7 +138,7 @@
     "modbusIds": "1",
     "updateInterval": 20,
     "timeout": 10000,
-    "delay" : 1000,
+    "delay" : 0,
     "connectDelay" : 5000,
     "autoAdjust" : true
   },

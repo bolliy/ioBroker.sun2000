@@ -30,7 +30,7 @@ https://forum.iobroker.net/assets/uploads/files/1699119419919-solar-inverter-mod
 
 ## Feature list
 
-* Maximum 5 inverters (master/slave) can be processed, each with a battery module (max. 30kWh).
+* Maximum 5 inverters (master/slave) can be processed, each with a battery module (max. 15kWh).
 * Real-time values such as input power, output power, charging/discharging power and the grid consumption are read out at a fixed interval. 
 * States are only written for changed data from the inverter. This relieves the burden on the iobroker instance.
 * The states “inputPower” or “activePower” in the “collected” path can be monitored with a “was updated” trigger element. Because these states are always written within the set interval.
@@ -41,6 +41,11 @@ https://forum.iobroker.net/assets/uploads/files/1699119419919-solar-inverter-mod
 * `port`: Inverter modbus port (default: 502)
 * `modbusIds`: inverter IDs, separated with "," (default: 1, max. 5 inverters)
 * `updateInterval`: Fast update interval (default: 20 sec, smallest 5 seconds per inverter)
+- modbus timing -
+* `timeout`: modbus connection timeout (default: 10000 ms)
+* `delay`: delay between modbus requests (default: 0 ms)
+* `connect delay`: delay after modbus connected (default: 5000 ms)
+* `auto-adjust`: automatic adjustment of the modbus settings. 
 
 ## Configure inverters
 
@@ -68,12 +73,11 @@ The development of this adapter was inspired by discussions from the forum threa
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-
 ### **WORK IN PROGRESS**
 * add battery unit information for example temperature #40
-* modbus timeout and delay can be configured 
+* modbus timeout, connect delay and delay can be configured #34
 * device status as plain text `sun2000.0.inverter.x.derived.deviceStatus`
-* Introduction of a driver model. A separate driver can be created for each device.
+* Introduction of a driver model. A separate driver can be created for each device #41 
 
 ### 0.2.1 (2024-02-02)
 * Requirements from [Add sun2000 to latest](https://github.com/ioBroker/ioBroker.repositories/pull/3219)
