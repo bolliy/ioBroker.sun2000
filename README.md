@@ -21,8 +21,8 @@ https://forum.iobroker.net/assets/uploads/files/1699119419919-solar-inverter-mod
 
 ## Supported hardware
 
-* HUAWEI Inverter (SUN2000 Serie) M1 
-* HUAWEI Smart Dongle-WLAN-FE / min. Softwareversion: xxxSPC133 (SDongleA-05)
+* HUAWEI Inverter SUN2000 Serie (M0,M1) 
+* HUAWEI Smart Dongle-WLAN-FE / min. Softwareversion: V100R001C00SPC133 (SDongleA-05)
 * HUAWEI Luna2000 Battery
 * HUAWEI Smart Power Sensor DTSU666-H or DDSU666-H
 
@@ -68,6 +68,13 @@ The development of this adapter was inspired by discussions from the forum threa
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+* add battery unit information for example temperature #40
+* modbus timeout and delay can be configured 
+* device status as plain text `sun2000.0.inverter.x.derived.deviceStatus`
+* Introduction of a driver model. A separate driver can be created for each device.
+
 ### 0.2.1 (2024-02-02)
 * Requirements from [Add sun2000 to latest](https://github.com/ioBroker/ioBroker.repositories/pull/3219)
 

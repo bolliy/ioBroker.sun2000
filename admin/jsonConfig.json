@@ -1,33 +1,85 @@
 {
     "i18n": true,
-    "type": "panel",
+    "type": "tabs",
     "items": {
-        "address": {
-            "type": "text",
-            "label": "address",
-            "newLine": false,
-            "tooltip": "The inverters ip address"
+        "mainTab": {
+            "type": "panel",
+            "label": "Main settings",
+            "items": {
+                "address": {
+                    "type": "text",
+                    "label": "address",
+                    "newLine": false,
+                    "tooltip": "The inverters ip address",
+                    "sm": 12,
+                    "md": 8,
+                    "lg": 2
+                },
+                "port": {
+                    "type": "number",
+                    "label": "port",
+                    "min" : 1,
+                    "max" : 655565,
+                    "default": 502,
+                    "newLine": true,
+                    "tooltip": "The modbus TCP port"
+                },
+                "modbusIds": {
+                    "type": "text",
+                    "label": "Modbus Inverter IDs",
+                    "sm": 12,
+                    "md": 8,
+                    "lg": 3,
+                    "default": "1",
+                    "newLine": true,
+                    "tooltip": "The modbus inverter IDs, separated with character ,"
+                },
+                "updateInterval": {
+                    "type": "number",
+                    "label": "Update interval (sec)",
+                    "min" : 5,
+                    "max" : 120,
+                    "default": 20,
+                    "newLine": true,
+                    "tooltip": "Update interval to update the values from the inverters"
+                }
+            }    
         },
-        "port": {
-            "type": "number",
-            "label": "port",
-            "default": 502,
-            "newLine": true,
-            "tooltip": "The modbus TCP port"
-        },
-        "modbusIds": {
-            "type": "text",
-            "label": "Modbus Inverter IDs",
-            "default": "1",
-            "newLine": true,
-            "tooltip": "The modbus inverter IDs, separated with character ,"
-        },
-        "updateInterval": {
-            "type": "number",
-            "label": "Update interval (s)",
-            "default": 20,
-            "newLine": true,
-            "tooltip": "Update interval to update the values from the inverters"
-        }
+        "tab2": {
+            "type": "panel",
+            "label": "Modbus timing",
+            "items": {
+                "timeout": {
+                    "type": "number",
+                    "label": "timeout (ms)",
+                    "min" : 5000,
+                    "max" : 30000,
+                    "newLine": true,
+                    "tooltip": "modbus connection timeout"
+                },      
+                "delay": {
+                    "type": "number",
+                    "label": "delay (ms)",
+                    "min" : 0,
+                    "max" : 6000,
+                    "newLine": true,
+                    "tooltip": "delay between modbus requests"
+                },
+                "connectDelay": {
+                    "type": "number",
+                    "label": "connect delay (ms)",
+                    "min" : 1000,
+                    "max" : 15000,
+                    "newLine": true,
+                    "tooltip": "delay after modbus connected"
+                },
+                "autoAdjust": {
+                    "type": "checkbox",
+                    "label": "auto-adjust",
+                    "newLine": true,
+                    "tooltip": "automatic adjustment of the modbus settings"
+                }          
+            }
+        }        
     }
 }

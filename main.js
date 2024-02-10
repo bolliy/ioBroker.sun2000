@@ -1,3 +1,4 @@
+/* eslint-disable no-empty */
 'use strict';
 
 /*
@@ -7,12 +8,11 @@
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 const utils = require('@iobroker/adapter-core');
-
+// Load your modules here, e.g.:
 const Registers = require(__dirname + '/lib/register.js');
 const ModbusConnect = require(__dirname + '/lib/modbus_connect.js');
 const {dataRefreshRate} = require(__dirname + '/lib/types.js');
-
-// Load your modules here, e.g.:
+const {getAstroDate} = require(__dirname + '/lib/tools.js');
 
 class Sun2000 extends utils.Adapter {
 
@@ -23,6 +23,7 @@ class Sun2000 extends utils.Adapter {
 		super({
 			...options,
 			name: 'sun2000',
+			useFormatDate: true
 		});
 
 		this.lastTimeUpdated = new Date().getTime();
@@ -34,7 +35,11 @@ class Sun2000 extends utils.Adapter {
 			highIntervall : 20000,
 			lowIntervall : 60000,
 			address : '',
-			port : 520
+			port : 520,
+			modbusDelay : 50,
+			modbusTimeout : 5000,
+			modbusConnectDelay : 2000,
+			modbusAdjust : false
 		};
 
 		this.on('ready', this.onReady.bind(this));
@@ -145,34 +150,28 @@ class Sun2000 extends utils.Adapter {
 				native: {}
 			});
 
-			await this.extendObjectAsync(path+'.optimizer', {
-				type: 'channel',
-				common: {
-					name: 'channel optimizer'
-				},
-				native: {}
-			});
-
 		}
 	}
 
-	async InitProcess() {
+	async StartProcess() {
 		try {
 			await this.initPath();
-			/*
-			await this.checkAndPrepare();
-            */
+			//await this.checkAndPrepare();
 		} catch (err) {
 			this.log.warn(err);
 		}
-		this.modbusClient = new ModbusConnect(this,this.settings.address,this.settings.port);
+		this.modbusClient = new ModbusConnect(this,this.settings);
+		this.modbusClient.setCallback(this.endOfmodbusAdjust.bind(this));
 		this.state = new Registers(this);
+		await this.atMidnight();
 		this.dataPolling();
 		this.runWatchDog();
-		this.atMidnight();
 	}
 
-	atMidnight() {
+	async atMidnight() {
+		this.settings.sunrise = getAstroDate(this,'sunrise');
+		this.settings.sunset = getAstroDate(this,'sunset');
+
 		const now = new Date();
 		const night = new Date(
 			now.getFullYear(),
@@ -220,25 +219,167 @@ class Sun2000 extends utils.Adapter {
 		}
 	}
 
+	async endOfmodbusAdjust (info) {
+		if (!info.modbusAdjust) {
+			this.settings.modbusAdjust = info.modbusAdjust;
+			this.settings.modbusDelay = Math.round(info.delay);
+			//siehe jsonConfig.json
+			if (this.settings.modbusDelay > 6000) this.settings.modbusDelay = 6000; //siehe jsonConfig.json
+			this.settings.modbusTimeout = info.timeout;
+			if (this.settings.modbusTimeout > 30000) this.settings.modbusTimeout = 50000;
+			this.settings.modbusConnectDelay = info.connectDelay;
+			if (this.settings.modbusConnectDelay > 15000) this.settings.modbusConnectDelay = 15000;
+			//orignal Interval
+			this.settings.highIntervall = this.config.updateInterval*1000;
+			await this.adjustInverval();
+			this.config.autoAdjust = this.settings.modbusAdjust;
+			this.config.connectDelay = this.settings.modbusConnectDelay;
+			this.config.delay = this.settings.modbusDelay;
+			this.config.timeout = this.settings.modbusTimeout;
+			this.updateConfig(this.config);
+			this.log.info(JSON.stringify(info));
+			this.log.info('New modbus settings are stored.');
+		}
+	}
+
+	async adjustInverval () {
+		if (this.settings.modbusAdjust) {
+			this.settings.highIntervall = 10000*this.settings.modbusIds.length;
+		} else {
+			const minInterval = this.settings.modbusIds.length*(5000+5*this.settings.modbusDelay);
+			if (minInterval> this.settings.highIntervall) {
+				this.settings.highIntervall = minInterval;
+			}
+		}
+		this.settings.lowIntervall = 60000;
+		if (this.settings.highIntervall > this.settings.lowIntervall) {
+			this.settings.lowIntervall = this.settings.highIntervall;
+		}
+		if (!this.settings.modbusAdjust) {
+			if (this.config.updateInterval < Math.round(this.settings.highIntervall/1000)) {
+				this.log.warn('The interval is too small. The value has been changed on '+this.config.updateInterval+' sec.');
+				this.log.warn('Please check your configuration!');
+			}
+		}
+		await this.setStateAsync('info.modbusUpdateInterval', {val: Math.round(this.settings.highIntervall/1000), ack: true});
+	}
+
+	/**
+	 * Is called when databases are connected and adapter received configuration.
+	 */
+	async onReady() {
+		// Initialize your adapter here
+		// tiemout now in ms
+		if (this.config.timeout <= 10) {
+			this.config.timeout = this.config.timeout*1000;
+			this.updateConfig(this.config);
+		}
+		await this.setStateAsync('info.ip', {val: this.config.address, ack: true});
+		await this.setStateAsync('info.port', {val: this.config.port, ack: true});
+		await this.setStateAsync('info.modbusIds', {val: this.config.modbusIds, ack: true});
+		await this.setStateAsync('info.modbusTimeout', {val: this.config.timeout, ack: true});
+		await this.setStateAsync('info.modbusConnectDelay', {val: this.config.connectDelay, ack: true});
+		await this.setStateAsync('info.modbusDelay', {val: this.config.delay, ack: true});
+		// Load user settings
+		if (this.config.address !== '' || this.config.port > 0 || this.config.updateInterval > 0 ) {
+			this.settings.address = this.config.address;
+			this.settings.port = this.config.port;
+			this.settings.modbusTimeout = this.config.timeout; //ms
+			this.settings.modbusDelay = this.config.delay; //ms
+			this.settings.modbusConnectDelay = this.config.connectDelay; //ms
+			this.settings.modbusAdjust = this.config.autoAdjust;
+			this.settings.modbusIds = this.config.modbusIds.split(',').map((n) => {return Number(n);});
+			this.settings.highIntervall = this.config.updateInterval*1000; //ms
+			if (this.settings.modbusAdjust) {
+				await this.setStateAsync('info.JSONhealth', {val: '{ message: "Adjust modbus settings"}', ack: true});
+			} else {
+				await this.setStateAsync('info.JSONhealth', {val: '{message : "Information is collected"}', ack: true});
+			}
+
+			if (this.settings.modbusIds.length > 0 && this.settings.modbusIds.length < 6) {
+				this.adjustInverval();
+
+				for (const [i,id] of this.settings.modbusIds.entries()) {
+					this.inverters.push({
+						index: i,
+						modbusId: id,
+						energyLoss: 0.022,
+						meter: (i==0),
+						numberBatteryUnits : 0,
+						deviceStatus : 0,
+						preventWarnings : false
+					});
+				}
+				await this.StartProcess();
+			} else {
+				this.log.error('*** Adapter deactivated, can\'t parse modbusIds ! ***');
+				this.setForeignState('system.' + this.namespace + '.alive', false);
+			}
+		} else {
+			this.log.error('*** Adapter deactivated, credentials missing in Adapter Settings !  ***');
+			this.setForeignState('system.' + this.namespace + '.alive', false);
+		}
+	}
+
+	async dataPolling() {
+		function timeLeft(target,factor =1) {
+			const left = Math.round((target - new Date().getTime())*factor);
+			if (left < 0) return 0;
+			return left;
+		}
+		const start = new Date().getTime();
+		this.log.debug('### DataPolling START '+ Math.round((start-this.lastTimeUpdated)/1000)+' sec ###');
+		if (this.lastTimeUpdated > 0 && (start-this.lastTimeUpdated)/1000 > this.settings.highIntervall/1000 + 1) {
+			this.log.info('Interval '+(start-this.lastTimeUpdated)/1000+' sec');
+		}
+		this.lastTimeUpdated = start;
+		const nextLoop = this.settings.highIntervall - start % (this.settings.highIntervall) + start;
+
+		//High Loop
+		for (const item of this.inverters) {
+			this.modbusClient.setID(item.modbusId);
+			this.lastStateUpdatedHigh += await this.state.updateStates(item,this.modbusClient,dataRefreshRate.high,timeLeft(nextLoop));
+		}
+		await this.state.runPostProcessHooks(dataRefreshRate.high);
+
+		if (timeLeft(nextLoop) > 0) {
+			//Low Loop
+			for (const [i,item] of this.inverters.entries()) {
+				this.modbusClient.setID(item.modbusId);
+				//this.log.debug('+++++ Loop: '+i+' Left Time: '+timeLeft(nextLoop,(i+1)/this.inverters.length)+' Faktor '+((i+1)/this.inverters.length));
+				this.lastStateUpdatedLow += await this.state.updateStates(item,this.modbusClient,dataRefreshRate.low,timeLeft(nextLoop,(i+1)/this.inverters.length));
+			}
+		}
+		await this.state.runPostProcessHooks(dataRefreshRate.low);
+
+		if (this.pollingTimer) this.clearTimeout(this.pollingTimer);
+		this.pollingTimer = this.setTimeout(() => {
+			this.dataPolling(); //recursiv
+		}, timeLeft(nextLoop));
+		this.log.debug('### DataPolling STOP ###');
+	}
+
 	runWatchDog() {
 		this.watchDogHandle && this.clearInterval(this.watchDogHandle);
 		this.watchDogHandle = this.setInterval( () => {
 			const sinceLastUpdate = new Date().getTime() - this.lastTimeUpdated; //ms
-			this.log.debug('Watchdog: time of last update '+sinceLastUpdate/1000+' sec');
+			this.log.debug('Watchdog: time since last update '+sinceLastUpdate/1000+' sec');
 			const lastIsConnected = this.isConnected;
 			this.isConnected = this.lastStateUpdatedHigh > 0 && sinceLastUpdate < this.settings.highIntervall*3;
 			if (this.isConnected !== lastIsConnected ) this.setState('info.connection', this.isConnected, true);
-			if (!this.isConnected) {
-				this.setStateAsync('info.JSONhealth', {val: '{errno:1, message: "Can\'t connect to inverter"}', ack: true});
-			} else {
+			//this.connected = this.isConnected;
+			if (!this.settings.modbusAdjust) {
+				if (!this.isConnected && !this.settings.modbusAdjust) {
+					this.setStateAsync('info.JSONhealth', {val: '{errno:1, message: "Can\'t connect to inverter"}', ack: true});
+				}
 				if (this.alreadyRunWatchDog) {
-					const ret = this.state.ChechReadError(this.settings.lowIntervall*2);
+					const ret = this.state.CheckReadError(this.settings.lowIntervall*2);
 					if (ret.errno) this.log.warn(ret.message);
 					this.setStateAsync('info.JSONhealth', {val: JSON.stringify(ret), ack: true});
-				} else {
-					this.alreadyRunWatchDog = true;
 				}
 			}
+
+			if (!this.alreadyRunWatchDog) this.alreadyRunWatchDog = true;
 
 			this.lastStateUpdatedLow = 0;
 			this.lastStateUpdatedHigh = 0;
@@ -252,98 +393,17 @@ class Sun2000 extends utils.Adapter {
 		},this.settings.lowIntervall);
 	}
 
-
-	/**
-	 * Is called when databases are connected and adapter received configuration.
-	 */
-	async onReady() {
-
-		// Initialize your adapter here
-		await this.setStateAsync('info.ip', {val: this.config.address, ack: true});
-		await this.setStateAsync('info.port', {val: this.config.port, ack: true});
-		await this.setStateAsync('info.modbusIds', {val: this.config.modbusIds, ack: true});
-		await this.setStateAsync('info.JSONhealth', {val: '{message : "Information is collected"}', ack: true});
-
-		// Load user settings
-		if (this.config.address !== '' || this.config.port > 0 || this.config.updateInterval > 0 ) {
-			this.settings.highIntervall = this.config.updateInterval*1000; //ms
-			this.settings.address = this.config.address;
-			this.settings.port = this.config.port;
-			this.settings.modbusIds = this.config.modbusIds.split(',').map((n) => {return Number(n);});
-
-			if (this.settings.modbusIds.length > 0 && this.settings.modbusIds.length < 6) {
-				if (this.settings.highIntervall < 5000*this.settings.modbusIds.length ) {
-					this.settings.highIntervall = 5000*this.settings.modbusIds.length;
-				}
-				if (this.settings.highIntervall >= this.settings.lowIntervall) {
-					this.settings.lowIntervall = this.settings.highIntervall;
-				}
-				await this.setStateAsync('info.modbusUpdateInterval', {val: this.settings.highIntervall/1000, ack: true});
-				for (const [i,id] of this.settings.modbusIds.entries()) {
-					this.inverters.push({index: i, modbusId: id, energyLoss: 0.008, meter: (i==0)}); //own energy consumption of inverter 8 W
-				}
-				await this.InitProcess();
-			} else {
-				this.log.error('*** Adapter deactivated, can\'t parse modbusIds ! ***');
-				this.setForeignState('system.' + this.namespace + '.alive', false);
-			}
-		} else {
-			this.log.error('*** Adapter deactivated, credentials missing in Adapter Settings !  ***');
-			this.setForeignState('system.' + this.namespace + '.alive', false);
-		}
-	}
-
-	async dataPolling() {
-
-		function timeLeft(target,factor =1) {
-			const left = Math.round((target - new Date().getTime())*factor);
-			if (left < 0) return 0;
-			return left;
-		}
-
-		const start = new Date().getTime();
-		this.log.debug('### DataPolling START '+ Math.round((start-this.lastTimeUpdated)/1000)+' sec ###');
-		if (this.lastTimeUpdated > 0 && (start-this.lastTimeUpdated)/1000 > this.settings.highIntervall/1000 + 1) {
-			this.log.info('time intervall '+(start-this.lastTimeUpdated)/1000+' sec');
-		}
-		this.lastTimeUpdated = start;
-		const nextLoop = this.settings.highIntervall - start % (this.settings.highIntervall) + start;
-
-		//High Loop
-		for (const item of this.inverters) {
-			this.modbusClient.setID(item.modbusId);
-			this.lastStateUpdatedHigh += await this.state.updateStates(item,this.modbusClient,dataRefreshRate.high,timeLeft(nextLoop));
-		}
-		await this.state.runProcessHooks(dataRefreshRate.high);
-
-		if (timeLeft(nextLoop) > 500) {
-			//Low Loop
-			for (const [i,item] of this.inverters.entries()) {
-				this.modbusClient.setID(item.modbusId);
-				//this.log.debug('+++++ Loop: '+i+' Left Time: '+timeLeft(nextLoop,(i+1)/this.inverters.length)+' Faktor '+((i+1)/this.inverters.length));
-				this.lastStateUpdatedLow += await this.state.updateStates(item,this.modbusClient,dataRefreshRate.low,timeLeft(nextLoop,(i+1)/this.inverters.length));
-			}
-		}
-		await this.state.runProcessHooks(dataRefreshRate.low);
-
-		if (this.pollingTimer) this.clearTimeout(this.pollingTimer);
-		this.pollingTimer = this.setTimeout(() => {
-			this.dataPolling(); //recursiv
-		}, timeLeft(nextLoop));
-		this.log.debug('### DataPolling STOP ###');
-	}
-
 	/**
 	 * Is called when adapter shuts down - callback has to be called under any circumstances!
 	 * @param {() => void} callback
 	 */
 	onUnload(callback) {
 		try {
+			this.setState('info.connection', false, true);
 			this.pollingTimer && this.clearTimeout(this.pollingTimer);
 			this.mitnightTimer && this.clearTimeout(this.mitnightTimer);
 			this.watchDogHandle && this.clearInterval(this.watchDogHandle);
 			this.modbusClient && this.modbusClient.close();
-			this.setState('info.connection', false, true);
 			this.log.info('cleaned everything up...');
 			callback();
 		} catch (e) {
@@ -373,7 +433,8 @@ class Sun2000 extends utils.Adapter {
 	// * @param {string} id
 	// * @param {ioBroker.State | null | undefined} state
 	// **/
-	/*
+
+  /*
 	onStateChange(id, state) {
 		if (state) {
 			// The state was changed
@@ -383,7 +444,9 @@ class Sun2000 extends utils.Adapter {
 			this.log.info(`state ${id} deleted`);
 		}
 	}
-    */
+
+	*/
+
 	// If you need to accept messages in your adapter, uncomment the following block and the corresponding line in the constructor.
 	// /**
 	//  * Some message was sent to this instance over message box. Used by email, pushover, text2speech, ...
