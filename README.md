@@ -74,7 +74,7 @@ The development of this adapter was inspired by discussions from the forum threa
 -->
 
 ### **WORK IN PROGRESS**
-* collected `sun2000.0.collected.chargeDischargePowercharge` is not refreshed #47
+* state `sun2000.0.collected.chargeDischargePowercharge` is not always refreshed #47
 
 ### 0.3.0 (2024-02-10)
 * add battery unit information for example temperature #40

@@ -225,10 +225,10 @@ class Sun2000 extends utils.Adapter {
 			this.settings.modbusDelay = Math.round(info.delay);
 			//siehe jsonConfig.json
 			if (this.settings.modbusDelay > 6000) this.settings.modbusDelay = 6000;
-			this.settings.modbusTimeout = info.timeout;
+			this.settings.modbusTimeout = Math.round(info.timeout);
 			if (this.settings.modbusTimeout > 30000) this.settings.modbusTimeout = 30000;
 			if (this.settings.modbusTimeout < 5000) this.settings.modbusTimeout = 5000;
-			this.settings.modbusConnectDelay = info.connectDelay;
+			this.settings.modbusConnectDelay = Math.round(info.connectDelay);
 			if (this.settings.modbusConnectDelay > 10000) this.settings.modbusConnectDelay = 10000;
 			if (this.settings.modbusConnectDelay < 2000) this.settings.modbusConnectDelay = 2000;
 			//orignal Interval
