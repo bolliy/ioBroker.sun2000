@@ -72,6 +72,10 @@ The development of this adapter was inspired by discussions from the forum threa
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+* collected `sun2000.0.collected.chargeDischargePowercharge` is not refreshed #47
+
 ### 0.3.0 (2024-02-10)
 * add battery unit information for example temperature #40
 * modbus timeout, connect delay and delay can be configured #34

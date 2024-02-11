@@ -329,6 +329,7 @@ class Sun2000 extends utils.Adapter {
 			if (left < 0) return 0;
 			return left;
 		}
+
 		const start = new Date().getTime();
 		this.log.debug('### DataPolling START '+ Math.round((start-this.lastTimeUpdated)/1000)+' sec ###');
 		if (this.lastTimeUpdated > 0 && (start-this.lastTimeUpdated)/1000 > this.settings.highIntervall/1000 + 1) {
