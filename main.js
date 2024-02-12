@@ -305,11 +305,9 @@ class Sun2000 extends utils.Adapter {
 					this.inverters.push({
 						index: i,
 						modbusId: id,
-						energyLoss: 0.022,
 						meter: (i==0),
 						numberBatteryUnits : 0,
-						deviceStatus : 0,
-						preventWarnings : false
+						deviceStatus : 0
 					});
 				}
 				await this.StartProcess();
