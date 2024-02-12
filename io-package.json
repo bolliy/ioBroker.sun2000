@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "news": {
+      "0.3.1": {
+        "en": "state `sun2000.0.collected.chargeDischargePowercharge` is not always refreshed #47",
+        "de": "state `sun2000.0.collected.chargeDischargePowercharge` ist nicht immer erfrischt #47",
+        "ru": "состояние `sun2000.0.collected.chargeDischargePowercharge' не всегда обновляется #47",
+        "pt": "estado `sun2000.0.collected.chargeDischargePowercharge` nem sempre é atualizado #47",
+        "nl": "staat ",
+        "fr": "état `sun2000.0.collected.chargeDéchargePowercharge` n'est pas toujours rafraîchi #47",
+        "it": "stato `sun2000.0.colletto.chargeDischargePowercharge` non è sempre aggiornato #47",
+        "es": "estado `sun2000.0.collected.chargeDischargePowercharge` no siempre se actualiza #47",
+        "pl": "state 'sun2000.0.0 collected.chargeDischargePowercharge' nie zawsze jest odświeżona # 47",
+        "uk": "#47",
+        "zh-cn": "state `sun 2000.00.colled. 充电电源 ' 并不总是刷新47"
+      },
       "0.3.0": {
         "en": "add battery unit information for example temperature #40\nmodbus timeout, connect delay and delay can be configured #34\ndevice status as plain text `sun2000.0.inverter.x.derived.deviceStatus`\nIntroduction of a driver model. A separate driver can be created for each device #41",
         "de": "batterieeinheitsinformationen hinzufügen, zum beispiel temperatur #40\nmodbus timeout, verbinden verzögerung und verzögerung kann #34 konfiguriert werden\ngerätestatus als Klartext `sun2000.0.inverter.x.derived.deviceStatus `\nEinführung eines Fahrermodells. Ein separater Treiber kann für jedes Gerät #41 erstellt werden",
