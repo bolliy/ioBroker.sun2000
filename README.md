@@ -10,6 +10,10 @@
 
 **Tests:** ![Test and Release](https://github.com/bolliy/ioBroker.sun2000/workflows/Test%20and%20Release/badge.svg)
 
+**This adapter uses Sentry libraries to automatically report exceptions and code errors to the developers.**\
+For more details and for information how to disable the error reporting see [Sentry-Plugin Documentation](https://github.com/ioBroker/plugin-sentry#plugin-sentry)!\
+Sentry reporting is used starting with js-controller 3.0.
+
 ## sun2000 adapter for ioBroker
 
 Read register data from Huawei SUN2000 inverter and LUNA2000 battery using Modbus TCP. 

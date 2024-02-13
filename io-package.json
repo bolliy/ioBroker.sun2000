@@ -156,7 +156,12 @@
       {
         "admin": ">=5.1.13"
       }
-    ]
+    ],
+    "plugins": {
+      "sentry": {
+        "dsn": "https://db3e5fdd0eb6d8d72f68cac7b0970180@o4506370651652096.ingest.sentry.io/4506371101818880"
+      }
+    }
   },
   "native": {
     "address": "",

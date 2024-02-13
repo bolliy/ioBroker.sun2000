@@ -219,6 +219,24 @@ class Sun2000 extends utils.Adapter {
 		}
 	}
 
+
+	sendToSentry (msg)  {
+		if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
+			const sentryInstance = this.getPluginInstance('sentry');
+			if (sentryInstance) {
+				const Sentry = sentryInstance.getSentryObject();
+				if (Sentry) this.log.info('send to Sentry value: '+msg);
+				Sentry && Sentry.withScope(scope => {
+					scope.setLevel('info');
+					scope.setExtra('key', 'value');
+					Sentry.captureMessage(msg, 'info'); // Level "info"
+				});
+			}
+		}
+	}
+
+
+
 	async endOfmodbusAdjust (info) {
 		if (!info.modbusAdjust) {
 			this.settings.modbusAdjust = info.modbusAdjust;
@@ -241,6 +259,8 @@ class Sun2000 extends utils.Adapter {
 			this.updateConfig(this.config);
 			this.log.info(JSON.stringify(info));
 			this.log.info('New modbus settings are stored.');
+
+			//this.sendToSentry(JSON.stringify(info));
 		}
 	}
 
