@@ -72,6 +72,10 @@ The development of this adapter was inspired by discussions from the forum threa
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+
+**WORK IN PROGRESS**
+* detect offline mode of slave inverters #34
+
 ### 0.3.1 (2024-02-12)
 * state `sun2000.0.collected.chargeDischargePowercharge` is not always refreshed #47
 
