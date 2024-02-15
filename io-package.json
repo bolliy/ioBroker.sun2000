@@ -129,7 +129,8 @@
       "modbus",
       "sun2000",
       "luna2000",
-      "inverter"
+      "inverter",
+      "charger"
     ],
     "license": "MIT",
     "platform": "Javascript/Node.js",
@@ -164,6 +165,7 @@
     }
   },
   "native": {
+    "deviceClass" : "inverter",
     "address": "",
     "port": 502,
     "modbusIds": "1",
@@ -201,14 +203,29 @@
       "type": "state",
       "common": {
         "name": {
-          "en": "Inverter connected",
-          "de": "Wechselrichter angeschlossen"
+          "en": "device connected",
+          "de": "Gerät angeschlossen"
         },
         "type": "boolean",
         "role": "indicator.connected",
         "read": true,
         "write": false,
-        "desc": "Is the inverter connected?"
+        "desc": "Is the device connected?"
+      }
+    },
+    {
+      "_id": "info.deviceClass",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "Device class",
+          "de": "Geräteklasse"
+        },
+        "type": "string",
+        "role": "value",
+        "read": true,
+        "write": false,
+        "desc": "Class of devices"
       }
     },
     {
@@ -216,14 +233,14 @@
       "type": "state",
       "common": {
         "name": {
-          "en": "Inverter IP",
-          "de": "Wechselrichter IP"
+          "en": "Device IP",
+          "de": "Geräte IP"
         },
         "type": "string",
         "role": "indicator.ip",
         "read": true,
         "write": false,
-        "desc": "Inverter IP address"
+        "desc": "Device IP address"
       }
     },
     {
@@ -238,7 +255,7 @@
         "role": "indicator.port",
         "read": true,
         "write": false,
-        "desc": "Inverter modbus port"
+        "desc": " Device modbus port"
       }
     },
     {
@@ -246,14 +263,14 @@
       "type": "state",
       "common": {
         "name": {
-          "en": "Modbus IDs of inverters",
-          "de": "Modbus IDs der Wechselrichters"
+          "en": "Modbus IDs of devices",
+          "de": "Modbus IDs der Geräte"
         },
         "type": "string",
         "role": "indicator.id",
         "read": true,
         "write": false,
-        "desc": "Inverter modbus inverter IDs"
+        "desc": "deevice modbus IDs"
       }
     },
     {
