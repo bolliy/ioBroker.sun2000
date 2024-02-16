@@ -1,4 +1,3 @@
-/* eslint-disable no-empty */
 'use strict';
 
 /*
@@ -11,7 +10,7 @@ const utils = require('@iobroker/adapter-core');
 // Load your modules here, e.g.:
 const Registers = require(__dirname + '/lib/register.js');
 const ModbusConnect = require(__dirname + '/lib/modbus_connect.js');
-const {dataRefreshRate} = require(__dirname + '/lib/types.js');
+const {deviceClasses,dataRefreshRate} = require(__dirname + '/lib/types.js');
 const {getAstroDate} = require(__dirname + '/lib/tools.js');
 
 class Sun2000 extends utils.Adapter {
@@ -30,10 +29,11 @@ class Sun2000 extends utils.Adapter {
 		this.lastStateUpdatedHigh = 0;
 		this.lastStateUpdatedLow = 0;
 		this.isConnected = false;
-		this.inverters = [];
+		this.devices = [];
 		this.settings = {
 			highIntervall : 20000,
 			lowIntervall : 60000,
+			deviceClass : '',
 			address : '',
 			port : 520,
 			modbusDelay : 50,
@@ -50,116 +50,106 @@ class Sun2000 extends utils.Adapter {
 	}
 
 	async initPath() {
-		/*
-		await this.extendObjectAsync('info', {
-			type: 'channel',
-			common: {
-				name: 'channel info',
-				role: 'info'
-			},
-			native: {}
-		});
-
-		await this.extendObjectAsync('info.connection', {
-			type: 'state',
-			common: {
-				name: 'Inverter connected',
-				type: 'boolean',
-				role: 'indicator.connected',
-				read: true,
-				write: false,
-				desc: 'Is the inverter connected?'
-			},
-			native: {},
-		});
-		*/
-		await this.extendObjectAsync('meter', {
-			type: 'device',
-			common: {
-				name: 'device meter'
-			},
-			native: {}
-		});
-		await this.extendObjectAsync('collected', {
-			type: 'channel',
-			common: {
-				name: 'channel collected'
-			},
-			native: {}
-		});
-
-		await this.extendObjectAsync('inverter', {
-			type: 'device',
-			common: {
-				name: 'device inverter'
-			},
-			native: {}
-		});
-
-		//ES6 use a for (const [index, item] of array.entries()) of loop
-		for (const [i, item] of this.inverters.entries()) {
-			const path = 'inverter.'+String(i);
-			item.path = path;
-			await this.extendObjectAsync(path, {
+		//inverter
+		if (this.settings.deviceClass == deviceClasses.inverter) {
+			this.log.debug('Ich bin ein '+deviceClasses.inverter);
+			await this.extendObjectAsync('meter', {
+				type: 'device',
+				common: {
+					name: 'device meter'
+				},
+				native: {}
+			});
+			await this.extendObjectAsync('collected', {
 				type: 'channel',
 				common: {
-					name: 'channel modbus'+i,
-					role: 'indicator'
+					name: 'channel collected'
 				},
 				native: {}
 			});
 
-			await this.extendObjectAsync(path+'.grid', {
-				type: 'channel',
+			await this.extendObjectAsync('inverter', {
+				type: 'device',
 				common: {
-					name: 'channel grid'
+					name: 'device inverter'
 				},
 				native: {}
 			});
 
-			await this.extendObjectAsync(path+'.info', {
-				type: 'channel',
+			//ES6 use a for (const [index, item] of array.entries()) of loop
+			for (const [i, item] of this.devices.entries()) {
+				const path = 'inverter.'+String(i);
+				item.path = path;
+				await this.extendObjectAsync(path, {
+					type: 'channel',
+					common: {
+						name: 'channel modbus'+i,
+						role: 'indicator'
+					},
+					native: {}
+				});
+
+				await this.extendObjectAsync(path+'.grid', {
+					type: 'channel',
+					common: {
+						name: 'channel grid'
+					},
+					native: {}
+				});
+
+				await this.extendObjectAsync(path+'.info', {
+					type: 'channel',
+					common: {
+						name: 'channel info',
+						role: 'info'
+					},
+					native: {}
+				});
+
+				await this.extendObjectAsync(path+'.battery', {
+					type: 'channel',
+					common: {
+						name: 'channel battery'
+					},
+					native: {}
+				});
+
+				await this.extendObjectAsync(path+'.string', {
+					type: 'channel',
+					common: {
+						name: 'channel string'
+					},
+					native: {}
+				});
+
+				await this.extendObjectAsync(path+'.derived', {
+					type: 'channel',
+					common: {
+						name: 'channel derived'
+					},
+					native: {}
+				});
+
+			}
+		}
+		//SmartCharger
+		if (this.settings.deviceClass == deviceClasses.charger) {
+			this.log.debug('Ich bin ein '+deviceClasses.charger);
+			await this.extendObjectAsync('charger', {
+				type: 'device',
 				common: {
-					name: 'channel info',
-					role: 'info'
+					name: 'device charger'
 				},
 				native: {}
 			});
-
-			await this.extendObjectAsync(path+'.battery', {
-				type: 'channel',
-				common: {
-					name: 'channel battery'
-				},
-				native: {}
-			});
-
-			await this.extendObjectAsync(path+'.string', {
-				type: 'channel',
-				common: {
-					name: 'channel string'
-				},
-				native: {}
-			});
-
-			await this.extendObjectAsync(path+'.derived', {
-				type: 'channel',
-				common: {
-					name: 'channel derived'
-				},
-				native: {}
-			});
-
+			for (const [i, item] of this.devices.entries()) {
+				item.path = 'charger.'+String(i);
+			}
 		}
 	}
 
 	async StartProcess() {
-		try {
-			await this.initPath();
-			//await this.checkAndPrepare();
-		} catch (err) {
-			this.log.warn(err);
-		}
+		await this.initPath();
 		this.modbusClient = new ModbusConnect(this,this.settings);
 		this.modbusClient.setCallback(this.endOfmodbusAdjust.bind(this));
 		this.state = new Registers(this);
@@ -192,7 +182,7 @@ class Sun2000 extends utils.Adapter {
 		// Time of Using charging and discharging periodes (siehe Table 5-6)
 		// tCDP[3]= 127
 		const tCDP = [1,0,1440,383,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]; //nicht aus dem Netz laden
-		this.modbusClient.setID(this.inverters[0].modbusId);  //Master Inverter
+		this.modbusClient.setID(this.devices[0].modbusId);  //Master Inverter
 		const data = await this.modbusClient.readHoldingRegisters(47086,4); //
 		/*
          127 - Working mode settings
@@ -219,6 +209,24 @@ class Sun2000 extends utils.Adapter {
 		}
 	}
 
+
+	sendToSentry (msg)  {
+		if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
+			const sentryInstance = this.getPluginInstance('sentry');
+			if (sentryInstance) {
+				const Sentry = sentryInstance.getSentryObject();
+				if (Sentry) this.log.info('send to Sentry value: '+msg);
+				Sentry && Sentry.withScope(scope => {
+					scope.setLevel('info');
+					scope.setExtra('key', 'value');
+					Sentry.captureMessage(msg, 'info'); // Level "info"
+				});
+			}
+		}
+	}
+
+
+
 	async endOfmodbusAdjust (info) {
 		if (!info.modbusAdjust) {
 			this.settings.modbusAdjust = info.modbusAdjust;
@@ -241,6 +249,8 @@ class Sun2000 extends utils.Adapter {
 			this.updateConfig(this.config);
 			this.log.info(JSON.stringify(info));
 			this.log.info('New modbus settings are stored.');
+
+			//this.sendToSentry(JSON.stringify(info));
 		}
 	}
 
@@ -276,6 +286,7 @@ class Sun2000 extends utils.Adapter {
 			this.config.timeout = this.config.timeout*1000;
 			this.updateConfig(this.config);
 		}
+		await this.setStateAsync('info.deviceClass', {val: this.config.deviceClass, ack: true});
 		await this.setStateAsync('info.ip', {val: this.config.address, ack: true});
 		await this.setStateAsync('info.port', {val: this.config.port, ack: true});
 		await this.setStateAsync('info.modbusIds', {val: this.config.modbusIds, ack: true});
@@ -283,7 +294,8 @@ class Sun2000 extends utils.Adapter {
 		await this.setStateAsync('info.modbusConnectDelay', {val: this.config.connectDelay, ack: true});
 		await this.setStateAsync('info.modbusDelay', {val: this.config.delay, ack: true});
 		// Load user settings
-		if (this.config.address !== '' || this.config.port > 0 || this.config.updateInterval > 0 ) {
+		if (this.config.address != '' && this.config.port > 0 && this.config.modbusIds != '' && this.config.updateInterval > 0 ) {
+			this.settings.deviceClass = this.config.deviceClass,
 			this.settings.address = this.config.address;
 			this.settings.port = this.config.port;
 			this.settings.modbusTimeout = this.config.timeout; //ms
@@ -302,7 +314,7 @@ class Sun2000 extends utils.Adapter {
 				this.adjustInverval();
 
 				for (const [i,id] of this.settings.modbusIds.entries()) {
-					this.inverters.push({
+					this.devices.push({
 						index: i,
 						modbusId: id,
 						meter: (i==0),
@@ -312,12 +324,12 @@ class Sun2000 extends utils.Adapter {
 				}
 				await this.StartProcess();
 			} else {
-				this.log.error('*** Adapter deactivated, can\'t parse modbusIds ! ***');
-				this.setForeignState('system.' + this.namespace + '.alive', false);
+				this.log.error('*** Adapter deactivated, can\'t parse modbusIds! ***');
+				this.setForeignState('system.adapter.' + this.namespace + '.alive', false);
 			}
 		} else {
-			this.log.error('*** Adapter deactivated, credentials missing in Adapter Settings !  ***');
-			this.setForeignState('system.' + this.namespace + '.alive', false);
+			this.log.error('*** Adapter deactivated, Adapter Settings incomplete! ***');
+			this.setForeignState('system.adapter.' + this.namespace + '.alive', false);
 		}
 	}
 
@@ -337,7 +349,7 @@ class Sun2000 extends utils.Adapter {
 		const nextLoop = this.settings.highIntervall - start % (this.settings.highIntervall) + start;
 
 		//High Loop
-		for (const item of this.inverters) {
+		for (const item of this.devices) {
 			this.modbusClient.setID(item.modbusId);
 			this.lastStateUpdatedHigh += await this.state.updateStates(item,this.modbusClient,dataRefreshRate.high,timeLeft(nextLoop));
 		}
@@ -345,10 +357,10 @@ class Sun2000 extends utils.Adapter {
 
 		if (timeLeft(nextLoop) > 0) {
 			//Low Loop
-			for (const [i,item] of this.inverters.entries()) {
+			for (const [i,item] of this.devices.entries()) {
 				this.modbusClient.setID(item.modbusId);
-				//this.log.debug('+++++ Loop: '+i+' Left Time: '+timeLeft(nextLoop,(i+1)/this.inverters.length)+' Faktor '+((i+1)/this.inverters.length));
-				this.lastStateUpdatedLow += await this.state.updateStates(item,this.modbusClient,dataRefreshRate.low,timeLeft(nextLoop,(i+1)/this.inverters.length));
+				//this.log.debug('+++++ Loop: '+i+' Left Time: '+timeLeft(nextLoop,(i+1)/this.devices.length)+' Faktor '+((i+1)/this.devices.length));
+				this.lastStateUpdatedLow += await this.state.updateStates(item,this.modbusClient,dataRefreshRate.low,timeLeft(nextLoop,(i+1)/this.devices.length));
 			}
 		}
 		await this.state.runPostProcessHooks(dataRefreshRate.low);

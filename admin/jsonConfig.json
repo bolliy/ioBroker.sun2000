@@ -6,10 +6,24 @@
             "type": "panel",
             "label": "Main settings",
             "items": {
+                "deviceClass": {
+                    "type": "select",
+                    "label": "device class",
+                    "newLine": false,
+                    "tooltip": "The class of devices",
+                    "sm": 12,
+                    "md": 8,
+                    "lg": 2,
+                    "options": [
+                        {"value": "inverter", "label": "Inverter sun2000"},
+                        {"value": "charger", "label": "AC charger"}
+                    ],
+                    "noTranslation": true
+                },
                 "address": {
                     "type": "text",
                     "label": "address",
-                    "newLine": false,
+                    "newLine": true,
                     "tooltip": "The inverters ip address",
                     "sm": 12,
                     "md": 8,
