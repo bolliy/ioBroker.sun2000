@@ -165,7 +165,6 @@
     }
   },
   "native": {
-    "deviceClass" : "inverter",
     "address": "",
     "port": 502,
     "modbusIds": "1",

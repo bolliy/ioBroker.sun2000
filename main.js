@@ -10,7 +10,7 @@ const utils = require('@iobroker/adapter-core');
 // Load your modules here, e.g.:
 const Registers = require(__dirname + '/lib/register.js');
 const ModbusConnect = require(__dirname + '/lib/modbus_connect.js');
-const {deviceClasses,dataRefreshRate} = require(__dirname + '/lib/types.js');
+const {driverClasses,dataRefreshRate} = require(__dirname + '/lib/types.js');
 const {getAstroDate} = require(__dirname + '/lib/tools.js');
 
 class Sun2000 extends utils.Adapter {
@@ -33,7 +33,6 @@ class Sun2000 extends utils.Adapter {
 		this.settings = {
 			highIntervall : 20000,
 			lowIntervall : 60000,
-			deviceClass : '',
 			address : '',
 			port : 520,
 			modbusDelay : 50,
@@ -51,39 +50,38 @@ class Sun2000 extends utils.Adapter {
 
 	async initPath() {
 		//inverter
-		if (this.settings.deviceClass == deviceClasses.inverter) {
-			this.log.debug('Ich bin ein '+deviceClasses.inverter);
-			await this.extendObjectAsync('meter', {
-				type: 'device',
-				common: {
-					name: 'device meter'
-				},
-				native: {}
-			});
-			await this.extendObjectAsync('collected', {
-				type: 'channel',
-				common: {
-					name: 'channel collected'
-				},
-				native: {}
-			});
+		await this.extendObjectAsync('meter', {
+			type: 'device',
+			common: {
+				name: 'device meter'
+			},
+			native: {}
+		});
+		await this.extendObjectAsync('collected', {
+			type: 'channel',
+			common: {
+				name: 'channel collected'
+			},
+			native: {}
+		});
 
-			await this.extendObjectAsync('inverter', {
-				type: 'device',
-				common: {
-					name: 'device inverter'
-				},
-				native: {}
-			});
+		await this.extendObjectAsync('inverter', {
+			type: 'device',
+			common: {
+				name: 'device inverter'
+			},
+			native: {}
+		});
 
-			//ES6 use a for (const [index, item] of array.entries()) of loop
-			for (const [i, item] of this.devices.entries()) {
-				const path = 'inverter.'+String(i);
+		for (const item of this.devices) {
+			if (item.driverClass == driverClasses.inverter) {
+				const path = 'inverter.'+item.index.toString();
+				//const i = item.index;
 				item.path = path;
 				await this.extendObjectAsync(path, {
 					type: 'channel',
 					common: {
-						name: 'channel modbus'+i,
+						name: 'channel inverter '+item.index.toString(),
 						role: 'indicator'
 					},
 					native: {}
@@ -129,12 +127,25 @@ class Sun2000 extends utils.Adapter {
 					},
 					native: {}
 				});
-
 			}
+
+			if (item.driverClass == driverClasses.sdongle) {
+				item.path = '';
+				await this.extendObjectAsync(item.path+'sdongle', {
+					type: 'channel',
+					common: {
+						name: 'channel SDongle'
+					},
+					native: {}
+				});
+			}
+
 		}
+
+		/*
 		//SmartCharger
-		if (this.settings.deviceClass == deviceClasses.charger) {
-			this.log.debug('Ich bin ein '+deviceClasses.charger);
+		if (this.settings.deviceClass == driverClasses.charger) {
+			this.log.debug('Ich bin ein '+driverClasses.charger);
 			await this.extendObjectAsync('charger', {
 				type: 'device',
 				common: {
@@ -146,6 +157,7 @@ class Sun2000 extends utils.Adapter {
 				item.path = 'charger.'+String(i);
 			}
 		}
+		*/
 	}
 
 	async StartProcess() {
@@ -286,7 +298,7 @@ class Sun2000 extends utils.Adapter {
 			this.config.timeout = this.config.timeout*1000;
 			this.updateConfig(this.config);
 		}
-		await this.setStateAsync('info.deviceClass', {val: this.config.deviceClass, ack: true});
+		//await this.setStateAsync('info.deviceClass', {val: this.config.deviceClass, ack: true});
 		await this.setStateAsync('info.ip', {val: this.config.address, ack: true});
 		await this.setStateAsync('info.port', {val: this.config.port, ack: true});
 		await this.setStateAsync('info.modbusIds', {val: this.config.modbusIds, ack: true});
@@ -295,7 +307,6 @@ class Sun2000 extends utils.Adapter {
 		await this.setStateAsync('info.modbusDelay', {val: this.config.delay, ack: true});
 		// Load user settings
 		if (this.config.address != '' && this.config.port > 0 && this.config.modbusIds != '' && this.config.updateInterval > 0 ) {
-			this.settings.deviceClass = this.config.deviceClass,
 			this.settings.address = this.config.address;
 			this.settings.port = this.config.port;
 			this.settings.modbusTimeout = this.config.timeout; //ms
@@ -312,16 +323,25 @@ class Sun2000 extends utils.Adapter {
 
 			if (this.settings.modbusIds.length > 0 && this.settings.modbusIds.length < 6) {
 				this.adjustInverval();
-
+				//ES6 use a for (const [index, item] of array.entries()) of loop
 				for (const [i,id] of this.settings.modbusIds.entries()) {
 					this.devices.push({
 						index: i,
 						modbusId: id,
+						driverClass: driverClasses.inverter,
 						meter: (i==0),
 						numberBatteryUnits : 0,
 						deviceStatus : 0
 					});
 				}
+				this.devices.push({
+					index: 0,
+					modbusId: 100,
+					driverClass: driverClasses.sdongle,
+					meter: false,
+					numberBatteryUnits : 0,
+					deviceStatus : 0
+				});
 				await this.StartProcess();
 			} else {
 				this.log.error('*** Adapter deactivated, can\'t parse modbusIds! ***');
@@ -350,7 +370,6 @@ class Sun2000 extends utils.Adapter {
 
 		//High Loop
 		for (const item of this.devices) {
-			this.modbusClient.setID(item.modbusId);
 			this.lastStateUpdatedHigh += await this.state.updateStates(item,this.modbusClient,dataRefreshRate.high,timeLeft(nextLoop));
 		}
 		await this.state.runPostProcessHooks(dataRefreshRate.high);
@@ -358,7 +377,6 @@ class Sun2000 extends utils.Adapter {
 		if (timeLeft(nextLoop) > 0) {
 			//Low Loop
 			for (const [i,item] of this.devices.entries()) {
-				this.modbusClient.setID(item.modbusId);
 				//this.log.debug('+++++ Loop: '+i+' Left Time: '+timeLeft(nextLoop,(i+1)/this.devices.length)+' Faktor '+((i+1)/this.devices.length));
 				this.lastStateUpdatedLow += await this.state.updateStates(item,this.modbusClient,dataRefreshRate.low,timeLeft(nextLoop,(i+1)/this.devices.length));
 			}
