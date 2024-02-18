@@ -20,8 +20,11 @@ Read register data from Huawei SUN2000 inverter and LUNA2000 battery using Modbu
 
 Feel free to follow the discussions in the german [iobroker forum](https://forum.iobroker.net/topic/71768/test-adapter-sun2000-v0-1-x-huawei-wechselrichter)
 
-Modbus interface definition (Issue 5, 2023-02-16):
+inverter modbus interface definition (Issue 5, 2023-02-16):
 https://forum.iobroker.net/assets/uploads/files/1699119419919-solar-inverter-modbus-interface-definitions-v5.pdf
+SdongleA modbus interface definition (Issue 2, 2023-04-20):
+https://photomate.zendesk.com/hc/en-gb/articles/7275970817437-SDongleA-MODBUS-Interface-Definitions 
+
 
 ## Supported hardware
 
@@ -78,7 +81,9 @@ The development of this adapter was inspired by discussions from the forum threa
 -->
 
 **WORK IN PROGRESS**
-* detect offline mode of slave inverters #34
+* detect standby mode of inverters #34
+* read register data from SDongleA 
+* implemented modbus-cache-proxy (only read holding registers)
 
 ### 0.3.1 (2024-02-12)
 * state `sun2000.0.collected.chargeDischargePowercharge` is not always refreshed #47
