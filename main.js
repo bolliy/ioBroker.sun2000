@@ -35,9 +35,9 @@ class Sun2000 extends utils.Adapter {
 			lowIntervall : 60000,
 			address : '',
 			port : 520,
-			modbusDelay : 50,
-			modbusTimeout : 5000,
-			modbusConnectDelay : 2000,
+			modbusTimeout : 10000,
+			modbusConnectDelay : 5000,
+			modbusDelay : 0,
 			modbusAdjust : false
 		};
 
@@ -132,9 +132,9 @@ class Sun2000 extends utils.Adapter {
 			if (item.driverClass == driverClasses.sdongle) {
 				item.path = '';
 				await this.extendObjectAsync(item.path+'sdongle', {
-					type: 'channel',
+					type: 'device',
 					common: {
-						name: 'channel SDongle'
+						name: 'device SDongle'
 					},
 					native: {}
 				});
@@ -261,7 +261,6 @@ class Sun2000 extends utils.Adapter {
 			this.updateConfig(this.config);
 			this.log.info(JSON.stringify(info));
 			this.log.info('New modbus settings are stored.');
-
 			//this.sendToSentry(JSON.stringify(info));
 		}
 	}
@@ -314,7 +313,13 @@ class Sun2000 extends utils.Adapter {
 			this.settings.modbusConnectDelay = this.config.connectDelay; //ms
 			this.settings.modbusAdjust = this.config.autoAdjust;
 			this.settings.modbusIds = this.config.modbusIds.split(',').map((n) => {return Number(n);});
+			this.settings.sDongleId = Number(this.config.sDongleId) ?? -1;
+			if (this.settings.sDongleId < -1 && this.settings.sDongleId >= 255) this.settings.sDongleId = -1;
 			this.settings.highIntervall = this.config.updateInterval*1000; //ms
+			this.settings.proxy_address = this.config.proxy_address;
+			this.settings.proxy_port = this.config.proxy_port;
+			this.settings.proxy_active = this.config.proxy_active;
+
 			if (this.settings.modbusAdjust) {
 				await this.setStateAsync('info.JSONhealth', {val: '{ message: "Adjust modbus settings"}', ack: true});
 			} else {
@@ -334,14 +339,16 @@ class Sun2000 extends utils.Adapter {
 						deviceStatus : 0
 					});
 				}
-				this.devices.push({
-					index: 0,
-					modbusId: 100,
-					driverClass: driverClasses.sdongle,
-					meter: false,
-					numberBatteryUnits : 0,
-					deviceStatus : 0
-				});
+				if (this.settings.sDongleId >= 0) {
+					this.devices.push({
+						index: 0,
+						modbusId: this.settings.sDongleId,
+						driverClass: driverClasses.sdongle,
+						//meter: false,
+						//numberBatteryUnits : 0,
+						deviceStatus : 0
+					});
+				}
 				await this.StartProcess();
 			} else {
 				this.log.error('*** Adapter deactivated, can\'t parse modbusIds! ***');
@@ -405,6 +412,7 @@ class Sun2000 extends utils.Adapter {
 				}
 				if (this.alreadyRunWatchDog) {
 					const ret = this.state.CheckReadError(this.settings.lowIntervall*2);
+					this.log.debug(JSON.stringify(this.modbusClient.info));
 					if (ret.errno) this.log.warn(ret.message);
 					this.setStateAsync('info.JSONhealth', {val: JSON.stringify(ret), ack: true});
 				}

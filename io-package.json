@@ -168,11 +168,15 @@
     "address": "",
     "port": 502,
     "modbusIds": "1",
+    "sDongleId" : "100",
     "updateInterval": 20,
     "timeout": 10000,
     "delay": 0,
     "connectDelay": 5000,
-    "autoAdjust": true
+    "autoAdjust": true,
+    "proxy_active" : false,
+    "proxy_address" : "0.0.0.0",
+    "proxy_port" : 502
   },
   "objects": [],
   "instanceObjects": [
@@ -210,21 +214,6 @@
         "read": true,
         "write": false,
         "desc": "Is the device connected?"
-      }
-    },
-    {
-      "_id": "info.deviceClass",
-      "type": "state",
-      "common": {
-        "name": {
-          "en": "Device class",
-          "de": "Geräteklasse"
-        },
-        "type": "string",
-        "role": "value",
-        "read": true,
-        "write": false,
-        "desc": "Class of devices"
       }
     },
     {

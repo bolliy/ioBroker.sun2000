@@ -80,6 +80,43 @@
                     "tooltip": "automatic adjustment of the modbus settings"
                 }          
             }
-        }        
+        },
+        "tab3": {
+            "type": "panel",
+            "label": "Modbus-proxy",
+            "items": {
+                "proxy_active": {
+                    "type": "checkbox",
+                    "label": "aktive",
+                    "newLine": true,
+                    "tooltip": "modbus-proxy aktive"
+                }, 
+                "proxy_address": {
+                    "type": "text",
+                    "label": "address",
+                    "newLine": true,
+                    "tooltip": "The modbus-proxy ip address",
+                    "sm": 12,
+                    "md": 8,
+                    "lg": 2
+                },
+                "proxy_port": {
+                    "type": "number",
+                    "label": "port",
+                    "min" : 1,
+                    "max" : 655565,
+                    "default": 502,
+                    "newLine": true,
+                    "tooltip": "The modbus-proxy TCP port"
+                },
+                "sDongleId": {
+                    "type": "text",
+                    "label": "Modbus SDongle ID",
+                    "lg": 2,
+                    "newLine": true,
+                    "tooltip": "The modbus SDongle ID"
+                }
+            }
+        }    
     }
 }
