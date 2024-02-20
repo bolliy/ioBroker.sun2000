@@ -174,9 +174,9 @@
     "delay": 0,
     "connectDelay": 5000,
     "autoAdjust": true,
-    "proxy_active" : false,
-    "proxy_address" : "0.0.0.0",
-    "proxy_port" : 502
+    "ms_active" : false,
+    "ms_address" : "0.0.0.0",
+    "ms_port" : 502
   },
   "objects": [],
   "instanceObjects": [

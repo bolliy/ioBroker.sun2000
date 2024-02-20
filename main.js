@@ -10,6 +10,7 @@ const utils = require('@iobroker/adapter-core');
 // Load your modules here, e.g.:
 const Registers = require(__dirname + '/lib/register.js');
 const ModbusConnect = require(__dirname + '/lib/modbus_connect.js');
+const ModbusServer = require(__dirname + '/lib/modbus_server.js');
 const {driverClasses,dataRefreshRate} = require(__dirname + '/lib/types.js');
 const {getAstroDate} = require(__dirname + '/lib/tools.js');
 
@@ -38,7 +39,10 @@ class Sun2000 extends utils.Adapter {
 			modbusTimeout : 10000,
 			modbusConnectDelay : 5000,
 			modbusDelay : 0,
-			modbusAdjust : false
+			modbusAdjust : false,
+			ms_address : '127.0.0.1',
+			ms_port : 520,
+			ms_active : false
 		};
 
 		this.on('ready', this.onReady.bind(this));
@@ -168,6 +172,11 @@ class Sun2000 extends utils.Adapter {
 		await this.atMidnight();
 		this.dataPolling();
 		this.runWatchDog();
+		//v0.4.x
+		if (this.settings.ms_active) {
+			this.modbusServer = new ModbusServer(this,this.settings.ms_address,this.settings.ms_port);
+			this.modbusServer.connect();
+		}
 	}
 
 	async atMidnight() {
@@ -316,9 +325,9 @@ class Sun2000 extends utils.Adapter {
 			this.settings.sDongleId = Number(this.config.sDongleId) ?? -1;
 			if (this.settings.sDongleId < -1 && this.settings.sDongleId >= 255) this.settings.sDongleId = -1;
 			this.settings.highIntervall = this.config.updateInterval*1000; //ms
-			this.settings.proxy_address = this.config.proxy_address;
-			this.settings.proxy_port = this.config.proxy_port;
-			this.settings.proxy_active = this.config.proxy_active;
+			this.settings.ms_address = this.config.ms_address;
+			this.settings.ms_port = this.config.ms_port;
+			this.settings.ms_active = this.config.ms_active;
 
 			if (this.settings.modbusAdjust) {
 				await this.setStateAsync('info.JSONhealth', {val: '{ message: "Adjust modbus settings"}', ack: true});
@@ -335,18 +344,14 @@ class Sun2000 extends utils.Adapter {
 						modbusId: id,
 						driverClass: driverClasses.inverter,
 						meter: (i==0),
-						numberBatteryUnits : 0,
-						deviceStatus : 0
+						numberBatteryUnits : 0
 					});
 				}
 				if (this.settings.sDongleId >= 0) {
 					this.devices.push({
-						index: 0,
+						index: this.settings.modbusIds.length,
 						modbusId: this.settings.sDongleId,
-						driverClass: driverClasses.sdongle,
-						//meter: false,
-						//numberBatteryUnits : 0,
-						deviceStatus : 0
+						driverClass: driverClasses.sdongle
 					});
 				}
 				await this.StartProcess();
@@ -407,19 +412,26 @@ class Sun2000 extends utils.Adapter {
 			if (this.isConnected !== lastIsConnected ) this.setState('info.connection', this.isConnected, true);
 			//this.connected = this.isConnected;
 			if (!this.settings.modbusAdjust) {
-				if (!this.isConnected && !this.settings.modbusAdjust) {
+				if (!this.isConnected) {
 					this.setStateAsync('info.JSONhealth', {val: '{errno:1, message: "Can\'t connect to inverter"}', ack: true});
 				}
 				if (this.alreadyRunWatchDog) {
 					const ret = this.state.CheckReadError(this.settings.lowIntervall*2);
+					const obj = {...ret,modbus: {...this.modbusClient.info}};
 					this.log.debug(JSON.stringify(this.modbusClient.info));
 					if (ret.errno) this.log.warn(ret.message);
-					this.setStateAsync('info.JSONhealth', {val: JSON.stringify(ret), ack: true});
+					this.setStateAsync('info.JSONhealth', {val: JSON.stringify(obj), ack: true});
+					//v0.4.x
+					try {
+						this.modbusServer && !this.modbusServer.isConnected && this.modbusServer.connect();
+					} catch (err) {
+						this.log.warn('Error !!');
+					}
 				}
+
 			}
 
 			if (!this.alreadyRunWatchDog) this.alreadyRunWatchDog = true;
-
 			this.lastStateUpdatedLow = 0;
 			this.lastStateUpdatedHigh = 0;
 
@@ -439,6 +451,7 @@ class Sun2000 extends utils.Adapter {
 	onUnload(callback) {
 		try {
 			this.setState('info.connection', false, true);
+			this.modbusServer && this.modbusServer.close();
 			this.pollingTimer && this.clearTimeout(this.pollingTimer);
 			this.mitnightTimer && this.clearTimeout(this.mitnightTimer);
 			this.watchDogHandle && this.clearInterval(this.watchDogHandle);

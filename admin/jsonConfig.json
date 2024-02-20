@@ -83,31 +83,31 @@
         },
         "tab3": {
             "type": "panel",
-            "label": "Modbus-proxy",
+            "label": "Modbus Server",
             "items": {
-                "proxy_active": {
+                "ms_active": {
                     "type": "checkbox",
                     "label": "aktive",
                     "newLine": true,
-                    "tooltip": "modbus-proxy aktive"
+                    "tooltip": "modbus-server aktive"
                 }, 
-                "proxy_address": {
+                "ms_address": {
                     "type": "text",
                     "label": "address",
                     "newLine": true,
-                    "tooltip": "The modbus-proxy ip address",
+                    "tooltip": "The modbus-server ip address",
                     "sm": 12,
                     "md": 8,
                     "lg": 2
                 },
-                "proxy_port": {
+                "ms_port": {
                     "type": "number",
                     "label": "port",
                     "min" : 1,
                     "max" : 655565,
                     "default": 502,
                     "newLine": true,
-                    "tooltip": "The modbus-proxy TCP port"
+                    "tooltip": "The modbus-server TCP port"
                 },
                 "sDongleId": {
                     "type": "text",
