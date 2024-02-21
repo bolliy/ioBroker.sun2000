@@ -426,7 +426,7 @@ class Sun2000 extends utils.Adapter {
 					//v0.4.x
 					if (this.modbusServer) {
 						!this.modbusServer.isConnected && this.modbusServer.connect();
-						//this.settings.ms_sentry && this.sendToSentry(this.modbusServer.info);
+						this.settings.ms_sentry && this.sendToSentry(this.modbusServer.info);
 						this.log.info(JSON.stringify(this.modbusServer.info));
 					}
 				}
