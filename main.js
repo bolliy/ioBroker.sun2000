@@ -213,7 +213,6 @@ class Sun2000 extends utils.Adapter {
 		}
 	}
 
-
 	sendToSentry (msg)  {
 		if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
 			const sentryInstance = this.getPluginInstance('sentry');
@@ -228,8 +227,6 @@ class Sun2000 extends utils.Adapter {
 			}
 		}
 	}
-
-
 
 	async endOfmodbusAdjust (info) {
 		if (!info.modbusAdjust) {
@@ -327,7 +324,7 @@ class Sun2000 extends utils.Adapter {
 				for (const [i,id] of this.settings.modbusIds.entries()) {
 					this.devices.push({
 						index: i,
-						duration: 5000,
+						duration: 4500,
 						modbusId: id,
 						driverClass: driverClasses.inverter,
 						meter: (i==0),
@@ -413,7 +410,8 @@ class Sun2000 extends utils.Adapter {
 					//v0.4.x
 					if (this.modbusServer) {
 						!this.modbusServer.isConnected && this.modbusServer.connect();
-						this.log.info(JSON.stringify(this.modbusServer.info));
+						const info = this.modbusServer.info; 
+						if (info?.stat != {}) this.log.info(JSON.stringify(this.modbusServer.info));
 					}
 				}
 
