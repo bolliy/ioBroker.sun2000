@@ -42,7 +42,8 @@ class Sun2000 extends utils.Adapter {
 			modbusAdjust : false,
 			ms_address : '127.0.0.1',
 			ms_port : 520,
-			ms_active : false
+			ms_active : false,
+			ms_sentry : false
 		};
 
 		this.on('ready', this.onReady.bind(this));
@@ -328,6 +329,7 @@ class Sun2000 extends utils.Adapter {
 			this.settings.ms_address = this.config.ms_address;
 			this.settings.ms_port = this.config.ms_port;
 			this.settings.ms_active = this.config.ms_active;
+			this.settings.ms_sentry = this.config.ms_sentry;
 
 			if (this.settings.modbusAdjust) {
 				await this.setStateAsync('info.JSONhealth', {val: '{ message: "Adjust modbus settings"}', ack: true});
@@ -422,10 +424,10 @@ class Sun2000 extends utils.Adapter {
 					if (ret.errno) this.log.warn(ret.message);
 					this.setStateAsync('info.JSONhealth', {val: JSON.stringify(obj), ack: true});
 					//v0.4.x
-					try {
-						this.modbusServer && !this.modbusServer.isConnected && this.modbusServer.connect();
-					} catch (err) {
-						this.log.warn('Error !!');
+					if (this.modbusServer) {
+						!this.modbusServer.isConnected && this.modbusServer.connect();
+						//this.settings.ms_sentry && this.sendToSentry(this.modbusServer.info);
+						this.log.info(JSON.stringify(this.modbusServer.info));
 					}
 				}
 

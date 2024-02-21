@@ -176,7 +176,8 @@
     "autoAdjust": true,
     "ms_active" : false,
     "ms_address" : "0.0.0.0",
-    "ms_port" : 502
+    "ms_port" : 502,
+    "ms_sentry" : false
   },
   "objects": [],
   "instanceObjects": [

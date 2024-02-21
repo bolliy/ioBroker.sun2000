@@ -47,6 +47,49 @@
         },
         "tab2": {
             "type": "panel",
+            "label": "Modbus Server",
+            "items": {
+                "sDongleId": {
+                    "type": "text",
+                    "label": "Modbus SDongle ID",
+                    "lg": 2,
+                    "newLine": true,
+                    "tooltip": "The modbus SDongle ID"
+                },
+                "ms_active": {
+                    "type": "checkbox",
+                    "label": "aktive",
+                    "newLine": true,
+                    "tooltip": "modbus-server aktive"
+                }, 
+                "ms_address": {
+                    "type": "text",
+                    "label": "address",
+                    "newLine": true,
+                    "tooltip": "The modbus-server ip address",
+                    "sm": 12,
+                    "md": 8,
+                    "lg": 2
+                },
+                "ms_port": {
+                    "type": "number",
+                    "label": "port",
+                    "min" : 502,
+                    "max" : 655565,
+                    "default": 502,
+                    "newLine": true,
+                    "tooltip": "The modbus-server TCP port"
+                },
+                "ms_sentry": {
+                    "type": "checkbox",
+                    "label": "sentry",
+                    "newLine": true,
+                    "tooltip": "Log modbus server info to sentry"
+                }
+            }
+        },    
+        "tab3": {
+            "type": "panel",
             "label": "Modbus timing",
             "items": {
                 "timeout": {
@@ -79,43 +122,6 @@
                     "newLine": true,
                     "tooltip": "automatic adjustment of the modbus settings"
                 }          
-            }
-        },
-        "tab3": {
-            "type": "panel",
-            "label": "Modbus Server",
-            "items": {
-                "ms_active": {
-                    "type": "checkbox",
-                    "label": "aktive",
-                    "newLine": true,
-                    "tooltip": "modbus-server aktive"
-                }, 
-                "ms_address": {
-                    "type": "text",
-                    "label": "address",
-                    "newLine": true,
-                    "tooltip": "The modbus-server ip address",
-                    "sm": 12,
-                    "md": 8,
-                    "lg": 2
-                },
-                "ms_port": {
-                    "type": "number",
-                    "label": "port",
-                    "min" : 502,
-                    "max" : 655565,
-                    "default": 502,
-                    "newLine": true,
-                    "tooltip": "The modbus-server TCP port"
-                },
-                "sDongleId": {
-                    "type": "text",
-                    "label": "Modbus SDongle ID",
-                    "lg": 2,
-                    "newLine": true,
-                    "tooltip": "The modbus SDongle ID"
-                }
             }
         }    
     }
