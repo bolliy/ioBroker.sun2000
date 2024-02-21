@@ -42,8 +42,7 @@ class Sun2000 extends utils.Adapter {
 			modbusAdjust : false,
 			ms_address : '127.0.0.1',
 			ms_port : 520,
-			ms_active : false,
-			ms_sentry : false
+			ms_active : false
 		};
 
 		this.on('ready', this.onReady.bind(this));
@@ -146,23 +145,6 @@ class Sun2000 extends utils.Adapter {
 			}
 
 		}
-
-		/*
-		//SmartCharger
-		if (this.settings.deviceClass == driverClasses.charger) {
-			this.log.debug('Ich bin ein '+driverClasses.charger);
-			await this.extendObjectAsync('charger', {
-				type: 'device',
-				common: {
-					name: 'device charger'
-				},
-				native: {}
-			});
-			for (const [i, item] of this.devices.entries()) {
-				item.path = 'charger.'+String(i);
-			}
-		}
-		*/
 	}
 
 	async StartProcess() {
@@ -268,8 +250,8 @@ class Sun2000 extends utils.Adapter {
 			this.config.connectDelay = this.settings.modbusConnectDelay;
 			this.config.delay = this.settings.modbusDelay;
 			this.config.timeout = this.settings.modbusTimeout;
-			this.updateConfig(this.config);
-			this.log.info(JSON.stringify(info));
+			//this.updateConfig(this.config);
+			//this.log.info(JSON.stringify(info));
 			this.log.info('New modbus settings are stored.');
 			//this.sendToSentry(JSON.stringify(info));
 		}
@@ -279,9 +261,13 @@ class Sun2000 extends utils.Adapter {
 		if (this.settings.modbusAdjust) {
 			this.settings.highIntervall = 10000*this.settings.modbusIds.length;
 		} else {
-			const minInterval = this.settings.modbusIds.length*(5000+5*this.settings.modbusDelay);
+			let minInterval = this.settings.modbusIds.length*this.settings.modbusDelay*2.5; //len*5*delay/2
+			for (const device of this.devices) {
+				if (device.duration) minInterval += device.duration;
+				else minInterval += 1000;
+			}
 			if (minInterval> this.settings.highIntervall) {
-				this.settings.highIntervall = minInterval;
+				this.settings.highIntervall = Math.round(minInterval);
 			}
 		}
 		this.settings.lowIntervall = 60000;
@@ -302,18 +288,18 @@ class Sun2000 extends utils.Adapter {
 	 */
 	async onReady() {
 		// Initialize your adapter here
-		// tiemout now in ms
+		// tiemout is now in ms
 		if (this.config.timeout <= 10) {
 			this.config.timeout = this.config.timeout*1000;
 			this.updateConfig(this.config);
 		}
-		//await this.setStateAsync('info.deviceClass', {val: this.config.deviceClass, ack: true});
 		await this.setStateAsync('info.ip', {val: this.config.address, ack: true});
 		await this.setStateAsync('info.port', {val: this.config.port, ack: true});
 		await this.setStateAsync('info.modbusIds', {val: this.config.modbusIds, ack: true});
 		await this.setStateAsync('info.modbusTimeout', {val: this.config.timeout, ack: true});
 		await this.setStateAsync('info.modbusConnectDelay', {val: this.config.connectDelay, ack: true});
 		await this.setStateAsync('info.modbusDelay', {val: this.config.delay, ack: true});
+		await this.setStateAsync('info.modbusServer', {val: this.config.ms_active, ack: true});
 		// Load user settings
 		if (this.config.address != '' && this.config.port > 0 && this.config.modbusIds != '' && this.config.updateInterval > 0 ) {
 			this.settings.address = this.config.address;
@@ -329,7 +315,6 @@ class Sun2000 extends utils.Adapter {
 			this.settings.ms_address = this.config.ms_address;
 			this.settings.ms_port = this.config.ms_port;
 			this.settings.ms_active = this.config.ms_active;
-			this.settings.ms_sentry = this.config.ms_sentry;
 
 			if (this.settings.modbusAdjust) {
 				await this.setStateAsync('info.JSONhealth', {val: '{ message: "Adjust modbus settings"}', ack: true});
@@ -343,6 +328,7 @@ class Sun2000 extends utils.Adapter {
 				for (const [i,id] of this.settings.modbusIds.entries()) {
 					this.devices.push({
 						index: i,
+						duration: 5000,
 						modbusId: id,
 						driverClass: driverClasses.inverter,
 						meter: (i==0),
@@ -352,6 +338,7 @@ class Sun2000 extends utils.Adapter {
 				if (this.settings.sDongleId >= 0) {
 					this.devices.push({
 						index: this.settings.modbusIds.length,
+						duration: 500,
 						modbusId: this.settings.sDongleId,
 						driverClass: driverClasses.sdongle
 					});
@@ -426,7 +413,6 @@ class Sun2000 extends utils.Adapter {
 					//v0.4.x
 					if (this.modbusServer) {
 						!this.modbusServer.isConnected && this.modbusServer.connect();
-						this.settings.ms_sentry && this.sendToSentry(this.modbusServer.info);
 						this.log.info(JSON.stringify(this.modbusServer.info));
 					}
 				}

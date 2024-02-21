@@ -176,8 +176,7 @@
     "autoAdjust": true,
     "ms_active" : false,
     "ms_address" : "0.0.0.0",
-    "ms_port" : 502,
-    "ms_sentry" : false
+    "ms_port" : 502
   },
   "objects": [],
   "instanceObjects": [
@@ -336,6 +335,22 @@
         },
         "type": "string",
         "role": "indicator.alarm.health",
+        "read": true,
+        "write": false,
+        "desc": "",
+        "unit": ""
+      }
+    },
+    {
+      "_id": "info.modusServer",
+      "type": "state",
+      "common": {
+        "name": {
+          "en": "modbus Server active",
+          "de": "modbus Server aktiv"
+        },
+        "type": "boolean",
+        "role": "value",
         "read": true,
         "write": false,
         "desc": "",
