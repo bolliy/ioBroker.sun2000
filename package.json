@@ -24,7 +24,8 @@
   "dependencies": {
     "@iobroker/adapter-core": "^3.0.4",
     "suncalc2": "^1.8.1",
-    "modbus-serial": "^8.0.16"
+    "modbus-serial": "^8.0.16",
+    "tcp-port-used": "^1.0.2"
   },
   "devDependencies": {
     "@alcalzone/release-script": "^3.6.0",

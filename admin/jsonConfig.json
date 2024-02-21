@@ -103,7 +103,7 @@
                 "ms_port": {
                     "type": "number",
                     "label": "port",
-                    "min" : 1,
+                    "min" : 502,
                     "max" : 655565,
                     "default": 502,
                     "newLine": true,
