@@ -323,7 +323,6 @@ class Sun2000 extends utils.Adapter {
 			}
 
 			if (this.settings.modbusIds.length > 0 && this.settings.modbusIds.length < 6) {
-				this.adjustInverval();
 				//ES6 use a for (const [index, item] of array.entries()) of loop
 				for (const [i,id] of this.settings.modbusIds.entries()) {
 					this.devices.push({
@@ -338,11 +337,12 @@ class Sun2000 extends utils.Adapter {
 				if (this.settings.sDongleId >= 0) {
 					this.devices.push({
 						index: this.settings.modbusIds.length,
-						duration: 500,
+						duration: 1000,
 						modbusId: this.settings.sDongleId,
 						driverClass: driverClasses.sdongle
 					});
 				}
+				await this.adjustInverval();
 				await this.StartProcess();
 			} else {
 				this.log.error('*** Adapter deactivated, can\'t parse modbusIds! ***');

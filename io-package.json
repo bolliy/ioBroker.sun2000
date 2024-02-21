@@ -342,11 +342,11 @@
       }
     },
     {
-      "_id": "info.modusServer",
+      "_id": "info.modbusServer",
       "type": "state",
       "common": {
         "name": {
-          "en": "modbus Server active",
+          "en": "modbus server active",
           "de": "modbus Server aktiv"
         },
         "type": "boolean",
