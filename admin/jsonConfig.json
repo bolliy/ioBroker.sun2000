@@ -26,7 +26,7 @@
                 },
                 "modbusIds": {
                     "type": "text",
-                    "label": "Modbus Inverter IDs",
+                    "label": "Modbus inverter IDs",
                     "sm": 12,
                     "md": 8,
                     "lg": 3,
@@ -89,13 +89,13 @@
                     "type": "checkbox",
                     "label": "ms aktive",
                     "newLine": true,
-                    "tooltip": "modbus-server aktive"
+                    "tooltip": "Modbus server (slave) via TCP for read-only is active"
                 }, 
                 "ms_address": {
                     "type": "text",
                     "label": "ms address",
                     "newLine": true,
-                    "tooltip": "The modbus-server ip address",
+                    "tooltip": "listen at localhost = 127.0.0.1",
                     "sm": 12,
                     "md": 8,
                     "lg": 2
@@ -105,16 +105,15 @@
                     "label": "ms port",
                     "min" : 1,
                     "max" : 655565,
-                    "default": 502,
                     "newLine": true,
-                    "tooltip": "The modbus-server TCP port"
+                    "tooltip": "The Modbus Server TCP port"
                 },
                 "sDongleId": {
                     "type": "text",
-                    "label": "Modbus SDongle ID",
+                    "label": "SDongleA modbus ID",
                     "lg": 2,
                     "newLine": true,
-                    "tooltip": "The modbus SDongle ID"
+                    "tooltip": "The modbus SDongle modbus ID"
                 }
             }
         }

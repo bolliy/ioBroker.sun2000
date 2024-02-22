@@ -242,12 +242,12 @@ class Sun2000 extends utils.Adapter {
 			if (this.settings.modbusConnectDelay < 2000) this.settings.modbusConnectDelay = 2000;
 			//orignal Interval
 			this.settings.highIntervall = this.config.updateInterval*1000;
-			await this.adjustInverval();
+			//await this.adjustInverval();
 			this.config.autoAdjust = this.settings.modbusAdjust;
 			this.config.connectDelay = this.settings.modbusConnectDelay;
 			this.config.delay = this.settings.modbusDelay;
 			this.config.timeout = this.settings.modbusTimeout;
-			//this.updateConfig(this.config);
+			this.updateConfig(this.config);
 			//this.log.info(JSON.stringify(info));
 			this.log.info('New modbus settings are stored.');
 			//this.sendToSentry(JSON.stringify(info));
@@ -397,7 +397,6 @@ class Sun2000 extends utils.Adapter {
 			const lastIsConnected = this.isConnected;
 			this.isConnected = this.lastStateUpdatedHigh > 0 && sinceLastUpdate < this.settings.highIntervall*3;
 			if (this.isConnected !== lastIsConnected ) this.setState('info.connection', this.isConnected, true);
-			//this.connected = this.isConnected;
 			if (!this.settings.modbusAdjust) {
 				if (!this.isConnected) {
 					this.setStateAsync('info.JSONhealth', {val: '{errno:1, message: "Can\'t connect to inverter"}', ack: true});
@@ -411,11 +410,11 @@ class Sun2000 extends utils.Adapter {
 					//v0.4.x
 					if (this.modbusServer) {
 						!this.modbusServer.isConnected && this.modbusServer.connect();
-						const info = this.modbusServer.info;
-						if (info?.stat != {}) this.log.info(JSON.stringify(this.modbusServer.info));
+						const stat = this.modbusServer.info?.stat;
+						//is object not empty
+						if (Object.keys(stat).length > 0) this.log.info('Modbus tcp server: '+JSON.stringify(this.modbusServer.info));
 					}
 				}
-
 			}
 
 			if (!this.alreadyRunWatchDog) this.alreadyRunWatchDog = true;

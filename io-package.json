@@ -168,15 +168,15 @@
     "address": "",
     "port": 502,
     "modbusIds": "1",
-    "sDongleId" : "100",
+    "sDongleId": "100",
     "updateInterval": 20,
     "timeout": 10000,
     "delay": 0,
     "connectDelay": 5000,
     "autoAdjust": true,
-    "ms_active" : false,
-    "ms_address" : "0.0.0.0",
-    "ms_port" : 502
+    "ms_active": false,
+    "ms_address": "0.0.0.0",
+    "ms_port": 502
   },
   "objects": [],
   "instanceObjects": [
