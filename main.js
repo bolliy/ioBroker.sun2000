@@ -271,13 +271,14 @@ class Sun2000 extends utils.Adapter {
 		if (this.settings.highIntervall > this.settings.lowIntervall) {
 			this.settings.lowIntervall = this.settings.highIntervall;
 		}
+		const newHighInterval = Math.round(this.settings.highIntervall/1000);
 		if (!this.settings.modbusAdjust) {
-			if (this.config.updateInterval < Math.round(this.settings.highIntervall/1000)) {
-				this.log.warn('The interval is too small. The value has been changed on '+this.config.updateInterval+' sec.');
+			if (this.config.updateInterval < newHighInterval) {
+				this.log.warn('The interval is too small. The value has been changed on '+newHighInterval+' sec.');
 				this.log.warn('Please check your configuration!');
 			}
 		}
-		await this.setStateAsync('info.modbusUpdateInterval', {val: Math.round(this.settings.highIntervall/1000), ack: true});
+		await this.setStateAsync('info.modbusUpdateInterval', {val: newHighInterval, ack: true});
 	}
 
 	/**
@@ -410,7 +411,7 @@ class Sun2000 extends utils.Adapter {
 					//v0.4.x
 					if (this.modbusServer) {
 						!this.modbusServer.isConnected && this.modbusServer.connect();
-						const info = this.modbusServer.info; 
+						const info = this.modbusServer.info;
 						if (info?.stat != {}) this.log.info(JSON.stringify(this.modbusServer.info));
 					}
 				}
