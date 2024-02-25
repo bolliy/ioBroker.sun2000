@@ -180,9 +180,9 @@
     "delay": 0,
     "connectDelay": 5000,
     "autoAdjust": true,
-    "ms.active": false,
-    "ms.address": "0.0.0.0",
-    "ms.port": 502,
+    "ms_active": false,
+    "ms_address": "0.0.0.0",
+    "ms_port": 502,
     "sDongleId": "100"
   },
   "objects": [],

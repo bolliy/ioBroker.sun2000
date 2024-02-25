@@ -96,14 +96,13 @@
                     "text": "Third party device such as wallbox, energy manager etc. can receive data even if the modbus interface of inverter is already in use. In addition you can mirror the sun2000 data to another IoBroker instance.",
                     "newLine": true
                 },
-
-                "ms.active": {
+                "ms_active": {
                     "type": "checkbox",
                     "label": "ms.aktive",
                     "newLine": true,
                     "tooltip": "Modbus-proxy via TCP for read-only is active"
                 }, 
-                "ms.address": {
+                "ms_address": {
                     "type": "text",
                     "label": "ms.address",
                     "newLine": true,
@@ -112,7 +111,7 @@
                     "md": 8,
                     "lg": 2
                 },
-                "ms.port": {
+                "ms_port": {
                     "type": "port",
                     "label": "ms.port",
                     "sm":3,

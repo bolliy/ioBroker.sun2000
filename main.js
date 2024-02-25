@@ -155,10 +155,10 @@ class Sun2000 extends utils.Adapter {
 		this.modbusClient.setCallback(this.endOfmodbusAdjust.bind(this));
 		this.state = new Registers(this);
 		await this.atMidnight();
-		this.dataPolling();
+		//this.dataPolling();
 		this.runWatchDog();
 		//v0.4.x
-		if (this.settings.ms_active) {
+		if (this.settings.ms.active) {
 			this.modbusServer = new ModbusServer(this,this.settings.ms.address,this.settings.ms.port);
 			this.modbusServer.connect();
 		}
@@ -299,7 +299,7 @@ class Sun2000 extends utils.Adapter {
 		await this.setStateAsync('info.modbusTimeout', {val: this.config.timeout, ack: true});
 		await this.setStateAsync('info.modbusConnectDelay', {val: this.config.connectDelay, ack: true});
 		await this.setStateAsync('info.modbusDelay', {val: this.config.delay, ack: true});
-		await this.setStateAsync('info.modbusTcpServer', {val: this.config['ms.active'], ack: true});
+		await this.setStateAsync('info.modbusTcpServer', {val: this.config.ms_active, ack: true});
 		// Load user settings
 		if (this.config.address != '' && this.config.port > 0 && this.config.modbusIds != '' && this.config.updateInterval > 0 ) {
 			this.settings.address = this.config.address;
@@ -312,9 +312,9 @@ class Sun2000 extends utils.Adapter {
 			this.settings.sDongleId = Number(this.config.sDongleId) ?? -1;
 			if (this.settings.sDongleId < -1 && this.settings.sDongleId >= 255) this.settings.sDongleId = -1;
 			this.settings.highIntervall = this.config.updateInterval*1000; //ms
-			this.settings.ms.address = this.config['ms.address'];
-			this.settings.ms.port = this.config['ms.port'];
-			this.settings.ms.active = this.config['ms.active'];
+			this.settings.ms.address = this.config.ms_address;
+			this.settings.ms.port = this.config.ms_port;
+			this.settings.ms.active = this.config.ms_active;
 
 			if (this.settings.modbusAdjust) {
 				await this.setStateAsync('info.JSONhealth', {val: '{ message: "Adjust modbus settings"}', ack: true});
