@@ -109,17 +109,17 @@
       "zh-cn": "Huawei sun2000 inverter"
     },
     "desc": {
-      "en": "Read data from Huawei SUN2000 inverters and LUNA2000 battery using Modbus TCP\n",
-      "de": "Auslesen von Huawei SUN2000 Wechselrichtern und LUNA2000 Akkus über Modbus TCP\n",
-      "ru": "Прочитайте данные от Huawei SUN2000 inverter и LUNA2000 батареи с помощью Modbus TCP\n",
-      "pt": "Leia dados do inversor Huawei SUN2000 e da bateria LUNA2000 usando Modbus TCP\n",
-      "nl": "Lees gegevens van Huawei SUN2000 inverter en LUNA2000 batterij met Modbus TCP\n",
-      "fr": "Lire les données de Huawei SUN2000 inverter et batterie LUNA2000 en utilisant Modbus TCP\n",
-      "it": "Leggi i dati dell'inverter Huawei SUN2000 e della batteria LUNA2000 utilizzando Modbus TCP\n",
-      "es": "Lea los datos de la batería Huawei SUN2000 inverter y LUNA2000 utilizando Modbus TCP\n",
-      "pl": "Dane z inwersatora Huawei SUN2000 i baterii LUNA2000 za pomocą modułu TCP\n",
-      "uk": "Читання даних від Huawei SUN2000 і LUNA2000 батареї за допомогою Modbus TCP\n",
-      "zh-cn": "使用Modbus TCPT2000 verter和LUN2000电池的阅读数据\n"
+      "en": "Read data from up to 5 Huawei SUN2000 inverters and LUNA2000 batteries using Modbus TCP.\nThird-party devices can be integrated via the modbus proxy.\n",
+      "de": "Daten von bis zu 5 Huawei SUN2000 Wechselrichtern und LUNA2000 Batterien können über Modbus TCP ausgelesen werden.\nMit dem integrierten Modbus-Proxy können Geräte von Drittanbietern eingebunden werden.",
+      "ru": "Считывайте данные с пяти инверторов Huawei SUN2000 и аккумуляторов LUNA2000 с помощью Modbus TCP.\nУстройства сторонних производителей можно интегрировать через прокси-сервер Modbus.",
+      "pt": "Leia dados de até 5 inversores Huawei SUN2000 e baterias LUNA2000 usando Modbus TCP.\nDispositivos de terceiros podem ser integrados através do proxy modbus.",
+      "nl": "Lees gegevens van maximaal 5 Huawei SUN2000-omvormers en LUNA2000-batterijen met behulp van Modbus TCP.\nApparaten van derden kunnen via de modbus-proxy worden geïntegreerd.",
+      "fr": "Lisez les données de jusqu'à 5 onduleurs Huawei SUN2000 et batteries LUNA2000 à l'aide de Modbus TCP.\nDes appareils tiers peuvent être intégrés via le proxy Modbus.",
+      "it": "Leggi i dati da un massimo di 5 inverter Huawei SUN2000 e batterie LUNA2000 utilizzando Modbus TCP.\nI dispositivi di terze parti possono essere integrati tramite il proxy Modbus.",
+      "es": "Lea datos de hasta 5 inversores Huawei SUN2000 y baterías LUNA2000 mediante Modbus TCP.\nSe pueden integrar dispositivos de terceros a través del proxy modbus.",
+      "pl": "Odczyt danych z maksymalnie 5 inwerterów Huawei SUN2000 i akumulatorów LUNA2000 za pomocą protokołu Modbus TCP.\nUrządzenia innych firm można zintegrować za pośrednictwem serwera proxy Modbus.",
+      "uk": "Зчитування даних до 5 інверторів Huawei SUN2000 і акумуляторів LUNA2000 за допомогою Modbus TCP.\nПристрої сторонніх виробників можна інтегрувати через проксі-сервер Modbus.",
+      "zh-cn": "使用Modbus TCP读取最多5台华为SUN2000逆变器和LUNA2000电池的数据。\n第三方设备可以通过modbus代理集成。"
     },
     "authors": [
       "bolliy <stephan@mante.info>"
