@@ -43,13 +43,13 @@ body:
       label: Version of nodejs
       description: Can be found in the host section of ioBroker admin
     validations:
-      required: true
+      required: false
   - type: input
     attributes:
       label: Version of ioBroker js-controller
       description: Can be found in the host section of ioBroker admin
     validations:
-      required: true
+      required: false
   - type: input
     attributes:
       label: Version of Adapter
@@ -58,11 +58,22 @@ body:
       required: true
   - type: input
     attributes:
+      label: Repository
+      description: Which reprository was the adapter installed from?
+      options:
+      - ioBroker stable
+      - ioBroker beta
+      - npm (latest)
+      - gitHub
+    validations:
+      required: true
+  - type: input
+    attributes:
       label: Operating system running ioBroker
       description: >-
         Linux, Windows, MacOS, something else? With version please?
     validations:
-      required: true
+      required: false
   - type: markdown
     attributes:
       value: |
