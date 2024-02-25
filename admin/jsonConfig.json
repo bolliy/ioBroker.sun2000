@@ -83,37 +83,51 @@
         },    
         "tab3": {
             "type": "panel",
-            "label": "Modbus Server",
+            "label": "Modbus-proxy",
             "items": {
-                "ms_active": {
+                "dividerHdr": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "Modbus tcp proxy for multiple client connections",
+                    "size": 2
+                },
+                "chipsTxt": {
+                    "type": "staticText",
+                    "text": "Third party device such as wallbox, energy manager etc. can receive data even if the modbus interface of inverter is already in use. In addition you can mirror the sun2000 data to another IoBroker instance.",
+                    "newLine": true
+                },
+
+                "ms.active": {
                     "type": "checkbox",
-                    "label": "ms aktive",
+                    "label": "ms.aktive",
                     "newLine": true,
-                    "tooltip": "Modbus server (slave) via TCP for read-only is active"
+                    "tooltip": "Modbus-proxy via TCP for read-only is active"
                 }, 
-                "ms_address": {
+                "ms.address": {
                     "type": "text",
-                    "label": "ms address",
+                    "label": "ms.address",
                     "newLine": true,
-                    "tooltip": "listen at localhost = 127.0.0.1",
+                    "tooltip": "If want to listen only at localhost use 127.0.0.1",
                     "sm": 12,
                     "md": 8,
                     "lg": 2
                 },
-                "ms_port": {
-                    "type": "number",
-                    "label": "ms port",
-                    "min" : 1,
-                    "max" : 655565,
+                "ms.port": {
+                    "type": "port",
+                    "label": "ms.port",
+                    "sm":3,
+                    "md":3,
+                    "lg":2,
+                    "xs":3,
                     "newLine": true,
-                    "tooltip": "The Modbus Server TCP port"
+                    "tooltip" : "The Modbus-proxy TCP port"
                 },
                 "sDongleId": {
                     "type": "text",
                     "label": "SDongleA modbus ID",
                     "lg": 2,
                     "newLine": true,
-                    "tooltip": "The modbus SDongle modbus ID"
+                    "tooltip": "The SDongle modbus ID"
                 }
             }
         }

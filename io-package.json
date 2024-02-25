@@ -130,9 +130,16 @@
       "sun2000",
       "luna2000",
       "inverter",
-      "charger"
+      "charger",
+      "sdongle"
     ],
     "license": "MIT",
+    "tier": 2,
+    "licenseInformation": {
+      "license": "MIT",
+      "link": "https://opensource.org/license/mit/",
+      "type": "free"
+    },
     "platform": "Javascript/Node.js",
     "main": "main.js",
     "icon": "sun2000.png",
@@ -168,15 +175,15 @@
     "address": "",
     "port": 502,
     "modbusIds": "1",
-    "sDongleId": "100",
     "updateInterval": 20,
     "timeout": 10000,
     "delay": 0,
     "connectDelay": 5000,
     "autoAdjust": true,
-    "ms_active": false,
-    "ms_address": "0.0.0.0",
-    "ms_port": 502
+    "ms.active": false,
+    "ms.address": "0.0.0.0",
+    "ms.port": 502,
+    "sDongleId": "100"
   },
   "objects": [],
   "instanceObjects": [
@@ -342,7 +349,7 @@
       }
     },
     {
-      "_id": "info.modbusServer",
+      "_id": "info.modbusTcpServer",
       "type": "state",
       "common": {
         "name": {

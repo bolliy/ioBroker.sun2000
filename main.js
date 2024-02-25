@@ -9,8 +9,8 @@
 const utils = require('@iobroker/adapter-core');
 // Load your modules here, e.g.:
 const Registers = require(__dirname + '/lib/register.js');
-const ModbusConnect = require(__dirname + '/lib/modbus_connect.js');
-const ModbusServer = require(__dirname + '/lib/modbus_server.js');
+const ModbusConnect = require(__dirname + '/lib/modbus/modbus_connect.js');
+const ModbusServer = require(__dirname + '/lib/modbus/modbus_server.js');
 const {driverClasses,dataRefreshRate} = require(__dirname + '/lib/types.js');
 const {getAstroDate} = require(__dirname + '/lib/tools.js');
 
@@ -40,9 +40,11 @@ class Sun2000 extends utils.Adapter {
 			modbusConnectDelay : 5000,
 			modbusDelay : 0,
 			modbusAdjust : false,
-			ms_address : '127.0.0.1',
-			ms_port : 520,
-			ms_active : false
+			ms : {
+				address : '0.0.0.0',
+				port : 520,
+				active : false
+			}
 		};
 
 		this.on('ready', this.onReady.bind(this));
@@ -157,7 +159,7 @@ class Sun2000 extends utils.Adapter {
 		this.runWatchDog();
 		//v0.4.x
 		if (this.settings.ms_active) {
-			this.modbusServer = new ModbusServer(this,this.settings.ms_address,this.settings.ms_port);
+			this.modbusServer = new ModbusServer(this,this.settings.ms.address,this.settings.ms.port);
 			this.modbusServer.connect();
 		}
 	}
@@ -297,7 +299,7 @@ class Sun2000 extends utils.Adapter {
 		await this.setStateAsync('info.modbusTimeout', {val: this.config.timeout, ack: true});
 		await this.setStateAsync('info.modbusConnectDelay', {val: this.config.connectDelay, ack: true});
 		await this.setStateAsync('info.modbusDelay', {val: this.config.delay, ack: true});
-		await this.setStateAsync('info.modbusServer', {val: this.config.ms_active, ack: true});
+		await this.setStateAsync('info.modbusTcpServer', {val: this.config['ms.active'], ack: true});
 		// Load user settings
 		if (this.config.address != '' && this.config.port > 0 && this.config.modbusIds != '' && this.config.updateInterval > 0 ) {
 			this.settings.address = this.config.address;
@@ -310,9 +312,9 @@ class Sun2000 extends utils.Adapter {
 			this.settings.sDongleId = Number(this.config.sDongleId) ?? -1;
 			if (this.settings.sDongleId < -1 && this.settings.sDongleId >= 255) this.settings.sDongleId = -1;
 			this.settings.highIntervall = this.config.updateInterval*1000; //ms
-			this.settings.ms_address = this.config.ms_address;
-			this.settings.ms_port = this.config.ms_port;
-			this.settings.ms_active = this.config.ms_active;
+			this.settings.ms.address = this.config['ms.address'];
+			this.settings.ms.port = this.config['ms.port'];
+			this.settings.ms.active = this.config['ms.active'];
 
 			if (this.settings.modbusAdjust) {
 				await this.setStateAsync('info.JSONhealth', {val: '{ message: "Adjust modbus settings"}', ack: true});
@@ -393,7 +395,7 @@ class Sun2000 extends utils.Adapter {
 		this.watchDogHandle && this.clearInterval(this.watchDogHandle);
 		this.watchDogHandle = this.setInterval( () => {
 			const sinceLastUpdate = new Date().getTime() - this.lastTimeUpdated; //ms
-			this.log.debug('Watchdog: time since last update '+sinceLastUpdate/1000+' sec');
+			this.log.debug('### Watchdog: time since last update '+sinceLastUpdate/1000+' sec');
 			const lastIsConnected = this.isConnected;
 			this.isConnected = this.lastStateUpdatedHigh > 0 && sinceLastUpdate < this.settings.highIntervall*3;
 			if (this.isConnected !== lastIsConnected ) this.setState('info.connection', this.isConnected, true);
@@ -411,7 +413,7 @@ class Sun2000 extends utils.Adapter {
 					if (this.modbusServer) {
 						!this.modbusServer.isConnected && this.modbusServer.connect();
 						const stat = this.modbusServer.info?.stat;
-						//is object not empty
+						//object is not empty
 						if (Object.keys(stat).length > 0) this.log.info('Modbus tcp server: '+JSON.stringify(this.modbusServer.info));
 					}
 				}
