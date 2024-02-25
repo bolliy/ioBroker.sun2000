@@ -83,7 +83,7 @@ body:
       label: Checklist of files to include below
       options:
         - label: iobroker.current.log (Please share the logs in debug mode)
-          required: true
+          required: false
         - label: Contents of the JavaScript browser console (always include in cases of issues with the user interface)
   - type: textarea
     attributes:
