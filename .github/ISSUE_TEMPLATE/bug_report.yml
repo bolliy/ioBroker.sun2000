@@ -56,7 +56,7 @@ body:
       description: Can be found in the adapters tab of ioBroker admin
     validations:
       required: true
-  - type: input
+  - type: dropdown
     attributes:
       label: Repository
       description: Which reprository was the adapter installed from?
