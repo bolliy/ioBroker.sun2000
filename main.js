@@ -155,7 +155,7 @@ class Sun2000 extends utils.Adapter {
 		this.modbusClient.setCallback(this.endOfmodbusAdjust.bind(this));
 		this.state = new Registers(this);
 		await this.atMidnight();
-		//this.dataPolling();
+		this.dataPolling();
 		this.runWatchDog();
 		//v0.4.x
 		if (this.settings.ms.active) {
