@@ -83,7 +83,7 @@ The development of this adapter was inspired by discussions from the forum threa
 **WORK IN PROGRESS**
 * detect standby mode of inverters #34
 * read register data from SDongleA 
-* implemented modbus-cache-proxy (only read holding registers)
+* implemented modbus-proxy (read-only holding registers)
 
 ### 0.3.1 (2024-02-12)
 * state `sun2000.0.collected.chargeDischargePowercharge` is not always refreshed #47
