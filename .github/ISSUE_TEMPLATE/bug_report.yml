@@ -1,5 +1,5 @@
 name: Bug report
-title: "Bug report"
+title: "[Bug]: "
 description: "Create a report to help improve this ioBroker adapter"
 labels: bug
 body:
