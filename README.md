@@ -44,7 +44,7 @@ https://photomate.zendesk.com/hc/en-gb/articles/7275970817437-SDongleA-MODBUS-In
 * The states “inputPower” or “activePower” in the “collected” path can be monitored with a “was updated” trigger element. Because these states are always written within the set interval.
 * modbus-proxy: Third party device such as wallbox, energy manager etc. can receive data even if the modbus interface of inverter is already in use. In addition you can mirror the sun2000 data to another IoBroker instance.
 
-## Main Settings
+## Main settings
 * `address`: Inverter IP address
 * `port`: Inverter modbus port (default: 502)
 * `modbusIds`: inverter IDs, separated with "," (default: 1, max. 5 inverters)
@@ -54,6 +54,11 @@ https://photomate.zendesk.com/hc/en-gb/articles/7275970817437-SDongleA-MODBUS-In
 * `delay`: delay between modbus requests (default: 0 ms)
 * `connect delay`: delay after modbus connected (default: 5000 ms)
 * `auto-adjust`: automatic adjustment of the modbus settings
+## Modbus-proxy
+* `active`: activate the mobus-proxy service (default: false)
+* `ip address`: Modbus-proxy IP address (usually: 0.0.0.0)
+* `TCP port`: Modbus-proxy TCP port (usually: 502)
+* `SDongle modbus ID`: The SDongle modbus ID (usually: 100), is required for the virtual meter
 
 ## Configure inverters
 
@@ -83,9 +88,11 @@ The development of this adapter was inspired by discussions from the forum threa
 -->
 
 **WORK IN PROGRESS**
-* detect standby mode of inverters #34
+* detect standby mode of inverters (#34)
+* devices in standby often give incorrect values. These are assigned "0" (#40)
+* the modbus register and the length are stored in the description of the states
+* implemented modbus-proxy (read-only cache)
 * read register data from SDongleA 
-* implemented modbus-proxy (read-only holding registers)
 
 ### 0.3.1 (2024-02-12)
 * state `sun2000.0.collected.chargeDischargePowercharge` is not always refreshed #47
