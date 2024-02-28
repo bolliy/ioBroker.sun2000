@@ -18,5 +18,7 @@
     "If want to listen only at localhost use 127.0.0.1": "Als je alleen op localhost wilt luisteren, gebruik dan 127.0.0.1",
     "ms.port": "Modbus-proxy TCP-poort",
     "The Modbus-proxy TCP port": "De Modbus-proxy TCP-poort",
-    "The SDongle modbus ID": "De SDongle modbus-ID - meestal 100"
+    "The SDongle modbus ID": "De SDongle modbus-ID - meestal 100",
+    "ms.log": "Geavanceerde logboekregistratie",
+    "Advanced logging": "Geavanceerde logboekregistratie"
 }

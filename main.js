@@ -315,6 +315,7 @@ class Sun2000 extends utils.Adapter {
 			this.settings.ms.address = this.config.ms_address;
 			this.settings.ms.port = this.config.ms_port;
 			this.settings.ms.active = this.config.ms_active;
+			this.settings.ms.log = this.config.ms_log;
 
 			if (this.settings.modbusAdjust) {
 				await this.setStateAsync('info.JSONhealth', {val: '{ message: "Adjust modbus settings"}', ack: true});
@@ -412,9 +413,12 @@ class Sun2000 extends utils.Adapter {
 					//v0.4.x
 					if (this.modbusServer) {
 						!this.modbusServer.isConnected && this.modbusServer.connect();
-						const stat = this.modbusServer.info?.stat;
-						//object is not empty
-						if (Object.keys(stat).length > 0) this.log.info('Modbus tcp server: '+JSON.stringify(this.modbusServer.info));
+						if (this.settings.ms.log) {
+							//const stat = this.modbusServer.info?.stat;
+							//object is not empty
+							//if (Object.keys(stat).length > 0) this.log.info('Modbus tcp server: '+JSON.stringify(this.modbusServer.info));
+							this.log.info('Modbus tcp server: '+JSON.stringify(this.modbusServer.info));
+						}
 					}
 				}
 			}

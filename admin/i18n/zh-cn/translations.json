@@ -18,5 +18,7 @@
     "If want to listen only at localhost use 127.0.0.1": "如果只想在本地主机上监听，请使用 127.0.0.1",
     "ms.port": "Modbus 代理 TCP 端口",
     "The Modbus-proxy TCP port": "Modbus 代理 TCP 端口",
-    "The SDongle modbus ID": "SDongle modbus ID - 通常为 100"
+    "The SDongle modbus ID": "SDongle modbus ID - 通常为 100",
+    "ms.log": "高级日志记录",
+    "Advanced logging": "高级日志记录"
 }

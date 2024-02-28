@@ -18,5 +18,7 @@
     "If want to listen only at localhost use 127.0.0.1": "Se vuoi ascoltare solo su localhost usa 127.0.0.1",
     "ms.port": "Porta TCP proxy Modbus",
     "The Modbus-proxy TCP port": "La porta TCP del proxy Modbus",
-    "The SDongle modbus ID": "L'ID modbus SDongle: in genere 100"
+    "The SDongle modbus ID": "L'ID modbus SDongle: in genere 100",
+    "ms.log": "Registrazione avanzata",
+    "Advanced logging": "Registrazione avanzata"
 }

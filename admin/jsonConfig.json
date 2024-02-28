@@ -127,6 +127,12 @@
                     "lg": 2,
                     "newLine": true,
                     "tooltip": "The SDongle modbus ID"
+                },
+                "ms_log": {
+                    "type": "checkbox",
+                    "label": "ms.log",
+                    "newLine": true,
+                    "tooltip": "Advanced logging"
                 }
             }
         }

@@ -18,5 +18,7 @@
     "If want to listen only at localhost use 127.0.0.1": "Якщо ви хочете слухати лише на локальному хості, використовуйте 127.0.0.1",
     "ms.port": "TCP-порт Modbus-proxy",
     "The Modbus-proxy TCP port": "TCP-порт Modbus-proxy",
-    "The SDongle modbus ID": "ID Modbus SDongle - зазвичай 100"
+    "The SDongle modbus ID": "ID Modbus SDongle - зазвичай 100",
+    "ms.log": "Розширене журналювання",
+    "Advanced logging": "Розширене журналювання"
 }

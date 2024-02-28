@@ -183,6 +183,7 @@
     "ms_active": false,
     "ms_address": "0.0.0.0",
     "ms_port": 502,
+    "ms_log": false,
     "sDongleId": "100"
   },
   "objects": [],
