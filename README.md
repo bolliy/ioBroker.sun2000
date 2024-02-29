@@ -93,7 +93,8 @@ The development of this adapter was inspired by discussions from the forum threa
 * the modbus register and the length are stored in the description of the states
 * implemented modbus-proxy (read-only cache)
 * read register data from SDongleA 
-* register for 
+* additional loop interval medium
+* Integration of [NRGkick Wallbox](https://www.nrgkick.com)
 
 ### 0.3.1 (2024-02-12)
 * state `sun2000.0.collected.chargeDischargePowercharge` is not always refreshed #47
