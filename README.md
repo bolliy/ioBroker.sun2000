@@ -59,6 +59,7 @@ https://photomate.zendesk.com/hc/en-gb/articles/7275970817437-SDongleA-MODBUS-In
 * `ip address`: Modbus-proxy IP address (usually: 0.0.0.0)
 * `TCP port`: Modbus-proxy TCP port (usually: 502)
 * `SDongle modbus ID`: The SDongle modbus ID (usually: 100), is required for the virtual meter
+* `advanced log`: Communication of register as JSON string
 
 ## Configure inverters
 
@@ -93,8 +94,9 @@ The development of this adapter was inspired by discussions from the forum threa
 * the modbus register and the length are stored in the description of the states
 * implemented modbus-proxy (read-only cache)
 * read register data from SDongleA 
-* additional loop interval medium
+* additional loop interval medium (SDongle data)
 * Integration of [NRGkick Wallbox](https://www.nrgkick.com)
+* read string data faster (high interval)
 
 ### 0.3.1 (2024-02-12)
 * state `sun2000.0.collected.chargeDischargePowercharge` is not always refreshed #47
