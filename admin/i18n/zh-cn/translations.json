@@ -20,5 +20,5 @@
     "The Modbus-proxy TCP port": "Modbus 代理 TCP 端口",
     "The SDongle modbus ID": "SDongle modbus ID - 通常为 100",
     "ms.log": "高级日志记录",
-    "Advanced logging": "高级日志记录"
+    "Advanced logging": "Modbus 事务的高级记录"
 }

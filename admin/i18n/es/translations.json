@@ -20,5 +20,5 @@
     "The Modbus-proxy TCP port": "El puerto TCP del proxy Modbus",
     "The SDongle modbus ID": "El ID modbus del SDongle (generalmente 100)",
     "ms.log": "Registro avanzado",
-    "Advanced logging": "Registro avanzado"
+    "Advanced logging": "Registro avanzado de transacciones modbus"
 }

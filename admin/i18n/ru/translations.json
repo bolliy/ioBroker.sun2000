@@ -20,5 +20,5 @@
     "The Modbus-proxy TCP port": "TCP-порт Modbus-прокси",
     "The SDongle modbus ID": "Идентификатор Modbus SDongle — обычно 100.",
     "ms.log": "Расширенное ведение журнала",
-    "Advanced logging": "Расширенное ведение журнала"
+    "Advanced logging": "Расширенное журналирование транзакций Modbus"
 }

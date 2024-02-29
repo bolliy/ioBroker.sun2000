@@ -30,10 +30,12 @@ class Sun2000 extends utils.Adapter {
 		this.lastStateUpdatedHigh = 0;
 		this.lastStateUpdatedLow = 0;
 		this.isConnected = false;
+
 		this.devices = [];
 		this.settings = {
-			highIntervall : 20000,
-			lowIntervall : 60000,
+			highInterval : 20000,
+			lowInterval : 60000,
+			mediumInterval : 30000,
 			address : '',
 			port : 520,
 			modbusTimeout : 10000,
@@ -243,13 +245,12 @@ class Sun2000 extends utils.Adapter {
 			if (this.settings.modbusConnectDelay > 10000) this.settings.modbusConnectDelay = 10000;
 			if (this.settings.modbusConnectDelay < 2000) this.settings.modbusConnectDelay = 2000;
 			//orignal Interval
-			this.settings.highIntervall = this.config.updateInterval*1000;
-			//await this.adjustInverval();
+			this.settings.highInterval = this.config.updateInterval*1000;
 			this.config.autoAdjust = this.settings.modbusAdjust;
 			this.config.connectDelay = this.settings.modbusConnectDelay;
 			this.config.delay = this.settings.modbusDelay;
 			this.config.timeout = this.settings.modbusTimeout;
-			this.updateConfig(this.config);
+			this.updateConfig(this.config); //-> restart
 			//this.log.info(JSON.stringify(info));
 			this.log.info('New modbus settings are stored.');
 			//this.sendToSentry(JSON.stringify(info));
@@ -258,22 +259,24 @@ class Sun2000 extends utils.Adapter {
 
 	async adjustInverval () {
 		if (this.settings.modbusAdjust) {
-			this.settings.highIntervall = 10000*this.settings.modbusIds.length;
+			this.settings.highInterval = 10000*this.settings.modbusIds.length;
 		} else {
 			let minInterval = this.settings.modbusIds.length*this.settings.modbusDelay*2.5; //len*5*delay/2
 			for (const device of this.devices) {
 				if (device.duration) minInterval += device.duration;
-				else minInterval += 1000;
+				//else minInterval += 1000;
 			}
-			if (minInterval> this.settings.highIntervall) {
-				this.settings.highIntervall = Math.round(minInterval);
+			if (minInterval> this.settings.highInterval) {
+				this.settings.highInterval = Math.round(minInterval);
 			}
 		}
-		this.settings.lowIntervall = 60000;
-		if (this.settings.highIntervall > this.settings.lowIntervall) {
-			this.settings.lowIntervall = this.settings.highIntervall;
+		this.settings.lowInterval = 60000;
+		if (this.settings.highInterval > this.settings.lowInterval) {
+			this.settings.lowInterval = this.settings.highInterval;
 		}
-		const newHighInterval = Math.round(this.settings.highIntervall/1000);
+		//v0.4.0
+		this.settings.mediumInterval = Math.round(this.settings.lowInterval/2);
+		const newHighInterval = Math.round(this.settings.highInterval/1000);
 		if (!this.settings.modbusAdjust) {
 			if (this.config.updateInterval < newHighInterval) {
 				this.log.warn('The interval is too small. The value has been changed on '+newHighInterval+' sec.');
@@ -311,7 +314,7 @@ class Sun2000 extends utils.Adapter {
 			this.settings.modbusIds = this.config.modbusIds.split(',').map((n) => {return Number(n);});
 			this.settings.sDongleId = Number(this.config.sDongleId) ?? -1;
 			if (this.settings.sDongleId < -1 && this.settings.sDongleId >= 255) this.settings.sDongleId = -1;
-			this.settings.highIntervall = this.config.updateInterval*1000; //ms
+			this.settings.highInterval = this.config.updateInterval*1000; //ms
 			this.settings.ms.address = this.config.ms_address;
 			this.settings.ms.port = this.config.ms_port;
 			this.settings.ms.active = this.config.ms_active;
@@ -328,7 +331,7 @@ class Sun2000 extends utils.Adapter {
 				for (const [i,id] of this.settings.modbusIds.entries()) {
 					this.devices.push({
 						index: i,
-						duration: 4500,
+						duration: 5000,
 						modbusId: id,
 						driverClass: driverClasses.inverter,
 						meter: (i==0),
@@ -338,7 +341,7 @@ class Sun2000 extends utils.Adapter {
 				if (this.settings.sDongleId >= 0) {
 					this.devices.push({
 						index: this.settings.modbusIds.length,
-						duration: 1000,
+						duration: 0,
 						modbusId: this.settings.sDongleId,
 						driverClass: driverClasses.sdongle
 					});
@@ -364,11 +367,11 @@ class Sun2000 extends utils.Adapter {
 
 		const start = new Date().getTime();
 		this.log.debug('### DataPolling START '+ Math.round((start-this.lastTimeUpdated)/1000)+' sec ###');
-		if (this.lastTimeUpdated > 0 && (start-this.lastTimeUpdated)/1000 > this.settings.highIntervall/1000 + 1) {
+		if (this.lastTimeUpdated > 0 && (start-this.lastTimeUpdated)/1000 > this.settings.highInterval/1000 + 1) {
 			this.log.info('Interval '+(start-this.lastTimeUpdated)/1000+' sec');
 		}
 		this.lastTimeUpdated = start;
-		const nextLoop = this.settings.highIntervall - start % (this.settings.highIntervall) + start;
+		const nextLoop = this.settings.highInterval - start % (this.settings.highInterval) + start;
 
 		//High Loop
 		for (const item of this.devices) {
@@ -398,14 +401,14 @@ class Sun2000 extends utils.Adapter {
 			const sinceLastUpdate = new Date().getTime() - this.lastTimeUpdated; //ms
 			this.log.debug('### Watchdog: time since last update '+sinceLastUpdate/1000+' sec');
 			const lastIsConnected = this.isConnected;
-			this.isConnected = this.lastStateUpdatedHigh > 0 && sinceLastUpdate < this.settings.highIntervall*3;
+			this.isConnected = this.lastStateUpdatedHigh > 0 && sinceLastUpdate < this.settings.highInterval*3;
 			if (this.isConnected !== lastIsConnected ) this.setState('info.connection', this.isConnected, true);
 			if (!this.settings.modbusAdjust) {
 				if (!this.isConnected) {
 					this.setStateAsync('info.JSONhealth', {val: '{errno:1, message: "Can\'t connect to inverter"}', ack: true});
 				}
 				if (this.alreadyRunWatchDog) {
-					const ret = this.state.CheckReadError(this.settings.lowIntervall*2);
+					const ret = this.state.CheckReadError(this.settings.lowInterval*2);
 					const obj = {...ret,modbus: {...this.modbusClient.info}};
 					this.log.debug(JSON.stringify(this.modbusClient.info));
 					if (ret.errno) this.log.warn(ret.message);
@@ -427,13 +430,13 @@ class Sun2000 extends utils.Adapter {
 			this.lastStateUpdatedLow = 0;
 			this.lastStateUpdatedHigh = 0;
 
-			if (sinceLastUpdate > this.settings.highIntervall*10) {
+			if (sinceLastUpdate > this.settings.highInterval*10) {
 				this.setStateAsync('info.JSONhealth', {val: '{errno:2, message: "Internal loop error"}', ack: true});
 				this.log.warn('watchdog: restart Adapter...');
 				this.restart();
 			}
 
-		},this.settings.lowIntervall);
+		},this.settings.lowInterval);
 	}
 
 	/**
