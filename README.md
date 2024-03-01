@@ -48,8 +48,7 @@ see the [documentation page](./docs/README.md)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 0.4.0 (2024-03-01)
 * detect standby mode of inverters (#34)
 * devices in standby often give incorrect values. These are assigned "0" (#40)
 * the modbus register and the length are stored in the description of the states
