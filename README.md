@@ -17,6 +17,7 @@ Sentry reporting is used starting with js-controller 3.0.
 ## sun2000 adapter for ioBroker
 
 Read register data from Huawei SUN2000 inverter and LUNA2000 battery using Modbus TCP. 
+
 [Huawei product information](https://solar.huawei.com/en/professionals/all-products?residential-smart-pv)
 
 Feel free to follow the discussions in the german [iobroker forum](https://forum.iobroker.net/topic/71768/test-adapter-sun2000-v0-1-x-huawei-wechselrichter)

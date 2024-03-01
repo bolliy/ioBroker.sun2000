@@ -1,4 +1,4 @@
-## Configuration
+## Adapter configuration
 
 # Main settings
 * `address`: Inverter IP address
