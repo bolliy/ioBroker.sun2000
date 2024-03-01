@@ -4,22 +4,22 @@ The following picture shows an example Vis that shows the energy flow between th
 
 ![Screenshot](./images/SunLuna2000Vis-v2.png)
 
-The following variables are used in the Vis display:
+The following states are used in the Vis example:
 
-- Yield Today: sun2000.0.collected.dailyInputYield
-- Bat Charge: sun2000.0.collected.currentDayChargeCapacity
-- Bat Discharge: sun2000.0.collected.currentDayDischargeCapacity
-- Battery Percent: sun2000.0.collected.SOC
-- Solar panel, actual power : sun2000.0.collected.inputPower
-- Solar panel, Solar Yield : sun2000.0.collected.dailySolarYield
-- Power to and from battery : sun2000.0.collected.chargeDischargePower
-- Power to and from grid: sun2000.0.meter.activePower
-- Power consumption house: sun2000.0.collected.houseConsumption
-- Daily power consumption of house: sun2000.0.collected.consumptionToday
-- Power Export Today: sun2000.0.collected.gridExportToday
-- Import Today: sun2000.0.collected.gridImportToday
+- `Yield Today`: sun2000.0.collected.dailyInputYield
+- `Bat Charge`: sun2000.0.collected.currentDayChargeCapacity
+- `Bat Discharge`: sun2000.0.collected.currentDayDischargeCapacity
+- `Battery Percent`: sun2000.0.collected.SOC
+- Solar panel, `PV power` : sun2000.0.collected.inputPower
+- Solar panel, `Solar Yield` : sun2000.0.collected.dailySolarYield
+- `Power to and from battery` : sun2000.0.collected.chargeDischargePower
+- `Power to and from grid`: sun2000.0.meter.activePower
+- Power `consumption house`: sun2000.0.collected.houseConsumption
+- Daily power `consumption` of house`: sun2000.0.collected.consumptionToday
+- Grid `Export Today`: sun2000.0.collected.gridExportToday
+- Grid `Import Today`: sun2000.0.collected.gridImportToday
 
-The following additional variables are available for output: 
+The following additional states are available for output: 
 
 - Inverter Device Status: sun2000.0.inverter.0.derived.deviceStatus (e.g 'On-grid', 'Standby: detecting irradiation')
 - Battery Working Mode: sun2000.0.inverter.0.battery.workingModeSettings (e.g. 2: 'Maximise Self Consumption')
