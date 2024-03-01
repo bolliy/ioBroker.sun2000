@@ -3,6 +3,7 @@
 * [Adapter configuration](./configuration.md)
 * [Setup Inverters](./inverter.md)
 * [Calculation](./calculation.md)
+* [VIS Exsample](./vis.md)
 * [Interface definitions](./definitions.md)
 
 # Inspiration
