@@ -14,7 +14,7 @@ The following states are used in the Vis example:
 - Solar panel, `Solar Yield` : sun2000.0.collected.dailySolarYield
 - `Power to and from battery` : sun2000.0.collected.chargeDischargePower
 - `Power to and from grid`: sun2000.0.meter.activePower
-- Power `consumption house`: sun2000.0.collected.houseConsumption
+- `Power` consumption house: sun2000.0.collected.houseConsumption
 - Daily power `consumption` of house`: sun2000.0.collected.consumptionToday
 - Grid `Export Today`: sun2000.0.collected.gridExportToday
 - Grid `Import Today`: sun2000.0.collected.gridImportToday
