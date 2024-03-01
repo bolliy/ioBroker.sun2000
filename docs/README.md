@@ -1,6 +1,5 @@
 # ioBroker adapter SUN2000 Documentation
 
-* [Configuration](./configuration.md)
-* [Computations](./computations.md)
+* [Calculation](./calculation.md)
 
 Work In Progress
