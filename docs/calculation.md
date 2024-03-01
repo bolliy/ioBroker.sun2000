@@ -1,10 +1,8 @@
 # Calculation
 
-The calculation implemented are described by this diagram:
+The calculation implemented are described by this diagram ([Source](https://github.com/ChrisBCH/SunLuna2000_iobroker/blob/main/HuaweiSunLuna2000.png)):
 
 ![Screen](./images/HuaweiSunLuna2000-v2.png)
-
-[Source](https://github.com/ChrisBCH/SunLuna2000_iobroker/blob/main/HuaweiSunLuna2000.png)
 
 The following variables are used or can be calculated yourself:
 

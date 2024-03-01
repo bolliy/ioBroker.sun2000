@@ -17,15 +17,13 @@ Sentry reporting is used starting with js-controller 3.0.
 ## sun2000 adapter for ioBroker
 
 Read register data from Huawei SUN2000 inverter and LUNA2000 battery using Modbus TCP. 
+[Huawei product information](https://solar.huawei.com/en/professionals/all-products?residential-smart-pv)
 
 Feel free to follow the discussions in the german [iobroker forum](https://forum.iobroker.net/topic/71768/test-adapter-sun2000-v0-1-x-huawei-wechselrichter)
 
-inverter modbus interface definition (Issue 5, 2023-02-16):
-https://forum.iobroker.net/assets/uploads/files/1699119419919-solar-inverter-modbus-interface-definitions-v5.pdf
+## Documentation
 
-SdongleA modbus interface definition (Issue 2, 2023-04-20):
-https://photomate.zendesk.com/hc/en-gb/articles/7275970817437-SDongleA-MODBUS-Interface-Definitions 
-
+see the [documentation page](./docs/README.md)
 
 ## Supported hardware
 
@@ -34,8 +32,6 @@ https://photomate.zendesk.com/hc/en-gb/articles/7275970817437-SDongleA-MODBUS-In
 * HUAWEI Luna2000 Battery
 * HUAWEI Smart Power Sensor DTSU666-H or DDSU666-H
 
-[Huawei product information](https://solar.huawei.com/en/professionals/all-products?residential-smart-pv)
-
 ## Feature list
 
 * Maximum 5 inverters (master/slave) can be processed, each with a battery module (max. 15kWh).
@@ -43,42 +39,6 @@ https://photomate.zendesk.com/hc/en-gb/articles/7275970817437-SDongleA-MODBUS-In
 * States are only written for changed data from the inverter. This relieves the burden on the iobroker instance.
 * The states “inputPower” or “activePower” in the “collected” path can be monitored with a “was updated” trigger element. Because these states are always written within the set interval.
 * modbus-proxy: Third party device such as wallbox, energy manager etc. can receive data even if the modbus interface of inverter is already in use. In addition you can mirror the sun2000 data to another IoBroker instance.
-
-## Main settings
-* `address`: Inverter IP address
-* `port`: Inverter modbus port (default: 502)
-* `modbusIds`: inverter IDs, separated with "," (default: 1, max. 5 inverters)
-* `updateInterval`: Fast update interval (default: 20 sec, smallest 5 seconds per inverter)
-## Modbus timing 
-* `timeout`: modbus connection timeout (default: 10000 ms)
-* `delay`: delay between modbus requests (default: 0 ms)
-* `connect delay`: delay after modbus connected (default: 5000 ms)
-* `auto-adjust`: automatic adjustment of the modbus settings
-## Modbus-proxy
-* `active`: activate the mobus-proxy service (default: false)
-* `ip address`: Modbus-proxy IP address (usually: 0.0.0.0)
-* `TCP port`: Modbus-proxy TCP port (usually: 502)
-* `SDongle modbus ID`: The SDongle modbus ID (usually: 100), is required for the virtual meter
-* `advanced log`: Communication of register as JSON string
-
-## Configure inverters
-
-In order to use the Modbus connection, all Huawei devices must use the latest firmware
-feature. You can perform latest firmware directly in the FusionSolar portal under “Upgrades”.
-In the FusionSolar setup you still have to activate the Modbus on the WLAN dongle and set the access authorization. Download the FusionSolar-App onto your cell phone and use it to connect via the inverter's WLAN hotspot directly.  
-After the click on `Me` (Ich) in the footer Menu> `Commission Device` ("Inbetriebnahme des Geräts“) > `log in` (am Wechselrichter anmelden).
-
-To log into the app as an `installer` you need usually the password:`00000a` or `0000000a` 
-You may also need a password to connect to the inverters own WLAN: `Changeme` 
-
-After login on the inverter go to `Settings` (Einstellungen) > `Communication configuration` (Kommunikationskonfiguration) > `Dongle parameter settings` (Dongle‐Parametereinstellungen) > `Modbus TCP` > Activate the `connection without restriction` (Verbindung uneingeschränkt aktivieren). You can also enter the Modbus comm address at the same time read out. 
-If you use two inverters, then connect to the second inverter and read the communication address there too. 
-
-[How activate 'Modbus TCP' - from huawei forum](https://forum.huawei.com/enterprise/en/modbus-tcp-guide/thread/789585-100027)
-
-## Inspiration
-
-The development of this adapter was inspired by discussions from the forum thread https://forum.iobroker.net/topic/53005/huawei-sun2000-iobroker-via-js-script-funktioniert and the iobroker javascript https://github.com/ChrisBCH/SunLuna2000_iobroker.
 
 
 ## Changelog
