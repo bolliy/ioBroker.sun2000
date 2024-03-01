@@ -1,6 +1,6 @@
 ## Example Vis
 
-The following picture shows an example Vis that shows the energy flow between the different components. In the lower part a flot diagram shows battery charge, power production and consumption during the last 48 hours
+The picture below shows an example vis showing the energy flow between the different components. In the part, a float diagram shows the battery charge status, power production and power consumption over the last 48 hours. 
 
 ![Screenshot](./images/SunLuna2000Vis-v2.png)
 

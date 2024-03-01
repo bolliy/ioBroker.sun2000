@@ -1,4 +1,4 @@
-## Setup inverters
+# Setup inverters
 
 In order to use the Modbus connection, all Huawei devices must use the latest firmware
 feature. You can perform latest firmware directly in the FusionSolar portal under “Upgrades”.
