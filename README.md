@@ -49,7 +49,6 @@ see the [documentation page](./docs/README.md)
 -->
 ### **WORK IN PROGRESS**
 * read PV string data slower (medium interval)
-* Implementation of Huawei SmartLogger
 
 ### 0.4.0 (2024-03-01)
 * detect standby mode of inverters (#34)
