@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "news": {
+      "0.4.1": {
+        "en": "read PV string data slower (medium interval)",
+        "de": "pV-Stringdaten langsamer lesen (mittleres Intervall)",
+        "ru": "читать данные строки PV медленнее (средний интервал)",
+        "pt": "ler dados de cadeia de caracteres PV mais lento (intervalo médio)",
+        "nl": "lees PV-stringgegevens langzamer (medium interval)",
+        "fr": "lire les données de chaîne PV plus lentement (intervalle moyen)",
+        "it": "leggere i dati della stringa PV più lento (intervallo medio)",
+        "es": "leer datos de cadena PV más lento (intervalo medio)",
+        "pl": "odczyt danych strun fotowoltaicznych wolniej (interwał średni)",
+        "uk": "читати повільніші дані ПВ (середній інтервал)",
+        "zh-cn": "读取较慢的光电字符串数据( 中间隔)"
+      },
       "0.4.0": {
         "en": "detect standby mode of inverters (#34)\ndevices in standby often give incorrect values. These are assigned \"0\" (#40)\nthe modbus register and the length are stored in the description of the states\nimplemented modbus-proxy (read-only cache)\nread register data from SDongleA \nadditional loop interval medium (SDongle data)\nIntegration of [NRGkick Wallbox](https://www.nrgkick.com)\nread string data faster (high interval)",
         "de": "standby-modus von wechselrichtern erkennen (#34)\ngeräte im Standby geben oft falsche Werte. Diese werden \"0\" zugeordnet (#40)\ndas modbusregister und die länge werden in der beschreibung der zustände gespeichert\nimplementiert modbus-proxy (nur lesen cache)\nregisterdaten von SDongleA lesen\nzusätzliches Loop-Intervallmedium (SDongle-Daten)\nIntegration von [NRGkick Wallbox](https://www.nrgkick.com)\nstringdaten schneller lesen (hohes intervall)",
@@ -80,19 +93,6 @@
         "pl": "wyświetla dane z łańcuchów fotowoltaicznych (# 27)\noptymalizacja czasu pętli interwałowej\nulepszona obsługa timeout odczytu z więcej niż 2 inwerterów",
         "uk": "відображення даних з ПВ-рядок (#27)\nоптимізуйте частимізацію інтервалної петлі\nполіпшена обробка часу читання з більш ніж 2 інверторів",
         "zh-cn": "显示 PV 字符串中的数据 (# 27)\n优化间隔循环的时间\n改进对超过2个反转器的断读处理"
-      },
-      "0.1.2": {
-        "en": "fix: no Data if interval less 20 sec (#24)\nprepare collected values more precisely\nexpand up to 5 inverters #18\nfix problems with multiple inverters",
-        "de": "fix: keine Daten, wenn Intervall weniger 20 sec (#24)\ndie gesammelten werte genauer\nbis zu 5 wechselrichtern #18 erweitern\nprobleme mit mehreren wechselrichtern beheben",
-        "ru": "исправление: нет данных, если интервал менее 20 секунд (#24)\nготовить собранные значения точнее\n#18\nисправить проблемы с несколькими инверторами",
-        "pt": "correção: não Dados se intervalo menos 20 segundos (#24)\npreparar valores coletados mais precisamente\nexpandir até 5 inversores #18\ncorrigir problemas com vários inversores",
-        "nl": "fix: geen Gegevens indien interval minder 20 sec (#24)\nverzamelde waarden nauwkeuriger voorbereiden\nuit te breiden tot 5 omvormers #18\nproblemen oplossen met meerdere inverters",
-        "fr": "correction : pas de données si l'intervalle est inférieur à 20 secondes (#24)\npréparer plus précisément les valeurs collectées\nétendre jusqu'à 5 onduleurs #18\nrésoudre les problèmes avec plusieurs onduleurs",
-        "it": "correzione: no Dati se intervallo meno 20 sec (#24)\npreparare i valori raccolti più precisamente\nespandere fino a 5 inverter #18\nrisolvere problemi con più inverter",
-        "es": "fijado: no Datos si intervalo menos 20 segundos (#24)\npreparar los valores recogidos con mayor precisión\nampliar hasta 5 inversores #18\nsolucionar problemas con múltiples inversores",
-        "pl": "fix: no Data if interval less 20 sec (# 24)\ndokładniej przygotować zebrane wartości\nrozszerzyć do 5 inwerterów # 18\nrozwiązać problemy z wieloma inwerterami",
-        "uk": "виправити: немає даних, якщо інтервал менше 20 сек (#24)\nпідготовка зібраних значень точно\nрозширити до 5 інверторів #18\nвиправити проблеми з декількома інверторами",
-        "zh-cn": "固定: 如果间隔小于20秒(# 24) 则无数据\n更准确地编制收集的数值\n扩展至5个反转器 # 18\n解决多个反转器的问题"
       }
     },
     "titleLang": {
