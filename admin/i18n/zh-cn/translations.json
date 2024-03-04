@@ -1,10 +1,10 @@
 {
     "sun2000 adapter settings": "华为逆变器sun2000的适配器设置",
-    "address": "逆变器IP地址",
+    "address": "设备IP地址",
     "port": "Modbus TCP 端口",
     "Modbus inverter IDs": "Modbus 逆变器 ID",
     "Update interval (sec)": "更新间隔[秒]",
-    "The inverters ip address": "逆变器ip地址",
+    "The device ip address": "逆变器ip地址",
     "The modbus TCP port": "Modbus TCP 端口",
     "The modbus inverter IDs, separated with character ,": "modbus逆变器ID，用字符分隔，",
     "Update interval to update the values from the inverters": "更新逆变器值的更新间隔",
@@ -20,5 +20,9 @@
     "The Modbus-proxy TCP port": "Modbus 代理 TCP 端口",
     "The SDongle modbus ID": "SDongle modbus ID - 通常为 100",
     "ms.log": "高级日志记录",
-    "Advanced logging": "Modbus 事务的高级记录"
+    "Advanced logging": "Modbus 事务的高级记录",
+    "sl.aktive": "SmartLogger 激活",
+    "SmartLogger active": "SmartLogger 激活",
+    "sl.meterId": "SmartLogger电表modbus ID",
+    "The Meter modbus ID": "仪表 modbus ID"
 }

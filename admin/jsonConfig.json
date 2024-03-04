@@ -6,11 +6,17 @@
             "type": "panel",
             "label": "Main settings",
             "items": {
+                "mainHdr1": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "sun2000 Settings",
+                    "size": 2
+                },
                 "address": {
                     "type": "text",
                     "label": "address",
                     "newLine": true,
-                    "tooltip": "The inverters ip address",
+                    "tooltip": "The device ip address",
                     "sm": 12,
                     "md": 8,
                     "lg": 2
@@ -42,6 +48,25 @@
                     "default": 20,
                     "newLine": true,
                     "tooltip": "Update interval to update the values from the inverters"
+                },
+                "mainHdr2": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "SmartLogger Settings",
+                    "size": 2
+                },
+                "sl_active": {
+                    "type": "checkbox",
+                    "label": "sl.aktive",
+                    "newLine": true,
+                    "tooltip": "SmartLogger active"
+                }, 
+                "sl_meterId": {
+                    "type": "text",
+                    "label": "sl.meterId",
+                    "lg": 2,
+                    "newLine": true,
+                    "tooltip": "The Meter modbus ID"
                 }
             }    
         },
@@ -85,7 +110,7 @@
             "type": "panel",
             "label": "Modbus-proxy",
             "items": {
-                "dividerHdr": {
+                "modbusProxyHdr1": {
                     "newLine": true,
                     "type": "header",
                     "text": "Modbus tcp proxy for multiple client connections",

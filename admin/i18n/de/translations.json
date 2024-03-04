@@ -1,10 +1,10 @@
 {
     "sun2000 adapter settings": "Adaptereinstellungen für Huawei Inverter Sun2000",
-    "address": "IP-Adresse des Wechselrichters",
+    "address": "Geräte-IP-Adresse",
     "port": "Modbus TCP-Port",
     "Modbus inverter IDs": "Modbus-Wechselrichter-IDs",
     "Update interval (sec)": "Aktualisierungsintervall [Sek.]",
-    "The inverters ip address": "Die IP-Adresse des Wechselrichters",
+    "The device ip address": "Die IP-Adresse des Wechselrichters",
     "The modbus TCP port": "Der Modbus-TCP-Port",
     "The modbus inverter IDs, separated with character ,": "Die Modbus-Wechselrichter-IDs, getrennt durch das Zeichen ,",
     "Update interval to update the values from the inverters": "Aktualisierungsintervall zur Aktualisierung der Werte von den Wechselrichtern",
@@ -20,5 +20,9 @@
     "The Modbus-proxy TCP port": "Der Modbus-Proxy-TCP-Port",
     "The SDongle modbus ID": "Die SDongle-Modbus-ID – normalerweise 100",
     "ms.log": "Erweiterte Protokollierung",
-    "Advanced logging": "Erweiterte Protokollierung von Modbus-Transaktionen"
+    "Advanced logging": "Erweiterte Protokollierung von Modbus-Transaktionen",
+    "sl.aktive": "SmartLogger aktiv",
+    "SmartLogger active": "SmartLogger aktiv",
+    "sl.meterId": "Modbus-ID des SmartLogger-Messgeräts",
+    "The Meter modbus ID": "Die Modbus-ID des Messgeräts"
 }

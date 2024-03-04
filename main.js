@@ -46,6 +46,10 @@ class Sun2000 extends utils.Adapter {
 				address : '0.0.0.0',
 				port : 520,
 				active : false
+			},
+			sl: {
+				active : false,
+				meterId: 11
 			}
 		};
 
@@ -146,6 +150,21 @@ class Sun2000 extends utils.Adapter {
 					},
 					native: {}
 				});
+			}
+
+			//v0.5.x
+			if (item.driverClass == driverClasses.logger) {
+				item.path = '';
+				await this.extendObjectAsync(item.path+'slogger', {
+					type: 'device',
+					common: {
+						name: 'device smartLogger'
+					},
+					native: {}
+				});
+			}
+			if (item.driverClass == driverClasses.loggerMeter) {
+				item.path = '';
 			}
 
 		}
@@ -261,7 +280,10 @@ class Sun2000 extends utils.Adapter {
 		if (this.settings.modbusAdjust) {
 			this.settings.highInterval = 10000*this.settings.modbusIds.length;
 		} else {
-			let minInterval = this.settings.modbusIds.length*this.settings.modbusDelay*2.5; //len*5*delay/2
+			let minInterval = 5000;
+			if (!this.settings.sl.active) {
+				minInterval = this.settings.modbusIds.length*this.settings.modbusDelay*2.5; //len*5*delay/2
+			}
 			for (const device of this.devices) {
 				if (device.duration) minInterval += device.duration;
 				//else minInterval += 1000;
@@ -319,6 +341,9 @@ class Sun2000 extends utils.Adapter {
 			this.settings.ms.port = this.config.ms_port;
 			this.settings.ms.active = this.config.ms_active;
 			this.settings.ms.log = this.config.ms_log;
+			//v0.5.0
+			this.settings.sl.active = this.config.sl_active;
+			this.settings.sl.meterId = this.config.sl_meterId;
 
 			if (this.settings.modbusAdjust) {
 				await this.setStateAsync('info.JSONhealth', {val: '{ message: "Adjust modbus settings"}', ack: true});
@@ -334,17 +359,36 @@ class Sun2000 extends utils.Adapter {
 						duration: 5000,
 						modbusId: id,
 						driverClass: driverClasses.inverter,
-						meter: (i==0),
+						meter: (i==0 && !this.settings.sl.active),
 						numberBatteryUnits : 0
 					});
 				}
 				if (this.settings.sDongleId >= 0) {
 					this.devices.push({
-						index: this.settings.modbusIds.length,
+						index: 0,
 						duration: 0,
 						modbusId: this.settings.sDongleId,
 						driverClass: driverClasses.sdongle
 					});
+				}
+
+				//v0.5.0
+				if (this.settings.sl.active > 0) {
+					this.devices.push({
+						index: 0,
+						duration: 0,
+						modbusId: 0,
+						driverClass: driverClasses.logger
+					});
+					if (this.settings.sl.meterId > 0) {
+						this.devices.push({
+							index: 0,
+							duration: 0,
+							meter : true,
+							modbusId: this.settings.sl.meterId,
+							driverClass: driverClasses.loggerMeter
+						});
+					}
 				}
 				await this.adjustInverval();
 				await this.StartProcess();

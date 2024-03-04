@@ -184,7 +184,9 @@
     "ms_address": "0.0.0.0",
     "ms_port": 502,
     "ms_log": false,
-    "sDongleId": "100"
+    "sDongleId": "100",
+    "sl_active": false,
+    "sl_meterId": 11
   },
   "objects": [],
   "instanceObjects": [

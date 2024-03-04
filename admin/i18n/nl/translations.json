@@ -1,10 +1,10 @@
 {
     "sun2000 adapter settings": "Adapterinstellingen voor huawai omvormer sun2000",
-    "address": "IP-adres van de omvormer",
+    "address": "IP-adres van apparaat",
     "port": "modbus TCP-poort",
     "Modbus inverter IDs": "Modbus-omvormer-ID's",
     "Update interval (sec)": "Update-interval [sec]",
-    "The inverters ip address": "Het IP-adres van de omvormer",
+    "The device ip address": "Het IP-adres van de omvormer",
     "The modbus TCP port": "De modbus TCP-poort",
     "The modbus inverter IDs, separated with character ,": "De ID's van de Modbus-omvormer, gescheiden door het teken ,",
     "Update interval to update the values from the inverters": "Update-interval om de waarden van de omvormers bij te werken",
@@ -20,5 +20,9 @@
     "The Modbus-proxy TCP port": "De Modbus-proxy TCP-poort",
     "The SDongle modbus ID": "De SDongle modbus-ID - meestal 100",
     "ms.log": "Geavanceerde logboekregistratie",
-    "Advanced logging": "Geavanceerde registratie van modbus-transacties"
+    "Advanced logging": "Geavanceerde registratie van modbus-transacties",
+    "sl.aktive": "SmartLogger actief",
+    "SmartLogger active": "SmartLogger actief",
+    "sl.meterId": "Modbus-ID van SmartLogger-meter",
+    "The Meter modbus ID": "De Modbus-ID van de meter"
 }

@@ -1,10 +1,10 @@
 {
     "sun2000 adapter settings": "Configurações do adaptador para inversor huawai sun2000",
-    "address": "Endereço IP do inversor",
+    "address": "Endereço IP do dispositivo",
     "port": "porta modbus TCP",
     "Modbus inverter IDs": "IDs do inversor Modbus",
     "Update interval (sec)": "Intervalo de atualização [seg]",
-    "The inverters ip address": "O endereço IP dos inversores",
+    "The device ip address": "O endereço IP dos inversores",
     "The modbus TCP port": "A porta modbus TCP",
     "The modbus inverter IDs, separated with character ,": "Os IDs do inversor modbus, separados pelo caractere ,",
     "Update interval to update the values from the inverters": "Intervalo de atualização para atualizar os valores dos inversores",
@@ -20,5 +20,9 @@
     "The Modbus-proxy TCP port": "A porta TCP proxy Modbus",
     "The SDongle modbus ID": "O ID do modbus SDongle - geralmente 100",
     "ms.log": "Registro avançado",
-    "Advanced logging": "Registro avançado de transações modbus"
+    "Advanced logging": "Registro avançado de transações modbus",
+    "sl.aktive": "SmartLogger ativo",
+    "SmartLogger active": "SmartLogger ativo",
+    "sl.meterId": "ID modbus do medidor SmartLogger",
+    "The Meter modbus ID": "O ID do modbus do medidor"
 }

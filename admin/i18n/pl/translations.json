@@ -1,10 +1,10 @@
 {
     "sun2000 adapter settings": "Ustawienia adaptera dla falownika Huawei Sun2000",
-    "address": "Adres IP falownika",
+    "address": "Adres IP urządzenia",
     "port": "portu Modbus TCP",
     "Modbus inverter IDs": "Identyfikatory falowników Modbus",
     "Update interval (sec)": "Interwał aktualizacji [s]",
-    "The inverters ip address": "Adres IP falowników",
+    "The device ip address": "Adres IP falowników",
     "The modbus TCP port": "Port Modbus TCP",
     "The modbus inverter IDs, separated with character ,": "Identyfikatory falowników Modbus, oddzielone znakiem ,",
     "Update interval to update the values from the inverters": "Częstotliwość aktualizacji w celu aktualizacji wartości z falowników",
@@ -18,7 +18,11 @@
     "If want to listen only at localhost use 127.0.0.1": "Jeśli chcesz słuchać tylko na localhost, użyj 127.0.0.1",
     "ms.port": "Port Modbus-proxy TCP",
     "The Modbus-proxy TCP port": "Port Modbus-proxy TCP",
-    "The SDongle modbus ID": "Identyfikator modbus SDongle - zwykle 100",
+    "The SDongle modbus ID": "Identyfikator Modbus SDongle - zwykle 100",
     "ms.log": "Zaawansowane rejestrowanie",
-    "Advanced logging": "Zaawansowane rejestrowanie transakcji Modbus"
+    "Advanced logging": "Zaawansowane rejestrowanie transakcji Modbus",
+    "sl.aktive": "SmartLogger aktywny",
+    "SmartLogger active": "SmartLogger aktywny",
+    "sl.meterId": "Identyfikator Modbus miernika SmartLogger",
+    "The Meter modbus ID": "Identyfikator Modbus miernika"
 }

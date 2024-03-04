@@ -1,10 +1,10 @@
 {
     "sun2000 adapter settings": "Настройки адаптера для инвертора huawei sun2000",
-    "address": "IP-адрес инвертора",
+    "address": "IP-адрес устройства",
     "port": "TCP-порт Modbus",
     "Modbus inverter IDs": "Идентификаторы преобразователей Modbus",
     "Update interval (sec)": "Интервал обновления [сек]",
-    "The inverters ip address": "IP-адрес инвертора",
+    "The device ip address": "IP-адрес инвертора",
     "The modbus TCP port": "TCP-порт Modbus",
     "The modbus inverter IDs, separated with character ,": "Идентификаторы инверторов Modbus, разделенные символом ,",
     "Update interval to update the values from the inverters": "Интервал обновления для обновления значений инверторов.",
@@ -20,5 +20,9 @@
     "The Modbus-proxy TCP port": "TCP-порт Modbus-прокси",
     "The SDongle modbus ID": "Идентификатор Modbus SDongle — обычно 100.",
     "ms.log": "Расширенное ведение журнала",
-    "Advanced logging": "Расширенное журналирование транзакций Modbus"
+    "Advanced logging": "Расширенное журналирование транзакций Modbus",
+    "sl.aktive": "SmartLogger активен",
+    "SmartLogger active": "SmartLogger активен",
+    "sl.meterId": "Идентификатор Modbus счетчика SmartLogger",
+    "The Meter modbus ID": "Идентификатор Modbus измерителя"
 }

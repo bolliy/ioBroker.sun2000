@@ -1,10 +1,10 @@
 {
 	"sun2000 adapter settings": "Adapter settings for huawai inverter sun2000",
-	"address": "Inverter IP address",
+	"address": "Device IP address",
 	"port": "modbus TCP port",
 	"Modbus inverter IDs" : "Modbus Inverter IDs",
 	"Update interval (sec)": "Update interval [sec]",
-	"The inverters ip address": "The inverters ip address",
+	"The device ip address": "The inverters ip address",
 	"The modbus TCP port" : "The modbus TCP port",
 	"The modbus inverter IDs, separated with character ," : "The modbus inverter IDs, separated with character ,",
 	"Update interval to update the values from the inverters" : "Update interval to update the values from the inverters",
@@ -20,5 +20,9 @@
 	"The Modbus-proxy TCP port" : "The Modbus-proxy TCP port",
 	"The SDongle modbus ID" : "The SDongle modbus ID - usually 100",
 	"ms.log" : "Advanced logging",
-	"Advanced logging": "Advanced logging of modbus transactions"
+	"Advanced logging": "Advanced logging of modbus transactions",
+	"sl.aktive" : "SmartLogger active",
+	"SmartLogger active" : "SmartLogger active",
+	"sl.meterId" : "SmartLogger meter modbus ID",
+	"The Meter modbus ID" : "The Meter modbus ID"
 }
