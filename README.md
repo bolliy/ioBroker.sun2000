@@ -51,6 +51,8 @@ See the [documentation page](./docs/README.md)
 -->
 ### **WORK IN PROGRESS**
 * Integration of [Huawei SmartLogger](https://support.huawei.com/enterprise/de/doc/EDOC1100130069/d8a00460)
+* some meter states the unit was changed (for example sun2000.0.meter.activePowerL1)
+* sun2000 serie M2 or higher can also be processed 
 
 ### 0.4.1 (2024-03-03)
 * read PV string data slower (medium interval)
