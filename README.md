@@ -48,6 +48,9 @@ see the [documentation page](./docs/README.md)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* Integration of [Huawei SmartLogger](https://support.huawei.com/enterprise/de/doc/EDOC1100130069/d8a00460)
+
 ### 0.4.1 (2024-03-03)
 * read PV string data slower (medium interval)
 
