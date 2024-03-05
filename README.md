@@ -29,10 +29,11 @@ See the [documentation page](./docs/README.md)
 
 ## Supported hardware
 
-* HUAWEI Inverter SUN2000 Serie (M0,M1) 
+* HUAWEI Inverter SUN2000 Serie (M0,M1,M2 and higher) 
 * HUAWEI Smart Dongle-WLAN-FE / min. Softwareversion: V100R001C00SPC133 (SDongleA-05)
 * HUAWEI Luna2000 Battery
 * HUAWEI Smart Power Sensor DTSU666-H or DDSU666-H
+* HUAWEI Smart Logger / min. Softwareversion: V300R023C10SPC311
 
 ## Feature list
 
