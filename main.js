@@ -280,13 +280,13 @@ class Sun2000 extends utils.Adapter {
 		if (this.settings.modbusAdjust) {
 			this.settings.highInterval = 10000*this.settings.modbusIds.length;
 		} else {
-			let minInterval = 5000;
-			if (!this.settings.sl.active) {
-				minInterval = this.settings.modbusIds.length*this.settings.modbusDelay*2.5; //len*5*delay/2
-			}
-			for (const device of this.devices) {
-				if (device.duration) minInterval += device.duration;
-				//else minInterval += 1000;
+			let minInterval = this.settings.modbusIds.length*this.settings.modbusDelay*2.5; //len*5*delay/2
+			if (this.settings.sl.active) { //SmartLogger
+				minInterval += 5000;
+			} else {
+				for (const device of this.devices) {
+					if (device.duration) minInterval += device.duration;
+				}
 			}
 			if (minInterval> this.settings.highInterval) {
 				this.settings.highInterval = Math.round(minInterval);
@@ -296,7 +296,6 @@ class Sun2000 extends utils.Adapter {
 		if (this.settings.highInterval > this.settings.lowInterval) {
 			this.settings.lowInterval = this.settings.highInterval;
 		}
-		//v0.4.0
 		this.settings.mediumInterval = Math.round(this.settings.lowInterval/2);
 		const newHighInterval = Math.round(this.settings.highInterval/1000);
 		if (!this.settings.modbusAdjust) {
