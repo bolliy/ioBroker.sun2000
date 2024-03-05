@@ -363,17 +363,8 @@ class Sun2000 extends utils.Adapter {
 						numberBatteryUnits : 0
 					});
 				}
-				if (this.settings.sDongleId >= 0) {
-					this.devices.push({
-						index: 0,
-						duration: 0,
-						modbusId: this.settings.sDongleId,
-						driverClass: driverClasses.sdongle
-					});
-				}
-
 				//v0.5.0
-				if (this.settings.sl.active > 0) {
+				if (this.settings.sl.active) {
 					this.devices.push({
 						index: 0,
 						duration: 0,
@@ -387,6 +378,15 @@ class Sun2000 extends utils.Adapter {
 							meter : true,
 							modbusId: this.settings.sl.meterId,
 							driverClass: driverClasses.loggerMeter
+						});
+					}
+				} else {
+					if (this.settings.sDongleId > 0) {
+						this.devices.push({
+							index: 0,
+							duration: 0,
+							modbusId: this.settings.sDongleId,
+							driverClass: driverClasses.sdongle
 						});
 					}
 				}

@@ -5,6 +5,7 @@
 [![Downloads](https://img.shields.io/npm/dm/iobroker.sun2000.svg)](https://www.npmjs.com/package/iobroker.sun2000)
 ![Number of Installations](https://iobroker.live/badges/sun2000-installed.svg)
 ![Current version in stable repository](https://iobroker.live/badges/sun2000-stable.svg)
+[![Documentation](https://img.shields.io/badge/Documentation-2D963D?logo=read-the-docs&logoColor=white)](https://github.com/bolliy/ioBroker.sun2000/blob/main/docs/README.md)
 
 [![NPM](https://nodei.co/npm/iobroker.sun2000.png?downloads=true)](https://nodei.co/npm/iobroker.sun2000/)
 
