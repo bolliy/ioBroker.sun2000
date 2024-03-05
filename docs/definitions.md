@@ -5,3 +5,6 @@ https://forum.iobroker.net/assets/uploads/files/1699119419919-solar-inverter-mod
 
 SdongleA modbus interface definition (Issue 2, 2023-04-20):
 https://photomate.zendesk.com/hc/en-gb/articles/7275970817437-SDongleA-MODBUS-Interface-Definitions 
+
+SmartLogger modbus interface definition (Issue 43, 2023-10-21)
+https://photomate.zendesk.com/hc/en-gb/articles/4573566657053-SmartLogger-Modbus-Definition-List
