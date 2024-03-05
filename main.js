@@ -158,7 +158,7 @@ class Sun2000 extends utils.Adapter {
 				await this.extendObjectAsync(item.path+'slogger', {
 					type: 'device',
 					common: {
-						name: 'device smartLogger'
+						name: 'device SmartLogger'
 					},
 					native: {}
 				});
