@@ -74,6 +74,12 @@
             "type": "panel",
             "label": "Modbus timing",
             "items": {
+                "timmingHdr1": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "Modbus timing Settings",
+                    "size": 2
+                },
                 "timeout": {
                     "type": "number",
                     "label": "timeout (ms)",
