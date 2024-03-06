@@ -23,6 +23,6 @@
     "Advanced logging": "Erweiterte Protokollierung von Modbus-Transaktionen",
     "sl.aktive": "SmartLogger aktiv",
     "SmartLogger active": "SmartLogger aktiv",
-    "sl.meterId": "Modbus-ID des Smart Power Sensors",
-    "The Meter modbus ID": "Die Modbus-ID des Zählers"
+    "sl.meterId": "Modbus-ID des Zählers",
+    "The Meter modbus ID": "Die Modbus-ID des Smart Power Sensors"
 }
