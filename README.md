@@ -42,7 +42,7 @@ See the [documentation page](./docs/README.md)
 * States are only written for changed data from the inverter. This relieves the burden on the iobroker instance.
 * The states “inputPower” or “activePower” in the “collected” path can be monitored with a “was updated” trigger element. Because these states are always written within the set interval.
 * modbus-proxy: Third party device such as wallbox, energy manager etc. can receive data even if the modbus interface of inverter is already in use. In addition you can mirror the sun2000 data to another IoBroker instance.
-* Huawei SmartLogger integration: 
+* Huawei SmartLogger integration: Monitors and manages the PV power system. The adapter saves the collected data in the same way as it does when read out the inverter directly.
 
 ## Changelog
 
