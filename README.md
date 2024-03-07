@@ -50,10 +50,10 @@ See the [documentation page](./docs/README.md)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.5.0 (2024-03-07)
 * Integration of [Huawei SmartLogger](https://support.huawei.com/enterprise/de/doc/EDOC1100130069/d8a00460)
 * some meter states the unit was changed (for example sun2000.0.meter.activePowerL1) (#56)
-* sun2000 serie M2 or higher can also be processed 
+* sun2000 serie M2 or higher can also be processed
 
 ### 0.4.1 (2024-03-03)
 * read PV string data slower (medium interval)
