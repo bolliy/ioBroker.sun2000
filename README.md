@@ -25,7 +25,8 @@ Feel free to follow the discussions in the german [iobroker forum](https://forum
 
 ## Documentation
 
-See the [documentation page](./docs/README.md)
+See the [documentation page](./docs/README.md) or 
+browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki) 
 
 ## Supported hardware
 
