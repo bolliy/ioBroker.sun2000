@@ -24,5 +24,6 @@
     "sl.aktive": "SmartLogger aktiv",
     "SmartLogger active": "SmartLogger aktiv",
     "sl.meterId": "Modbus-ID des Zählers",
-    "The Meter modbus ID": "Die Modbus-ID des Smart Power Sensors"
+    "The Meter modbus ID": "Die Modbus-ID des Smart Power Sensors",
+    "sd_active": "SDongle aktiv"
 }

@@ -24,5 +24,6 @@
     "sl.aktive": "SmartLogger aktywny",
     "SmartLogger active": "SmartLogger aktywny",
     "sl.meterId": "Identyfikator Modbus miernika SmartLogger",
-    "The Meter modbus ID": "Identyfikator Modbus miernika"
+    "The Meter modbus ID": "Identyfikator Modbus miernika",
+    "sd_active": "SDongle aktywny"
 }

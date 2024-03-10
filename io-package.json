@@ -176,6 +176,8 @@
     "port": 502,
     "modbusIds": "1",
     "updateInterval": 20,
+    "sd_active": false,
+    "sDongleId": "100",
     "timeout": 10000,
     "delay": 0,
     "connectDelay": 5000,
@@ -184,7 +186,6 @@
     "ms_address": "0.0.0.0",
     "ms_port": 502,
     "ms_log": false,
-    "sDongleId": "100",
     "sl_active": false,
     "sl_meterId": 11
   },
