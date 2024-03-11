@@ -51,10 +51,10 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.5.1 (2024-03-11)
 * Config page restructured
-* Read only the required string data
-* fix interval medium 
+* read only the required string data
+* fix interval medium
 
 ### 0.5.0 (2024-03-07)
 * Integration of [Huawei SmartLogger](https://support.huawei.com/enterprise/de/doc/EDOC1100130069/d8a00460)
