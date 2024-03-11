@@ -62,7 +62,7 @@
                 },
                 "sd_active": {
                     "type": "checkbox",
-                    "label": "sd.aktive",
+                    "label": "sd.active",
                     "newLine": true,
                     "tooltip": "SDongle active"
                 }, 
@@ -70,8 +70,7 @@
                     "type": "text",
                     "label": "SDongleA modbus ID",
                     "lg": 2,
-                    "newLine": true,
-                    "tooltip": "The SDongle modbus ID"
+                    "newLine": true
                 }    
             }    
         },

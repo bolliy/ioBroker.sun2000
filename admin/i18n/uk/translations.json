@@ -18,13 +18,12 @@
     "If want to listen only at localhost use 127.0.0.1": "Якщо ви хочете слухати лише на локальному хості, використовуйте 127.0.0.1",
     "ms.port": "TCP-порт Modbus-proxy",
     "The Modbus-proxy TCP port": "TCP-порт Modbus-proxy",
-    "sd.active": "SDongle активний",
-    "SDongle active": "SDongle активний",
     "The SDongle modbus ID": "ID Modbus SDongle - зазвичай 100",
     "ms.log": "Розширене журналювання",
     "Advanced logging": "Розширене журналювання транзакцій Modbus",
     "sl.aktive": "SmartLogger активний",
     "SmartLogger active": "SmartLogger активний",
     "sl.meterId": "ID лічильника Modbus SmartLogger",
-    "The Meter modbus ID": "ID лічильника modbus"
+    "The Meter modbus ID": "ID лічильника modbus",
+    "sd.active": "SDongle активний"
 }

@@ -18,13 +18,12 @@
     "If want to listen only at localhost use 127.0.0.1": "如果只想在本地主机上监听，请使用 127.0.0.1",
     "ms.port": "Modbus 代理 TCP 端口",
     "The Modbus-proxy TCP port": "Modbus 代理 TCP 端口",
-    "sd.active": "SD加密狗激活",
-    "SDongle active": "SD加密狗激活",
     "The SDongle modbus ID": "SDongle modbus ID - 通常为 100",
     "ms.log": "高级日志记录",
     "Advanced logging": "Modbus 事务的高级记录",
     "sl.aktive": "SmartLogger 激活",
     "SmartLogger active": "SmartLogger 激活",
     "sl.meterId": "SmartLogger电表modbus ID",
-    "The Meter modbus ID": "仪表 modbus ID"
+    "The Meter modbus ID": "仪表 modbus ID",
+    "sd.active": "SD加密狗激活"
 }
