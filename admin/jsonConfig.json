@@ -15,11 +15,11 @@
                 "address": {
                     "type": "text",
                     "label": "address",
-                    "newLine": true,
                     "tooltip": "The device ip address",
                     "sm": 12,
                     "md": 8,
-                    "lg": 2
+                    "lg": 2,
+                    "newLine": true
                 },
                 "port": {
                     "type": "number",
@@ -35,7 +35,7 @@
                     "label": "Modbus inverter IDs",
                     "sm": 12,
                     "md": 8,
-                    "lg": 3,
+                    "lg": 2,
                     "default": "1",
                     "newLine": true,
                     "tooltip": "The modbus inverter IDs, separated with character ,"
@@ -49,25 +49,29 @@
                     "newLine": true,
                     "tooltip": "Update interval to update the values from the inverters"
                 },
-                "mainHdr2": {
+                "mainHdr3": {
                     "newLine": true,
                     "type": "header",
-                    "text": "SmartLogger Settings",
+                    "text": "SDongle Settings",
                     "size": 2
                 },
-                "sl_active": {
+                "chipsTxt": {
+                    "type": "staticText",
+                    "text": "Provides the collected data from the SDongle",
+                    "newLine": true
+                },
+                "sd_active": {
                     "type": "checkbox",
-                    "label": "sl.aktive",
+                    "label": "sd.active",
                     "newLine": true,
-                    "tooltip": "SmartLogger active"
+                    "tooltip": "SDongle active"
                 }, 
-                "sl_meterId": {
+                "sDongleId": {
                     "type": "text",
-                    "label": "sl.meterId",
+                    "label": "SDongleA modbus ID",
                     "lg": 2,
-                    "newLine": true,
-                    "tooltip": "The Meter modbus ID"
-                }
+                    "newLine": true
+                }    
             }    
         },
         "tab2": {
@@ -114,6 +118,37 @@
         },    
         "tab3": {
             "type": "panel",
+            "label": "Smart Logger",
+            "items": {
+                "mainHdr3": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "SmartLogger Settings",
+                    "size": 2
+                },
+                "chipsTxt": {
+                    "type": "staticText",
+                    "text": "The SmartLogger monitors and manages PV systems and energy storage systems. It converges all ports, converts protocols, collects and stores data, and centrally monitors and maintains the devices in the systems.",
+                    "newLine": true
+                },
+                "sl_active": {
+                    "type": "checkbox",
+                    "label": "sl.aktive",
+                    "newLine": true,
+                    "tooltip": "SmartLogger active"
+                }, 
+                "sl_meterId": {
+                    "type": "text",
+                    "label": "sl.meterId",
+                    "lg": 2,
+                    "newLine": true,
+                    "tooltip": "The Meter modbus ID"
+                }
+                
+            }
+        },
+        "tab4": {
+            "type": "panel",
             "label": "Modbus-proxy",
             "items": {
                 "modbusProxyHdr1": {
@@ -152,13 +187,6 @@
                     "newLine": true,
                     "tooltip" : "The Modbus-proxy TCP port"
                 },
-                "sDongleId": {
-                    "type": "text",
-                    "label": "SDongleA modbus ID",
-                    "lg": 2,
-                    "newLine": true,
-                    "tooltip": "The SDongle modbus ID"
-                },
                 "ms_log": {
                     "type": "checkbox",
                     "label": "ms.log",
@@ -166,6 +194,31 @@
                     "tooltip": "Advanced logging"
                 }
             }
-        }
+        },
+        "tab5": {
+            "type": "panel",
+            "label": "help",
+            "items": {
+                "Hdr1": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "How do I get help?",
+                    "size": 2
+                },
+                "chipsTxt": {
+                    "type": "staticText",
+                    "text": "Do you need help? There are multiple ways of getting support. ",
+                    "newLine": true
+                },
+                "staticLink1": {
+                    "type": "staticLink",
+                    "text": "Available help options",
+                    "href": "https://github.com/bolliy/ioBroker.sun2000/wiki/Hilfe-(support)",
+                    "icon": "info",
+                    "button": true,
+                    "newLine": true
+                }
+            }   
+        }    
     }
 }

@@ -50,6 +50,10 @@ class Sun2000 extends utils.Adapter {
 			sl: {
 				active : false,
 				meterId: 11
+			},
+			sd: {
+				active : false,
+				sDongleId : 100
 			}
 		};
 
@@ -333,8 +337,9 @@ class Sun2000 extends utils.Adapter {
 			this.settings.modbusConnectDelay = this.config.connectDelay; //ms
 			this.settings.modbusAdjust = this.config.autoAdjust;
 			this.settings.modbusIds = this.config.modbusIds.split(',').map((n) => {return Number(n);});
-			this.settings.sDongleId = Number(this.config.sDongleId) ?? -1;
-			if (this.settings.sDongleId < -1 && this.settings.sDongleId >= 255) this.settings.sDongleId = -1;
+			this.settings.sd.active = this.config.sd_active;
+			this.settings.sd.sDongleId = Number(this.config.sDongleId) ?? 0;
+			if (this.settings.sDongleId < 0 && this.settings.sDongleId >= 255) this.settings.sd.active = false;
 			this.settings.highInterval = this.config.updateInterval*1000; //ms
 			this.settings.ms.address = this.config.ms_address;
 			this.settings.ms.port = this.config.ms_port;
@@ -379,16 +384,17 @@ class Sun2000 extends utils.Adapter {
 							driverClass: driverClasses.loggerMeter
 						});
 					}
-				} else {
-					if (this.settings.sDongleId > 0) {
-						this.devices.push({
-							index: 0,
-							duration: 0,
-							modbusId: this.settings.sDongleId,
-							driverClass: driverClasses.sdongle
-						});
-					}
 				}
+				//v0.5.1
+				if (this.settings.sd.active) {
+					this.devices.push({
+						index: 0,
+						duration: 0,
+						modbusId: this.settings.sd.sDongleId,
+						driverClass: driverClasses.sdongle
+					});
+				}
+
 				await this.adjustInverval();
 				await this.StartProcess();
 			} else {

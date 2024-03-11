@@ -24,5 +24,6 @@
     "sl.aktive": "SmartLogger 激活",
     "SmartLogger active": "SmartLogger 激活",
     "sl.meterId": "SmartLogger电表modbus ID",
-    "The Meter modbus ID": "仪表 modbus ID"
+    "The Meter modbus ID": "仪表 modbus ID",
+    "sd.active": "SD加密狗激活"
 }

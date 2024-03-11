@@ -24,5 +24,6 @@
     "sl.aktive": "SmartLogger активний",
     "SmartLogger active": "SmartLogger активний",
     "sl.meterId": "ID лічильника Modbus SmartLogger",
-    "The Meter modbus ID": "ID лічильника modbus"
+    "The Meter modbus ID": "ID лічильника modbus",
+    "sd.active": "SDongle активний"
 }

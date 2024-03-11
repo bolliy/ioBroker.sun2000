@@ -13,9 +13,9 @@
     "delay after modbus connected": "Verzögerung nach der Modbus-Verbindung",
     "automatic adjustment of the modbus settings": "automatische Anpassung der Modbus-Einstellungen",
     "ms.aktive": "Modbus-Proxy aktiv",
-    "Modbus-proxy via TCP for read-only is active": "Modbus-Proxy über TCP (nur lesend) ist aktiv",
+    "Modbus-proxy via TCP for read-only is active": "Modbus-Proxy über TCP zum Nur-Lesen ist aktiv",
     "ms.address": "Modbus-Proxy-IP-Adresse",
-    "If want to listen only at localhost use 127.0.0.1": "Wenn Sie nur auf localhost hören möchten, verwenden Sie 127.0.0.1",
+    "If want to listen only at localhost use 127.0.0.1": "Wenn Sie nur auf localhost zuhören möchten, verwenden Sie 127.0.0.1",
     "ms.port": "Modbus-Proxy-TCP-Port",
     "The Modbus-proxy TCP port": "Der Modbus-Proxy-TCP-Port",
     "The SDongle modbus ID": "Die SDongle-Modbus-ID – normalerweise 100",
@@ -23,6 +23,7 @@
     "Advanced logging": "Erweiterte Protokollierung von Modbus-Transaktionen",
     "sl.aktive": "SmartLogger aktiv",
     "SmartLogger active": "SmartLogger aktiv",
-    "sl.meterId": "Modbus-ID des Zählers",
-    "The Meter modbus ID": "Die Modbus-ID des Smart Power Sensors"
+    "sl.meterId": "Modbus-ID des SmartLogger-Messgeräts",
+    "The Meter modbus ID": "Die Modbus-ID des Messgeräts",
+    "sd.active": "SDongle aktiv"
 }
