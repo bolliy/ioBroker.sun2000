@@ -18,12 +18,13 @@
     "If want to listen only at localhost use 127.0.0.1": "Als je alleen op localhost wilt luisteren, gebruik dan 127.0.0.1",
     "ms.port": "Modbus-proxy TCP-poort",
     "The Modbus-proxy TCP port": "De Modbus-proxy TCP-poort",
+    "sd.active": "SDongle actief",
+    "SDongle active": "SDongle actief",
     "The SDongle modbus ID": "De SDongle modbus-ID - meestal 100",
     "ms.log": "Geavanceerde logboekregistratie",
     "Advanced logging": "Geavanceerde registratie van modbus-transacties",
     "sl.aktive": "SmartLogger actief",
     "SmartLogger active": "SmartLogger actief",
     "sl.meterId": "Modbus-ID van SmartLogger-meter",
-    "The Meter modbus ID": "De Modbus-ID van de meter",
-    "sd_active": "SDongle actief"
+    "The Meter modbus ID": "De Modbus-ID van de meter"
 }

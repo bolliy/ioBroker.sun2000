@@ -119,6 +119,37 @@
         },    
         "tab3": {
             "type": "panel",
+            "label": "Smart Logger",
+            "items": {
+                "mainHdr3": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "SmartLogger Settings",
+                    "size": 2
+                },
+                "chipsTxt": {
+                    "type": "staticText",
+                    "text": "The SmartLogger monitors and manages PV systems and energy storage systems. It converges all ports, converts protocols, collects and stores data, and centrally monitors and maintains the devices in the systems.",
+                    "newLine": true
+                },
+                "sl_active": {
+                    "type": "checkbox",
+                    "label": "sl.aktive",
+                    "newLine": true,
+                    "tooltip": "SmartLogger active"
+                }, 
+                "sl_meterId": {
+                    "type": "text",
+                    "label": "sl.meterId",
+                    "lg": 2,
+                    "newLine": true,
+                    "tooltip": "The Meter modbus ID"
+                }
+                
+            }
+        },
+        "tab4": {
+            "type": "panel",
             "label": "Modbus-proxy",
             "items": {
                 "modbusProxyHdr1": {
@@ -165,36 +196,30 @@
                 }
             }
         },
-        "tab4": {
+        "tab5": {
             "type": "panel",
-            "label": "Smart Logger",
+            "label": "help",
             "items": {
-                "mainHdr3": {
+                "Hdr1": {
                     "newLine": true,
                     "type": "header",
-                    "text": "SmartLogger Settings",
+                    "text": "How do I get help?",
                     "size": 2
                 },
                 "chipsTxt": {
                     "type": "staticText",
-                    "text": "The SmartLogger monitors and manages PV systems and energy storage systems. It converges all ports, converts protocols, collects and stores data, and centrally monitors and maintains the devices in the systems.",
+                    "text": "Do you need help? There are multiple ways of getting support. ",
                     "newLine": true
                 },
-                "sl_active": {
-                    "type": "checkbox",
-                    "label": "sl.aktive",
-                    "newLine": true,
-                    "tooltip": "SmartLogger active"
-                }, 
-                "sl_meterId": {
-                    "type": "text",
-                    "label": "sl.meterId",
-                    "lg": 2,
-                    "newLine": true,
-                    "tooltip": "The Meter modbus ID"
+                "staticLink1": {
+                    "type": "staticLink",
+                    "text": "Available help options",
+                    "href": "https://github.com/bolliy/ioBroker.sun2000/wiki/Hilfe-(support)",
+                    "icon": "info",
+                    "button": true,
+                    "newLine": true
                 }
-                
-            }
-        }
+            }   
+        }    
     }
 }

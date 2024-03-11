@@ -51,6 +51,10 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* Config page restructured
+* Read only the required string data
+
 ### 0.5.0 (2024-03-07)
 * Integration of [Huawei SmartLogger](https://support.huawei.com/enterprise/de/doc/EDOC1100130069/d8a00460)
 * some meter states the unit was changed (for example sun2000.0.meter.activePowerL1) (#56)
