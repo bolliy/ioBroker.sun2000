@@ -13,18 +13,15 @@ The following variables are used or can be calculated yourself:
 - `Discharge capacity daily`: sun2000.0.inverter.0.battery.currentDayDischargeCapacity
 - `Discharge capacity total`: sun2000.0.inverter.0.battery.totalDischarge
 - `SOC`: sun2000.0.collected.SOC
-- [`Daily Solar yield`](https://github.com/bolliy/ioBroker.sun2000/wiki/Energieertrag-%28Yield-today%29/_edit#dailysolaryield): sun2000.0.collected.dailySolarYield
+- [`Daily Solar yield`](https://github.com/bolliy/ioBroker.sun2000/wiki/Energieertrag-%28Yield-today%29/#dailysolaryield): sun2000.0.collected.dailySolarYield
 - `Grid total, positive active Energy`: sun2000.0.meter.positiveActiveEnergy
 - `Grid total, reverse active Energy`: sun2000.0.meter.reverseActiveEnergy
 - `Grid active power`: sun2000.0.meter.activePower
 - `active power`: sun2000.0.collected.activePower
 - `Energy yield Accumulated`: sun2000.0.collected.accumulatedEnergyYield
 - [`Energy yield Daily`](https://github.com/bolliy/ioBroker.sun2000/wiki/Energieertrag-(Yield-today)): sun2000.0.collected.dailyEnergyYield
-- [`Daily input yield`](https://github.com/bolliy/ioBroker.sun2000/wiki/Energieertrag-%28Yield-today%29/_edit#dailyinputyield): sun2000.0.collected.dailyInputYield
+- [`Daily input yield`](https://github.com/bolliy/ioBroker.sun2000/wiki/Energieertrag-%28Yield-today%29/#dailyinputyield): sun2000.0.collected.dailyInputYield
 - [`CommsumptionSum`](https://github.com/bolliy/ioBroker.sun2000/wiki/Hausverbrauch-(consumption)): sun2000.0.collected.consumptionSum
 - [`Self-consumption %`](https://github.com/bolliy/ioBroker.sun2000/wiki/Eigenverbrauch-(self%E2%80%90consumption)): (sun2000.0.collected.accumulatedEnergyYield+sun2000.0.collected.totalCharge-sun2000.0.inverter.0.battery.totalDischarge- sun2000.0.meter.positiveActiveEnergy) / (sun2000.0.collected.accumulatedEnergyYield + sun2000.0.collected.totalCharge - sun2000.0.inverter.0.battery.totalDischarge)
 - `Self-Sufficiency %`: (sun2000.0.collected.consumptionSum - sun2000.0.meter.reverseActiveEnergy) / sun2000.0.collected.consumptionSum
-
-
-
 
