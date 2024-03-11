@@ -54,6 +54,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 ### **WORK IN PROGRESS**
 * Config page restructured
 * Read only the required string data
+* fix interval medium 
 
 ### 0.5.0 (2024-03-07)
 * Integration of [Huawei SmartLogger](https://support.huawei.com/enterprise/de/doc/EDOC1100130069/d8a00460)
