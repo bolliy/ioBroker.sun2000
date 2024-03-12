@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "news": {
+      "0.5.1": {
+        "en": "Config page restructured\nRead only the required string data\nfix interval medium",
+        "de": "Config-Seite umstrukturiert\nLesen Sie nur die gewünschten Stringdaten\nintervall mittel",
+        "ru": "Реструктуризация страницы настройки\nЧитайте только требуемые данные строки\nфиксированный интервал",
+        "pt": "Página de confiança reestruturada\nLeia apenas os dados de string necessários\nmédia de intervalo de correção",
+        "nl": "Configuratiepagina geherstructureerd\nAlleen de vereiste tekenreeksgegevens lezen\nfix interval medium",
+        "fr": "Config page restructurée\nLire seulement les données de chaîne requises\nintervalle de fixation moyen",
+        "it": "Pagina di configurazione ristrutturata\nLeggi solo i dati della stringa richiesti\nintervallo di fissaggio medio",
+        "es": "Reestructuración de la página de confidencialidad\nLea sólo los datos de cadena requeridos\nintervalo de fijación medio",
+        "pl": "Strona konfiguracyjna zrestrukturyzowana\nPrzeczytaj tylko wymagane dane łańcuchowe\nmedium interwałowe",
+        "uk": "Налаштування реструктуризації сторінки\nПрочитати тільки необхідні дані рядків\nфіксувати інтервал середні",
+        "zh-cn": "配置页面调整\n只读所需的字符串数据\n固定间隔介质"
+      },
       "0.5.0": {
         "en": "Integration of [Huawei SmartLogger](https://support.huawei.com/enterprise/de/doc/EDOC1100130069/d8a00460)\nsome meter states the unit was changed (for example sun2000.0.meter.activePowerL1) (#56)\nsun2000 serie M2 or higher can also be processed",
         "de": "Integration von [Huawei SmartLogger](https://support.huawei.com/enterprise/de/doc/EDOC1100130069/d8a00460)\neinige Zählerzustände wurden geändert (z.B. sun2000.0.meter.activePowerL1) (#56)\nsun2000 serie M2 oder höher kann auch verarbeitet werden",
@@ -80,19 +93,6 @@
         "pl": "Data umieszczenia w wykazie",
         "uk": "Вимоги до [Додати сонце2000 to last](https://github.com/ioBroker/ioBroker.repositories/pull/3219)",
         "zh-cn": "(https://github.com/ioBroker/ioBroker.repositories/pul/3219) 需求"
-      },
-      "0.2.0": {
-        "en": "improve error handling (#34)\nadd simple optimizer info \nRiemann sum of input power with energy loss for new state `dailySolarYield`\ntry to recreate the `yield today` from the fusion portal",
-        "de": "fehlerbehandlung verbessern (#34)\neinfache optimierer-info hinzufügen\nRiemann Summe der Eingangsleistung mit Energieverlust für neuen Zustand `dailySolarYield `\nversuchen, den `yield heute` aus dem fusionsportal wiederherzustellen",
-        "ru": "улучшить обработку ошибок (#34)\nдобавить простую информацию о оптимизации\nRiemann Сумма входной мощности с потерей энергии для нового состояния `dailySolarYield \"\nпопытаться воссоздать «урожай сегодня» с портала синтеза",
-        "pt": "melhorar o manuseio de erros (#34)\nadicionar informações de otimização simples\nRiemann soma de energia de entrada com perda de energia para novo estado `dailySolarYield \"\ntentar recriar o `yield hoje` do portal de fusão",
-        "nl": "verbetering van de foutafhandeling (#34)\nvoeg eenvoudige optimalisatie info toe\nRiemann-som van het ingangsvermogen met energieverlies voor nieuwe toestand Wat\nproberen om de te recreëren van vandaag van de fusie portal",
-        "fr": "améliorer la gestion des erreurs (#34)\najouter des informations d'optimisation simples\nRiemann somme de puissance d'entrée avec perte d'énergie pour le nouvel état `dailySolarYield \"\nessayer de recréer le « rendement aujourd'hui » du portail de fusion",
-        "it": "migliorare la gestione degli errori (#34)\naggiungere semplici informazioni di ottimizzazione\nRiemann somma di potenza di ingresso con perdita di energia per nuovo stato `dailySolarYield #\ncercare di ricreare il `yield oggi` dal portale fusion",
-        "es": "mejorar el manejo de errores (#34)\nañadir información de optimización simple\nRiemann suma de poder de entrada con pérdida de energía para el nuevo estado `dailySolarYield `\ntratar de recrear el `yield hoy' del portal de fusión",
-        "pl": "poprawić obsługę błędów (# 34)\ndodaj proste informacje o optymalizacji\nRiemann suma mocy wejściowej z utratą energii dla nowego stanu \"dailySolarYeld '\nspróbuj odtworzyć \"wydajność dzisiaj\" z portalu syntezy jądrowej",
-        "uk": "поліпшення обробки помилок (#34)\nдодати просту оптимізацію\nСума вхідної енергії з втратою енергії для нового стану `dailySolarYield й\nнамагатися відтворити `yield сьогодні` з порталу fusion",
-        "zh-cn": "改进错误处理(# 34)\n添加简单的优化信息\nRiemann 输入功率总和, `\n尝试从聚变门户重现“今天”"
       }
     },
     "titleLang": {
