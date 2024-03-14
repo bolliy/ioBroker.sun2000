@@ -58,7 +58,7 @@ class Sun2000 extends utils.Adapter {
 		};
 
 		this.on('ready', this.onReady.bind(this));
-		// this.on('stateChange', this.onStateChange.bind(this));
+		this.on('stateChange', this.onStateChange.bind(this));
 		// this.on('objectChange', this.onObjectChange.bind(this));
 		// this.on('message', this.onMessage.bind(this));
 		this.on('unload', this.onUnload.bind(this));
@@ -337,15 +337,17 @@ class Sun2000 extends utils.Adapter {
 			this.settings.modbusConnectDelay = this.config.connectDelay; //ms
 			this.settings.modbusAdjust = this.config.autoAdjust;
 			this.settings.modbusIds = this.config.modbusIds.split(',').map((n) => {return Number(n);});
+			//SmartDongle
 			this.settings.sd.active = this.config.sd_active;
 			this.settings.sd.sDongleId = Number(this.config.sDongleId) ?? 0;
-			if (this.settings.sDongleId < 0 && this.settings.sDongleId >= 255) this.settings.sd.active = false;
+			if (this.settings.sd.sDongleId < 0 || this.settings.sd.sDongleId >= 255) this.settings.sd.active = false;
 			this.settings.highInterval = this.config.updateInterval*1000; //ms
+			//Modbus-Proxy
 			this.settings.ms.address = this.config.ms_address;
 			this.settings.ms.port = this.config.ms_port;
 			this.settings.ms.active = this.config.ms_active;
 			this.settings.ms.log = this.config.ms_log;
-			//v0.5.0
+			//SmartLogger
 			this.settings.sl.active = this.config.sl_active;
 			this.settings.sl.meterId = this.config.sl_meterId;
 
@@ -428,6 +430,8 @@ class Sun2000 extends utils.Adapter {
 		}
 		await this.state.runPostProcessHooks(dataRefreshRate.high);
 
+		//ServiceQeue
+
 		if (timeLeft(nextLoop) > 0) {
 			//Low Loop
 			for (const [i,item] of this.devices.entries()) {
@@ -507,41 +511,33 @@ class Sun2000 extends utils.Adapter {
 		}
 	}
 
-	// If you need to react to object changes, uncomment the following block and the corresponding line in the constructor.
-	// You also need to subscribe to the objects with `this.subscribeObjects`, similar to `this.subscribeStates`.
-	// /**
-	//  * Is called if a subscribed object changes
-	//  * @param {string} id
-	//  * @param {ioBroker.Object | null | undefined} obj
-	//  */
-	// onObjectChange(id, obj) {
-	// 	if (obj) {
-	// 		// The object was changed
-	// 		this.log.info(`object ${id} changed: ${JSON.stringify(obj)}`);
-	// 	} else {
-	// 		// The object was deleted
-	// 		this.log.info(`object ${id} deleted`);
-	// 	}
-	// }
+	/**
+	 * Is called if a subscribed state changes
+	 * @param {string} id
+	 * @param {ioBroker.State | null | undefined} state
+	 **/
 
-	// /**
-	// * Is called if a subscribed state changes
-	// * @param {string} id
-	// * @param {ioBroker.State | null | undefined} state
-	// **/
-
-	/*
 	onStateChange(id, state) {
 		if (state) {
 			// The state was changed
-			this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
+			// sun2000.0.inverter.0.service
+			const idArray = id.split('.');
+			if ( idArray[2] == 'inverter' ) {
+				const service = this.devices[Number(idArray[3])].instance.service;
+				if (service) {
+					let serviceId = idArray[5];
+					for (let i=6 ; i < idArray.length; i++ ) serviceId += '.'+idArray[i];
+					service.set(serviceId,state);
+				}
+				//this.log.info(`### state ${id} changed: ${state.val} (ack = ${state.ack})`);
+			}
 		} else {
 			// The state was deleted
 			this.log.info(`state ${id} deleted`);
 		}
 	}
 
-	*/
+
 
 	// If you need to accept messages in your adapter, uncomment the following block and the corresponding line in the constructor.
 	// /**
