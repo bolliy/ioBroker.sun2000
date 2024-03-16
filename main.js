@@ -187,6 +187,9 @@ class Sun2000 extends utils.Adapter {
 			this.modbusServer = new ModbusServer(this,this.settings.ms.address,this.settings.ms.port);
 			this.modbusServer.connect();
 		}
+
+		//TEST
+		//await this.checkAndPrepare();
 	}
 
 	async atMidnight() {
