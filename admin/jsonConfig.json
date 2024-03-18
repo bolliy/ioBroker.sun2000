@@ -115,8 +115,32 @@
                     "tooltip": "automatic adjustment of the modbus settings"
                 }          
             }
-        },    
+        },  
         "tab3": {
+            "type": "panel",
+            "label": "Battery control",
+            "items": {
+                "mainHdr3": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "Battery charge control",
+                    "size": 2
+                },
+                "chipsTxt": {
+                    "type": "staticText",
+                    "text": "The settings can be made via the path “inverter.x.control”",
+                    "newLine": true
+                },
+                "cb_tou": {
+                    "type": "checkbox",
+                    "label": "Create default TOU settings",
+                    "tooltip": "TimeOfUse: WorkingModeSettings 5",
+                    "newLine": true,
+                    "help": "The “default TOU settings” is interesting for the “force battery charging from the grid” function, which is required for variable energy prices."
+                }
+            }
+        },  
+        "tab4": {
             "type": "panel",
             "label": "Smart Logger",
             "items": {
@@ -147,7 +171,7 @@
                 
             }
         },
-        "tab4": {
+        "tab5": {
             "type": "panel",
             "label": "Modbus-proxy",
             "items": {
@@ -195,7 +219,7 @@
                 }
             }
         },
-        "tab5": {
+        "tab6": {
             "type": "panel",
             "label": "help",
             "items": {

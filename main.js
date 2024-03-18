@@ -212,36 +212,6 @@ class Sun2000 extends utils.Adapter {
 		}, msToMidnight);
 	}
 
-	async checkAndPrepare() {
-		// Time of Using charging and discharging periodes (siehe Table 5-6)
-		// tCDP[3]= 127
-		const tCDP = [1,0,1440,383,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]; //nicht aus dem Netz laden
-		this.modbusClient.setID(this.devices[0].modbusId);  //Master Inverter
-		const data = await this.modbusClient.readHoldingRegisters(47086,4); //
-		/*
-         127 - Working mode settings
-          2 : Maximise self consumptions (default)
-          5 : Time Of Use(Luna) - hilfreich bei dynamischem Stromtarif (z.B Tibber)
-        */
-		const workingMode = data[0];         // Working mode settings  2:Maximise self consumptio5=)
-		const chargeFromGrid = data[1];      // Voraussetzung für Netzbezug in den Speicher (Luna)
-		const gridChargeCutOff = data[2]/10; // Ab welcher Schwelle wird der Netzbezug beendet (default 50 %)
-		const storageModel = data[3];        // Modell/Herrsteller des Speichers, 2 : HUAWEI-LUNA2000
-
-		if (storageModel == 2) { //wurde nur mit Luna getestet!
-			if (workingMode != 5 || chargeFromGrid != 1 ) {
-				this.log.debug('Row '+data+'  Workingmode '+workingMode+ ' Charge from Grid '+chargeFromGrid+ ' Grid Cut Off '+gridChargeCutOff+'%');
-				await this.modbusClient.writeRegisters(47086,[5,1,500]);
-				//await writeRegistersAsync(1,47086,[5,1,500]); //[TOU,chargeFromGrid,50%]
-				await this.modbusClient.writeRegisters(47255,tCDP);
-				//await writeRegistersAsync(1,47255,tCDP);      //Plan:1,StartZeit:00:00,EndZeit: 24:00,Endladen/täglich
-				/* ggf. sinnvoll
-               await writeRegistersAsync(1,47075,[0,5000]); //max. charging power
-               await writeRegistersAsync(1,47077,[0,5000]); //max. discharging power
-               */
-			}
-		}
-	}
 
 	sendToSentry (msg)  {
 		if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
@@ -390,7 +360,6 @@ class Sun2000 extends utils.Adapter {
 						});
 					}
 				}
-				//v0.5.1
 				if (this.settings.sd.active) {
 					this.devices.push({
 						index: 0,
@@ -432,8 +401,6 @@ class Sun2000 extends utils.Adapter {
 			this.lastStateUpdatedHigh += await this.state.updateStates(item,this.modbusClient,dataRefreshRate.high,timeLeft(nextLoop));
 		}
 		await this.state.runPostProcessHooks(dataRefreshRate.high);
-
-		//ServiceQeue
 
 		if (timeLeft(nextLoop) > 0) {
 			//Low Loop
@@ -523,14 +490,14 @@ class Sun2000 extends utils.Adapter {
 	onStateChange(id, state) {
 		if (state) {
 			// The state was changed
-			// sun2000.0.inverter.0.service
+			// sun2000.0.inverter.0.control
 			const idArray = id.split('.');
 			if ( idArray[2] == 'inverter' ) {
-				const service = this.devices[Number(idArray[3])].instance.service;
-				if (service) {
+				const control = this.devices[Number(idArray[3])].instance.control;
+				if (control) {
 					let serviceId = idArray[5];
 					for (let i=6 ; i < idArray.length; i++ ) serviceId += '.'+idArray[i];
-					service.set(serviceId,state);
+					control.set(serviceId,state);
 				}
 				//this.log.info(`### state ${id} changed: ${state.val} (ack = ${state.ack})`);
 			}
