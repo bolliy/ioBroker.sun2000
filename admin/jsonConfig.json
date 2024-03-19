@@ -134,7 +134,6 @@
                 "cb_tou": {
                     "type": "checkbox",
                     "label": "Create default TOU setting",
-                    "tooltip": "TimeOfUse: WorkingModeSettings 5",
                     "newLine": true,
                     "help": "The “default TOU settings” is interesting for the “force battery charging from the grid” function, which is required for variable energy prices."
                 },
@@ -142,6 +141,7 @@
                     "type": "staticLink",
                     "text": "Examples of application",
                     "href": "https://github.com/bolliy/ioBroker.sun2000/wiki/Battery-control",
+                    "button": true,
                     "icon": "info",
                     "newLine": true
                 }

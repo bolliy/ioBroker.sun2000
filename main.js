@@ -54,6 +54,9 @@ class Sun2000 extends utils.Adapter {
 			sd: {
 				active : false,
 				sDongleId : 100
+			},
+			cb: {
+				tou : false
 			}
 		};
 
@@ -323,6 +326,8 @@ class Sun2000 extends utils.Adapter {
 			//SmartLogger
 			this.settings.sl.active = this.config.sl_active;
 			this.settings.sl.meterId = this.config.sl_meterId;
+			//battery charge control
+			this.settings.cb.tou = this.config.cb_tou;
 
 			if (this.settings.modbusAdjust) {
 				await this.setStateAsync('info.JSONhealth', {val: '{ message: "Adjust modbus settings"}', ack: true});
