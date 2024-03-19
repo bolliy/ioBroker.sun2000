@@ -26,5 +26,6 @@
     "sl.meterId": "ID Modbus du compteur SmartLogger",
     "The Meter modbus ID": "L'ID Modbus du compteur",
     "sd.active": "Utiliser SDongle",
-    "Create default TOU setting": "Créer un paramètre TOU par défaut"
+    "Create default TOU setting": "Créer un paramètre TOU par défaut",
+    "Examples of application": "Exemples d'application"
 }

@@ -26,5 +26,6 @@
     "sl.meterId": "ID лічильника Modbus SmartLogger",
     "The Meter modbus ID": "ID лічильника modbus",
     "sd.active": "Використовуйте SDongle",
-    "Create default TOU setting": "Створити налаштування умов використання за умовчанням"
+    "Create default TOU setting": "Створити налаштування умов використання за умовчанням",
+    "Examples of application": "Приклади застосування"
 }

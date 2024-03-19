@@ -26,5 +26,6 @@
     "sl.meterId": "Identyfikator Modbus miernika SmartLogger",
     "The Meter modbus ID": "Identyfikator Modbus miernika",
     "sd.active": "Skorzystaj z SDongle",
-    "Create default TOU setting": "Utwórz domyślne ustawienie TOU"
+    "Create default TOU setting": "Utwórz domyślne ustawienie TOU",
+    "Examples of application": "Przykłady zastosowań"
 }

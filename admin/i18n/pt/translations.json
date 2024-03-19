@@ -26,5 +26,6 @@
     "sl.meterId": "ID modbus do medidor SmartLogger",
     "The Meter modbus ID": "O ID do modbus do medidor",
     "sd.active": "Usar SD Dongle",
-    "Create default TOU setting": "Criar configuração padrão de TOU"
+    "Create default TOU setting": "Criar configuração padrão de TOU",
+    "Examples of application": "Exemplos de aplicação"
 }
