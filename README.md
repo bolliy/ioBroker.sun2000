@@ -54,7 +54,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 -->
 
 ### **WORK IN PROGRESS**
-* realization the "battery charge control"
+* realization the "battery charge control" #61
 * fix the standby detection #60
 
 ### 0.5.1 (2024-03-11)
