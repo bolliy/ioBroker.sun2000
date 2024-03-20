@@ -7,12 +7,13 @@
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 const utils = require('@iobroker/adapter-core');
+
 // Load your modules here, e.g.:
 const Registers = require(__dirname + '/lib/register.js');
 const ModbusConnect = require(__dirname + '/lib/modbus/modbus_connect.js');
 const ModbusServer = require(__dirname + '/lib/modbus/modbus_server.js');
 const {driverClasses,dataRefreshRate} = require(__dirname + '/lib/types.js');
-const {getAstroDate} = require(__dirname + '/lib/tools.js');
+const {Logging,getAstroDate,isSunshine} = require(__dirname + '/lib/tools.js');
 
 class Sun2000 extends utils.Adapter {
 
@@ -59,6 +60,9 @@ class Sun2000 extends utils.Adapter {
 				tou : false
 			}
 		};
+
+		//v0.6.
+		this.logger = new Logging(this); //only for adapter
 
 		this.on('ready', this.onReady.bind(this));
 		this.on('stateChange', this.onStateChange.bind(this));
@@ -179,20 +183,21 @@ class Sun2000 extends utils.Adapter {
 
 	async StartProcess() {
 		await this.initPath();
-		this.modbusClient = new ModbusConnect(this,this.settings);
-		this.modbusClient.setCallback(this.endOfmodbusAdjust.bind(this));
 		this.state = new Registers(this);
 		await this.atMidnight();
+		if (this.settings.modbusAdjust) {
+			this.settings.modbusAdjust = isSunshine(this);
+			this.logger.debug('Sunshine: '+this.settings.modbusAdjust);
+		}
+		this.modbusClient = new ModbusConnect(this,this.settings);
+		this.modbusClient.setCallback(this.endOfmodbusAdjust.bind(this));
 		this.dataPolling();
 		this.runWatchDog();
-		//v0.4.x
-		if (this.settings.ms.active) {
+
+		if (this.settings.ms?.active) {
 			this.modbusServer = new ModbusServer(this,this.settings.ms.address,this.settings.ms.port);
 			this.modbusServer.connect();
 		}
-
-		//TEST
-		//await this.checkAndPrepare();
 	}
 
 	async atMidnight() {
@@ -221,7 +226,7 @@ class Sun2000 extends utils.Adapter {
 			const sentryInstance = this.getPluginInstance('sentry');
 			if (sentryInstance) {
 				const Sentry = sentryInstance.getSentryObject();
-				if (Sentry) this.log.info('send to Sentry value: '+msg);
+				if (Sentry) this.logger.info('send to Sentry value: '+msg);
 				Sentry && Sentry.withScope(scope => {
 					scope.setLevel('info');
 					scope.setExtra('key', 'value');
@@ -250,8 +255,7 @@ class Sun2000 extends utils.Adapter {
 			this.config.delay = this.settings.modbusDelay;
 			this.config.timeout = this.settings.modbusTimeout;
 			this.updateConfig(this.config); //-> restart
-			//this.log.info(JSON.stringify(info));
-			this.log.info('New modbus settings are stored.');
+			this.logger.info('New modbus settings are stored.');
 			//this.sendToSentry(JSON.stringify(info));
 		}
 	}
@@ -280,8 +284,8 @@ class Sun2000 extends utils.Adapter {
 		const newHighInterval = Math.round(this.settings.highInterval/1000);
 		if (!this.settings.modbusAdjust) {
 			if (this.config.updateInterval < newHighInterval) {
-				this.log.warn('The interval is too small. The value has been changed on '+newHighInterval+' sec.');
-				this.log.warn('Please check your configuration!');
+				this.logger.warn('The interval is too small. The value has been changed on '+newHighInterval+' sec.');
+				this.logger.warn('Please check your configuration!');
 			}
 		}
 		await this.setStateAsync('info.modbusUpdateInterval', {val: newHighInterval, ack: true});
@@ -377,11 +381,11 @@ class Sun2000 extends utils.Adapter {
 				await this.adjustInverval();
 				await this.StartProcess();
 			} else {
-				this.log.error('*** Adapter deactivated, can\'t parse modbusIds! ***');
+				this.logger.error('*** Adapter deactivated, can\'t parse modbusIds! ***');
 				this.setForeignState('system.adapter.' + this.namespace + '.alive', false);
 			}
 		} else {
-			this.log.error('*** Adapter deactivated, Adapter Settings incomplete! ***');
+			this.logger.error('*** Adapter deactivated, Adapter Settings incomplete! ***');
 			this.setForeignState('system.adapter.' + this.namespace + '.alive', false);
 		}
 	}
@@ -394,9 +398,9 @@ class Sun2000 extends utils.Adapter {
 		}
 
 		const start = new Date().getTime();
-		this.log.debug('### DataPolling START '+ Math.round((start-this.lastTimeUpdated)/1000)+' sec ###');
+		this.logger.debug('### DataPolling START '+ Math.round((start-this.lastTimeUpdated)/1000)+' sec ###');
 		if (this.lastTimeUpdated > 0 && (start-this.lastTimeUpdated)/1000 > this.settings.highInterval/1000 + 1) {
-			this.log.info('Interval '+(start-this.lastTimeUpdated)/1000+' sec');
+			this.logger.info('Interval '+(start-this.lastTimeUpdated)/1000+' sec');
 		}
 		this.lastTimeUpdated = start;
 		const nextLoop = this.settings.highInterval - start % (this.settings.highInterval) + start;
@@ -420,14 +424,14 @@ class Sun2000 extends utils.Adapter {
 		this.pollingTimer = this.setTimeout(() => {
 			this.dataPolling(); //recursiv
 		}, timeLeft(nextLoop));
-		this.log.debug('### DataPolling STOP ###');
+		this.logger.debug('### DataPolling STOP ###');
 	}
 
 	runWatchDog() {
 		this.watchDogHandle && this.clearInterval(this.watchDogHandle);
 		this.watchDogHandle = this.setInterval( () => {
 			const sinceLastUpdate = new Date().getTime() - this.lastTimeUpdated; //ms
-			this.log.debug('### Watchdog: time since last update '+sinceLastUpdate/1000+' sec');
+			this.logger.debug('### Watchdog: time since last update '+sinceLastUpdate/1000+' sec');
 			const lastIsConnected = this.isConnected;
 			this.isConnected = this.lastStateUpdatedHigh > 0 && sinceLastUpdate < this.settings.highInterval*3;
 			if (this.isConnected !== lastIsConnected ) this.setState('info.connection', this.isConnected, true);
@@ -438,8 +442,8 @@ class Sun2000 extends utils.Adapter {
 				if (this.alreadyRunWatchDog) {
 					const ret = this.state.CheckReadError(this.settings.lowInterval*2);
 					const obj = {...ret,modbus: {...this.modbusClient.info}};
-					this.log.debug(JSON.stringify(this.modbusClient.info));
-					if (ret.errno) this.log.warn(ret.message);
+					this.logger.debug(JSON.stringify(this.modbusClient.info));
+					if (ret.errno) this.logger.warn(ret.message);
 					this.setStateAsync('info.JSONhealth', {val: JSON.stringify(obj), ack: true});
 					//v0.4.x
 					if (this.modbusServer) {
@@ -448,7 +452,7 @@ class Sun2000 extends utils.Adapter {
 							//const stat = this.modbusServer.info?.stat;
 							//object is not empty
 							//if (Object.keys(stat).length > 0) this.log.info('Modbus tcp server: '+JSON.stringify(this.modbusServer.info));
-							this.log.info('Modbus tcp server: '+JSON.stringify(this.modbusServer.info));
+							this.logger.info('Modbus tcp server: '+JSON.stringify(this.modbusServer.info));
 						}
 					}
 				}
@@ -460,7 +464,7 @@ class Sun2000 extends utils.Adapter {
 
 			if (sinceLastUpdate > this.settings.highInterval*10) {
 				this.setStateAsync('info.JSONhealth', {val: '{errno:2, message: "Internal loop error"}', ack: true});
-				this.log.warn('watchdog: restart Adapter...');
+				this.logger.warn('watchdog: restart Adapter...');
 				this.restart();
 			}
 
@@ -479,7 +483,7 @@ class Sun2000 extends utils.Adapter {
 			this.mitnightTimer && this.clearTimeout(this.mitnightTimer);
 			this.watchDogHandle && this.clearInterval(this.watchDogHandle);
 			this.modbusClient && this.modbusClient.close();
-			this.log.info('cleaned everything up...');
+			this.logger.info('cleaned everything up...');
 			callback();
 		} catch (e) {
 			callback();
@@ -508,7 +512,7 @@ class Sun2000 extends utils.Adapter {
 			}
 		} else {
 			// The state was deleted
-			this.log.info(`state ${id} deleted`);
+			this.logger.info(`state ${id} deleted`);
 		}
 	}
 
