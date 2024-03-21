@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.5.1",
+    "version": "0.6.0",
     "news": {
+      "0.6.0": {
+        "en": "realization the \"battery charge control\" #61\nfix the standby detection #60",
+        "de": "realisierung der \"batterieladungskontrolle\" #61\nfixieren sie die standby-erkennung #60",
+        "ru": "#61\nисправить резервное обнаружение #60",
+        "pt": "realização do \"controle de carga de bateria\" #61\ncorrigir a detecção de espera #60",
+        "nl": "realisatie van de \"battery charge control\" #61\nfix de stand-by detectie #60",
+        "fr": "réalisation du \"contrôle de charge de batterie\" #61\nfixer la détection de veille #60",
+        "it": "realizzazione del \"controllo di carica della batteria\" #61\nfissare il rilevamento standby #60",
+        "es": "realización del \"control de carga de batería\" #61\narregla la detección de standby #60",
+        "pl": "realizacja \"kontroli ładunku akumulatora\" # 61\nnaprawić czujnik czuwania # 60",
+        "uk": "впровадження \"управління платежем\" no61\nзафіксувати виявлення стендів #60",
+        "zh-cn": "实现\"电池充电控制\"#61\n修复备用检测器 # 60"
+      },
       "0.5.1": {
         "en": "Config page restructured\nRead only the required string data\nfix interval medium",
         "de": "Config-Seite umstrukturiert\nLesen Sie nur die gewünschten Stringdaten\nintervall mittel",
@@ -80,19 +93,6 @@
         "pl": "dodaj informacje o akumulatorze np. temperatura # 40\nmodbus timeout, connect opóźnienie i opóźnienie można skonfigurować # 34\nstatus urządzenia jako zwykłego tekstu 'Sun2000.0.inverter.x.derived.deviceStatus'\nWprowadzenie modelu kierowcy. Dla każdego urządzenia # 41 można utworzyć oddzielny sterownik",
         "uk": "додати інформацію акумулятора для прикладної температури #40\nмодульний час, затримки з'єднання та затримки можна налаштувати #34\nстатус на сервери й\nВступ моделі драйвера. Для кожного пристрою No41 призначений окремий драйвер",
         "zh-cn": "添加电池单位信息, 如温度# 40\nmodbus 超时, 连接延迟和延迟可以配置 # 34\n设备状态为纯文本 `sun2000.0.inverter.x. exterm.device status ' `\n引入驱动模式. 每个设备都可以创建单独的驱动程序 # 41"
-      },
-      "0.2.1": {
-        "en": "Requirements from [Add sun2000 to latest](https://github.com/ioBroker/ioBroker.repositories/pull/3219)",
-        "de": "Anforderungen von [Sonnen 2000 bis spätestens](https://github.com/ioBroker/ioBroker.repositories/pull/3219)",
-        "ru": "Требования от [Add sun2000 до последнего] (https://github.com/ioBroker/ioBroker.repositories/pull/3219)",
-        "pt": "Requisitos de [Adicionar sun2000 para o mais recente](https://github.com/ioBroker/ioBroker.repositories/pull/3219)",
-        "nl": "Vereisten van [Toevoegen aan sun2000 laatste](https://github.com/ioBroker/ioBroker.repositoria/pull/3219)",
-        "fr": "Exigences de [Ajouter sun2000 à la dernière](https://github.com/ioBroker/ioBroker.repositories/pull/3219)",
-        "it": "Requisiti da [Add sun2000 to more](https://github.com/ioBroker/ioBroker.repositories/pull/3219)",
-        "es": "Necesidades de [Agregar el sol 2000 a más tardar](https://github.com/ioBroker/ioBroker.repositories/pull/3219)",
-        "pl": "Data umieszczenia w wykazie",
-        "uk": "Вимоги до [Додати сонце2000 to last](https://github.com/ioBroker/ioBroker.repositories/pull/3219)",
-        "zh-cn": "(https://github.com/ioBroker/ioBroker.repositories/pul/3219) 需求"
       }
     },
     "titleLang": {
