@@ -38,12 +38,13 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 
 ## Feature list
 
-* Maximum 5 inverters (master/slave) can be processed, each with a battery module (max. 15kWh).
-* Real-time values such as input power, output power, charging/discharging power and the grid consumption are read out at a fixed interval. 
+* Maximum `5 inverters` (master/slave) can be processed, each with a battery module (max. 15kWh).
+* `Real-time` values such as input power, output power, charging/discharging power and the grid consumption are read out at a fixed interval. 
 * States are only written for changed data from the inverter. This relieves the burden on the iobroker instance.
 * The states “inputPower” or “activePower” in the “collected” path can be monitored with a “was updated” trigger element. Because these states are always written within the set interval.
-* modbus-proxy: Third party device such as wallbox, energy manager etc. can receive data even if the modbus interface of inverter is already in use. In addition you can mirror the sun2000 data to another IoBroker instance.
-* Huawei SmartLogger integration: Monitors and manages the PV power system. The adapter saves the collected data in the same way as it does when read out the inverter directly.
+* NEW `Battery charge control`: The battery charging mode of Huawei LUNA2000 batteries can be controlled. Here you can activate and deactivate the battery charging mode to "charging from grid”. In addition, the charging capacity and charging power can be adjusted.
+* `modbus-proxy`: Third party device such as wallbox, energy manager etc. can receive data even if the modbus interface of inverter is already in use. In addition you can mirror the sun2000 data to another IoBroker instance.
+* Huawei `SmartLogger` integration: Monitors and manages the PV power system. The adapter saves the collected data in the same way as it does when read out the inverter directly.
 
 ## Changelog
 
@@ -51,6 +52,11 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+* realization the "battery charge control" #61
+* fix the standby detection #60
+
 ### 0.5.1 (2024-03-11)
 * Config page restructured
 * read only the required string data

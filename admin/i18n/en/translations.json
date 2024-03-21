@@ -25,5 +25,7 @@
 	"SmartLogger active" : "SmartLogger active",
 	"sl.meterId" : "SmartLogger meter modbus ID",
 	"The Meter modbus ID" : "The Meter modbus ID",
-	"sd.active" : "SDongle active"
+	"sd.active" : "Use SDongle",
+	"Create default TOU setting" : "Create default TOU setting",
+	"Examples of application" : "Examples of application"
 }
