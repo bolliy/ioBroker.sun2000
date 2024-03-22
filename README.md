@@ -57,6 +57,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 * Battery control: After the second failed attempt, the control event is discarded
 * Battery control: Adjust the battery maxCharge and Discharge to the actual values
 
+
 ### 0.6.0 (2024-03-21)
 * realization the "battery charge control" #61
 * fix the standby detection #60
