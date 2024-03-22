@@ -54,8 +54,8 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 -->
 
 ### **WORK IN PROGRESS**
-* writing Modbus registers with an unit ID 0 is not permitted
-* after the second write failed attempt, the control event is discarded
+* Battery control: After the second failed attempt, the control event is discarded
+* Battery control: Adjust the battery maxCharge and Discharge to the actual values
 
 ### 0.6.0 (2024-03-21)
 * realization the "battery charge control" #61
