@@ -52,6 +52,11 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+* writing Modbus registers with an unit ID 0 is not permitted
+* after the second write failed attempt, the control event is discarded
+
 ### 0.6.0 (2024-03-21)
 * realization the "battery charge control" #61
 * fix the standby detection #60
