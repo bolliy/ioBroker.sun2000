@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.6.0",
+    "version": "0.6.1",
     "news": {
+      "0.6.1": {
+        "en": "Battery control: After the second failed attempt, the control event is discarded\nBattery control: Adjust the battery maxCharge and Discharge to the actual values",
+        "de": "Batteriesteuerung: Nach dem zweiten gescheiterten Versuch wird das Kontrollereignis verworfen\nBatteriesteuerung: Einstellen der Batterie maxCharge und Entladen auf die tatsächlichen Werte",
+        "ru": "Контроль батареи: После второй неудачной попытки, событие управления отбрасывается\nКонтроль батареи: Настройка аккумулятора maxCharge и выгрузка на фактические значения",
+        "pt": "Controle da bateria: Após a segunda tentativa falhada, o evento de controle é descartado\nControle da bateria: Ajuste a bateria maxCharge e descarga para os valores reais",
+        "nl": "Controle van de batterij: Na de tweede mislukte poging, de controle gebeurtenis wordt weggegooid\nControle van de batterij: Pas de batterij maxCharge en Discharge aan aan de werkelijke waarden",
+        "fr": "Contrôle de la batterie: Après la deuxième tentative ratée, l'événement de contrôle est écarté\nContrôle de la batterie: Régler la batterie maxCharge et décharge aux valeurs réelles",
+        "it": "Controllo della batteria: Dopo il secondo tentativo fallito, l'evento di controllo viene scartato\nControllo della batteria: Regolare la batteria maxCharge e Scaricare i valori effettivi",
+        "es": "Control de batería: Después del segundo intento fallido, el evento de control es descartado\nControl de batería: Ajustar la batería maxCargue y descarga a los valores reales",
+        "pl": "Kontrola baterii: Po drugiej nieudanej próbie zdarzenie kontrolne zostaje odrzucone\nKontrola baterii: Dostosuj maxCharge i absolutorium baterii do rzeczywistych wartości",
+        "uk": "Контроль акумулятора: Після другого невдалого спробу контрольний захід відхилений\nКонтроль акумулятора: Налаштуйте акумулятор maxCharge і відключіть до фактичних значень",
+        "zh-cn": "电池控制 : 在第二次尝试失败后, 控制事件被丢弃\n电池控制 : 按照实际值调整电池最大充电器和放电装置"
+      },
       "0.6.0": {
         "en": "realization the \"battery charge control\" #61\nfix the standby detection #60",
         "de": "realisierung der \"batterieladungskontrolle\" #61\nfixieren sie die standby-erkennung #60",
@@ -80,19 +93,6 @@
         "pl": "state 'sun2000.0.0 collected.chargeDischargePowercharge' nie zawsze jest odświeżona # 47",
         "uk": "#47",
         "zh-cn": "state `sun 2000.00.colled. 充电电源 ' 并不总是刷新47"
-      },
-      "0.3.0": {
-        "en": "add battery unit information for example temperature #40\nmodbus timeout, connect delay and delay can be configured #34\ndevice status as plain text `sun2000.0.inverter.x.derived.deviceStatus`\nIntroduction of a driver model. A separate driver can be created for each device #41",
-        "de": "batterieeinheitsinformationen hinzufügen, zum beispiel temperatur #40\nmodbus timeout, verbinden verzögerung und verzögerung kann #34 konfiguriert werden\ngerätestatus als Klartext `sun2000.0.inverter.x.derived.deviceStatus `\nEinführung eines Fahrermodells. Ein separater Treiber kann für jedes Gerät #41 erstellt werden",
-        "ru": "добавить информацию аккумулятора, например, температуру #40\nmodbus timeout, подключить задержку и задержку можно настроить #34\nстатус устройства как простой текст `sun2000.0.inverter.x.derived.deviceStatus \"\nВведение модели водителя. Для каждого устройства может быть создан отдельный драйвер #41",
-        "pt": "adicionar informações da unidade de bateria, por exemplo, temperatura #40\nmodbus timeout, conectar delay e delay pode ser configurado #34\nstatus do dispositivo como texto simples `sun2000.0.inverter.x.derived.deviceStatus \"\nIntrodução de um modelo de driver. Um driver separado pode ser criado para cada dispositivo #41",
-        "nl": "toe te voegen batterij eenheid informatie bijvoorbeeld temperatuur #40\nmodbus timeout, verbind vertraging en vertraging kan worden geconfigureerd #34\napparaatstatus als platte tekst  Wat\nInvoering van een bestuurdersmodel. Voor elk apparaat kan een aparte driver #41 aangemaakt worden",
-        "fr": "ajouter des informations sur l'unité de batterie par exemple température #40\nmodbus timeout, connecter le délai et le délai peuvent être configurés #34\nstatut du périphérique comme texte simple `sun2000.0.inverter.x.derived.deviceStatus \"\nIntroduction d'un modèle de pilote. Un pilote séparé peut être créé pour chaque périphérique #41",
-        "it": "aggiungere le informazioni dell'unità della batteria per esempio la temperatura #40\nmodbus timeout, collegare ritardo e ritardo può essere configurato #34\nstato del dispositivo come testo normale `sun2000.0.inverter.x.derived.deviceStatus #\nIntroduzione di un modello di driver. Un driver separato può essere creato per ogni dispositivo #41",
-        "es": "añadir información de la unidad de la batería por ejemplo temperatura #40\nmodbus timeout, conectar retraso y retraso se puede configurar #34\nestado del dispositivo como texto simple `sun2000.0.inverter.x.derived.deviceStatus `\nIntroducción de un modelo de piloto. Un controlador separado se puede crear para cada dispositivo #41",
-        "pl": "dodaj informacje o akumulatorze np. temperatura # 40\nmodbus timeout, connect opóźnienie i opóźnienie można skonfigurować # 34\nstatus urządzenia jako zwykłego tekstu 'Sun2000.0.inverter.x.derived.deviceStatus'\nWprowadzenie modelu kierowcy. Dla każdego urządzenia # 41 można utworzyć oddzielny sterownik",
-        "uk": "додати інформацію акумулятора для прикладної температури #40\nмодульний час, затримки з'єднання та затримки можна налаштувати #34\nстатус на сервери й\nВступ моделі драйвера. Для кожного пристрою No41 призначений окремий драйвер",
-        "zh-cn": "添加电池单位信息, 如温度# 40\nmodbus 超时, 连接延迟和延迟可以配置 # 34\n设备状态为纯文本 `sun2000.0.inverter.x. exterm.device status ' `\n引入驱动模式. 每个设备都可以创建单独的驱动程序 # 41"
       }
     },
     "titleLang": {
