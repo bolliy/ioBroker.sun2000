@@ -185,9 +185,15 @@ class Sun2000 extends utils.Adapter {
 		await this.initPath();
 		this.state = new Registers(this);
 		await this.atMidnight();
+		/*
+		if (!this.settings.sunrise || !this.settings.sunset) {
+			this.adapterDisable('*** Adapter deactivated, Latitude and longitude must be set! ***');
+			return;
+		}
+		*/
 		if (this.settings.modbusAdjust) {
 			this.settings.modbusAdjust = isSunshine(this);
-			this.logger.debug('Sunshine: '+this.settings.modbusAdjust);
+			//this.logger.debug('Sunshine: '+this.settings.modbusAdjust);
 		}
 		this.modbusClient = new ModbusConnect(this,this.settings);
 		this.modbusClient.setCallback(this.endOfmodbusAdjust.bind(this));
@@ -351,7 +357,7 @@ class Sun2000 extends utils.Adapter {
 						numberBatteryUnits : 0
 					});
 				}
-				//v0.5.0
+				//SmartLogger
 				if (this.settings.sl.active) {
 					this.devices.push({
 						index: 0,
@@ -381,12 +387,10 @@ class Sun2000 extends utils.Adapter {
 				await this.adjustInverval();
 				await this.StartProcess();
 			} else {
-				this.logger.error('*** Adapter deactivated, can\'t parse modbusIds! ***');
-				this.setForeignState('system.adapter.' + this.namespace + '.alive', false);
+				this.adapterDisable('*** Adapter deactivated, can\'t parse modbusIds! ***');
 			}
 		} else {
-			this.logger.error('*** Adapter deactivated, Adapter Settings incomplete! ***');
-			this.setForeignState('system.adapter.' + this.namespace + '.alive', false);
+			this.adapterDisable('*** Adapter deactivated, Adapter Settings incomplete! ***');
 		}
 	}
 
@@ -469,6 +473,11 @@ class Sun2000 extends utils.Adapter {
 			}
 
 		},this.settings.lowInterval);
+	}
+
+	adapterDisable(errMsg) {
+		this.logger.error(errMsg);
+		this.setForeignState('system.adapter.' + this.namespace + '.alive', false);
 	}
 
 	/**
