@@ -19,12 +19,12 @@
     "url": "https://github.com/bolliy/ioBroker.sun2000.git"
   },
   "engines": {
-    "node": ">= 16"
+    "node": ">= 18"
   },
   "dependencies": {
     "@iobroker/adapter-core": "^3.0.6",
-    "suncalc2": "^1.8.1",
     "modbus-serial": "^8.0.16",
+    "suncalc2": "^1.8.1",
     "tcp-port-used": "^1.0.2"
   },
   "devDependencies": {
