@@ -159,7 +159,29 @@
         "docs/README.md"
       ]
     },
-    "dependencies": [
+    "messages": [
+      {
+        "condition": {
+          "operand": "and",
+          "rules": [
+            "oldVersion<0.6.2",
+            "newVersion>=0.6.1"
+          ]
+        },
+        "title": {
+          "en": "node.js 18.x or higher required"
+        },
+        "text": {
+          "en": "Please try to stay current with your Node.js version because the support is limited in time. As of now all Node.js versions below 18.x are no longer supported. (End Of Life)."
+        },
+        "level": "warn",
+        "buttons": [
+          "agree",
+          "cancel"
+        ]
+      }]
+      ,
+      "dependencies": [
       {
         "js-controller": ">=3.3.22"
       }
