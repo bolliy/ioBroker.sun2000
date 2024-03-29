@@ -404,7 +404,7 @@ class Sun2000 extends utils.Adapter {
 		const start = new Date().getTime();
 		this.logger.debug('### DataPolling START '+ Math.round((start-this.lastTimeUpdated)/1000)+' sec ###');
 		if (this.lastTimeUpdated > 0 && (start-this.lastTimeUpdated)/1000 > this.settings.highInterval/1000 + 1) {
-			this.logger.info('Interval '+(start-this.lastTimeUpdated)/1000+' sec');
+			this.logger.debug('Interval '+(start-this.lastTimeUpdated)/1000+' sec');
 		}
 		this.lastTimeUpdated = start;
 		const nextLoop = this.settings.highInterval - start % (this.settings.highInterval) + start;
