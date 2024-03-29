@@ -185,9 +185,15 @@ class Sun2000 extends utils.Adapter {
 		await this.initPath();
 		this.state = new Registers(this);
 		await this.atMidnight();
+		/*
+		if (!this.settings.sunrise || !this.settings.sunset) {
+			this.adapterDisable('*** Adapter deactivated, Latitude and longitude must be set! ***');
+			return;
+		}
+		*/
 		if (this.settings.modbusAdjust) {
 			this.settings.modbusAdjust = isSunshine(this);
-			this.logger.debug('Sunshine: '+this.settings.modbusAdjust);
+			//this.logger.debug('Sunshine: '+this.settings.modbusAdjust);
 		}
 		this.modbusClient = new ModbusConnect(this,this.settings);
 		this.modbusClient.setCallback(this.endOfmodbusAdjust.bind(this));
@@ -351,7 +357,7 @@ class Sun2000 extends utils.Adapter {
 						numberBatteryUnits : 0
 					});
 				}
-				//v0.5.0
+				//SmartLogger
 				if (this.settings.sl.active) {
 					this.devices.push({
 						index: 0,
@@ -381,12 +387,10 @@ class Sun2000 extends utils.Adapter {
 				await this.adjustInverval();
 				await this.StartProcess();
 			} else {
-				this.logger.error('*** Adapter deactivated, can\'t parse modbusIds! ***');
-				this.setForeignState('system.adapter.' + this.namespace + '.alive', false);
+				this.adapterDisable('*** Adapter deactivated, can\'t parse modbusIds! ***');
 			}
 		} else {
-			this.logger.error('*** Adapter deactivated, Adapter Settings incomplete! ***');
-			this.setForeignState('system.adapter.' + this.namespace + '.alive', false);
+			this.adapterDisable('*** Adapter deactivated, Adapter Settings incomplete! ***');
 		}
 	}
 
@@ -400,7 +404,7 @@ class Sun2000 extends utils.Adapter {
 		const start = new Date().getTime();
 		this.logger.debug('### DataPolling START '+ Math.round((start-this.lastTimeUpdated)/1000)+' sec ###');
 		if (this.lastTimeUpdated > 0 && (start-this.lastTimeUpdated)/1000 > this.settings.highInterval/1000 + 1) {
-			this.logger.info('Interval '+(start-this.lastTimeUpdated)/1000+' sec');
+			this.logger.debug('Interval '+(start-this.lastTimeUpdated)/1000+' sec');
 		}
 		this.lastTimeUpdated = start;
 		const nextLoop = this.settings.highInterval - start % (this.settings.highInterval) + start;
@@ -469,6 +473,11 @@ class Sun2000 extends utils.Adapter {
 			}
 
 		},this.settings.lowInterval);
+	}
+
+	adapterDisable(errMsg) {
+		this.logger.error(errMsg);
+		this.setForeignState('system.adapter.' + this.namespace + '.alive', false);
 	}
 
 	/**
