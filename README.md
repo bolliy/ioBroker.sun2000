@@ -52,6 +52,10 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* standby detection adjusted
+* Improvement of logs
+
 ### 0.6.1 (2024-03-23)
 * Battery control: After the second failed attempt, the control event is discarded
 * Battery control: Adjust the battery maxCharge and Discharge to the actual values

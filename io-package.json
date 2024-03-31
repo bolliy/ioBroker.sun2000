@@ -165,7 +165,7 @@
           "operand": "and",
           "rules": [
             "oldVersion<=0.6.1",
-            "newVersion>=0.6.1"
+            "newVersion>0.6.1"
           ]
         },
         "title": {
