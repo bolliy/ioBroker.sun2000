@@ -6,6 +6,9 @@
 ![Number of Installations](https://iobroker.live/badges/sun2000-installed.svg)
 ![Current version in stable repository](https://iobroker.live/badges/sun2000-stable.svg)
 [![Documentation](https://img.shields.io/badge/Documentation-2D963D?logo=read-the-docs&logoColor=white)](./docs/README.md)
+[![Donate](https://img.shields.io/badge/paypal-donate%20|%20spenden-blue.svg)]("https://www.paypal.com/donate/?hosted_button_id=ZTX3VP9LZBDCG")
+[![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/bolliy)
+
 
 [![NPM](https://nodei.co/npm/iobroker.sun2000.png?downloads=true)](https://nodei.co/npm/iobroker.sun2000/)
 
