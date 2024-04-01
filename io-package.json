@@ -108,18 +108,18 @@
       "uk": "Huawei sun2000 inverter",
       "zh-cn": "Huawei sun2000 inverter"
     },
-    "desc": {
-      "en": "Read data from up to 5 Huawei SUN2000 inverters and LUNA2000 batteries using Modbus TCP.\nThird-party devices can be integrated via the modbus proxy.\n",
-      "de": "Daten von bis zu 5 Huawei SUN2000 Wechselrichtern und LUNA2000 Batterien können über Modbus TCP ausgelesen werden.\nMit dem integrierten Modbus-Proxy können Geräte von Drittanbietern eingebunden werden.",
-      "ru": "Считывайте данные с пяти инверторов Huawei SUN2000 и аккумуляторов LUNA2000 с помощью Modbus TCP.\nУстройства сторонних производителей можно интегрировать через прокси-сервер Modbus.",
-      "pt": "Leia dados de até 5 inversores Huawei SUN2000 e baterias LUNA2000 usando Modbus TCP.\nDispositivos de terceiros podem ser integrados através do proxy modbus.",
-      "nl": "Lees gegevens van maximaal 5 Huawei SUN2000-omvormers en LUNA2000-batterijen met behulp van Modbus TCP.\nApparaten van derden kunnen via de modbus-proxy worden geïntegreerd.",
-      "fr": "Lisez les données de jusqu'à 5 onduleurs Huawei SUN2000 et batteries LUNA2000 à l'aide de Modbus TCP.\nDes appareils tiers peuvent être intégrés via le proxy Modbus.",
-      "it": "Leggi i dati da un massimo di 5 inverter Huawei SUN2000 e batterie LUNA2000 utilizzando Modbus TCP.\nI dispositivi di terze parti possono essere integrati tramite il proxy Modbus.",
-      "es": "Lea datos de hasta 5 inversores Huawei SUN2000 y baterías LUNA2000 mediante Modbus TCP.\nSe pueden integrar dispositivos de terceros a través del proxy modbus.",
-      "pl": "Odczyt danych z maksymalnie 5 inwerterów Huawei SUN2000 i akumulatorów LUNA2000 za pomocą protokołu Modbus TCP.\nUrządzenia innych firm można zintegrować za pośrednictwem serwera proxy Modbus.",
-      "uk": "Зчитування даних до 5 інверторів Huawei SUN2000 і акумуляторів LUNA2000 за допомогою Modbus TCP.\nПристрої сторонніх виробників можна інтегрувати через проксі-сервер Modbus.",
-      "zh-cn": "使用Modbus TCP读取最多5台华为SUN2000逆变器和LUNA2000电池的数据。\n第三方设备可以通过modbus代理集成。"
+    "desc":{
+      "en": "To read and write data from up to 5 Huawei SUN2000 inverters and LUNA2000 batteries via Modbus TCP. Third-party devices can be integrated via the modbus proxy.",
+      "de": "Zum Lesen und Schreiben von Daten von bis zu 5 Huawei SUN2000 Wechselrichtern und LUNA2000 Batterien über Modbus TCP. Drittgeräte können über den Modbus Proxy integriert werden.",
+      "ru": "Прочитать и писать данные до 5 инверторов Huawei SUN2000 и батарей LUNA2000 через Modbus TCP. Сторонние устройства могут быть интегрированы через modbus proxy.",
+      "pt": "Para ler e escrever dados de até 5 inversores Huawei SUN2000 e baterias LUNA2000 via Modbus TCP. Dispositivos de terceiros podem ser integrados através do proxy modbus.",
+      "nl": "Gegevens lezen en schrijven van maximaal 5 Huawei SUN2000 omvormers en LUNA2000 batterijen via Modbus TCP. De apparaten van derden kunnen worden geïntegreerd via de modbus proxy.",
+      "fr": "Pour lire et écrire des données de jusqu'à 5 onduleurs Huawei SUN2000 et batteries LUNA2000 via Modbus TCP. Les périphériques tiers peuvent être intégrés via le proxy modbus.",
+      "it": "Per leggere e scrivere dati da un massimo di 5 inverter Huawei SUN2000 e batterie LUNA2000 tramite Modbus TCP. I dispositivi di terze parti possono essere integrati tramite il proxy modbus.",
+      "es": "Para leer y escribir datos de hasta 5 inversores Huawei SUN2000 y baterías LUNA2000 a través de Modbus TCP. Los dispositivos de terceros se pueden integrar a través del modbus proxy.",
+      "pl": "Do odczytu i zapisu danych z do 5 Huawei SUN2000 inwerterów i akumulatorów LUNA2000 za pośrednictwem Modbus TCP. Urządzenia trójstronne mogą być zintegrowane za pośrednictwem proxy modbus.",
+      "uk": "Щоб читати та писати дані від 5 інверторів Huawei SUN2000 та батарей LUNA2000 через Modbus TCP. Сторонні пристрої можуть бути інтегровані через проксі модбуса.",
+      "zh-cn": "通过Modbus TCP读取和写入最多5个Huawei SUN2000反转器和LUNA2000电池的数据。 第三方设备可以通过modbus代理集成."
     },
     "authors": [
       "bolliy <stephan@mante.info>"
@@ -169,10 +169,30 @@
           ]
         },
         "title": {
-          "en": "node.js 18.x or higher required"
+          "en": "node.js 18.x or higher required",
+          "de": "node.js 18.x oder höher erforderlich",
+          "ru": "node.js 18.x или выше требуется",
+          "pt": "node.js 18.x ou superior requerido",
+          "nl": "node.js 18.x of hoger vereist",
+          "fr": "node.js 18.x ou plus requis",
+          "it": "node.js 18.x o superiore richiesto",
+          "es": "node.js 18.x o superior requerido",
+          "pl": "node.js 18,x lub wyższa wymagana",
+          "uk": "node.js 18.x або вище потрібно",
+          "zh-cn": "节点.js 18.x或更高"
         },
         "text": {
-          "en": "Please try to stay current with your Node.js version because the support is limited in time. As of now all Node.js versions below 18.x are no longer supported. (End Of Life)."
+          "en": "Please try to stay current with your Node.js version because the support is limited in time. As of now all Node.js versions below 18.x are no longer supported. (End Of Life).",
+          "de": "Bitte versuchen Sie die Node.js-Version aktuell zu halten, da die Unterstützung zeitlich begrenzt ist. Ab sofort werden alle Node.js Versionen unter 18.x nicht mehr unterstützt. (End Of Life).",
+          "ru": "Пожалуйста, попытайтесь оставаться в курсе своей версии Node.js, потому что поддержка ограничена во времени. На данный момент все версии Node.js ниже 18.x больше не поддерживаются. (Конец жизни).",
+          "pt": "Por favor, tente manter-se atual com sua versão Node.js porque o suporte é limitado a tempo. A partir de agora todas as versões do Node.js abaixo de 18.x não são mais suportadas. (End Of Life).",
+          "nl": "Probeer om actueel te blijven met uw Node.js-versie omdat de ondersteuning beperkt is in de tijd. Vanaf nu worden alle Node.js versies onder 18.x niet meer ondersteund. (Einde van het leven).",
+          "fr": "Veuillez essayer de rester à jour avec votre version Node.js car le support est limité dans le temps. Toutes les versions de Node.js sous 18.x ne sont plus prises en charge. (Fin de vie).",
+          "it": "Si prega di cercare di rimanere corrente con la versione Node.js perché il supporto è limitato nel tempo. A partire da ora tutte le versioni Node.js inferiori a 18.x non sono più supportate. (End Of Life).",
+          "es": "Por favor, trate de mantenerse actualizado con su versión Node.js porque el soporte es limitado en el tiempo. A partir de ahora todas las versiones Node.js debajo de 18.x ya no están soportadas. (End Of Life).",
+          "pl": "Proszę spróbować pozostać na bieżąco z wersją Node.js ponieważ wsparcie jest ograniczone w czasie. Od teraz wszystkie wersje Node.js poniżej 18.x nie są już obsługiwane. (Koniec życia).",
+          "uk": "Будь-ласка, будь ласка, намагайтеся постійно триматися з версією Node.js, оскільки підтримка обмежена в часі. Зараз всі версії Node.js нижче 18.x не підтримуються. (Для життя).",
+          "zh-cn": "请尝试保留您的 Node.js 版本, 因为支持时间有限 。 到目前为止,18x以下的所有Node.js版本不再被支持. (寿终."
         },
         "level": "warn",
         "buttons": [
