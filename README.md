@@ -55,6 +55,9 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* Dependencies node.js >= 18, js-controller >= 5.0.2
+
 ### 0.6.2 (2024-03-31)
 * standby detection adjusted
 * Improvement of logs
