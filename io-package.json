@@ -130,7 +130,7 @@
       "sun2000",
       "luna2000",
       "inverter",
-      "charger",
+      "smartcharger",
       "sdongle"
     ],
     "tier": 2,
@@ -164,8 +164,8 @@
         "condition": {
           "operand": "and",
           "rules": [
-            "oldVersion<=0.6.1",
-            "newVersion>0.6.1"
+            "oldVersion<=0.6.2",
+            "newVersion>0.6.2"
           ]
         },
         "title": {
@@ -194,16 +194,20 @@
           "uk": "Будь-ласка, будь ласка, намагайтеся постійно триматися з версією Node.js, оскільки підтримка обмежена в часі. Зараз всі версії Node.js нижче 18.x не підтримуються. (Для життя).",
           "zh-cn": "请尝试保留您的 Node.js 版本, 因为支持时间有限 。 到目前为止,18x以下的所有Node.js版本不再被支持. (寿终."
         },
-        "level": "warn",
+        "level": "info",
         "buttons": [
           "agree",
           "cancel"
-        ]
+        ],
+        "link": "https://github.com/bolliy/ioBroker.sun2000/wiki/Update-node.js",
+        "linkText": {
+          "en": "The node.js update procedure is described here."
+        }
       }
     ],
     "dependencies": [
       {
-        "js-controller": ">=5.0.2"
+        "js-controller": ">=5.0.0"
       }
     ],
     "globalDependencies": [
@@ -300,7 +304,7 @@
         "role": "indicator.port",
         "read": true,
         "write": false,
-        "desc": " Device modbus port"
+        "desc": "Device modbus port"
       }
     },
     {
@@ -315,7 +319,7 @@
         "role": "indicator.id",
         "read": true,
         "write": false,
-        "desc": "deevice modbus IDs"
+        "desc": "device modbus IDs"
       }
     },
     {

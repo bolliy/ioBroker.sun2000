@@ -20,11 +20,15 @@ Sentry reporting is used starting with js-controller 3.0.
 
 ## sun2000 adapter for ioBroker
 
-Read register data from Huawei SUN2000 inverter and LUNA2000 battery using Modbus TCP. 
+Read and write register data from Huawei SUN2000 inverter and LUNA2000 battery using Modbus TCP. Third-party devices can be integrated via the modbus proxy. Even a Huawei SmartLogger can be integrated.
 
 [Huawei product information](https://solar.huawei.com/en/professionals/all-products?residential-smart-pv)
 
 Feel free to follow the discussions in the german [iobroker forum](https://forum.iobroker.net/topic/71768/test-adapter-sun2000-v0-1-x-huawei-wechselrichter)
+
+## Required
+* Node.js 18.x or higher
+* ioBroker host (js-controller) 5.x or higher
 
 ## Documentation
 
@@ -56,11 +60,13 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* Dependencies node.js >= 18, js-controller >= 5.0.2
+* breaking changes
+	- Node.js 18.x or higher required
+	- ioBroker host (js-controller) 5.x or higher
 
 ### 0.6.2 (2024-03-31)
 * standby detection adjusted
-* Improvement of logs
+* improvement of logs
 
 ### 0.6.1 (2024-03-23)
 * Battery control: After the second failed attempt, the control event is discarded
@@ -71,7 +77,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 * fix the standby detection #60
 
 ### 0.5.1 (2024-03-11)
-* Config page restructured
+* config page restructured
 * read only the required string data
 * fix interval medium
 
