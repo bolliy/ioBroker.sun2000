@@ -59,7 +59,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.7.0 (2024-04-03)
 * breaking changes
 	- Node.js 18.x or higher required
 	- ioBroker host (js-controller) 5.x or higher
