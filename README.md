@@ -5,7 +5,11 @@
 [![Downloads](https://img.shields.io/npm/dm/iobroker.sun2000.svg)](https://www.npmjs.com/package/iobroker.sun2000)
 ![Number of Installations](https://iobroker.live/badges/sun2000-installed.svg)
 ![Current version in stable repository](https://iobroker.live/badges/sun2000-stable.svg)
-[![Documentation](https://img.shields.io/badge/Documentation-2D963D?logo=read-the-docs&logoColor=white)](./docs/README.md)
+[![Documentation](https://img.shields.io/badge/Documentation-2D963D?logo=read-the-docs&logoColor=white)](https://github.com/bolliy/ioBroker.sun2000/blob/main/docs/README.md)
+[![Wiki](https://img.shields.io/badge/wiki-documentation-forestgreen)](https://github.com/bolliy/ioBroker.sun2000/wiki)
+[![Donate](https://img.shields.io/badge/paypal-donate%20|%20spenden-blue.svg)](https://www.paypal.com/donate/?hosted_button_id=ZTX3VP9LZBDCG)
+[![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/bolliy)
+
 
 [![NPM](https://nodei.co/npm/iobroker.sun2000.png?downloads=true)](https://nodei.co/npm/iobroker.sun2000/)
 
@@ -17,16 +21,20 @@ Sentry reporting is used starting with js-controller 3.0.
 
 ## sun2000 adapter for ioBroker
 
-Read register data from Huawei SUN2000 inverter and LUNA2000 battery using Modbus TCP. 
+Read and write register data from Huawei SUN2000 inverter and LUNA2000 battery using Modbus TCP. Third-party devices can be integrated via the modbus proxy. Even a Huawei SmartLogger can be integrated.
 
 [Huawei product information](https://solar.huawei.com/en/professionals/all-products?residential-smart-pv)
 
 Feel free to follow the discussions in the german [iobroker forum](https://forum.iobroker.net/topic/71768/test-adapter-sun2000-v0-1-x-huawei-wechselrichter)
 
+## Dependencies
+* Node.js 18.x or higher
+* ioBroker host (js-controller) 5.x or higher
+
 ## Documentation
 
-See the [documentation page](./docs/README.md) or 
-browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki) 
+See the [documentation page](https://github.com/bolliy/ioBroker.sun2000/blob/main/docs/README.md) or 
+browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 
 ## Supported hardware
 
@@ -52,9 +60,17 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.7.1 (2024-04-09)
+* inverter model name too many characters #73
+
+### 0.7.0 (2024-04-03)
+* breaking changes
+	- Node.js 18.x or higher required
+	- ioBroker host (js-controller) 5.x or higher
+
+### 0.6.2 (2024-03-31)
 * standby detection adjusted
-* Improvement of logs
+* improvement of logs
 
 ### 0.6.1 (2024-03-23)
 * Battery control: After the second failed attempt, the control event is discarded
@@ -65,7 +81,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 * fix the standby detection #60
 
 ### 0.5.1 (2024-03-11)
-* Config page restructured
+* config page restructured
 * read only the required string data
 * fix interval medium
 
@@ -154,3 +170,5 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+[def]: https://github.com/bolliy/ioBroker.sun2000/wiki

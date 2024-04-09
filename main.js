@@ -226,7 +226,7 @@ class Sun2000 extends utils.Adapter {
 		}, msToMidnight);
 	}
 
-
+	/*
 	sendToSentry (msg)  {
 		if (this.supportsFeature && this.supportsFeature('PLUGINS')) {
 			const sentryInstance = this.getPluginInstance('sentry');
@@ -241,6 +241,7 @@ class Sun2000 extends utils.Adapter {
 			}
 		}
 	}
+	*/
 
 	async endOfmodbusAdjust (info) {
 		if (!info.modbusAdjust) {
@@ -340,7 +341,7 @@ class Sun2000 extends utils.Adapter {
 			this.settings.cb.tou = this.config.cb_tou;
 
 			if (this.settings.modbusAdjust) {
-				await this.setStateAsync('info.JSONhealth', {val: '{ message: "Adjust modbus settings"}', ack: true});
+				await this.setStateAsync('info.JSONhealth', {val: '{message: "Adjust modbus settings"}', ack: true});
 			} else {
 				await this.setStateAsync('info.JSONhealth', {val: '{message : "Information is collected"}', ack: true});
 			}
@@ -375,6 +376,7 @@ class Sun2000 extends utils.Adapter {
 						});
 					}
 				}
+				//SDongle
 				if (this.settings.sd.active) {
 					this.devices.push({
 						index: 0,

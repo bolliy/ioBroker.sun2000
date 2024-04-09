@@ -1,8 +1,47 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.6.1",
+    "version": "0.7.1",
     "news": {
+      "0.7.1": {
+        "en": "inverter model name too many characters #73",
+        "de": "wechselrichter modellname zu viele zeichen #73",
+        "ru": "инверторное имя модели слишком много символов #73",
+        "pt": "inversor nome modelo muitos caracteres #73",
+        "nl": "inverter modelnaam te veel tekens #73",
+        "fr": "nom de modèle d'onduleur trop de caractères #73",
+        "it": "inverter nome modello troppi personaggi #73",
+        "es": "inverter nombre de modelo demasiados caracteres #73",
+        "pl": "inverter model nazwa zbyt wiele znaków # 73",
+        "uk": "ім'я інвертора занадто багато символів #73",
+        "zh-cn": "翻转模型名称过多字符 # 73"
+      },
+      "0.7.0": {
+        "en": "breaking changes\nNode.js 18.x or higher required\nioBroker host (js-controller) 5.x or higher",
+        "de": "änderungen\nNode.js 18.x oder höher erforderlich\nioBroker Host (js-controller) 5.x oder höher",
+        "ru": "изменения\nNode.js 18.x или выше требуется\nioBroker host (js-controller) 5.x или выше",
+        "pt": "alterações de ruptura\nNode.js 18.x ou superior requerido\nhospedeiro ioBroker (js-controller) 5.x ou superior",
+        "nl": "wijzigingen breken\nNode.js 18.x of hoger vereist\nioBroker host (js-controller) 5.x of hoger",
+        "fr": "casser les changements\nNode.js 18.x ou plus requis\nioBroker host (js-controller) 5.x ou plus",
+        "it": "cambiamenti di rottura\nNode.js 18.x o superiore richiesto\nioBroker host (js-controller) 5.x o superiore",
+        "es": "cambios de ruptura\nNode.js 18.x o superior requerido\nioBroker host (js-controller) 5.x o superior",
+        "pl": "łamanie zmian\nNode.js 18,x lub wyższa wymagana\njoBroker host (kontroler js-) 5.x lub wyższy",
+        "uk": "поломка змін\nNode.js 18.x або вище потрібно\nioBroker host (js-controller) 5.x або вище",
+        "zh-cn": "断开更改\n所需节点.js 18.x或更高\nioBroker 主机(js-controller) 5.x或更高"
+      },
+      "0.6.2": {
+        "en": "standby detection adjusted\nImprovement of logs",
+        "de": "standby-erkennung angepasst\nVerbesserung der Protokolle",
+        "ru": "резервное обнаружение с поправкой\nСовершенствование журналов",
+        "pt": "detecção de espera ajustada\nMelhoria dos logs",
+        "nl": "stand-by detectie aangepast\nVerbetering van de logs",
+        "fr": "réglage de la détection en attente\nAmélioration des registres",
+        "it": "rilevamento standby regolato\nMiglioramento dei registri",
+        "es": "detección de reserva ajustada\nMejora de los registros",
+        "pl": "korekta detekcji czuwania\nPoprawa dzienników",
+        "uk": "автономне виявлення\nУдосконалення колод",
+        "zh-cn": "经调整的备用检测\n改进日志"
+      },
       "0.6.1": {
         "en": "Battery control: After the second failed attempt, the control event is discarded\nBattery control: Adjust the battery maxCharge and Discharge to the actual values",
         "de": "Batteriesteuerung: Nach dem zweiten gescheiterten Versuch wird das Kontrollereignis verworfen\nBatteriesteuerung: Einstellen der Batterie maxCharge und Entladen auf die tatsächlichen Werte",
@@ -54,45 +93,6 @@
         "pl": "Data umieszczenia w wykazie\nniektóre mierniki wskazują, że jednostka została zmieniona (na przykład sun2000.0.meter.activePowerL1) (# 56)\nsun2000 serie M2 lub wyższe mogą być również przetwarzane",
         "uk": "Інтеграція [Huawei SmartLogger](https://support.huawei.com/enterprise/de/doc/EDOC1100130069/d8a00460)\nзмінено блок лічильників (наприклад, Sun2000.0.meter.activePowerL1) (#56)\nсонце2000 serie M2 або вище можна обробити",
         "zh-cn": "[Huawei SmartLogger]的集成(https://support.huawei.com/economist/de/doc/EDOC110013069/d8a00460) 互联网档案馆的存檔,存档日期2013-12-20\n某些度数表示单位已更改( 例如 sun 2000. 0. meter. activePowerL1) (# 56)\n太阳2000 serie M2 或以上也可以加工"
-      },
-      "0.4.1": {
-        "en": "read PV string data slower (medium interval)",
-        "de": "pV-Stringdaten langsamer lesen (mittleres Intervall)",
-        "ru": "читать данные строки PV медленнее (средний интервал)",
-        "pt": "ler dados de cadeia de caracteres PV mais lento (intervalo médio)",
-        "nl": "lees PV-stringgegevens langzamer (medium interval)",
-        "fr": "lire les données de chaîne PV plus lentement (intervalle moyen)",
-        "it": "leggere i dati della stringa PV più lento (intervallo medio)",
-        "es": "leer datos de cadena PV más lento (intervalo medio)",
-        "pl": "odczyt danych strun fotowoltaicznych wolniej (interwał średni)",
-        "uk": "читати повільніші дані ПВ (середній інтервал)",
-        "zh-cn": "读取较慢的光电字符串数据( 中间隔)"
-      },
-      "0.4.0": {
-        "en": "detect standby mode of inverters (#34)\ndevices in standby often give incorrect values. These are assigned \"0\" (#40)\nthe modbus register and the length are stored in the description of the states\nimplemented modbus-proxy (read-only cache)\nread register data from SDongleA \nadditional loop interval medium (SDongle data)\nIntegration of [NRGkick Wallbox](https://www.nrgkick.com)\nread string data faster (high interval)",
-        "de": "standby-modus von wechselrichtern erkennen (#34)\ngeräte im Standby geben oft falsche Werte. Diese werden \"0\" zugeordnet (#40)\ndas modbusregister und die länge werden in der beschreibung der zustände gespeichert\nimplementiert modbus-proxy (nur lesen cache)\nregisterdaten von SDongleA lesen\nzusätzliches Loop-Intervallmedium (SDongle-Daten)\nIntegration von [NRGkick Wallbox](https://www.nrgkick.com)\nstringdaten schneller lesen (hohes intervall)",
-        "ru": "#34\nустройства в режиме ожидания часто дают неправильные значения. Назначены \"0\" (#40)\nрегистр modbus и длина хранятся в описании состояний\nреализованный modbus-proxy (только для чтения)\nчитать данные реестра SDongleA\nдополнительная интерактивная среда (данные SDongle)\nИнтеграция [NRGkick Wallbox] (https://www.nrgkick.com)\nчитать строковые данные быстрее (высокий интервал)",
-        "pt": "detectar modo de espera de inversores (#34)\ndispositivos em espera muitas vezes dão valores incorretos. Estes são atribuídos \"0\" (#40)\no registro do modbus e o comprimento são armazenados na descrição dos estados\nimplementado modbus-proxy (apenas leitura cache)\nler dados de registro de SDongleA\nmeio de intervalo de loop adicional (dados de SDongle)\nIntegração de [NRGkick Wallbox](https://www.nrgkick.com)\nler dados de cadeia mais rápido (alto intervalo)",
-        "nl": "de standbymodus van de inverters detecteren (#34)\napparaten in stand-by geven vaak onjuiste waarden. Deze worden toegewezen aan \"0\" (#40)\nde modbus register en de lengte worden opgeslagen in de beschrijving van de staten\ngeïmplementeerd modbus-proxy (alleen-lezen cache)\nlees registergegevens van SDongleA\nextra loopintervalmedium (SDongle-gegevens)\nIntegratie van [NRGkick Wallbox](https://www.nrgkick.com)\nlees tekstgegevens sneller (hoog interval)",
-        "fr": "détecter le mode veille des onduleurs (#34)\nles dispositifs en attente donnent souvent des valeurs incorrectes. Ils sont assignés « 0 » (#40)\nle registre modbus et la longueur sont stockés dans la description des états\nmis en œuvre modbus-proxy (cache de lecture seule)\nlire les données du registre de SDongleA\nmilieu d'intervalle de boucle supplémentaire (données SDongle)\nIntégration de [NRGkick Wallbox](https://www.nrgkick.com)\nlire les données de chaîne plus rapidement (intervalle élevé)",
-        "it": "rilevare modalità standby di inverter (#34)\ni dispositivi in standby spesso danno valori errati. Questi sono assegnati \"0\" (#40)\nil registro modbus e la lunghezza sono memorizzate nella descrizione degli stati\nimplementato modbus-proxy ( cache di sola lettura)\nleggere i dati del registro da SDongleA\nintervallo di loop aggiuntivo medio (dati del triangolo)\nIntegrazione [NRGkick Wallbox](https://www.nrgkick.com)\nleggere i dati della stringa più velocemente (alto intervallo)",
-        "es": "detectar el modo de espera de los inversores (#34)\ndispositivos en standby a menudo dan valores incorrectos. Estos son asignados \"0\" (#40)\nel registro del modbus y la longitud se almacenan en la descripción de los estados\naplicado modbus-proxy (caché de sólo lectura)\nread register data from SDongleA\nintervalo de bucle adicional medio (datos de SDongle)\nIntegración de [NRGkick Wallbox](https://www.nrgkick.com)\nleer datos de cadena más rápido (intervalo alto)",
-        "pl": "wykrywanie trybu czuwania inwerterów (# 34)\nurządzenia w trybie czuwania często dają nieprawidłowe wartości. Są one przypisane \"0\" (# 40)\nrejestr modbus i długość są przechowywane w opisie stanów\nzaimplementowany modbus- proxy (tylko read- cache)\nczytaj dane rejestru z SDongleA\ndodatkowe medium interwałowe pętli (dane SDongle)\nW związku z tym Komisja uznała, że nie ma podstaw, aby stwierdzić, że w odniesieniu do niektórych rodzajów działalności, które nie są objęte zakresem rozporządzenia (WE) nr 659 / 1999, nie można uznać, że działalność ta nie jest zgodna z rynkiem wewnętrznym\nodczyt danych łańcuchowych szybciej (wysoki interwał)",
-        "uk": "виявити режим очікування інверторів (#34)\nпристрої в режимі очікування часто дають неправильні значення. Присвоюється \"0\" (#40)\nреєстр модбусів і довжина зберігаються в описі станів\nреалізований модбус-проксі (тільки кеш)\nчитати реєстраційні дані з SDongleA\nдодатковий інтервал петлі середній (SDongle data)\nІнтеграція [NRGkick Wallbox](https://www.nrgkick.com)\nчитати дані рядка швидше (високий інтервал)",
-        "zh-cn": "检测反转器的备用模式 (# 34)\n正在待命的设备往往给出错误的值。 这些被分配为\"0\" (# 40)\nmodbus 寄存器和长度存储在状态描述中\n已执行的 modbus- 代理( 只读缓存)\n从 SDongleA 读取寄存器数据\n额外的循环间隔介质( SDongle 数据)\n整合[NRGkick Wallbox](https://www.nrgkick.com)\n更快地读取字符串数据( 高间隔)"
-      },
-      "0.3.1": {
-        "en": "state `sun2000.0.collected.chargeDischargePowercharge` is not always refreshed #47",
-        "de": "state `sun2000.0.collected.chargeDischargePowercharge` ist nicht immer erfrischt #47",
-        "ru": "состояние `sun2000.0.collected.chargeDischargePowercharge' не всегда обновляется #47",
-        "pt": "estado `sun2000.0.collected.chargeDischargePowercharge` nem sempre é atualizado #47",
-        "nl": "staat ",
-        "fr": "état `sun2000.0.collected.chargeDéchargePowercharge` n'est pas toujours rafraîchi #47",
-        "it": "stato `sun2000.0.colletto.chargeDischargePowercharge` non è sempre aggiornato #47",
-        "es": "estado `sun2000.0.collected.chargeDischargePowercharge` no siempre se actualiza #47",
-        "pl": "state 'sun2000.0.0 collected.chargeDischargePowercharge' nie zawsze jest odświeżona # 47",
-        "uk": "#47",
-        "zh-cn": "state `sun 2000.00.colled. 充电电源 ' 并不总是刷新47"
       }
     },
     "titleLang": {
@@ -109,17 +109,17 @@
       "zh-cn": "Huawei sun2000 inverter"
     },
     "desc": {
-      "en": "Read data from up to 5 Huawei SUN2000 inverters and LUNA2000 batteries using Modbus TCP.\nThird-party devices can be integrated via the modbus proxy.\n",
-      "de": "Daten von bis zu 5 Huawei SUN2000 Wechselrichtern und LUNA2000 Batterien können über Modbus TCP ausgelesen werden.\nMit dem integrierten Modbus-Proxy können Geräte von Drittanbietern eingebunden werden.",
-      "ru": "Считывайте данные с пяти инверторов Huawei SUN2000 и аккумуляторов LUNA2000 с помощью Modbus TCP.\nУстройства сторонних производителей можно интегрировать через прокси-сервер Modbus.",
-      "pt": "Leia dados de até 5 inversores Huawei SUN2000 e baterias LUNA2000 usando Modbus TCP.\nDispositivos de terceiros podem ser integrados através do proxy modbus.",
-      "nl": "Lees gegevens van maximaal 5 Huawei SUN2000-omvormers en LUNA2000-batterijen met behulp van Modbus TCP.\nApparaten van derden kunnen via de modbus-proxy worden geïntegreerd.",
-      "fr": "Lisez les données de jusqu'à 5 onduleurs Huawei SUN2000 et batteries LUNA2000 à l'aide de Modbus TCP.\nDes appareils tiers peuvent être intégrés via le proxy Modbus.",
-      "it": "Leggi i dati da un massimo di 5 inverter Huawei SUN2000 e batterie LUNA2000 utilizzando Modbus TCP.\nI dispositivi di terze parti possono essere integrati tramite il proxy Modbus.",
-      "es": "Lea datos de hasta 5 inversores Huawei SUN2000 y baterías LUNA2000 mediante Modbus TCP.\nSe pueden integrar dispositivos de terceros a través del proxy modbus.",
-      "pl": "Odczyt danych z maksymalnie 5 inwerterów Huawei SUN2000 i akumulatorów LUNA2000 za pomocą protokołu Modbus TCP.\nUrządzenia innych firm można zintegrować za pośrednictwem serwera proxy Modbus.",
-      "uk": "Зчитування даних до 5 інверторів Huawei SUN2000 і акумуляторів LUNA2000 за допомогою Modbus TCP.\nПристрої сторонніх виробників можна інтегрувати через проксі-сервер Modbus.",
-      "zh-cn": "使用Modbus TCP读取最多5台华为SUN2000逆变器和LUNA2000电池的数据。\n第三方设备可以通过modbus代理集成。"
+      "en": "To read and write data from up to 5 Huawei SUN2000 inverters and LUNA2000 batteries via Modbus TCP. Third-party devices can be integrated via the modbus proxy.",
+      "de": "Zum Lesen und Schreiben von Daten von bis zu 5 Huawei SUN2000 Wechselrichtern und LUNA2000 Batterien über Modbus TCP. Drittgeräte können über den Modbus Proxy integriert werden.",
+      "ru": "Прочитать и писать данные до 5 инверторов Huawei SUN2000 и батарей LUNA2000 через Modbus TCP. Сторонние устройства могут быть интегрированы через modbus proxy.",
+      "pt": "Para ler e escrever dados de até 5 inversores Huawei SUN2000 e baterias LUNA2000 via Modbus TCP. Dispositivos de terceiros podem ser integrados através do proxy modbus.",
+      "nl": "Gegevens lezen en schrijven van maximaal 5 Huawei SUN2000 omvormers en LUNA2000 batterijen via Modbus TCP. De apparaten van derden kunnen worden geïntegreerd via de modbus proxy.",
+      "fr": "Pour lire et écrire des données de jusqu'à 5 onduleurs Huawei SUN2000 et batteries LUNA2000 via Modbus TCP. Les périphériques tiers peuvent être intégrés via le proxy modbus.",
+      "it": "Per leggere e scrivere dati da un massimo di 5 inverter Huawei SUN2000 e batterie LUNA2000 tramite Modbus TCP. I dispositivi di terze parti possono essere integrati tramite il proxy modbus.",
+      "es": "Para leer y escribir datos de hasta 5 inversores Huawei SUN2000 y baterías LUNA2000 a través de Modbus TCP. Los dispositivos de terceros se pueden integrar a través del modbus proxy.",
+      "pl": "Do odczytu i zapisu danych z do 5 Huawei SUN2000 inwerterów i akumulatorów LUNA2000 za pośrednictwem Modbus TCP. Urządzenia trójstronne mogą być zintegrowane za pośrednictwem proxy modbus.",
+      "uk": "Щоб читати та писати дані від 5 інверторів Huawei SUN2000 та батарей LUNA2000 через Modbus TCP. Сторонні пристрої можуть бути інтегровані через проксі модбуса.",
+      "zh-cn": "通过Modbus TCP读取和写入最多5个Huawei SUN2000反转器和LUNA2000电池的数据。 第三方设备可以通过modbus代理集成."
     },
     "authors": [
       "bolliy <stephan@mante.info>"
@@ -130,7 +130,7 @@
       "sun2000",
       "luna2000",
       "inverter",
-      "charger",
+      "smartcharger",
       "sdongle"
     ],
     "tier": 2,
@@ -164,26 +164,50 @@
         "condition": {
           "operand": "and",
           "rules": [
-            "oldVersion<=0.6.1",
-            "newVersion>0.6.1"
+            "oldVersion<=0.6.2",
+            "newVersion>0.6.2"
           ]
         },
         "title": {
-          "en": "node.js 18.x or higher required"
+          "en": "node.js 18.x or higher required",
+          "de": "node.js 18.x oder höher erforderlich",
+          "ru": "node.js 18.x или выше требуется",
+          "pt": "node.js 18.x ou superior requerido",
+          "nl": "node.js 18.x of hoger vereist",
+          "fr": "node.js 18.x ou plus requis",
+          "it": "node.js 18.x o superiore richiesto",
+          "es": "node.js 18.x o superior requerido",
+          "pl": "node.js 18,x lub wyższa wymagana",
+          "uk": "node.js 18.x або вище потрібно",
+          "zh-cn": "节点.js 18.x或更高"
         },
         "text": {
-          "en": "Please try to stay current with your Node.js version because the support is limited in time. As of now all Node.js versions below 18.x are no longer supported. (End Of Life)."
+          "en": "Please try to stay current with your Node.js version because the support is limited in time. As of now all Node.js versions below 18.x are no longer supported. (End Of Life).",
+          "de": "Bitte versuchen Sie die Node.js-Version aktuell zu halten, da die Unterstützung zeitlich begrenzt ist. Ab sofort werden alle Node.js Versionen unter 18.x nicht mehr unterstützt. (End Of Life).",
+          "ru": "Пожалуйста, попытайтесь оставаться в курсе своей версии Node.js, потому что поддержка ограничена во времени. На данный момент все версии Node.js ниже 18.x больше не поддерживаются. (Конец жизни).",
+          "pt": "Por favor, tente manter-se atual com sua versão Node.js porque o suporte é limitado a tempo. A partir de agora todas as versões do Node.js abaixo de 18.x não são mais suportadas. (End Of Life).",
+          "nl": "Probeer om actueel te blijven met uw Node.js-versie omdat de ondersteuning beperkt is in de tijd. Vanaf nu worden alle Node.js versies onder 18.x niet meer ondersteund. (Einde van het leven).",
+          "fr": "Veuillez essayer de rester à jour avec votre version Node.js car le support est limité dans le temps. Toutes les versions de Node.js sous 18.x ne sont plus prises en charge. (Fin de vie).",
+          "it": "Si prega di cercare di rimanere corrente con la versione Node.js perché il supporto è limitato nel tempo. A partire da ora tutte le versioni Node.js inferiori a 18.x non sono più supportate. (End Of Life).",
+          "es": "Por favor, trate de mantenerse actualizado con su versión Node.js porque el soporte es limitado en el tiempo. A partir de ahora todas las versiones Node.js debajo de 18.x ya no están soportadas. (End Of Life).",
+          "pl": "Proszę spróbować pozostać na bieżąco z wersją Node.js ponieważ wsparcie jest ograniczone w czasie. Od teraz wszystkie wersje Node.js poniżej 18.x nie są już obsługiwane. (Koniec życia).",
+          "uk": "Будь-ласка, будь ласка, намагайтеся постійно триматися з версією Node.js, оскільки підтримка обмежена в часі. Зараз всі версії Node.js нижче 18.x не підтримуються. (Для життя).",
+          "zh-cn": "请尝试保留您的 Node.js 版本, 因为支持时间有限 。 到目前为止,18x以下的所有Node.js版本不再被支持. (寿终."
         },
-        "level": "warn",
+        "level": "info",
         "buttons": [
           "agree",
           "cancel"
-        ]
-      }]
-      ,
-      "dependencies": [
+        ],
+        "link": "https://github.com/bolliy/ioBroker.sun2000/wiki/Update-node.js",
+        "linkText": {
+          "en": "The node.js update procedure is described here."
+        }
+      }
+    ],
+    "dependencies": [
       {
-        "js-controller": ">=3.3.22"
+        "js-controller": ">=5.0.0"
       }
     ],
     "globalDependencies": [
@@ -280,7 +304,7 @@
         "role": "indicator.port",
         "read": true,
         "write": false,
-        "desc": " Device modbus port"
+        "desc": "Device modbus port"
       }
     },
     {
@@ -295,7 +319,7 @@
         "role": "indicator.id",
         "read": true,
         "write": false,
-        "desc": "deevice modbus IDs"
+        "desc": "device modbus IDs"
       }
     },
     {
