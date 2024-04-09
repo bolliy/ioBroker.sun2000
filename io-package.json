@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.7.0",
+    "version": "0.7.1",
     "news": {
+      "0.7.1": {
+        "en": "inverter model name too many characters #73",
+        "de": "wechselrichter modellname zu viele zeichen #73",
+        "ru": "инверторное имя модели слишком много символов #73",
+        "pt": "inversor nome modelo muitos caracteres #73",
+        "nl": "inverter modelnaam te veel tekens #73",
+        "fr": "nom de modèle d'onduleur trop de caractères #73",
+        "it": "inverter nome modello troppi personaggi #73",
+        "es": "inverter nombre de modelo demasiados caracteres #73",
+        "pl": "inverter model nazwa zbyt wiele znaków # 73",
+        "uk": "ім'я інвертора занадто багато символів #73",
+        "zh-cn": "翻转模型名称过多字符 # 73"
+      },
       "0.7.0": {
         "en": "breaking changes\nNode.js 18.x or higher required\nioBroker host (js-controller) 5.x or higher",
         "de": "änderungen\nNode.js 18.x oder höher erforderlich\nioBroker Host (js-controller) 5.x oder höher",
@@ -80,19 +93,6 @@
         "pl": "Data umieszczenia w wykazie\nniektóre mierniki wskazują, że jednostka została zmieniona (na przykład sun2000.0.meter.activePowerL1) (# 56)\nsun2000 serie M2 lub wyższe mogą być również przetwarzane",
         "uk": "Інтеграція [Huawei SmartLogger](https://support.huawei.com/enterprise/de/doc/EDOC1100130069/d8a00460)\nзмінено блок лічильників (наприклад, Sun2000.0.meter.activePowerL1) (#56)\nсонце2000 serie M2 або вище можна обробити",
         "zh-cn": "[Huawei SmartLogger]的集成(https://support.huawei.com/economist/de/doc/EDOC110013069/d8a00460) 互联网档案馆的存檔,存档日期2013-12-20\n某些度数表示单位已更改( 例如 sun 2000. 0. meter. activePowerL1) (# 56)\n太阳2000 serie M2 或以上也可以加工"
-      },
-      "0.4.1": {
-        "en": "read PV string data slower (medium interval)",
-        "de": "pV-Stringdaten langsamer lesen (mittleres Intervall)",
-        "ru": "читать данные строки PV медленнее (средний интервал)",
-        "pt": "ler dados de cadeia de caracteres PV mais lento (intervalo médio)",
-        "nl": "lees PV-stringgegevens langzamer (medium interval)",
-        "fr": "lire les données de chaîne PV plus lentement (intervalle moyen)",
-        "it": "leggere i dati della stringa PV più lento (intervallo medio)",
-        "es": "leer datos de cadena PV más lento (intervalo medio)",
-        "pl": "odczyt danych strun fotowoltaicznych wolniej (interwał średni)",
-        "uk": "читати повільніші дані ПВ (середній інтервал)",
-        "zh-cn": "读取较慢的光电字符串数据( 中间隔)"
       }
     },
     "titleLang": {
