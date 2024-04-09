@@ -5,7 +5,8 @@
 [![Downloads](https://img.shields.io/npm/dm/iobroker.sun2000.svg)](https://www.npmjs.com/package/iobroker.sun2000)
 ![Number of Installations](https://iobroker.live/badges/sun2000-installed.svg)
 ![Current version in stable repository](https://iobroker.live/badges/sun2000-stable.svg)
-[![Documentation](https://img.shields.io/badge/Documentation-2D963D?logo=read-the-docs&logoColor=white)](./docs/README.md)
+[![Documentation](https://img.shields.io/badge/Documentation-2D963D?logo=read-the-docs&logoColor=white)](https://github.com/bolliy/ioBroker.sun2000/blob/main/docs/README.md)
+[![Wiki](https://img.shields.io/badge/wiki-documentation-forestgreen)](https://github.com/bolliy/ioBroker.sun2000/wiki)
 [![Donate](https://img.shields.io/badge/paypal-donate%20|%20spenden-blue.svg)](https://www.paypal.com/donate/?hosted_button_id=ZTX3VP9LZBDCG)
 [![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/bolliy)
 
@@ -33,7 +34,7 @@ Feel free to follow the discussions in the german [iobroker forum](https://forum
 ## Documentation
 
 See the [documentation page](https://github.com/bolliy/ioBroker.sun2000/blob/main/docs/README.md) or 
-browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki) 
+browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 
 ## Supported hardware
 
@@ -169,3 +170,5 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+[def]: https://github.com/bolliy/ioBroker.sun2000/wiki
