@@ -31,6 +31,7 @@ class Sun2000 extends utils.Adapter {
 		this.lastStateUpdatedHigh = 0;
 		this.lastStateUpdatedLow = 0;
 		this.isConnected = false;
+		this.isReady = false; //v0.8.x
 
 		this.devices = [];
 		this.settings = {
@@ -43,6 +44,7 @@ class Sun2000 extends utils.Adapter {
 			modbusConnectDelay : 5000,
 			modbusDelay : 0,
 			modbusAdjust : false,
+			powerControl : false, //v0.8.x
 			ms : {
 				address : '0.0.0.0',
 				port : 520,
@@ -441,6 +443,7 @@ class Sun2000 extends utils.Adapter {
 			const lastIsConnected = this.isConnected;
 			this.isConnected = this.lastStateUpdatedHigh > 0 && sinceLastUpdate < this.settings.highInterval*3;
 			if (this.isConnected !== lastIsConnected ) this.setState('info.connection', this.isConnected, true);
+			this.isReady = this.isConnected && this.alreadyRunWatchDog && !this.settings.modbusAdjust; //v0.8.x
 			if (!this.settings.modbusAdjust) {
 				if (!this.isConnected) {
 					this.setStateAsync('info.JSONhealth', {val: '{errno:1, message: "Can\'t connect to inverter"}', ack: true});
