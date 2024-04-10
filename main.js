@@ -443,12 +443,12 @@ class Sun2000 extends utils.Adapter {
 			const lastIsConnected = this.isConnected;
 			this.isConnected = this.lastStateUpdatedHigh > 0 && sinceLastUpdate < this.settings.highInterval*3;
 			if (this.isConnected !== lastIsConnected ) this.setState('info.connection', this.isConnected, true);
-			this.isReady = this.isConnected && this.alreadyRunWatchDog && !this.settings.modbusAdjust; //v0.8.x
 			if (!this.settings.modbusAdjust) {
 				if (!this.isConnected) {
 					this.setStateAsync('info.JSONhealth', {val: '{errno:1, message: "Can\'t connect to inverter"}', ack: true});
 				}
 				if (this.alreadyRunWatchDog) {
+					this.isReady = this.isConnected; //v0.8.x
 					const ret = this.state.CheckReadError(this.settings.lowInterval*2);
 					const obj = {...ret,modbus: {...this.modbusClient.info}};
 					this.logger.debug(JSON.stringify(this.modbusClient.info));
