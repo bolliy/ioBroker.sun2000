@@ -61,7 +61,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* Check numerical values for plausibility
+* Check numerical values for plausibility #75
 * realization the "active power control"
 * the Modbus proxy activates when all data is available
 * If the error 'ECONNRESET' appear, the modbus proxy should not terminate 
