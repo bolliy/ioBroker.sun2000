@@ -447,14 +447,15 @@ class Sun2000 extends utils.Adapter {
 				if (!this.isConnected) {
 					this.setStateAsync('info.JSONhealth', {val: '{errno:1, message: "Can\'t connect to inverter"}', ack: true});
 				}
+				const ret = this.state.CheckReadError(this.settings.lowInterval*2);
+				const obj = {...ret,modbus: {...this.modbusClient.info}};
+				this.logger.debug(JSON.stringify(this.modbusClient.info));
+				//v0.8.x
+				if (!this.isReady) this.isReady = this.isConnected && !ret.errno;
+				// after 2 Minutes
 				if (this.alreadyRunWatchDog) {
-					this.isReady = this.isConnected; //v0.8.x
-					const ret = this.state.CheckReadError(this.settings.lowInterval*2);
-					const obj = {...ret,modbus: {...this.modbusClient.info}};
-					this.logger.debug(JSON.stringify(this.modbusClient.info));
 					if (ret.errno) this.logger.warn(ret.message);
 					this.setStateAsync('info.JSONhealth', {val: JSON.stringify(obj), ack: true});
-					//v0.4.x
 					if (this.modbusServer) {
 						!this.modbusServer.isConnected && this.modbusServer.connect();
 						if (this.settings.ms.log) {
