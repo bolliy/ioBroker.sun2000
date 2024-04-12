@@ -44,7 +44,7 @@ class Sun2000 extends utils.Adapter {
 			modbusConnectDelay : 5000,
 			modbusDelay : 0,
 			modbusAdjust : false,
-			powerControl : false, //v0.8.x
+			powerControl : true, //v0.8.x
 			ms : {
 				address : '0.0.0.0',
 				port : 520,
