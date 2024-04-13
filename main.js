@@ -101,7 +101,6 @@ class Sun2000 extends utils.Adapter {
 		for (const item of this.devices) {
 			if (item.driverClass == driverClasses.inverter) {
 				const path = 'inverter.'+item.index.toString();
-				//const i = item.index;
 				item.path = path;
 				await this.extendObjectAsync(path, {
 					type: 'channel',
