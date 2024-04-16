@@ -62,8 +62,8 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 -->
 ### **WORK IN PROGRESS**
 * Check numerical values for plausibility #75
-* realization the "active power control"
-* the Modbus proxy activates when all data is available
+* realization the "limit the power fed to grid"
+* realization the "forcible Charge or Discharge Power"
 * If the error 'ECONNRESET' appear, the modbus proxy should not terminate 
 
 ### 0.7.1 (2024-04-09)
