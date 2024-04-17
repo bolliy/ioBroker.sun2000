@@ -51,6 +51,8 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 * States are only written for changed data from the inverter. This relieves the burden on the iobroker instance.
 * The states “inputPower” or “activePower” in the “collected” path can be monitored with a “was updated” trigger element. Because these states are always written within the set interval.
 * `Battery charge control`: The battery charging mode of Huawei LUNA2000 batteries can be controlled. Here you can activate and deactivate the battery charging mode to "charging from grid”. In addition, the charging capacity and charging power can be adjusted.
+* `Force charge discharge battery`: Forced charge/discharge is usually used to test the battery connected to an inverter. Normally it is not recommended to perform forced charging/discharging. 
+* `Export Control`: The excess PV energy is fed into the power grid, but not all countries allow users to sell electricity. Some countries have introduced regulations to restrict the sale of electricity to the grid. 
 * `modbus-proxy`: Third party device such as wallbox, energy manager etc. can receive data even if the modbus interface of inverter is already in use. In addition you can mirror the sun2000 data to another IoBroker instance.
 * Huawei `SmartLogger` integration: Monitors and manages the PV power system. The adapter saves the collected data in the same way as it does when read out the inverter directly.
 
@@ -62,7 +64,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 -->
 ### **WORK IN PROGRESS**
 * Check numerical values for plausibility #75
-* realization the "limit the power fed to grid"
+* realization the "limit the power fed to grid" (Export control)
 * realization the "forcible Charge or Discharge Power"
 * If the error 'ECONNRESET' appear, the modbus proxy should not terminate 
 
