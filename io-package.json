@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.7.1",
+    "version": "0.8.0",
     "news": {
+      "0.8.0": {
+        "en": "Check numerical values for plausibility #75\nrealization the \"limit the power fed to grid\" (Export control)\nrealization the \"forcible Charge or Discharge Power\"\nIf the error 'ECONNRESET' appear, the modbus proxy should not terminate",
+        "de": "Zahlenwerte für Plausibilität prüfen #75\nrealisierung der \"begrenzt die Stromzufuhr zum Netz\" (Exportsteuerung)\nrealisierung der \"forcible Charge or Discharge Power\"\nWenn der Fehler 'ECONNRESET' angezeigt wird, sollte der Modbus-Proxy nicht enden",
+        "ru": "Проверьте численные значения правдоподобности #75\nреализация «ограничения мощности, подаваемой в сетку» (Export control)\nреализация «сильной зарядки или выдающейся силы»\nЕсли появляется ошибка \"ECONNRESET\", то прокси-модуль не должен прекращать",
+        "pt": "Verificar valores numéricos para plausibilidade #75\nrealização do \"limite o poder alimentado à grade\" (controle de exportação)\nrealização do \"poder de carga ou descarga forcível\"\nSe o erro 'ECONNRESET' aparecer, o proxy modbus não deve terminar",
+        "nl": "Numerieke waarden controleren op plausibiliteit #75\nrealisatie van de \"limit the power feed to grid\" (Export control)\nrealisatie van de \"forcible charge or discharge power\"\nAls de fout 'ECONNRESET' verschijnt, moet de modbus-proxy niet worden beëindigd",
+        "fr": "Vérifier les valeurs numériques pour la plausibilité #75\nréalisation de la \"limite de la puissance alimentée au réseau\" (contrôle des exportations)\nréalisation de la \"puissance de charge ou de décharge forcée\"\nSi l'erreur 'ECONNESET' apparaît, le proxy modbus ne doit pas se terminer",
+        "it": "Controlla i valori numerici per la plausibilità #75\nrealizzazione del \"limite la potenza alimentata alla griglia\" (Controllo dell'esportazione)\nrealizzazione del \"Forcible Charge or Discharge Power\"\nSe viene visualizzato l'errore 'ECONNRESET', il proxy modbus non deve terminare",
+        "es": "Compruebe los valores numéricos para la plausibilidad #75\nrealización del \"limitar el poder alimentado a la red\" (Control de exportación)\nrealización del \"poder de carga forzosa o descarga\"\nSi aparece el error 'ECONNRESET', el modbus proxy no debe terminar",
+        "pl": "Sprawdź wartości numeryczne pod względem wiarygodności # 75\nrealizacja \"ograniczenie mocy zasilanej do siatki\" (Kontrola eksportu)\nrealizacja \"mocy ładowania lub wyładowania\"\nJeśli pojawi się błąd 'ECONNRESET', proxy modbusa nie powinny kończyć",
+        "uk": "Перевірити чисельні значення для плати #75\nреалізація \"випуску потужності, що надходить до сітки\"\nреалізація \"потужного заряду або розряду\"\nЯкщо з'явиться помилка «ЕКОНРЕСЕТ», то модбус не повинен припинити",
+        "zh-cn": "请检查archive-date=中的日期值 (帮助) 75\n实现“将供电限制在网格上”(出口管制)\n实现“强制充电或放电”\n如果错误“ ECONRESET” 出现, modbus 代理不应该终止"
+      },
       "0.7.1": {
         "en": "inverter model name too many characters #73",
         "de": "wechselrichter modellname zu viele zeichen #73",
@@ -80,19 +93,6 @@
         "pl": "Strona konfiguracyjna zrestrukturyzowana\nPrzeczytaj tylko wymagane dane łańcuchowe\nmedium interwałowe",
         "uk": "Налаштування реструктуризації сторінки\nПрочитати тільки необхідні дані рядків\nфіксувати інтервал середні",
         "zh-cn": "配置页面调整\n只读所需的字符串数据\n固定间隔介质"
-      },
-      "0.5.0": {
-        "en": "Integration of [Huawei SmartLogger](https://support.huawei.com/enterprise/de/doc/EDOC1100130069/d8a00460)\nsome meter states the unit was changed (for example sun2000.0.meter.activePowerL1) (#56)\nsun2000 serie M2 or higher can also be processed",
-        "de": "Integration von [Huawei SmartLogger](https://support.huawei.com/enterprise/de/doc/EDOC1100130069/d8a00460)\neinige Zählerzustände wurden geändert (z.B. sun2000.0.meter.activePowerL1) (#56)\nsun2000 serie M2 oder höher kann auch verarbeitet werden",
-        "ru": "Интеграция [Huawei SmartLogger] (https://support.huawei.com/ enterprise/de/doc/EDOC1100130069/d8a00460)\nнекоторые метры утверждают, что блок был изменен (например, sun2000.0.meter.activePowerL1) (#56)\nsun2000 serie M2 или выше также может быть обработан",
-        "pt": "Integração de [Huawei SmartLogger](https://support.huawei.com/enterprise/de/doc/EDOC1100130069/d8a00460)\nalguns medidores afirma que a unidade foi alterada (por exemplo sun2000.0.meter.activePowerL1) (#56)\nsun2000 serie M2 ou superior também pode ser processado",
-        "nl": "Integratie van [Huawei SmartLogger](https://support.huawei.com/enterprise/de/doc/EDOC110030069/d8a00460)\nsommige meter stelt dat de eenheid werd veranderd (bijvoorbeeld zon2000,0.meter.activePowerL1) (#56)\nsun2000 serie M2 of hoger kan ook verwerkt worden",
-        "fr": "Intégration de [Huawei SmartLogger](https://support.huawei.com/enterprise/de/doc/EDOC1100130069/d8a00460)\ncertains états de compteur l'unité a été changée (par exemple sun2000.0.meter.activePowerL1) (#56)\nsun2000 série M2 ou plus peut également être traité",
-        "it": "Integrazione [Huawei SmartLogger](https://support.huawei.com/enterprise/de/doc/EDOC1100130069/d8a00460)\nalcuni metri afferma che l'unità è stata modificata (ad esempio sun2000.0.meter.activePowerL1) (#56)\nsun2000 serie M2 o superiore può anche essere elaborato",
-        "es": "Integración de [Huawei SmartLogger](https://support.huawei.com/enterprise/de/doc/EDOC1100130069/d8a00460)\nalgún medidor indica que la unidad fue cambiada (por ejemplo sun2000.0.meter.activePowerL1) (#56)\nsun2000 serie M2 o superior también se puede procesar",
-        "pl": "Data umieszczenia w wykazie\nniektóre mierniki wskazują, że jednostka została zmieniona (na przykład sun2000.0.meter.activePowerL1) (# 56)\nsun2000 serie M2 lub wyższe mogą być również przetwarzane",
-        "uk": "Інтеграція [Huawei SmartLogger](https://support.huawei.com/enterprise/de/doc/EDOC1100130069/d8a00460)\nзмінено блок лічильників (наприклад, Sun2000.0.meter.activePowerL1) (#56)\nсонце2000 serie M2 або вище можна обробити",
-        "zh-cn": "[Huawei SmartLogger]的集成(https://support.huawei.com/economist/de/doc/EDOC110013069/d8a00460) 互联网档案馆的存檔,存档日期2013-12-20\n某些度数表示单位已更改( 例如 sun 2000. 0. meter. activePowerL1) (# 56)\n太阳2000 serie M2 或以上也可以加工"
       }
     },
     "titleLang": {
