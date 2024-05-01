@@ -64,6 +64,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 -->
 ### **WORK IN PROGRESS**
 * dependency and configuration updates
+* modbus device remains active in standby on the inverter M2,M3
 
 ### 0.8.0 (2024-04-19)
 * Check numerical values for plausibility #75
