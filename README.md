@@ -62,6 +62,9 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* dependency and configuration updates
+
 ### 0.8.0 (2024-04-19)
 * Check numerical values for plausibility #75
 * realization the "limit the power fed to grid" (Export control)
