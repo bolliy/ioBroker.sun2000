@@ -118,17 +118,17 @@
         },  
         "tab3": {
             "type": "panel",
-            "label": "Battery control",
+            "label": "Energy control",
             "items": {
-                "mainHdr3": {
+                "mainHdr1": {
                     "newLine": true,
                     "type": "header",
                     "text": "Battery charge control",
                     "size": 2
                 },
-                "chipsTxt": {
+                "chipsTxt1": {
                     "type": "staticText",
-                    "text": "The settings can be made via the path “inverter.x.control”",
+                    "text": "This control is set in the opject path “sun2000.0.inverter.x.control.battery”",
                     "newLine": true
                 },
                 "cb_tou": {
@@ -139,8 +139,46 @@
                 },
                 "staticLink1": {
                     "type": "staticLink",
-                    "text": "Examples of application",
+                    "text": "Description with examples",
                     "href": "https://github.com/bolliy/ioBroker.sun2000/wiki/Battery-control",
+                    "button": true,
+                    "icon": "info",
+                    "newLine": true
+                },
+                "mainHdr2": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "Force charge discharge battery",
+                    "size": 2
+                },
+                "chipsTxt2": {
+                    "type": "staticText",
+                    "text": "This control is set in the opject path “sun2000.0.inverter.x.control.battery”",
+                    "newLine": true
+                },
+                "staticLink2": {
+                    "type": "staticLink",
+                    "text": "Description with examples",
+                    "href": "https://github.com/bolliy/ioBroker.sun2000/wiki/Erzwungenes-Laden-und-Entladen-der-Batterie-(Force-charge-discharge-battery)",
+                    "button": true,
+                    "icon": "info",
+                    "newLine": true
+                },
+                "mainHdr3": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "Export control",
+                    "size": 2
+                },
+                "chipsTxt3": {
+                    "type": "staticText",
+                    "text": "This control is set in the opject path “sun2000.0.inverter.x.control.grid”",
+                    "newLine": true
+                },
+                "staticLink3": {
+                    "type": "staticLink",
+                    "text": "Description with examples",
+                    "href": "https://github.com/bolliy/ioBroker.sun2000/wiki/Begrenzung-Netzeinspeisung-(Export-Control)",
                     "button": true,
                     "icon": "info",
                     "newLine": true
