@@ -10,8 +10,8 @@ The following variables are used or can be calculated yourself:
 - `Charge/Discharge power`: sun2000.0.collected.chargeDischargePower
 - `Charge capacity daily`: sun2000.0.collected.currentDayChargeCapacity
 - `Charge capacity total`: sun2000.0.collected.totalCharge
-- `Discharge capacity daily`: sun2000.0.inverter.0.battery.currentDayDischargeCapacity
-- `Discharge capacity total`: sun2000.0.inverter.0.battery.totalDischarge
+- `Discharge capacity daily`: sun2000.0.collected.currentDayDischargeCapacity
+- `Discharge capacity total`: sun2000.0.collected.totalDischarge
 - `SOC`: sun2000.0.collected.SOC
 - [`Daily Solar yield`](https://github.com/bolliy/ioBroker.sun2000/wiki/Energieertrag-%28Yield-today%29/#dailysolaryield): sun2000.0.collected.dailySolarYield
 - `Grid total, positive active Energy`: sun2000.0.meter.positiveActiveEnergy
