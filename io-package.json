@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.8.0",
+    "version": "0.9.0",
     "news": {
+      "0.9.0": {
+        "en": "dependency and configuration updates\nmodbus device remains active in standby on the inverter M2,M3",
+        "de": "abhängigkeits- und konfigurationsupdates\nmodbus-Gerät bleibt im Standby am Wechselrichter M2,M3 aktiv",
+        "ru": "обновления зависимости и конфигурации\nmodbus device остается активным в режиме ожидания на инверторе M2,M3",
+        "pt": "atualizações de dependência e configuração\ndispositivo modbus permanece ativo em espera no inversor M2, M3",
+        "nl": "afhankelijkheid en configuratie-updates\nmodbus apparaat blijft actief in stand-by op de omvormer M2,M3",
+        "fr": "mises à jour de la dépendance et de la configuration\nmodbus reste actif en veille sur l'onduleur M2,M3",
+        "it": "aggiornamenti di dipendenza e configurazione\ndispositivo modbus rimane attivo in standby sull'inverter M2,M3",
+        "es": "actualizaciones de dependencia y configuración\ndispositivo modbus permanece activo en espera en el inversor M2,M3",
+        "pl": "aktualizacje zależności i konfiguracji\nurządzenie modbus pozostaje aktywne w gotowości na falowniku M2, M3",
+        "uk": "оновлення залежності та конфігурації\nмотузковий пристрій залишається активним в автономному режимі на інверторі M2,M3",
+        "zh-cn": "依赖和配置更新\nmodbus设备仍然在反转器M2,M3上处于待机状态"
+      },
       "0.8.0": {
         "en": "Check numerical values for plausibility #75\nrealization the \"limit the power fed to grid\" (Export control)\nrealization the \"forcible Charge or Discharge Power\"\nIf the error 'ECONNRESET' appear, the modbus proxy should not terminate",
         "de": "Zahlenwerte für Plausibilität prüfen #75\nrealisierung der \"begrenzt die Stromzufuhr zum Netz\" (Exportsteuerung)\nrealisierung der \"forcible Charge or Discharge Power\"\nWenn der Fehler 'ECONNRESET' angezeigt wird, sollte der Modbus-Proxy nicht enden",
@@ -80,19 +93,6 @@
         "pl": "realizacja \"kontroli ładunku akumulatora\" # 61\nnaprawić czujnik czuwania # 60",
         "uk": "впровадження \"управління платежем\" no61\nзафіксувати виявлення стендів #60",
         "zh-cn": "实现\"电池充电控制\"#61\n修复备用检测器 # 60"
-      },
-      "0.5.1": {
-        "en": "Config page restructured\nRead only the required string data\nfix interval medium",
-        "de": "Config-Seite umstrukturiert\nLesen Sie nur die gewünschten Stringdaten\nintervall mittel",
-        "ru": "Реструктуризация страницы настройки\nЧитайте только требуемые данные строки\nфиксированный интервал",
-        "pt": "Página de confiança reestruturada\nLeia apenas os dados de string necessários\nmédia de intervalo de correção",
-        "nl": "Configuratiepagina geherstructureerd\nAlleen de vereiste tekenreeksgegevens lezen\nfix interval medium",
-        "fr": "Config page restructurée\nLire seulement les données de chaîne requises\nintervalle de fixation moyen",
-        "it": "Pagina di configurazione ristrutturata\nLeggi solo i dati della stringa richiesti\nintervallo di fissaggio medio",
-        "es": "Reestructuración de la página de confidencialidad\nLea sólo los datos de cadena requeridos\nintervalo de fijación medio",
-        "pl": "Strona konfiguracyjna zrestrukturyzowana\nPrzeczytaj tylko wymagane dane łańcuchowe\nmedium interwałowe",
-        "uk": "Налаштування реструктуризації сторінки\nПрочитати тільки необхідні дані рядків\nфіксувати інтервал середні",
-        "zh-cn": "配置页面调整\n只读所需的字符串数据\n固定间隔介质"
       }
     },
     "titleLang": {

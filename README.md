@@ -62,7 +62,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.9.0 (2024-05-09)
 * dependency and configuration updates
 * modbus device remains active in standby on the inverter M2,M3
 
