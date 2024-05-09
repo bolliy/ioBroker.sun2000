@@ -201,7 +201,17 @@
         ],
         "link": "https://github.com/bolliy/ioBroker.sun2000/wiki/Update-node.js",
         "linkText": {
-          "en": "The node.js update procedure is described here."
+          "en": "The node.js update procedure is described here.",
+          "de": "Der Aktualisierungsvorgang für node.js wird hier beschrieben.",
+          "ru": "Процедура обновления node.js описана здесь.",
+          "pt": "O procedimento de atualização do node.js é descrito aqui.",
+          "nl": "De updateprocedure voor node.js wordt hier beschreven.",
+          "fr": "La procédure de mise à jour de node.js est décrite ici.",
+          "it": "La procedura di aggiornamento di node.js è descritta qui.",
+          "es": "El procedimiento de actualización de node.js se describe aquí.",
+          "pl": "Procedura aktualizacji node.js jest opisana tutaj.",
+          "uk": "Процедура оновлення node.js описана тут.",
+          "zh-cn": "此处描述了 Node.js 更新过程。"
         }
       }
     ],

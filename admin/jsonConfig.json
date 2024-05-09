@@ -172,7 +172,7 @@
                 },
                 "chipsTxt3": {
                     "type": "staticText",
-                    "text": "This control is set in the opject path “sun2000.0.inverter.x.control.grid”",
+                    "text": "This control is set in the opject path “sun2000.0.inverter.0.control.grid”",
                     "newLine": true
                 },
                 "staticLink3": {

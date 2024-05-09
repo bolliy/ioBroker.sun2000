@@ -25,7 +25,7 @@
     "SmartLogger active": "SmartLogger 激活",
     "sl.meterId": "SmartLogger电表modbus ID",
     "The Meter modbus ID": "仪表 modbus ID",
-    "sd.active": "使用SDDongle",
+    "sd.active": "查询加密狗",
     "Create default TOU setting": "创建默认 TOU 设置",
     "Examples of application": "应用实例"
 }
