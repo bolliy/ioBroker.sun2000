@@ -74,14 +74,14 @@ class Sun2000 extends utils.Adapter {
 
 	async initPath() {
 		//inverter
-		await this.extendObjectAsync('meter', {
+		await this.extendObject('meter', {
 			type: 'device',
 			common: {
 				name: 'device meter'
 			},
 			native: {}
 		});
-		await this.extendObjectAsync('collected', {
+		await this.extendObject('collected', {
 			type: 'channel',
 			common: {
 				name: 'channel collected'
@@ -89,7 +89,7 @@ class Sun2000 extends utils.Adapter {
 			native: {}
 		});
 
-		await this.extendObjectAsync('inverter', {
+		await this.extendObject('inverter', {
 			type: 'device',
 			common: {
 				name: 'device inverter'
@@ -101,7 +101,7 @@ class Sun2000 extends utils.Adapter {
 			if (item.driverClass == driverClasses.inverter) {
 				const path = 'inverter.'+item.index.toString();
 				item.path = path;
-				await this.extendObjectAsync(path, {
+				await this.extendObject(path, {
 					type: 'channel',
 					common: {
 						name: 'channel inverter '+item.index.toString(),
@@ -110,7 +110,7 @@ class Sun2000 extends utils.Adapter {
 					native: {}
 				});
 
-				await this.extendObjectAsync(path+'.grid', {
+				await this.extendObject(path+'.grid', {
 					type: 'channel',
 					common: {
 						name: 'channel grid'
@@ -118,7 +118,7 @@ class Sun2000 extends utils.Adapter {
 					native: {}
 				});
 
-				await this.extendObjectAsync(path+'.info', {
+				await this.extendObject(path+'.info', {
 					type: 'channel',
 					common: {
 						name: 'channel info',
@@ -127,7 +127,7 @@ class Sun2000 extends utils.Adapter {
 					native: {}
 				});
 
-				await this.extendObjectAsync(path+'.battery', {
+				await this.extendObject(path+'.battery', {
 					type: 'channel',
 					common: {
 						name: 'channel battery'
@@ -135,7 +135,7 @@ class Sun2000 extends utils.Adapter {
 					native: {}
 				});
 
-				await this.extendObjectAsync(path+'.string', {
+				await this.extendObject(path+'.string', {
 					type: 'channel',
 					common: {
 						name: 'channel string'
@@ -143,7 +143,7 @@ class Sun2000 extends utils.Adapter {
 					native: {}
 				});
 
-				await this.extendObjectAsync(path+'.derived', {
+				await this.extendObject(path+'.derived', {
 					type: 'channel',
 					common: {
 						name: 'channel derived'
@@ -154,7 +154,7 @@ class Sun2000 extends utils.Adapter {
 
 			if (item.driverClass == driverClasses.sdongle) {
 				item.path = '';
-				await this.extendObjectAsync(item.path+'sdongle', {
+				await this.extendObject(item.path+'sdongle', {
 					type: 'device',
 					common: {
 						name: 'device SDongle'
@@ -166,7 +166,7 @@ class Sun2000 extends utils.Adapter {
 			//v0.5.x
 			if (item.driverClass == driverClasses.logger) {
 				item.path = '';
-				await this.extendObjectAsync(item.path+'slogger', {
+				await this.extendObject(item.path+'slogger', {
 					type: 'device',
 					common: {
 						name: 'device SmartLogger'
@@ -295,7 +295,7 @@ class Sun2000 extends utils.Adapter {
 				this.logger.warn('Please check your configuration!');
 			}
 		}
-		await this.setStateAsync('info.modbusUpdateInterval', {val: newHighInterval, ack: true});
+		await this.setState('info.modbusUpdateInterval', {val: newHighInterval, ack: true});
 	}
 
 	/**
@@ -308,13 +308,13 @@ class Sun2000 extends utils.Adapter {
 			this.config.timeout = this.config.timeout*1000;
 			this.updateConfig(this.config);
 		}
-		await this.setStateAsync('info.ip', {val: this.config.address, ack: true});
-		await this.setStateAsync('info.port', {val: this.config.port, ack: true});
-		await this.setStateAsync('info.modbusIds', {val: this.config.modbusIds, ack: true});
-		await this.setStateAsync('info.modbusTimeout', {val: this.config.timeout, ack: true});
-		await this.setStateAsync('info.modbusConnectDelay', {val: this.config.connectDelay, ack: true});
-		await this.setStateAsync('info.modbusDelay', {val: this.config.delay, ack: true});
-		await this.setStateAsync('info.modbusTcpServer', {val: this.config.ms_active, ack: true});
+		await this.setState('info.ip', {val: this.config.address, ack: true});
+		await this.setState('info.port', {val: this.config.port, ack: true});
+		await this.setState('info.modbusIds', {val: this.config.modbusIds, ack: true});
+		await this.setState('info.modbusTimeout', {val: this.config.timeout, ack: true});
+		await this.setState('info.modbusConnectDelay', {val: this.config.connectDelay, ack: true});
+		await this.setState('info.modbusDelay', {val: this.config.delay, ack: true});
+		await this.setState('info.modbusTcpServer', {val: this.config.ms_active, ack: true});
 		// Load user settings
 		if (this.config.address != '' && this.config.port > 0 && this.config.modbusIds != '' && this.config.updateInterval > 0 ) {
 			this.settings.address = this.config.address;
@@ -341,9 +341,9 @@ class Sun2000 extends utils.Adapter {
 			this.settings.cb.tou = this.config.cb_tou;
 
 			if (this.settings.modbusAdjust) {
-				await this.setStateAsync('info.JSONhealth', {val: '{message: "Adjust modbus settings"}', ack: true});
+				await this.setState('info.JSONhealth', {val: '{message: "Adjust modbus settings"}', ack: true});
 			} else {
-				await this.setStateAsync('info.JSONhealth', {val: '{message : "Information is collected"}', ack: true});
+				await this.setState('info.JSONhealth', {val: '{message : "Information is collected"}', ack: true});
 			}
 
 			if (this.settings.modbusIds.length > 0 && this.settings.modbusIds.length < 6) {
@@ -443,7 +443,7 @@ class Sun2000 extends utils.Adapter {
 			if (this.isConnected !== lastIsConnected ) this.setState('info.connection', this.isConnected, true);
 			if (!this.settings.modbusAdjust) {
 				if (!this.isConnected) {
-					this.setStateAsync('info.JSONhealth', {val: '{errno:1, message: "Can\'t connect to inverter"}', ack: true});
+					this.setState('info.JSONhealth', {val: '{errno:1, message: "Can\'t connect to inverter"}', ack: true});
 				}
 				const ret = this.state.CheckReadError(this.settings.lowInterval*2);
 				const obj = {...ret,modbus: {...this.modbusClient.info}};
@@ -453,7 +453,7 @@ class Sun2000 extends utils.Adapter {
 				// after 2 Minutes
 				if (this.alreadyRunWatchDog) {
 					if (ret.errno) this.logger.warn(ret.message);
-					this.setStateAsync('info.JSONhealth', {val: JSON.stringify(obj), ack: true});
+					this.setState('info.JSONhealth', {val: JSON.stringify(obj), ack: true});
 					if (this.modbusServer) {
 						!this.modbusServer.isConnected && this.modbusServer.connect();
 						if (this.settings.ms.log) {
@@ -471,7 +471,7 @@ class Sun2000 extends utils.Adapter {
 			this.lastStateUpdatedHigh = 0;
 
 			if (sinceLastUpdate > this.settings.highInterval*10) {
-				this.setStateAsync('info.JSONhealth', {val: '{errno:2, message: "Internal loop error"}', ack: true});
+				this.setState('info.JSONhealth', {val: '{errno:2, message: "Internal loop error"}', ack: true});
 				this.logger.warn('watchdog: restart Adapter...');
 				this.restart();
 			}
