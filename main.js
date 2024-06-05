@@ -490,13 +490,13 @@ class Sun2000 extends utils.Adapter {
 	 */
 	onUnload(callback) {
 		try {
-			this.setState('info.connection', false, true);
+			this.logger.info('cleaned everything up...');
 			this.modbusServer && this.modbusServer.close();
 			this.pollingTimer && this.clearTimeout(this.pollingTimer);
 			this.mitnightTimer && this.clearTimeout(this.mitnightTimer);
 			this.watchDogHandle && this.clearInterval(this.watchDogHandle);
 			this.modbusClient && this.modbusClient.close();
-			this.logger.info('cleaned everything up...');
+			this.setState('info.connection', false, true);
 			callback();
 		} catch (e) {
 			callback();
