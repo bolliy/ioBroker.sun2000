@@ -14,7 +14,7 @@
     "automatic adjustment of the modbus settings": "自动调整 Modbus 设置",
     "ms.aktive": "Modbus 代理处于活动状态",
     "Modbus-proxy via TCP for read-only is active": "通过 TCP 进行只读的 Modbus 代理已激活",
-    "ms.address": "Modbus 代理 IP 地址",
+    "ms.address": "Modbus 代理监听地址",
     "If want to listen only at localhost use 127.0.0.1": "如果只想在本地主机上监听，请使用 127.0.0.1",
     "ms.port": "Modbus 代理 TCP 端口",
     "The Modbus-proxy TCP port": "Modbus 代理 TCP 端口",

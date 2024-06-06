@@ -14,7 +14,7 @@
     "automatic adjustment of the modbus settings": "ajuste automático de la configuración modbus",
     "ms.aktive": "Proxy Modbus activo",
     "Modbus-proxy via TCP for read-only is active": "El proxy Modbus a través de TCP para solo lectura está activo",
-    "ms.address": "Dirección IP del proxy Modbus",
+    "ms.address": "Proxy Modbus escuchando en la dirección",
     "If want to listen only at localhost use 127.0.0.1": "Si desea escuchar solo en localhost use 127.0.0.1",
     "ms.port": "Puerto TCP proxy Modbus",
     "The Modbus-proxy TCP port": "El puerto TCP del proxy Modbus",

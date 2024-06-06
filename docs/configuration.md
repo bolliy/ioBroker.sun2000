@@ -37,6 +37,6 @@ The SmartLogger monitors and manages PV systems and energy storage systems. It c
 ### Modbus tcp proxy for multiple client connections
 Third party device such as wallbox, energy manager etc. can receive data even if the modbus interface of inverter is already in use. 
 * `active`: activate the mobus-proxy service (default: false)
-* `ip address`: Modbus-proxy IP address (usually: 0.0.0.0)
+* `listening address`: Modbus-proxy listening on (usually: 0.0.0.0)
 * `TCP port`: Modbus-proxy TCP port (usually: 502)
 * `advanced log`: Communication of register as JSON string

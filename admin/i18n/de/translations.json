@@ -14,7 +14,7 @@
     "automatic adjustment of the modbus settings": "automatische Anpassung der Modbus-Einstellungen",
     "ms.aktive": "Modbus-Proxy aktiv",
     "Modbus-proxy via TCP for read-only is active": "Modbus-Proxy über TCP zum Nur-Lesen ist aktiv",
-    "ms.address": "Modbus-Proxy-IP-Adresse",
+    "ms.address": "Modbus-Proxy überwacht die Adresse",
     "If want to listen only at localhost use 127.0.0.1": "Wenn Sie nur auf localhost zuhören möchten, verwenden Sie 127.0.0.1",
     "ms.port": "Modbus-Proxy-TCP-Port",
     "The Modbus-proxy TCP port": "Der Modbus-Proxy-TCP-Port",
@@ -26,6 +26,6 @@
     "sl.meterId": "Modbus-ID des SmartLogger-Messgeräts",
     "The Meter modbus ID": "Die Modbus-ID des Messgeräts",
     "sd.active": "SDongle abfragen",
-    "Create default TOU setting": "Standard TOU Einstellung verwenden",
+    "Create default TOU setting": "Erstellen Sie eine Standard-TOU-Einstellung",
     "Examples of application": "Anwendungsbeispiele"
 }
