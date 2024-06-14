@@ -62,7 +62,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.10.0 (2024-06-14)
 * dependency and configuration updates
 * adjust roles in the control path
 * Battery control: add backup power SOC #84

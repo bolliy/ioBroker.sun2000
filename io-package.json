@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.9.0",
+    "version": "0.10.0",
     "news": {
+      "0.10.0": {
+        "en": "dependency and configuration updates\nadjust roles in the control path\nBattery control: add backup power SOC #84\nfix: wrong state name `control.battery.targetSOC` with trailing space",
+        "de": "abhängigkeits- und konfigurationsupdates\nrollen im kontrollpfad anpassen\nBatteriesteuerung: Backup-Leistung hinzufügen SOC #84\nfix: falscher Zustandsname `control.battery.targetSOC` mit Trailing Space",
+        "ru": "обновления зависимости и конфигурации\nкорректировать роли на пути управления\n#84\nисправить: неправильное название состояния `control.battery.targetSOC' с отслеживающим пространством",
+        "pt": "atualizações de dependência e configuração\najustar funções no caminho de controle\nControle da bateria: adicionar energia de backup SOC #84\ncorreção: nome de estado errado `control.battery.targetSOC` com espaço de trilha",
+        "nl": "afhankelijkheid en configuratie-updates\nde rollen in het controlepad aanpassen\nBatterij controle: voeg back-up vermogen SOC #84\nfix: verkeerde staat naam ",
+        "fr": "mises à jour de la dépendance et de la configuration\najuster les rôles dans le chemin de contrôle\nCommande de la batterie: ajouter la puissance de secours SOC #84\ncorrection : nom d'état incorrect `control.battery.targetSOC` avec espace de traînage",
+        "it": "aggiornamenti di dipendenza e configurazione\nregolare i ruoli nel percorso di controllo\nControllo della batteria: aggiungere la potenza di backup SOC #84\nfix: nome di stato sbagliato `control.battery.targetSOC` con lo spazio trailing",
+        "es": "actualizaciones de dependencia y configuración\najustar funciones en la ruta de control\nControl de batería: añadir potencia de respaldo SOC #84\nfijado: nombre de estado equivocado `control.battery.targetSOC` con espacio de seguimiento",
+        "pl": "aktualizacje zależności i konfiguracji\ndostosować role w ścieżce sterowania\nKontrola baterii: dodać zasilanie awaryjne SOC # 84\nfix: błędna nazwa stanu 'control.battery.ActivitSOC' z przepustnicą",
+        "uk": "оновлення залежності та конфігурації\nрегулювання ролі в шляху управління\nКонтроль акумулятора: додаємо резервну потужність SOC #84\nвиправити: неправильне ім'я держави `control.battery.targetSOC` з причепом",
+        "zh-cn": "依赖和配置更新\n调整控制路径中的角色\n电池控制: 添加备份功率 SOC #84\n修补:错误的州名`control.battery.targetSOC ' ,带有后端空间"
+      },
       "0.9.0": {
         "en": "dependency and configuration updates\nmodbus device remains active in standby on the inverter M2,M3",
         "de": "abhängigkeits- und konfigurationsupdates\nmodbus-Gerät bleibt im Standby am Wechselrichter M2,M3 aktiv",
@@ -80,19 +93,6 @@
         "pl": "Kontrola baterii: Po drugiej nieudanej próbie zdarzenie kontrolne zostaje odrzucone\nKontrola baterii: Dostosuj maxCharge i absolutorium baterii do rzeczywistych wartości",
         "uk": "Контроль акумулятора: Після другого невдалого спробу контрольний захід відхилений\nКонтроль акумулятора: Налаштуйте акумулятор maxCharge і відключіть до фактичних значень",
         "zh-cn": "电池控制 : 在第二次尝试失败后, 控制事件被丢弃\n电池控制 : 按照实际值调整电池最大充电器和放电装置"
-      },
-      "0.6.0": {
-        "en": "realization the \"battery charge control\" #61\nfix the standby detection #60",
-        "de": "realisierung der \"batterieladungskontrolle\" #61\nfixieren sie die standby-erkennung #60",
-        "ru": "#61\nисправить резервное обнаружение #60",
-        "pt": "realização do \"controle de carga de bateria\" #61\ncorrigir a detecção de espera #60",
-        "nl": "realisatie van de \"battery charge control\" #61\nfix de stand-by detectie #60",
-        "fr": "réalisation du \"contrôle de charge de batterie\" #61\nfixer la détection de veille #60",
-        "it": "realizzazione del \"controllo di carica della batteria\" #61\nfissare il rilevamento standby #60",
-        "es": "realización del \"control de carga de batería\" #61\narregla la detección de standby #60",
-        "pl": "realizacja \"kontroli ładunku akumulatora\" # 61\nnaprawić czujnik czuwania # 60",
-        "uk": "впровадження \"управління платежем\" no61\nзафіксувати виявлення стендів #60",
-        "zh-cn": "实现\"电池充电控制\"#61\n修复备用检测器 # 60"
       }
     },
     "titleLang": {
