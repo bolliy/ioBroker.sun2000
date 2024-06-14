@@ -66,6 +66,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 * dependency and configuration updates
 * adjust roles in the control path
 * Battery control: add backup power SOC #84
+* fix: wrong state name `control.battery.targetSOC` with trailing space
 
 ### 0.9.0 (2024-05-09)
 * dependency and configuration updates
