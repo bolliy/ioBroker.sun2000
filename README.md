@@ -63,6 +63,8 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* further battery information #85
 
 ### 0.10.0 (2024-06-14)
 * dependency and configuration updates
