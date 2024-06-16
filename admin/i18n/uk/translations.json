@@ -1,4 +1,5 @@
 {
+    "donateTxt": "Якщо вам подобається цей адаптер, зробіть пожертву на підтримку моєї роботи.",
     "sun2000 adapter settings": "Налаштування адаптера huawai inverter sun2000",
     "address": "IP-адреса пристрою",
     "port": "порт Modbus TCP",

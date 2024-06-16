@@ -1,4 +1,5 @@
 {
+    "donateTxt": "Si vous aimez cet adaptateur, pensez à faire un don pour soutenir mon travail.",
     "sun2000 adapter settings": "Paramètres de l'adaptateur pour l'onduleur Huawai Sun2000",
     "address": "Adresse IP de l'appareil",
     "port": "port TCP Modbus",

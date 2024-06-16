@@ -1,4 +1,5 @@
 {
+    "donateTxt": "Wenn Ihnen dieser Adapter gefällt, denken Sie bitte über eine Spende nach um meine Arbeit zu unterstützen.",
     "sun2000 adapter settings": "Adaptereinstellungen für Huawei Inverter Sun2000",
     "address": "Geräte-IP-Adresse",
     "port": "Modbus TCP-Port",
@@ -15,7 +16,7 @@
     "ms.aktive": "Modbus-Proxy aktiv",
     "Modbus-proxy via TCP for read-only is active": "Modbus-Proxy über TCP zum Nur-Lesen ist aktiv",
     "ms.address": "Modbus-Proxy überwacht die Adresse",
-    "If want to listen only at localhost use 127.0.0.1": "Wenn Sie nur auf localhost zuhören möchten, verwenden Sie 127.0.0.1",
+    "If want to listen only at localhost use 127.0.0.1": "Wenn Sie nur auf localhost hören möchten, verwenden Sie 127.0.0.1",
     "ms.port": "Modbus-Proxy-TCP-Port",
     "The Modbus-proxy TCP port": "Der Modbus-Proxy-TCP-Port",
     "The SDongle modbus ID": "Die SDongle-Modbus-ID – normalerweise 100",

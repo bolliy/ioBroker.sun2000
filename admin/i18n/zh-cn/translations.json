@@ -1,4 +1,5 @@
 {
+    "donateTxt": "如果您喜欢这个适配器，请考虑捐赠以支持我的工作。",
     "sun2000 adapter settings": "华为逆变器sun2000的适配器设置",
     "address": "设备IP地址",
     "port": "Modbus TCP 端口",

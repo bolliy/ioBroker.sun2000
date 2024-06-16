@@ -6,6 +6,17 @@
             "type": "panel",
             "label": "Main settings",
             "items": {
+                "donateTxt": {
+                    "type": "staticText",
+                    "text": "donateTxt"
+                },
+                "donateImage": {
+                    "type": "staticImage",
+                    "label": "label",
+                    "href" : "https://www.paypal.com/donate/?hosted_button_id=ZTX3VP9LZBDCG",
+                    "src" : "paypal-button.png",
+                    "newLine": true
+                },
                 "mainHdr1": {
                     "newLine": true,
                     "type": "header",

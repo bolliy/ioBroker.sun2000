@@ -29,7 +29,8 @@ Feel free to follow the discussions in the german [iobroker forum](https://forum
 
 ## Dependencies
 * Node.js 18.x or higher
-* ioBroker host (js-controller) 5.x or higher
+* ioBroker host (js-controller) 5.0.19 or higher
+* ioBroker admin 5.1.13 or higher
 
 ## Documentation
 
