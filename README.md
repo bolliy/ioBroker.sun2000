@@ -64,6 +64,8 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	### **WORK IN PROGRESS**
 -->
 
+* add a donation link in the adapter settings
+
 ### 0.10.0 (2024-06-14)
 * dependency and configuration updates
 * adjust roles in the control path
