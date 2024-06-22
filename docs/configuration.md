@@ -17,11 +17,15 @@
 * `connect delay`: delay after modbus connected (default: 5000 ms)
 * `auto-adjust`: automatic adjustment of the modbus settings
 
-## Battery control
+## Energy control
 ### Battery charge control 
 The “default TOU settings” is interesting for the “force battery charging from the grid” function, which is required for variable energy prices.
-The controls are set in the opject path `sun2000.0.inverter.x.control.battery`. Some application examples are described in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki/Battery-control)
+This control is set in the opject path `sun2000.0.inverter.x.control.battery`. Some application examples are described in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki/Battery-control)
 * `create default TOU setting` : checkbox to activate 
+### Force charge discharge battery
+This control is set in the opject path `sun2000.0.inverter.x.control.battery`. Some application examples are described in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki/Erzwungenes-Laden-und-Entladen-der-Batterie-(Force-charge-discharge-battery))
+### Export control
+This control is set in the opject path `sun2000.0.inverter.x.control.grid`. Some application examples are described in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki/Begrenzung-Netzeinspeisung-(Export-Control))
 
 ## Smart logger
 ### SmartLogger settings
@@ -33,6 +37,6 @@ The SmartLogger monitors and manages PV systems and energy storage systems. It c
 ### Modbus tcp proxy for multiple client connections
 Third party device such as wallbox, energy manager etc. can receive data even if the modbus interface of inverter is already in use. 
 * `active`: activate the mobus-proxy service (default: false)
-* `ip address`: Modbus-proxy IP address (usually: 0.0.0.0)
+* `listening address`: Modbus-proxy listening on (usually: 0.0.0.0)
 * `TCP port`: Modbus-proxy TCP port (usually: 502)
 * `advanced log`: Communication of register as JSON string

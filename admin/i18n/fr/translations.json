@@ -1,4 +1,5 @@
 {
+    "donateTxt": "Si vous aimez cet adaptateur, pensez à faire un don pour soutenir mon travail.",
     "sun2000 adapter settings": "Paramètres de l'adaptateur pour l'onduleur Huawai Sun2000",
     "address": "Adresse IP de l'appareil",
     "port": "port TCP Modbus",
@@ -14,7 +15,7 @@
     "automatic adjustment of the modbus settings": "ajustement automatique des paramètres modbus",
     "ms.aktive": "Proxy Modbus actif",
     "Modbus-proxy via TCP for read-only is active": "Le proxy Modbus via TCP pour la lecture seule est actif",
-    "ms.address": "Adresse IP du proxy Modbus",
+    "ms.address": "Modbus-proxy écoutant l'adresse",
     "If want to listen only at localhost use 127.0.0.1": "Si vous souhaitez écouter uniquement sur localhost, utilisez 127.0.0.1",
     "ms.port": "Port TCP du proxy Modbus",
     "The Modbus-proxy TCP port": "Le port TCP du proxy Modbus",
@@ -25,7 +26,7 @@
     "SmartLogger active": "SmartLogger actif",
     "sl.meterId": "ID Modbus du compteur SmartLogger",
     "The Meter modbus ID": "L'ID Modbus du compteur",
-    "sd.active": "Utiliser SDongle",
+    "sd.active": "Requête SDongle",
     "Create default TOU setting": "Créer un paramètre TOU par défaut",
     "Examples of application": "Exemples d'application"
 }

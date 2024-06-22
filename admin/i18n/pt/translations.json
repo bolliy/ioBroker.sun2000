@@ -1,4 +1,5 @@
 {
+    "donateTxt": "Se você gosta deste adaptador, considere fazer uma doação para apoiar meu trabalho.",
     "sun2000 adapter settings": "Configurações do adaptador para inversor huawai sun2000",
     "address": "Endereço IP do dispositivo",
     "port": "porta modbus TCP",
@@ -14,7 +15,7 @@
     "automatic adjustment of the modbus settings": "ajuste automático das configurações modbus",
     "ms.aktive": "Proxy Modbus ativo",
     "Modbus-proxy via TCP for read-only is active": "O proxy Modbus via TCP para somente leitura está ativo",
-    "ms.address": "Endereço IP proxy Modbus",
+    "ms.address": "Proxy Modbus escutando no endereço",
     "If want to listen only at localhost use 127.0.0.1": "Se quiser ouvir apenas no localhost use 127.0.0.1",
     "ms.port": "Porta TCP proxy Modbus",
     "The Modbus-proxy TCP port": "A porta TCP proxy Modbus",
@@ -25,7 +26,7 @@
     "SmartLogger active": "SmartLogger ativo",
     "sl.meterId": "ID modbus do medidor SmartLogger",
     "The Meter modbus ID": "O ID do modbus do medidor",
-    "sd.active": "Usar SD Dongle",
+    "sd.active": "Consulta SDongle",
     "Create default TOU setting": "Criar configuração padrão de TOU",
     "Examples of application": "Exemplos de aplicação"
 }

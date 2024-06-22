@@ -1,8 +1,47 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.7.1",
+    "version": "0.10.0",
     "news": {
+      "0.10.0": {
+        "en": "dependency and configuration updates\nadjust roles in the control path\nBattery control: add backup power SOC #84\nfix: wrong state name `control.battery.targetSOC` with trailing space",
+        "de": "abhängigkeits- und konfigurationsupdates\nrollen im kontrollpfad anpassen\nBatteriesteuerung: Backup-Leistung hinzufügen SOC #84\nfix: falscher Zustandsname `control.battery.targetSOC` mit Trailing Space",
+        "ru": "обновления зависимости и конфигурации\nкорректировать роли на пути управления\n#84\nисправить: неправильное название состояния `control.battery.targetSOC' с отслеживающим пространством",
+        "pt": "atualizações de dependência e configuração\najustar funções no caminho de controle\nControle da bateria: adicionar energia de backup SOC #84\ncorreção: nome de estado errado `control.battery.targetSOC` com espaço de trilha",
+        "nl": "afhankelijkheid en configuratie-updates\nde rollen in het controlepad aanpassen\nBatterij controle: voeg back-up vermogen SOC #84\nfix: verkeerde staat naam ",
+        "fr": "mises à jour de la dépendance et de la configuration\najuster les rôles dans le chemin de contrôle\nCommande de la batterie: ajouter la puissance de secours SOC #84\ncorrection : nom d'état incorrect `control.battery.targetSOC` avec espace de traînage",
+        "it": "aggiornamenti di dipendenza e configurazione\nregolare i ruoli nel percorso di controllo\nControllo della batteria: aggiungere la potenza di backup SOC #84\nfix: nome di stato sbagliato `control.battery.targetSOC` con lo spazio trailing",
+        "es": "actualizaciones de dependencia y configuración\najustar funciones en la ruta de control\nControl de batería: añadir potencia de respaldo SOC #84\nfijado: nombre de estado equivocado `control.battery.targetSOC` con espacio de seguimiento",
+        "pl": "aktualizacje zależności i konfiguracji\ndostosować role w ścieżce sterowania\nKontrola baterii: dodać zasilanie awaryjne SOC # 84\nfix: błędna nazwa stanu 'control.battery.ActivitSOC' z przepustnicą",
+        "uk": "оновлення залежності та конфігурації\nрегулювання ролі в шляху управління\nКонтроль акумулятора: додаємо резервну потужність SOC #84\nвиправити: неправильне ім'я держави `control.battery.targetSOC` з причепом",
+        "zh-cn": "依赖和配置更新\n调整控制路径中的角色\n电池控制: 添加备份功率 SOC #84\n修补:错误的州名`control.battery.targetSOC ' ,带有后端空间"
+      },
+      "0.9.0": {
+        "en": "dependency and configuration updates\nmodbus device remains active in standby on the inverter M2,M3",
+        "de": "abhängigkeits- und konfigurationsupdates\nmodbus-Gerät bleibt im Standby am Wechselrichter M2,M3 aktiv",
+        "ru": "обновления зависимости и конфигурации\nmodbus device остается активным в режиме ожидания на инверторе M2,M3",
+        "pt": "atualizações de dependência e configuração\ndispositivo modbus permanece ativo em espera no inversor M2, M3",
+        "nl": "afhankelijkheid en configuratie-updates\nmodbus apparaat blijft actief in stand-by op de omvormer M2,M3",
+        "fr": "mises à jour de la dépendance et de la configuration\nmodbus reste actif en veille sur l'onduleur M2,M3",
+        "it": "aggiornamenti di dipendenza e configurazione\ndispositivo modbus rimane attivo in standby sull'inverter M2,M3",
+        "es": "actualizaciones de dependencia y configuración\ndispositivo modbus permanece activo en espera en el inversor M2,M3",
+        "pl": "aktualizacje zależności i konfiguracji\nurządzenie modbus pozostaje aktywne w gotowości na falowniku M2, M3",
+        "uk": "оновлення залежності та конфігурації\nмотузковий пристрій залишається активним в автономному режимі на інверторі M2,M3",
+        "zh-cn": "依赖和配置更新\nmodbus设备仍然在反转器M2,M3上处于待机状态"
+      },
+      "0.8.0": {
+        "en": "Check numerical values for plausibility #75\nrealization the \"limit the power fed to grid\" (Export control)\nrealization the \"forcible Charge or Discharge Power\"\nIf the error 'ECONNRESET' appear, the modbus proxy should not terminate",
+        "de": "Zahlenwerte für Plausibilität prüfen #75\nrealisierung der \"begrenzt die Stromzufuhr zum Netz\" (Exportsteuerung)\nrealisierung der \"forcible Charge or Discharge Power\"\nWenn der Fehler 'ECONNRESET' angezeigt wird, sollte der Modbus-Proxy nicht enden",
+        "ru": "Проверьте численные значения правдоподобности #75\nреализация «ограничения мощности, подаваемой в сетку» (Export control)\nреализация «сильной зарядки или выдающейся силы»\nЕсли появляется ошибка \"ECONNRESET\", то прокси-модуль не должен прекращать",
+        "pt": "Verificar valores numéricos para plausibilidade #75\nrealização do \"limite o poder alimentado à grade\" (controle de exportação)\nrealização do \"poder de carga ou descarga forcível\"\nSe o erro 'ECONNRESET' aparecer, o proxy modbus não deve terminar",
+        "nl": "Numerieke waarden controleren op plausibiliteit #75\nrealisatie van de \"limit the power feed to grid\" (Export control)\nrealisatie van de \"forcible charge or discharge power\"\nAls de fout 'ECONNRESET' verschijnt, moet de modbus-proxy niet worden beëindigd",
+        "fr": "Vérifier les valeurs numériques pour la plausibilité #75\nréalisation de la \"limite de la puissance alimentée au réseau\" (contrôle des exportations)\nréalisation de la \"puissance de charge ou de décharge forcée\"\nSi l'erreur 'ECONNESET' apparaît, le proxy modbus ne doit pas se terminer",
+        "it": "Controlla i valori numerici per la plausibilità #75\nrealizzazione del \"limite la potenza alimentata alla griglia\" (Controllo dell'esportazione)\nrealizzazione del \"Forcible Charge or Discharge Power\"\nSe viene visualizzato l'errore 'ECONNRESET', il proxy modbus non deve terminare",
+        "es": "Compruebe los valores numéricos para la plausibilidad #75\nrealización del \"limitar el poder alimentado a la red\" (Control de exportación)\nrealización del \"poder de carga forzosa o descarga\"\nSi aparece el error 'ECONNRESET', el modbus proxy no debe terminar",
+        "pl": "Sprawdź wartości numeryczne pod względem wiarygodności # 75\nrealizacja \"ograniczenie mocy zasilanej do siatki\" (Kontrola eksportu)\nrealizacja \"mocy ładowania lub wyładowania\"\nJeśli pojawi się błąd 'ECONNRESET', proxy modbusa nie powinny kończyć",
+        "uk": "Перевірити чисельні значення для плати #75\nреалізація \"випуску потужності, що надходить до сітки\"\nреалізація \"потужного заряду або розряду\"\nЯкщо з'явиться помилка «ЕКОНРЕСЕТ», то модбус не повинен припинити",
+        "zh-cn": "请检查archive-date=中的日期值 (帮助) 75\n实现“将供电限制在网格上”(出口管制)\n实现“强制充电或放电”\n如果错误“ ECONRESET” 出现, modbus 代理不应该终止"
+      },
       "0.7.1": {
         "en": "inverter model name too many characters #73",
         "de": "wechselrichter modellname zu viele zeichen #73",
@@ -54,45 +93,6 @@
         "pl": "Kontrola baterii: Po drugiej nieudanej próbie zdarzenie kontrolne zostaje odrzucone\nKontrola baterii: Dostosuj maxCharge i absolutorium baterii do rzeczywistych wartości",
         "uk": "Контроль акумулятора: Після другого невдалого спробу контрольний захід відхилений\nКонтроль акумулятора: Налаштуйте акумулятор maxCharge і відключіть до фактичних значень",
         "zh-cn": "电池控制 : 在第二次尝试失败后, 控制事件被丢弃\n电池控制 : 按照实际值调整电池最大充电器和放电装置"
-      },
-      "0.6.0": {
-        "en": "realization the \"battery charge control\" #61\nfix the standby detection #60",
-        "de": "realisierung der \"batterieladungskontrolle\" #61\nfixieren sie die standby-erkennung #60",
-        "ru": "#61\nисправить резервное обнаружение #60",
-        "pt": "realização do \"controle de carga de bateria\" #61\ncorrigir a detecção de espera #60",
-        "nl": "realisatie van de \"battery charge control\" #61\nfix de stand-by detectie #60",
-        "fr": "réalisation du \"contrôle de charge de batterie\" #61\nfixer la détection de veille #60",
-        "it": "realizzazione del \"controllo di carica della batteria\" #61\nfissare il rilevamento standby #60",
-        "es": "realización del \"control de carga de batería\" #61\narregla la detección de standby #60",
-        "pl": "realizacja \"kontroli ładunku akumulatora\" # 61\nnaprawić czujnik czuwania # 60",
-        "uk": "впровадження \"управління платежем\" no61\nзафіксувати виявлення стендів #60",
-        "zh-cn": "实现\"电池充电控制\"#61\n修复备用检测器 # 60"
-      },
-      "0.5.1": {
-        "en": "Config page restructured\nRead only the required string data\nfix interval medium",
-        "de": "Config-Seite umstrukturiert\nLesen Sie nur die gewünschten Stringdaten\nintervall mittel",
-        "ru": "Реструктуризация страницы настройки\nЧитайте только требуемые данные строки\nфиксированный интервал",
-        "pt": "Página de confiança reestruturada\nLeia apenas os dados de string necessários\nmédia de intervalo de correção",
-        "nl": "Configuratiepagina geherstructureerd\nAlleen de vereiste tekenreeksgegevens lezen\nfix interval medium",
-        "fr": "Config page restructurée\nLire seulement les données de chaîne requises\nintervalle de fixation moyen",
-        "it": "Pagina di configurazione ristrutturata\nLeggi solo i dati della stringa richiesti\nintervallo di fissaggio medio",
-        "es": "Reestructuración de la página de confidencialidad\nLea sólo los datos de cadena requeridos\nintervalo de fijación medio",
-        "pl": "Strona konfiguracyjna zrestrukturyzowana\nPrzeczytaj tylko wymagane dane łańcuchowe\nmedium interwałowe",
-        "uk": "Налаштування реструктуризації сторінки\nПрочитати тільки необхідні дані рядків\nфіксувати інтервал середні",
-        "zh-cn": "配置页面调整\n只读所需的字符串数据\n固定间隔介质"
-      },
-      "0.5.0": {
-        "en": "Integration of [Huawei SmartLogger](https://support.huawei.com/enterprise/de/doc/EDOC1100130069/d8a00460)\nsome meter states the unit was changed (for example sun2000.0.meter.activePowerL1) (#56)\nsun2000 serie M2 or higher can also be processed",
-        "de": "Integration von [Huawei SmartLogger](https://support.huawei.com/enterprise/de/doc/EDOC1100130069/d8a00460)\neinige Zählerzustände wurden geändert (z.B. sun2000.0.meter.activePowerL1) (#56)\nsun2000 serie M2 oder höher kann auch verarbeitet werden",
-        "ru": "Интеграция [Huawei SmartLogger] (https://support.huawei.com/ enterprise/de/doc/EDOC1100130069/d8a00460)\nнекоторые метры утверждают, что блок был изменен (например, sun2000.0.meter.activePowerL1) (#56)\nsun2000 serie M2 или выше также может быть обработан",
-        "pt": "Integração de [Huawei SmartLogger](https://support.huawei.com/enterprise/de/doc/EDOC1100130069/d8a00460)\nalguns medidores afirma que a unidade foi alterada (por exemplo sun2000.0.meter.activePowerL1) (#56)\nsun2000 serie M2 ou superior também pode ser processado",
-        "nl": "Integratie van [Huawei SmartLogger](https://support.huawei.com/enterprise/de/doc/EDOC110030069/d8a00460)\nsommige meter stelt dat de eenheid werd veranderd (bijvoorbeeld zon2000,0.meter.activePowerL1) (#56)\nsun2000 serie M2 of hoger kan ook verwerkt worden",
-        "fr": "Intégration de [Huawei SmartLogger](https://support.huawei.com/enterprise/de/doc/EDOC1100130069/d8a00460)\ncertains états de compteur l'unité a été changée (par exemple sun2000.0.meter.activePowerL1) (#56)\nsun2000 série M2 ou plus peut également être traité",
-        "it": "Integrazione [Huawei SmartLogger](https://support.huawei.com/enterprise/de/doc/EDOC1100130069/d8a00460)\nalcuni metri afferma che l'unità è stata modificata (ad esempio sun2000.0.meter.activePowerL1) (#56)\nsun2000 serie M2 o superiore può anche essere elaborato",
-        "es": "Integración de [Huawei SmartLogger](https://support.huawei.com/enterprise/de/doc/EDOC1100130069/d8a00460)\nalgún medidor indica que la unidad fue cambiada (por ejemplo sun2000.0.meter.activePowerL1) (#56)\nsun2000 serie M2 o superior también se puede procesar",
-        "pl": "Data umieszczenia w wykazie\nniektóre mierniki wskazują, że jednostka została zmieniona (na przykład sun2000.0.meter.activePowerL1) (# 56)\nsun2000 serie M2 lub wyższe mogą być również przetwarzane",
-        "uk": "Інтеграція [Huawei SmartLogger](https://support.huawei.com/enterprise/de/doc/EDOC1100130069/d8a00460)\nзмінено блок лічильників (наприклад, Sun2000.0.meter.activePowerL1) (#56)\nсонце2000 serie M2 або вище можна обробити",
-        "zh-cn": "[Huawei SmartLogger]的集成(https://support.huawei.com/economist/de/doc/EDOC110013069/d8a00460) 互联网档案馆的存檔,存档日期2013-12-20\n某些度数表示单位已更改( 例如 sun 2000. 0. meter. activePowerL1) (# 56)\n太阳2000 serie M2 或以上也可以加工"
       }
     },
     "titleLang": {
@@ -140,7 +140,6 @@
       "type": "free"
     },
     "platform": "Javascript/Node.js",
-    "main": "main.js",
     "icon": "sun2000.png",
     "enabled": true,
     "extIcon": "https://raw.githubusercontent.com/bolliy/ioBroker.sun2000/main/admin/sun2000.png",
@@ -201,13 +200,23 @@
         ],
         "link": "https://github.com/bolliy/ioBroker.sun2000/wiki/Update-node.js",
         "linkText": {
-          "en": "The node.js update procedure is described here."
+          "en": "The node.js update procedure is described here.",
+          "de": "Der Aktualisierungsvorgang für node.js wird hier beschrieben.",
+          "ru": "Процедура обновления node.js описана здесь.",
+          "pt": "O procedimento de atualização do node.js é descrito aqui.",
+          "nl": "De updateprocedure voor node.js wordt hier beschreven.",
+          "fr": "La procédure de mise à jour de node.js est décrite ici.",
+          "it": "La procedura di aggiornamento di node.js è descritta qui.",
+          "es": "El procedimiento de actualización de node.js se describe aquí.",
+          "pl": "Procedura aktualizacji node.js jest opisana tutaj.",
+          "uk": "Процедура оновлення node.js описана тут.",
+          "zh-cn": "此处描述了 Node.js 更新过程。"
         }
       }
     ],
     "dependencies": [
       {
-        "js-controller": ">=5.0.0"
+        "js-controller": ">=5.0.19"
       }
     ],
     "globalDependencies": [

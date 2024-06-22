@@ -1,10 +1,11 @@
 {
+    "donateTxt": "Если вам понравился этот адаптер, рассмотрите возможность сделать пожертвование в поддержку моей работы.",
     "sun2000 adapter settings": "Настройки адаптера для инвертора huawei sun2000",
     "address": "IP-адрес устройства",
     "port": "TCP-порт Modbus",
     "Modbus inverter IDs": "Идентификаторы преобразователей Modbus",
     "Update interval (sec)": "Интервал обновления [сек]",
-    "The device ip address": "IP-адрес инвертора",
+    "The device ip address": "IP-адрес инверторов",
     "The modbus TCP port": "TCP-порт Modbus",
     "The modbus inverter IDs, separated with character ,": "Идентификаторы инверторов Modbus, разделенные символом ,",
     "Update interval to update the values from the inverters": "Интервал обновления для обновления значений инверторов.",
@@ -14,7 +15,7 @@
     "automatic adjustment of the modbus settings": "автоматическая регулировка настроек Modbus",
     "ms.aktive": "Modbus-прокси активен",
     "Modbus-proxy via TCP for read-only is active": "Modbus-прокси через TCP только для чтения активен",
-    "ms.address": "IP-адрес Modbus-прокси",
+    "ms.address": "Modbus-прокси прослушивает адрес",
     "If want to listen only at localhost use 127.0.0.1": "Если вы хотите слушать только на локальном хосте, используйте 127.0.0.1.",
     "ms.port": "TCP-порт Modbus-прокси",
     "The Modbus-proxy TCP port": "TCP-порт Modbus-прокси",
@@ -25,7 +26,7 @@
     "SmartLogger active": "SmartLogger активен",
     "sl.meterId": "Идентификатор Modbus счетчика SmartLogger",
     "The Meter modbus ID": "Идентификатор Modbus измерителя",
-    "sd.active": "Используйте SD-донгл",
+    "sd.active": "Запрос SDongle",
     "Create default TOU setting": "Создать настройку TOU по умолчанию",
     "Examples of application": "Примеры применения"
 }
