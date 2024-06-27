@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.10.0",
+    "version": "0.11.0",
     "news": {
+      "0.11.0": {
+        "en": "added a donation link in the adapter settings\ndependency updated",
+        "de": "einen spendenlink in den adaptereinstellungen hinzugefügt\naktualisierte abhängigkeit",
+        "ru": "добавлена ссылка пожертвований в настройках адаптера\nобновленные данные",
+        "pt": "adicionou um link de doação nas configurações do adaptador\ndependência atualizada",
+        "nl": "een donatielink toegevoegd in de adapterinstellingen\nafhankelijkheid bijgewerkt",
+        "fr": "ajouté un lien de don dans les paramètres de l'adaptateur\nmise à jour de la dépendance",
+        "it": "aggiunto un link di donazione nelle impostazioni dell'adattatore\naggiornamento della dipendenza",
+        "es": "añadido un enlace de donación en la configuración del adaptador\nactualización de la dependencia",
+        "pl": "dodano link do darowizny w ustawieniach adaptera\nzaktualizowana zależność",
+        "uk": "додано посилання пожертвування в налаштуваннях адаптера\nоновлення залежності",
+        "zh-cn": "在适配器设置中添加一个捐赠链接\n更新依赖关系"
+      },
       "0.10.0": {
         "en": "dependency and configuration updates\nadjust roles in the control path\nBattery control: add backup power SOC #84\nfix: wrong state name `control.battery.targetSOC` with trailing space",
         "de": "abhängigkeits- und konfigurationsupdates\nrollen im kontrollpfad anpassen\nBatteriesteuerung: Backup-Leistung hinzufügen SOC #84\nfix: falscher Zustandsname `control.battery.targetSOC` mit Trailing Space",
@@ -80,19 +93,6 @@
         "pl": "korekta detekcji czuwania\nPoprawa dzienników",
         "uk": "автономне виявлення\nУдосконалення колод",
         "zh-cn": "经调整的备用检测\n改进日志"
-      },
-      "0.6.1": {
-        "en": "Battery control: After the second failed attempt, the control event is discarded\nBattery control: Adjust the battery maxCharge and Discharge to the actual values",
-        "de": "Batteriesteuerung: Nach dem zweiten gescheiterten Versuch wird das Kontrollereignis verworfen\nBatteriesteuerung: Einstellen der Batterie maxCharge und Entladen auf die tatsächlichen Werte",
-        "ru": "Контроль батареи: После второй неудачной попытки, событие управления отбрасывается\nКонтроль батареи: Настройка аккумулятора maxCharge и выгрузка на фактические значения",
-        "pt": "Controle da bateria: Após a segunda tentativa falhada, o evento de controle é descartado\nControle da bateria: Ajuste a bateria maxCharge e descarga para os valores reais",
-        "nl": "Controle van de batterij: Na de tweede mislukte poging, de controle gebeurtenis wordt weggegooid\nControle van de batterij: Pas de batterij maxCharge en Discharge aan aan de werkelijke waarden",
-        "fr": "Contrôle de la batterie: Après la deuxième tentative ratée, l'événement de contrôle est écarté\nContrôle de la batterie: Régler la batterie maxCharge et décharge aux valeurs réelles",
-        "it": "Controllo della batteria: Dopo il secondo tentativo fallito, l'evento di controllo viene scartato\nControllo della batteria: Regolare la batteria maxCharge e Scaricare i valori effettivi",
-        "es": "Control de batería: Después del segundo intento fallido, el evento de control es descartado\nControl de batería: Ajustar la batería maxCargue y descarga a los valores reales",
-        "pl": "Kontrola baterii: Po drugiej nieudanej próbie zdarzenie kontrolne zostaje odrzucone\nKontrola baterii: Dostosuj maxCharge i absolutorium baterii do rzeczywistych wartości",
-        "uk": "Контроль акумулятора: Після другого невдалого спробу контрольний захід відхилений\nКонтроль акумулятора: Налаштуйте акумулятор maxCharge і відключіть до фактичних значень",
-        "zh-cn": "电池控制 : 在第二次尝试失败后, 控制事件被丢弃\n电池控制 : 按照实际值调整电池最大充电器和放电装置"
       }
     },
     "titleLang": {

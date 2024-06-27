@@ -63,8 +63,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 0.11.0 (2024-06-27)
 * added a donation link in the adapter settings
 * dependency updated
 
