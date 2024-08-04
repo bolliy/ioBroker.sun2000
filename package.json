@@ -10,9 +10,14 @@
   "license": "MIT",
   "keywords": [
     "ioBroker",
-    "template",
     "Smart Home",
-    "home automation"
+    "home automation",
+    "inverter",
+    "sun2000",
+    "modbus",
+    "modbus-proxy",
+    "smartlogger",
+    "huawei"
   ],
   "repository": {
     "type": "git",
