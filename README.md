@@ -64,7 +64,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-Requirements from ioBroker Check and Service Bot #104
+* Requirements from ioBroker Check and Service Bot #104
 
 ### 0.11.0 (2024-06-27)
 * added a donation link in the adapter settings
