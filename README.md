@@ -63,9 +63,12 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* Requirements from ioBroker Check and Service Bot #104
 
-* add a donation link in the adapter settings
-* dependency updates
+### 0.11.0 (2024-06-27)
+* added a donation link in the adapter settings
+* dependency updated
 
 ### 0.10.0 (2024-06-14)
 * dependency and configuration updates
