@@ -354,8 +354,17 @@ class Sun2000 extends utils.Adapter {
 						duration: 5000,
 						modbusId: id,
 						driverClass: driverClasses.inverter,
-						meter: (i==0 && !this.settings.sl.active),
-						numberBatteryUnits : 0
+						meter: (i==0 && !this.settings.sl.active)/*,
+						numberBatteryUnits : 0,
+						battery: {
+							unit1 : {
+								exist: false
+							},
+							unit2 : {
+								exist: false
+							}
+						}
+						*/
 					});
 				}
 				//SmartLogger
