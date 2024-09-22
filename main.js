@@ -59,6 +59,10 @@ class Sun2000 extends utils.Adapter {
 			},
 			cb: {
 				tou : false
+			},
+			ds: {
+				batteryUnits : true,
+				batterPacks : false
 			}
 		};
 
@@ -339,6 +343,10 @@ class Sun2000 extends utils.Adapter {
 			this.settings.sl.meterId = this.config.sl_meterId;
 			//battery charge control
 			this.settings.cb.tou = this.config.cb_tou;
+			//data scope
+			this.settings.ds.batteryUnits = this.config.ds_bu;
+			this.settings.ds.batteryPacks = this.config.ds_bp;
+
 
 			if (this.settings.modbusAdjust) {
 				await this.setState('info.JSONhealth', {val: '{message: "Adjust modbus settings"}', ack: true});
@@ -354,17 +362,7 @@ class Sun2000 extends utils.Adapter {
 						duration: 5000,
 						modbusId: id,
 						driverClass: driverClasses.inverter,
-						meter: (i==0 && !this.settings.sl.active)/*,
-						numberBatteryUnits : 0,
-						battery: {
-							unit1 : {
-								exist: false
-							},
-							unit2 : {
-								exist: false
-							}
-						}
-						*/
+						meter: (i==0 && !this.settings.sl.active)
 					});
 				}
 				//SmartLogger
