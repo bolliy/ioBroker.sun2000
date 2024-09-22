@@ -246,7 +246,8 @@
     "ms_port": 502,
     "ms_log": false,
     "sl_active": false,
-    "sl_meterId": 11
+    "sl_meterId": 11,
+    "ds_bu" : true
   },
   "objects": [],
   "instanceObjects": [

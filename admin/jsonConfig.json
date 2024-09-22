@@ -127,6 +127,30 @@
                 }          
             }
         },  
+        "tab7": {
+            "type": "panel",
+            "label": "Further Register",
+            "items": {
+                "mainHdr1": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "Further battery register data",
+                    "size": 2
+                },
+                "ds_bu": {
+                    "type": "checkbox",
+                    "label": "battery units",
+                    "newLine": true,
+                    "help": "This register data is stored in the opject path “sun2000.x.inverter.x.battery.unit”"
+                },
+                "ds_bp": {
+                    "type": "checkbox",
+                    "label": "battery packs",
+                    "newLine": true,
+                    "help": "This register data is stored in the opject path “sun2000.x.inverter.x.battery.unit.x.pack”"
+                }
+            }
+        },
         "tab3": {
             "type": "panel",
             "label": "Energy control",
