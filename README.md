@@ -65,7 +65,8 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 -->
 ### **WORK IN PROGRESS**
 * Requirements from ioBroker Check and Service Bot #104
-* add battery packs #85
+* added battery packs #85
+* added config panel `Further Register`
 
 ### 0.11.0 (2024-06-27)
 * added a donation link in the adapter settings
@@ -82,7 +83,6 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 * modbus device remains active in standby on the inverter M2,M3
 
 ### 0.8.0 (2024-04-19)
-
 * Check numerical values for plausibility #75
 * realization the "limit the power fed to grid" (Export control)
 * realization the "forcible Charge or Discharge Power"
