@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.11.0",
+    "version": "0.12.0",
     "news": {
+      "0.12.0": {
+        "en": "Requirements from ioBroker Check and Service Bot #104\nadded battery packs #85\nadded config panel `Further Register`",
+        "de": "Anforderungen an ioBroker Check und Service Bot #104\nakkupacks #85\nhinzufügen config panel `Weiter registrieren `",
+        "ru": "Требования от ioBroker Check and Service Bot #104\n#85\nдобавленная панель конфигурации `Further Register \"",
+        "pt": "Requisitos de ioBroker Check e Service Bot #104\npacotes de bateria adicionados #85\nadicionado painel de configuração `Further Register \"",
+        "nl": "Vereisten van ioBroker Check and Service Bot #104\ntoegevoegde batterijpakketten #85\ntoegevoegd config paneel \"Verder registreren\" Wat",
+        "fr": "Exigences de ioBroker Check and Service Bot #104\npacks de batterie supplémentaires #85\najouté panneau de configuration `Plus grand registre \"",
+        "it": "Requisiti da ioBroker Check and Service Bot #104\nbatterie aggiunte #85\naggiunto pannello di configurazione `Further Register #",
+        "es": "Requisitos de ioBroker Check and Service Bot #104\nañadir paquetes de batería #85\npanel de configuración añadido `Más registro `",
+        "pl": "Wymagania dotyczące kontroli ioBroker i serwisu Bot # 104\ndodany zestaw baterii # 85\ndodany panel konfiguracyjny \"Dalszy rejestr '",
+        "uk": "Вимоги до ioBroker Check and Service Bot #104\nдоданий акумуляторний пакет #85\nдодано панель налаштувань `Further Реєстр й",
+        "zh-cn": "ioBroker检查和服务瓶的所需经费#104\n添加电池包# 85\n添加配置面板“ 进一步登记” `"
+      },
       "0.11.0": {
         "en": "added a donation link in the adapter settings\ndependency updated",
         "de": "einen spendenlink in den adaptereinstellungen hinzugefügt\naktualisierte abhängigkeit",
@@ -80,19 +93,6 @@
         "pl": "łamanie zmian\nNode.js 18,x lub wyższa wymagana\njoBroker host (kontroler js-) 5.x lub wyższy",
         "uk": "поломка змін\nNode.js 18.x або вище потрібно\nioBroker host (js-controller) 5.x або вище",
         "zh-cn": "断开更改\n所需节点.js 18.x或更高\nioBroker 主机(js-controller) 5.x或更高"
-      },
-      "0.6.2": {
-        "en": "standby detection adjusted\nImprovement of logs",
-        "de": "standby-erkennung angepasst\nVerbesserung der Protokolle",
-        "ru": "резервное обнаружение с поправкой\nСовершенствование журналов",
-        "pt": "detecção de espera ajustada\nMelhoria dos logs",
-        "nl": "stand-by detectie aangepast\nVerbetering van de logs",
-        "fr": "réglage de la détection en attente\nAmélioration des registres",
-        "it": "rilevamento standby regolato\nMiglioramento dei registri",
-        "es": "detección de reserva ajustada\nMejora de los registros",
-        "pl": "korekta detekcji czuwania\nPoprawa dzienników",
-        "uk": "автономне виявлення\nУдосконалення колод",
-        "zh-cn": "经调整的备用检测\n改进日志"
       }
     },
     "titleLang": {
@@ -247,7 +247,7 @@
     "ms_log": false,
     "sl_active": false,
     "sl_meterId": 11,
-    "ds_bu" : true
+    "ds_bu": true
   },
   "objects": [],
   "instanceObjects": [
