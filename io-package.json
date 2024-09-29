@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.12.0",
+    "version": "0.12.1",
     "news": {
+      "0.12.1": {
+        "en": "no warning from check the valid number during standby: \"no irradiation\"",
+        "de": "keine warnung vor der prüfung der gültigen nummer im standby: \"keine bestrahlung\"",
+        "ru": "не предупредить проверить действительный номер во время ожидания: «без облучения»",
+        "pt": "sem aviso de verificar o número válido durante o standby: \"nenhuma irradiação\"",
+        "nl": "geen waarschuwing van controle van het geldige nummer tijdens standby: \"geen bestraling\"",
+        "fr": "aucun avertissement de vérifier le nombre valide en attente: \"pas d'irradiation\"",
+        "it": "nessun avviso da controllare il numero valido durante la standby: \"nessuna irradiazione\"",
+        "es": "no hay advertencia de comprobar el número válido durante la espera: \"no irradiación\"",
+        "pl": "brak ostrzeżenia z sprawdzenia poprawnego numeru podczas czuwania: \"brak napromieniowania\"",
+        "uk": "без попередження про перевірку дійсного числа під час очікування: \"не опромінення\"",
+        "zh-cn": "在待命时不检查有效号码的警告 : “ 不辐射 ”"
+      },
       "0.12.0": {
         "en": "Requirements from ioBroker Check and Service Bot #104\nadded battery packs #85\nadded config panel `Further Register`",
         "de": "Anforderungen an ioBroker Check und Service Bot #104\nakkupacks #85\nhinzufügen config panel `Weiter registrieren `",
@@ -80,19 +93,6 @@
         "pl": "inverter model nazwa zbyt wiele znaków # 73",
         "uk": "ім'я інвертора занадто багато символів #73",
         "zh-cn": "翻转模型名称过多字符 # 73"
-      },
-      "0.7.0": {
-        "en": "breaking changes\nNode.js 18.x or higher required\nioBroker host (js-controller) 5.x or higher",
-        "de": "änderungen\nNode.js 18.x oder höher erforderlich\nioBroker Host (js-controller) 5.x oder höher",
-        "ru": "изменения\nNode.js 18.x или выше требуется\nioBroker host (js-controller) 5.x или выше",
-        "pt": "alterações de ruptura\nNode.js 18.x ou superior requerido\nhospedeiro ioBroker (js-controller) 5.x ou superior",
-        "nl": "wijzigingen breken\nNode.js 18.x of hoger vereist\nioBroker host (js-controller) 5.x of hoger",
-        "fr": "casser les changements\nNode.js 18.x ou plus requis\nioBroker host (js-controller) 5.x ou plus",
-        "it": "cambiamenti di rottura\nNode.js 18.x o superiore richiesto\nioBroker host (js-controller) 5.x o superiore",
-        "es": "cambios de ruptura\nNode.js 18.x o superior requerido\nioBroker host (js-controller) 5.x o superior",
-        "pl": "łamanie zmian\nNode.js 18,x lub wyższa wymagana\njoBroker host (kontroler js-) 5.x lub wyższy",
-        "uk": "поломка змін\nNode.js 18.x або вище потрібно\nioBroker host (js-controller) 5.x або вище",
-        "zh-cn": "断开更改\n所需节点.js 18.x或更高\nioBroker 主机(js-controller) 5.x或更高"
       }
     },
     "titleLang": {
