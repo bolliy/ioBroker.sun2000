@@ -27,7 +27,7 @@
     "node": ">= 18"
   },
   "dependencies": {
-    "@iobroker/adapter-core": "^3.1.6",
+    "@iobroker/adapter-core": "^3.2.1",
     "modbus-serial": "^8.0.17",
     "suncalc2": "^1.8.1",
     "tcp-port-used": "^1.0.2"
