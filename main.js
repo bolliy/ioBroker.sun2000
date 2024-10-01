@@ -343,7 +343,7 @@ class Sun2000 extends utils.Adapter {
 			this.settings.sl.meterId = this.config.sl_meterId;
 			//battery charge control
 			this.settings.cb.tou = this.config.cb_tou;
-			//data scope
+			//further battery register
 			this.settings.ds.batteryUnits = this.config.ds_bu;
 			this.settings.ds.batteryPacks = this.config.ds_bp;
 
