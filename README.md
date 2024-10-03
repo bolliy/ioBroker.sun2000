@@ -63,6 +63,9 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* Emma Integration
+
 ### 0.12.1 (2024-09-29)
 * no warning from check the valid number during standby: "no irradiation"
 

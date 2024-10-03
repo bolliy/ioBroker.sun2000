@@ -167,7 +167,6 @@ class Sun2000 extends utils.Adapter {
 				});
 			}
 
-			//v0.5.x
 			if (item.driverClass == driverClasses.logger) {
 				item.path = '';
 				await this.extendObject(item.path+'slogger', {
@@ -179,6 +178,20 @@ class Sun2000 extends utils.Adapter {
 				});
 			}
 			if (item.driverClass == driverClasses.loggerMeter) {
+				item.path = '';
+			}
+
+			if (item.driverClass == driverClasses.emma) {
+				item.path = '';
+				await this.extendObject(item.path+'emma', {
+					type: 'device',
+					common: {
+						name: 'device Emma'
+					},
+					native: {}
+				});
+			}
+			if (item.driverClass == driverClasses.emmaMeter) {
 				item.path = '';
 			}
 
@@ -383,6 +396,30 @@ class Sun2000 extends utils.Adapter {
 						});
 					}
 				}
+
+				//Emma
+				if (this.settings.integration === 2) {
+					this.devices.push({
+						index: 0,
+						duration: 0,
+						modbusId: 0,
+						meter : true,
+						driverClass: driverClasses.emma
+					});
+					/*
+					//External Meter
+					if (this.settings.sl.meterId > 0) {
+						this.devices.push({
+							index: 0,
+							duration: 0,
+							meter : true,
+							modbusId: this.settings.sl.meterId,
+							driverClass: driverClasses.emmaMeter
+						});
+					}
+					*/
+				}
+
 				//SDongle
 				if (this.settings.sd.active) {
 					this.devices.push({
