@@ -245,9 +245,9 @@
     "ms_address": "0.0.0.0",
     "ms_port": 502,
     "ms_log": false,
-    "sl_active": false,
     "sl_meterId": 11,
-    "ds_bu": true
+    "ds_bu": true,
+    "integration": 0
   },
   "objects": [],
   "instanceObjects": [
