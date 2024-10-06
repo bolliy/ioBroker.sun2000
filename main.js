@@ -50,7 +50,6 @@ class Sun2000 extends utils.Adapter {
 				active : false
 			},
 			sl: {
-				active : false,
 				meterId: 11
 			},
 			sd: {
