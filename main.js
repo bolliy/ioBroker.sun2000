@@ -129,7 +129,7 @@ class Sun2000 extends utils.Adapter {
 					},
 					native: {}
 				});
-
+				/*
 				await this.extendObject(path+'.battery', {
 					type: 'channel',
 					common: {
@@ -137,7 +137,7 @@ class Sun2000 extends utils.Adapter {
 					},
 					native: {}
 				});
-
+				*/
 				await this.extendObject(path+'.string', {
 					type: 'channel',
 					common: {
