@@ -413,18 +413,6 @@ class Sun2000 extends utils.Adapter {
 						meter : true,
 						driverClass: driverClasses.emma
 					});
-					/*
-					//External Meter
-					if (this.settings.sl.meterId > 0) {
-						this.devices.push({
-							index: 0,
-							duration: 0,
-							meter : true,
-							modbusId: this.settings.sl.meterId,
-							driverClass: driverClasses.emmaMeter
-						});
-					}
-					*/
 				}
 
 				//SDongle
