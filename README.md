@@ -65,8 +65,8 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* Improve Modbus reconnection #116
-* Huawei Emma (Huawei Energy Management Assistant) Integration #63
+* improve Modbus reconnection #116
+* simple Integration of Huawei Emma (Huawei Energy Management Assistant) #63
 
 ### 0.12.1 (2024-09-29)
 * no warning from check the valid number during standby: "no irradiation"
