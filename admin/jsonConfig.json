@@ -27,7 +27,7 @@
                     "type": "select",
                     "label": "Huawei Device Integration",
                     "options":[{"label": "Only Inverter(s)", "value":0}, {"label": "SmartLogger (monitors and manages PV and energy storage systems)", "value":1},{"label": "EMMA (Huawei Energy Management Assistant)", "value":2}],
-                    "lg":2,
+                    "lg": 4,
                     "newLine": true
                 },
                 "mainHdr2": {
@@ -120,6 +120,11 @@
                     "type": "header",
                     "text": "EMMA Settings",
                     "size": 2
+                },
+                "chipsTxt1": {
+                    "type": "staticText",
+                    "text": "Placeholder for future Settings",
+                    "newLine": true
                 }
             }
         },
