@@ -50,7 +50,6 @@ class Sun2000 extends utils.Adapter {
 				active : false
 			},
 			sl: {
-				active : false,
 				meterId: 11
 			},
 			sd: {
@@ -130,7 +129,7 @@ class Sun2000 extends utils.Adapter {
 					},
 					native: {}
 				});
-
+				/*
 				await this.extendObject(path+'.battery', {
 					type: 'channel',
 					common: {
@@ -138,7 +137,7 @@ class Sun2000 extends utils.Adapter {
 					},
 					native: {}
 				});
-
+				*/
 				await this.extendObject(path+'.string', {
 					type: 'channel',
 					common: {
@@ -167,7 +166,6 @@ class Sun2000 extends utils.Adapter {
 				});
 			}
 
-			//v0.5.x
 			if (item.driverClass == driverClasses.logger) {
 				item.path = '';
 				await this.extendObject(item.path+'slogger', {
@@ -182,6 +180,22 @@ class Sun2000 extends utils.Adapter {
 				item.path = '';
 			}
 
+			if (item.driverClass == driverClasses.emma) {
+				item.path = '';
+				await this.extendObject(item.path+'emma', {
+					type: 'device',
+					common: {
+						name: 'device Emma'
+					},
+					native: {}
+				});
+			}
+			/*
+			if (item.driverClass == driverClasses.emmaMeter) {
+				item.path = '';
+			}
+			*/
+
 		}
 	}
 
@@ -189,12 +203,6 @@ class Sun2000 extends utils.Adapter {
 		await this.initPath();
 		this.state = new Registers(this);
 		await this.atMidnight();
-		/*
-		if (!this.settings.sunrise || !this.settings.sunset) {
-			this.adapterDisable('*** Adapter deactivated, Latitude and longitude must be set! ***');
-			return;
-		}
-		*/
 		if (this.settings.modbusAdjust) {
 			this.settings.modbusAdjust = isSunshine(this);
 			//this.logger.debug('Sunshine: '+this.settings.modbusAdjust);
@@ -276,7 +284,7 @@ class Sun2000 extends utils.Adapter {
 			this.settings.highInterval = 10000*this.settings.modbusIds.length;
 		} else {
 			let minInterval = this.settings.modbusIds.length*this.settings.modbusDelay*2.5; //len*5*delay/2
-			if (this.settings.sl.active) { //SmartLogger
+			if (this.settings.integration > 0) { //SmartLogger
 				minInterval += 5000;
 			} else {
 				for (const device of this.devices) {
@@ -312,6 +320,16 @@ class Sun2000 extends utils.Adapter {
 			this.config.timeout = this.config.timeout*1000;
 			this.updateConfig(this.config);
 		}
+		if (this.config.sl_active) { //old Smartlogger
+			this.config.sl_active = false;
+			this.config.integration = 1;
+			this.updateConfig(this.config);
+		}
+		if (this.config.sd_active) { //SDongle
+			this.config.sd_active = false;
+			this.updateConfig(this.config);
+		}
+
 		await this.setState('info.ip', {val: this.config.address, ack: true});
 		await this.setState('info.port', {val: this.config.port, ack: true});
 		await this.setState('info.modbusIds', {val: this.config.modbusIds, ack: true});
@@ -339,7 +357,8 @@ class Sun2000 extends utils.Adapter {
 			this.settings.ms.active = this.config.ms_active;
 			this.settings.ms.log = this.config.ms_log;
 			//SmartLogger
-			this.settings.sl.active = this.config.sl_active;
+			//this.settings.sl.active = this.config.sl_active;
+			this.settings.integration = this.config.integration;
 			this.settings.sl.meterId = this.config.sl_meterId;
 			//battery charge control
 			this.settings.cb.tou = this.config.cb_tou;
@@ -362,11 +381,11 @@ class Sun2000 extends utils.Adapter {
 						duration: 5000,
 						modbusId: id,
 						driverClass: driverClasses.inverter,
-						meter: (i==0 && !this.settings.sl.active)
+						meter: (i==0 && this.settings.integration === 0)
 					});
 				}
 				//SmartLogger
-				if (this.settings.sl.active) {
+				if (this.settings.integration === 1) {
 					this.devices.push({
 						index: 0,
 						duration: 0,
@@ -383,6 +402,19 @@ class Sun2000 extends utils.Adapter {
 						});
 					}
 				}
+
+				//Emma
+				if (this.settings.integration === 2) {
+					this.devices.push({
+						index: 0,
+						duration: 0,
+						//modbusId: 1,
+						modbusId: 0,
+						meter : true,
+						driverClass: driverClasses.emma
+					});
+				}
+
 				//SDongle
 				if (this.settings.sd.active) {
 					this.devices.push({
