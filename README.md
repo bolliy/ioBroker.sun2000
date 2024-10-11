@@ -66,6 +66,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 -->
 ### **WORK IN PROGRESS**
 * improve Modbus reconnection #116
+* configuration update
 * simple Integration of Huawei Emma (Huawei Energy Management Assistant) #63
 
 ### 0.12.1 (2024-09-29)
