@@ -56,7 +56,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 * [`Export Control`](https://github.com/bolliy/ioBroker.sun2000/wiki/Begrenzung-Netzeinspeisung-(Export-Control)): The excess PV energy is fed into the power grid, but not all countries allow users to sell electricity. Some countries have introduced regulations to restrict the sale of electricity to the grid. 
 * [`modbus-proxy`](https://github.com/bolliy/ioBroker.sun2000/wiki/Modbus-Proxy): Third party device such as wallbox, energy manager etc. can receive data even if the modbus interface of inverter is already in use. In addition you can mirror the sun2000 data to another IoBroker instance.
 * Huawei [`SmartLogger`](https://github.com/bolliy/ioBroker.sun2000/wiki/SmartLogger) integration: Monitors and manages the PV power system. The adapter saves the collected data in the same way as it does when read out the inverter directly.
-* Huawei [`Emma`]()
+* Huawei [`Emma`]() integration: The Modbus access, network connectivity (WiFi and Ethernet) and the DDSU/DTSU-666H smart meter functions are integrated in one unit - the use of the Sdongle becomes redundant. In addition Huawei EV chargers and load shedding/control (via selected Shelly devices) are supported and "intelligent" controlled.
 
 ## Changelog
 
@@ -67,7 +67,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 ### 0.13.0 (2024-10-11)
 * improve Modbus reconnection #116
 * configuration update
-* simple Integration of Huawei Emma (Huawei Energy Management Assistant) #63
+* initial Integration of Huawei Emma (Huawei Energy Management Assistant) #63
 
 ### 0.12.1 (2024-09-29)
 * no warning from check the valid number during standby: "no irradiation"
