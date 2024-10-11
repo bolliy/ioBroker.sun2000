@@ -227,7 +227,7 @@
                 "mainHdr1": {
                     "newLine": true,
                     "type": "header",
-                    "text": "Integration of Huawei EMMA or SmartLogger (v0.0.5)",
+                    "text": "Integration of Huawei EMMA or SmartLogger (v0.0.6)",
                     "size": 2
                 },
                 "integration": {
