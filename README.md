@@ -64,7 +64,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.13.0 (2024-10-11)
 * improve Modbus reconnection #116
 * configuration update
 * simple Integration of Huawei Emma (Huawei Energy Management Assistant) #63
