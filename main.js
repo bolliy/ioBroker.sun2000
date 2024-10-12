@@ -190,11 +190,6 @@ class Sun2000 extends utils.Adapter {
 					native: {}
 				});
 			}
-			/*
-			if (item.driverClass == driverClasses.emmaMeter) {
-				item.path = '';
-			}
-			*/
 
 		}
 	}

@@ -26,7 +26,7 @@
                 "integration": {
                     "type": "select",
                     "label": "Huawei Device Integration",
-                    "options":[{"label": "Only Inverter(s)", "value":0}, {"label": "SmartLogger (monitors and manages PV and energy storage systems)", "value":1},{"label": "EMMA (Huawei Energy Management Assistant)", "value":2}],
+                    "options":[{"label": "SDongle (communication expansion module)", "value":0}, {"label": "SmartLogger (monitors and manages PV and energy storage systems)", "value":1},{"label": "EMMA (Huawei Energy Management Assistant)", "value":2}],
                     "lg": 4,
                     "newLine": true
                 },
