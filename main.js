@@ -451,8 +451,14 @@ class Sun2000 extends utils.Adapter {
 		}
 		await this.state.runPostProcessHooks(dataRefreshRate.high);
 
+		/*
+		if (this.modbusServer) {
+			await this.modbusServer.process(this.modbusClient);
+		}
+		*/
+
+		//Low Loop
 		if (timeLeft(nextLoop) > 0) {
-			//Low Loop
 			for (const [i,item] of this.devices.entries()) {
 				//this.log.debug('+++++ Loop: '+i+' Left Time: '+timeLeft(nextLoop,(i+1)/this.devices.length)+' Faktor '+((i+1)/this.devices.length));
 				this.lastStateUpdatedLow += await this.state.updateStates(item,this.modbusClient,dataRefreshRate.low,timeLeft(nextLoop,(i+1)/this.devices.length));
