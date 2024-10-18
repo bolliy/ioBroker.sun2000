@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.12.1",
+    "version": "0.13.0",
     "news": {
+      "0.13.0": {
+        "en": "improve Modbus reconnection #116\nconfiguration update\nsimple Integration of Huawei Emma (Huawei Energy Management Assistant) #63",
+        "de": "modbus-Reconnection #116 verbessern\nkonfigurationsupdate\neinfache Integration von Huawei Emma (Huawei Energy Management Assistant) #63",
+        "ru": "#116\nобновление\nпростая интеграция Huawei Эмма (Huawei Energy Management Assistant) #63",
+        "pt": "melhorar a reconexão Modbus #116\natualização de configuração\nsimples integração de Huawei Emma (Huawei Energy Management Assistant) #63",
+        "nl": "modbus reconnectie #116 verbeteren\nconfiguratie-update\neenvoudige integratie van Huawei Emma (Huawei Energie Management Assistent) #63",
+        "fr": "améliorer la connexion Modbus #116\nmise à jour de configuration\nsimple intégration de Huawei Emma (Huawei Energy Management Assistant) #63",
+        "it": "migliorare la riconnessione Modbus #116\naggiornamento configurazione\nintegrazione semplice di Huawei Emma (Huawei Energy Management Assistant) #63",
+        "es": "mejorar la reconexión Modbus #116\nactualización de configuración\nsimple integración de Huawei Emma (Auxiliador de Gestión de Energía de Huawei) #63",
+        "pl": "poprawić ponowne połączenie Modbus # 116\naktualizacja konfiguracji\nprosta integracja Huawei Emma (Huawei Energy Management Assistant) # 63",
+        "uk": "поліпшення відключення Modbus #116\nоновлення конфігурації\nпроста інтеграція Huawei Emma (Huawei Energy Management Assistant) #63",
+        "zh-cn": "改进 Modbus 重联 # 116\n配置更新\n简单整合Huawei Emma(Huawei能源管理助理)#63"
+      },
       "0.12.1": {
         "en": "no warning from check the valid number during standby: \"no irradiation\"",
         "de": "keine warnung vor der prüfung der gültigen nummer im standby: \"keine bestrahlung\"",
@@ -80,19 +93,6 @@
         "pl": "Sprawdź wartości numeryczne pod względem wiarygodności # 75\nrealizacja \"ograniczenie mocy zasilanej do siatki\" (Kontrola eksportu)\nrealizacja \"mocy ładowania lub wyładowania\"\nJeśli pojawi się błąd 'ECONNRESET', proxy modbusa nie powinny kończyć",
         "uk": "Перевірити чисельні значення для плати #75\nреалізація \"випуску потужності, що надходить до сітки\"\nреалізація \"потужного заряду або розряду\"\nЯкщо з'явиться помилка «ЕКОНРЕСЕТ», то модбус не повинен припинити",
         "zh-cn": "请检查archive-date=中的日期值 (帮助) 75\n实现“将供电限制在网格上”(出口管制)\n实现“强制充电或放电”\n如果错误“ ECONRESET” 出现, modbus 代理不应该终止"
-      },
-      "0.7.1": {
-        "en": "inverter model name too many characters #73",
-        "de": "wechselrichter modellname zu viele zeichen #73",
-        "ru": "инверторное имя модели слишком много символов #73",
-        "pt": "inversor nome modelo muitos caracteres #73",
-        "nl": "inverter modelnaam te veel tekens #73",
-        "fr": "nom de modèle d'onduleur trop de caractères #73",
-        "it": "inverter nome modello troppi personaggi #73",
-        "es": "inverter nombre de modelo demasiados caracteres #73",
-        "pl": "inverter model nazwa zbyt wiele znaków # 73",
-        "uk": "ім'я інвертора занадто багато символів #73",
-        "zh-cn": "翻转模型名称过多字符 # 73"
       }
     },
     "titleLang": {

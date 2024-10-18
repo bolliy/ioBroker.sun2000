@@ -20,7 +20,20 @@
                 "mainHdr1": {
                     "newLine": true,
                     "type": "header",
-                    "text": "sun2000 Settings",
+                    "text": "Integration",
+                    "size": 2
+                },
+                "integration": {
+                    "type": "select",
+                    "label": "Huawei Device Integration",
+                    "options":[{"label": "SDongle (communication expansion module)", "value":0}, {"label": "SmartLogger (monitors and manages PV and energy storage systems)", "value":1},{"label": "EMMA (Huawei Energy Management Assistant)", "value":2}],
+                    "lg": 4,
+                    "newLine": true
+                },
+                "mainHdr2": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "Device Settings",
                     "size": 2
                 },
                 "address": {
@@ -59,8 +72,14 @@
                     "default": 20,
                     "newLine": true,
                     "tooltip": "Update interval to update the values from the inverters"
-                },
-                "mainHdr3": {
+                }
+            }    
+        },
+        "tab4": {
+            "type": "panel",
+            "label": "Integration Settings",
+            "items": {
+                "mainHdr1": {
                     "newLine": true,
                     "type": "header",
                     "text": "SDongle Settings",
@@ -82,72 +101,78 @@
                     "label": "SDongleA modbus ID",
                     "lg": 2,
                     "newLine": true
-                }    
-            }    
-        },
-        "tab2": {
-            "type": "panel",
-            "label": "Modbus timing",
-            "items": {
-                "timmingHdr1": {
+                },    
+                "mainHdr2": {
                     "newLine": true,
                     "type": "header",
-                    "text": "Modbus timing Settings",
+                    "text": "SmartLogger Settings",
                     "size": 2
                 },
-                "timeout": {
-                    "type": "number",
-                    "label": "timeout (ms)",
-                    "min" : 5000,
-                    "max" : 30000,
+                "sl_meterId": {
+                    "type": "text",
+                    "label": "sl.meterId",
+                    "lg": 2,
                     "newLine": true,
-                    "tooltip": "modbus connection timeout"
-                },      
-                "delay": {
-                    "type": "number",
-                    "label": "delay (ms)",
-                    "min" : 0,
-                    "max" : 6000,
-                    "newLine": true,
-                    "tooltip": "delay between modbus requests"
+                    "tooltip": "The Meter modbus ID"
                 },
-                "connectDelay": {
-                    "type": "number",
-                    "label": "connect delay (ms)",
-                    "min" : 2000,
-                    "max" : 10000,
+                "mainHdr3": {
                     "newLine": true,
-                    "tooltip": "delay after modbus connected"
+                    "type": "header",
+                    "text": "EMMA Settings",
+                    "size": 2
                 },
-                "autoAdjust": {
-                    "type": "checkbox",
-                    "label": "auto-adjust",
-                    "newLine": true,
-                    "tooltip": "automatic adjustment of the modbus settings"
-                }          
+                "chipsTxt1": {
+                    "type": "staticText",
+                    "text": "Placeholder for future Settings",
+                    "newLine": true
+                }
             }
-        },  
-        "tab7": {
+        },
+        "tab5": {
             "type": "panel",
-            "label": "Further Register",
+            "label": "Modbus-proxy",
             "items": {
-                "mainHdr1": {
+                "modbusProxyHdr1": {
                     "newLine": true,
                     "type": "header",
-                    "text": "Further battery register data",
+                    "text": "Modbus tcp proxy for multiple client connections",
                     "size": 2
                 },
-                "ds_bu": {
-                    "type": "checkbox",
-                    "label": "battery units",
-                    "newLine": true,
-                    "help": "This register data is stored in the opject path “sun2000.x.inverter.x.battery.unit”"
+                "chipsTxt": {
+                    "type": "staticText",
+                    "text": "Third party device such as wallbox, energy manager etc. can receive data even if the modbus interface of inverter is already in use. In addition you can mirror the sun2000 data to another IoBroker instance.",
+                    "newLine": true
                 },
-                "ds_bp": {
+                "ms_active": {
                     "type": "checkbox",
-                    "label": "battery packs",
+                    "label": "ms.aktive",
                     "newLine": true,
-                    "help": "This register data is stored in the opject path “sun2000.x.inverter.x.battery.unit.x.pack”"
+                    "tooltip": "Modbus-proxy via TCP for read-only is active"
+                }, 
+                "ms_address": {
+                    "type": "text",
+                    "label": "ms.address",
+                    "newLine": true,
+                    "tooltip": "If want to listen only at localhost use 127.0.0.1",
+                    "sm": 12,
+                    "md": 8,
+                    "lg": 2
+                },
+                "ms_port": {
+                    "type": "port",
+                    "label": "ms.port",
+                    "sm":3,
+                    "md":3,
+                    "lg":2,
+                    "xs":3,
+                    "newLine": true,
+                    "tooltip" : "The Modbus-proxy TCP port"
+                },
+                "ms_log": {
+                    "type": "checkbox",
+                    "label": "ms.log",
+                    "newLine": true,
+                    "tooltip": "Advanced logging"
                 }
             }
         },
@@ -220,87 +245,72 @@
                 }
             }
         },  
-        "tab4": {
+        "tab7": {
             "type": "panel",
-            "label": "Integration",
+            "label": "Further Register",
             "items": {
                 "mainHdr1": {
                     "newLine": true,
                     "type": "header",
-                    "text": "Integration of Huawei EMMA or SmartLogger",
+                    "text": "Further battery register data",
                     "size": 2
                 },
-                "integration": {
-                    "type": "select",
-                    "label": "Huawei Device",
-                    "options":[{"label": "No Integration", "value":0}, {"label": "SmartLogger (monitors and manages PV and energy storage systems)", "value":1},{"label": "EMMA (Huawei Energy Management Assistant)", "value":2}],
-                    "lg":2,
-                    "newLine": true
-                },
-                "mainHdr3": {
+                "ds_bu": {
+                    "type": "checkbox",
+                    "label": "battery units",
                     "newLine": true,
-                    "type": "header",
-                    "text": "SmartLogger Settings",
-                    "size": 2
+                    "help": "This register data is stored in the opject path “sun2000.x.inverter.x.battery.unit”"
                 },
-                "sl_meterId": {
-                    "type": "text",
-                    "label": "sl.meterId",
-                    "lg": 2,
+                "ds_bp": {
+                    "type": "checkbox",
+                    "label": "battery packs",
                     "newLine": true,
-                    "tooltip": "The Meter modbus ID"
+                    "help": "This register data is stored in the opject path “sun2000.x.inverter.x.battery.unit.x.pack”"
                 }
-                
             }
         },
-        "tab5": {
+        "tab2": {
             "type": "panel",
-            "label": "Modbus-proxy",
+            "label": "Modbus timing",
             "items": {
-                "modbusProxyHdr1": {
+                "timmingHdr1": {
                     "newLine": true,
                     "type": "header",
-                    "text": "Modbus tcp proxy for multiple client connections",
+                    "text": "Modbus timing Settings",
                     "size": 2
                 },
-                "chipsTxt": {
-                    "type": "staticText",
-                    "text": "Third party device such as wallbox, energy manager etc. can receive data even if the modbus interface of inverter is already in use. In addition you can mirror the sun2000 data to another IoBroker instance.",
-                    "newLine": true
+                "timeout": {
+                    "type": "number",
+                    "label": "timeout (ms)",
+                    "min" : 5000,
+                    "max" : 30000,
+                    "newLine": true,
+                    "tooltip": "modbus connection timeout"
+                },      
+                "delay": {
+                    "type": "number",
+                    "label": "delay (ms)",
+                    "min" : 0,
+                    "max" : 6000,
+                    "newLine": true,
+                    "tooltip": "delay between modbus requests"
                 },
-                "ms_active": {
+                "connectDelay": {
+                    "type": "number",
+                    "label": "connect delay (ms)",
+                    "min" : 2000,
+                    "max" : 10000,
+                    "newLine": true,
+                    "tooltip": "delay after modbus connected"
+                },
+                "autoAdjust": {
                     "type": "checkbox",
-                    "label": "ms.aktive",
+                    "label": "auto-adjust",
                     "newLine": true,
-                    "tooltip": "Modbus-proxy via TCP for read-only is active"
-                }, 
-                "ms_address": {
-                    "type": "text",
-                    "label": "ms.address",
-                    "newLine": true,
-                    "tooltip": "If want to listen only at localhost use 127.0.0.1",
-                    "sm": 12,
-                    "md": 8,
-                    "lg": 2
-                },
-                "ms_port": {
-                    "type": "port",
-                    "label": "ms.port",
-                    "sm":3,
-                    "md":3,
-                    "lg":2,
-                    "xs":3,
-                    "newLine": true,
-                    "tooltip" : "The Modbus-proxy TCP port"
-                },
-                "ms_log": {
-                    "type": "checkbox",
-                    "label": "ms.log",
-                    "newLine": true,
-                    "tooltip": "Advanced logging"
-                }
+                    "tooltip": "automatic adjustment of the modbus settings"
+                }          
             }
-        },
+        },  
         "tab6": {
             "type": "panel",
             "label": "help",
