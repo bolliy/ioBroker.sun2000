@@ -27,7 +27,6 @@
                     "type": "select",
                     "label": "Huawei Device Integration",
                     "options":[{"label": "SDongle (communication expansion module)", "value":0}, {"label": "SmartLogger (monitors and manages PV and energy storage systems)", "value":1},{"label": "EMMA (Huawei Energy Management Assistant)", "value":2}],
-                    "lg": 4,
                     "newLine": true
                 },
                 "mainHdr2": {
@@ -40,9 +39,6 @@
                     "type": "text",
                     "label": "address",
                     "tooltip": "The device ip address",
-                    "sm": 12,
-                    "md": 8,
-                    "lg": 2,
                     "newLine": true
                 },
                 "port": {
@@ -57,9 +53,6 @@
                 "modbusIds": {
                     "type": "text",
                     "label": "Modbus inverter IDs",
-                    "sm": 12,
-                    "md": 8,
-                    "lg": 2,
                     "default": "1",
                     "newLine": true,
                     "tooltip": "The modbus inverter IDs, separated with character ,"
@@ -153,18 +146,11 @@
                     "type": "text",
                     "label": "ms.address",
                     "newLine": true,
-                    "tooltip": "If want to listen only at localhost use 127.0.0.1",
-                    "sm": 12,
-                    "md": 8,
-                    "lg": 2
+                    "tooltip": "If want to listen only at localhost use 127.0.0.1"
                 },
                 "ms_port": {
                     "type": "port",
                     "label": "ms.port",
-                    "sm":3,
-                    "md":3,
-                    "lg":2,
-                    "xs":3,
                     "newLine": true,
                     "tooltip" : "The Modbus-proxy TCP port"
                 },
