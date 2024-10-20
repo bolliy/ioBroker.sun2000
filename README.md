@@ -65,8 +65,9 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
+* adjust for Responsive Design #121
 * lock on asynchronous modbus code
-* writing values ​​via the Modbus proxy #119
+* writing data ​​via the modbus-proxy #119
 * read additional register data of Huawei Emma
 
 ### 0.13.0 (2024-10-11)
