@@ -65,7 +65,8 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* display a clearly legible table bar
+* display a clearly legible table bar #121
+* modbus-proxy write data also to the read cache #119
 
 ### 0.14.0 (2024-10-20)
 * adjust for Responsive Design #121
