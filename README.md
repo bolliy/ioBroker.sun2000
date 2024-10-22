@@ -64,6 +64,9 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* display a clearly legible table bar
+
 ### 0.14.0 (2024-10-20)
 * adjust for Responsive Design #121
 * lock on asynchronous modbus code

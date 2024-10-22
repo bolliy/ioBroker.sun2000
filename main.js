@@ -61,7 +61,7 @@ class Sun2000 extends utils.Adapter {
 			},
 			ds: {
 				batteryUnits : true,
-				batterPacks : false
+				batteryPacks : false
 			}
 		};
 
@@ -379,6 +379,17 @@ class Sun2000 extends utils.Adapter {
 						meter: (i==0 && this.settings.integration === 0)
 					});
 				}
+
+				//SDongle
+				if (this.settings.integration === 0 && this.settings.sd.active) {
+					this.devices.push({
+						index: 0,
+						duration: 0,
+						modbusId: this.settings.sd.sDongleId,
+						driverClass: driverClasses.sdongle
+					});
+				}
+
 				//SmartLogger
 				if (this.settings.integration === 1) {
 					this.devices.push({
@@ -398,7 +409,7 @@ class Sun2000 extends utils.Adapter {
 					}
 				}
 
-				//Emma
+				//EMMA
 				if (this.settings.integration === 2) {
 					this.devices.push({
 						index: 0,
@@ -407,16 +418,6 @@ class Sun2000 extends utils.Adapter {
 						modbusId: 0,
 						meter : true,
 						driverClass: driverClasses.emma
-					});
-				}
-
-				//SDongle
-				if (this.settings.sd.active) {
-					this.devices.push({
-						index: 0,
-						duration: 0,
-						modbusId: this.settings.sd.sDongleId,
-						driverClass: driverClasses.sdongle
 					});
 				}
 
@@ -450,12 +451,6 @@ class Sun2000 extends utils.Adapter {
 			this.lastStateUpdatedHigh += await this.state.updateStates(item,this.modbusClient,dataRefreshRate.high,timeLeft(nextLoop));
 		}
 		await this.state.runPostProcessHooks(dataRefreshRate.high);
-
-		/*
-		if (this.modbusServer) {
-			await this.modbusServer.process(this.modbusClient);
-		}
-		*/
 
 		//Low Loop
 		if (timeLeft(nextLoop) > 0) {
