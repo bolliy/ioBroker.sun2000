@@ -8,3 +8,6 @@ https://photomate.zendesk.com/hc/en-gb/articles/7275970817437-SDongleA-MODBUS-In
 
 SmartLogger modbus interface definition (Issue 43, 2023-10-21)
 https://photomate.zendesk.com/hc/en-gb/articles/4573566657053-SmartLogger-Modbus-Definition-List
+
+SmartHEMS (EMMA) MODBUS interface definition (Issue 01, 2024-07-15)
+https://photomate.zendesk.com/hc/en-gb/articles/20421954493341-SmartHEMS-EMMA-MODBUS-definition-list 

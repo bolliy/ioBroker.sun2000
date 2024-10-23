@@ -44,6 +44,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 * HUAWEI Luna2000 Battery
 * HUAWEI Smart Power Sensor DTSU666-H or DDSU666-H
 * HUAWEI Smart Logger / min. Softwareversion: V300R023C10SPC311
+* HUAWEI EMMA / min. Softwareversion: V100R024C00SPC101
 
 ## Feature list
 
@@ -65,6 +66,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
+* dependency and configuration updates
 * display a clearly legible table bar #121
 * modbus-proxy write data also to the read cache #119
 
