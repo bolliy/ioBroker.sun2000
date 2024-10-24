@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.14.0",
+    "version": "0.15.0",
     "news": {
+      "0.15.0": {
+        "en": "dependency and configuration updates\ndisplay a clearly legible table bar #121\nmodbus-proxy write data also to the read cache #119",
+        "de": "abhängigkeits- und konfigurationsupdates\neine deutlich lesbare tischleiste #121 anzeigen\nmodbus-proxy schreibdaten auch zum lesespeicher #119",
+        "ru": "обновления зависимости и конфигурации\n#121\nmodbus-proxy пишут данные также кэшу #119",
+        "pt": "atualizações de dependência e configuração\nexibir uma barra de mesa claramente legível #121\nmodbus-proxy escrever dados também para o cache de leitura #119",
+        "nl": "afhankelijkheid en configuratie-updates\neen duidelijk leesbare tafelbalk #121 tonen\nmodbus-proxy schrijf gegevens ook naar de leescache #119",
+        "fr": "mises à jour de la dépendance et de la configuration\nafficher une barre de table clairement lisible #121\nmodbus-proxy écrire les données aussi au cache lecture #119",
+        "it": "aggiornamenti di dipendenza e configurazione\nvisualizza una barra da tavolo chiaramente leggibile #121\nmodbus-proxy scrivere i dati anche alla cache di lettura #119",
+        "es": "actualizaciones de dependencia y configuración\nmostrar una barra de mesa claramente legible #121\nmodbus-proxy escribe datos también al caché de lectura #119",
+        "pl": "aktualizacje zależności i konfiguracji\nwyświetla czytelny pasek tabeli # 121\nmodbus- proxy write data also to the read cache # 119",
+        "uk": "оновлення залежності та конфігурації\nдисплей чітко нижня білизна #121\nmodbus-proxy пише дані також для читання кеш #119",
+        "zh-cn": "依赖和配置更新\n显示清晰可见的表栏 # 121\nmodbus- 代理写入数据到读缓存 # 119"
+      },
       "0.14.0": {
         "en": "adjust for Responsive Design #121\nlock on asynchronous modbus code\nwriting data ​​via the modbus-proxy #119\nread additional register data of Huawei Emma",
         "de": "anpassung für Responsive Design #121\nasynchrone modbus-code blockieren\nschreiben von daten über die modbus-proxy #119\nweitere Registrierungsdaten von Huawei Emma lesen",
@@ -80,19 +93,6 @@
         "pl": "aktualizacje zależności i konfiguracji\ndostosować role w ścieżce sterowania\nKontrola baterii: dodać zasilanie awaryjne SOC # 84\nfix: błędna nazwa stanu 'control.battery.ActivitSOC' z przepustnicą",
         "uk": "оновлення залежності та конфігурації\nрегулювання ролі в шляху управління\nКонтроль акумулятора: додаємо резервну потужність SOC #84\nвиправити: неправильне ім'я держави `control.battery.targetSOC` з причепом",
         "zh-cn": "依赖和配置更新\n调整控制路径中的角色\n电池控制: 添加备份功率 SOC #84\n修补:错误的州名`control.battery.targetSOC ' ,带有后端空间"
-      },
-      "0.9.0": {
-        "en": "dependency and configuration updates\nmodbus device remains active in standby on the inverter M2,M3",
-        "de": "abhängigkeits- und konfigurationsupdates\nmodbus-Gerät bleibt im Standby am Wechselrichter M2,M3 aktiv",
-        "ru": "обновления зависимости и конфигурации\nmodbus device остается активным в режиме ожидания на инверторе M2,M3",
-        "pt": "atualizações de dependência e configuração\ndispositivo modbus permanece ativo em espera no inversor M2, M3",
-        "nl": "afhankelijkheid en configuratie-updates\nmodbus apparaat blijft actief in stand-by op de omvormer M2,M3",
-        "fr": "mises à jour de la dépendance et de la configuration\nmodbus reste actif en veille sur l'onduleur M2,M3",
-        "it": "aggiornamenti di dipendenza e configurazione\ndispositivo modbus rimane attivo in standby sull'inverter M2,M3",
-        "es": "actualizaciones de dependencia y configuración\ndispositivo modbus permanece activo en espera en el inversor M2,M3",
-        "pl": "aktualizacje zależności i konfiguracji\nurządzenie modbus pozostaje aktywne w gotowości na falowniku M2, M3",
-        "uk": "оновлення залежності та конфігурації\nмотузковий пристрій залишається активним в автономному режимі на інверторі M2,M3",
-        "zh-cn": "依赖和配置更新\nmodbus设备仍然在反转器M2,M3上处于待机状态"
       }
     },
     "titleLang": {

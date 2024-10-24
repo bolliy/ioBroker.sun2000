@@ -65,7 +65,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.15.0 (2024-10-24)
 * dependency and configuration updates
 * display a clearly legible table bar #121
 * modbus-proxy write data also to the read cache #119
