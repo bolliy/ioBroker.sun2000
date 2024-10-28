@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.15.0",
+    "version": "0.15.1",
     "news": {
+      "0.15.1": {
+        "en": "SDongle data was not written as object states\nadjust the adapter settings",
+        "de": "SDongle Daten wurden nicht als Objektzustände geschrieben\nanpassung der adaptereinstellungen",
+        "ru": "Данные SDongle не были написаны как состояния объектов\nнастроить настройки адаптера",
+        "pt": "Os dados do SDongle não foram escritos como estados de objeto\najustar as configurações do adaptador",
+        "nl": "SDongle-gegevens zijn niet geschreven als objecttoestanden\nde adapterinstellingen aanpassen",
+        "fr": "Les données de SDongle n'ont pas été écrites comme des états d'objet\najuster les paramètres de l'adaptateur",
+        "it": "I dati SDongle non sono stati scritti come stati oggetto\nregolare le impostazioni dell'adattatore",
+        "es": "Los datos de SDongle no fueron escritos como estados objeto\najustar la configuración del adaptador",
+        "pl": "Dane SDongle nie zostały zapisane jako stany obiektu\nustawić ustawienia adaptera",
+        "uk": "Дані SDongle не були написані як об'єкти\nналаштування адаптера",
+        "zh-cn": "SDongle 数据没有作为对象状态写入\n调整适配器设置"
+      },
       "0.15.0": {
         "en": "dependency and configuration updates\ndisplay a clearly legible table bar #121\nmodbus-proxy write data also to the read cache #119",
         "de": "abhängigkeits- und konfigurationsupdates\neine deutlich lesbare tischleiste #121 anzeigen\nmodbus-proxy schreibdaten auch zum lesespeicher #119",
@@ -80,19 +93,6 @@
         "pl": "dodano link do darowizny w ustawieniach adaptera\nzaktualizowana zależność",
         "uk": "додано посилання пожертвування в налаштуваннях адаптера\nоновлення залежності",
         "zh-cn": "在适配器设置中添加一个捐赠链接\n更新依赖关系"
-      },
-      "0.10.0": {
-        "en": "dependency and configuration updates\nadjust roles in the control path\nBattery control: add backup power SOC #84\nfix: wrong state name `control.battery.targetSOC` with trailing space",
-        "de": "abhängigkeits- und konfigurationsupdates\nrollen im kontrollpfad anpassen\nBatteriesteuerung: Backup-Leistung hinzufügen SOC #84\nfix: falscher Zustandsname `control.battery.targetSOC` mit Trailing Space",
-        "ru": "обновления зависимости и конфигурации\nкорректировать роли на пути управления\n#84\nисправить: неправильное название состояния `control.battery.targetSOC' с отслеживающим пространством",
-        "pt": "atualizações de dependência e configuração\najustar funções no caminho de controle\nControle da bateria: adicionar energia de backup SOC #84\ncorreção: nome de estado errado `control.battery.targetSOC` com espaço de trilha",
-        "nl": "afhankelijkheid en configuratie-updates\nde rollen in het controlepad aanpassen\nBatterij controle: voeg back-up vermogen SOC #84\nfix: verkeerde staat naam ",
-        "fr": "mises à jour de la dépendance et de la configuration\najuster les rôles dans le chemin de contrôle\nCommande de la batterie: ajouter la puissance de secours SOC #84\ncorrection : nom d'état incorrect `control.battery.targetSOC` avec espace de traînage",
-        "it": "aggiornamenti di dipendenza e configurazione\nregolare i ruoli nel percorso di controllo\nControllo della batteria: aggiungere la potenza di backup SOC #84\nfix: nome di stato sbagliato `control.battery.targetSOC` con lo spazio trailing",
-        "es": "actualizaciones de dependencia y configuración\najustar funciones en la ruta de control\nControl de batería: añadir potencia de respaldo SOC #84\nfijado: nombre de estado equivocado `control.battery.targetSOC` con espacio de seguimiento",
-        "pl": "aktualizacje zależności i konfiguracji\ndostosować role w ścieżce sterowania\nKontrola baterii: dodać zasilanie awaryjne SOC # 84\nfix: błędna nazwa stanu 'control.battery.ActivitSOC' z przepustnicą",
-        "uk": "оновлення залежності та конфігурації\nрегулювання ролі в шляху управління\nКонтроль акумулятора: додаємо резервну потужність SOC #84\nвиправити: неправильне ім'я держави `control.battery.targetSOC` з причепом",
-        "zh-cn": "依赖和配置更新\n调整控制路径中的角色\n电池控制: 添加备份功率 SOC #84\n修补:错误的州名`control.battery.targetSOC ' ,带有后端空间"
       }
     },
     "titleLang": {
