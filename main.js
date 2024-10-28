@@ -320,10 +320,6 @@ class Sun2000 extends utils.Adapter {
 			this.config.integration = 1;
 			this.updateConfig(this.config);
 		}
-		if (this.config.sd_active) { //SDongle
-			this.config.sd_active = false;
-			this.updateConfig(this.config);
-		}
 
 		await this.setState('info.ip', {val: this.config.address, ack: true});
 		await this.setState('info.port', {val: this.config.port, ack: true});
@@ -352,7 +348,6 @@ class Sun2000 extends utils.Adapter {
 			this.settings.ms.active = this.config.ms_active;
 			this.settings.ms.log = this.config.ms_log;
 			//SmartLogger
-			//this.settings.sl.active = this.config.sl_active;
 			this.settings.integration = this.config.integration;
 			this.settings.sl.meterId = this.config.sl_meterId;
 			//battery charge control
@@ -360,7 +355,6 @@ class Sun2000 extends utils.Adapter {
 			//further battery register
 			this.settings.ds.batteryUnits = this.config.ds_bu;
 			this.settings.ds.batteryPacks = this.config.ds_bp;
-
 
 			if (this.settings.modbusAdjust) {
 				await this.setState('info.JSONhealth', {val: '{message: "Adjust modbus settings"}', ack: true});

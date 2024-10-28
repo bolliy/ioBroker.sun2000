@@ -121,6 +121,7 @@
                     "label": "sd.active",
                     "newLine": true,
                     "tooltip": "SDongle active",
+                    "disabled": "data.integration != 0",
                     "xs": 12,
                     "sm": 12,
                     "md": 6,
@@ -130,6 +131,7 @@
                 "sDongleId": {
                     "type": "text",
                     "label": "SDongleA modbus ID",
+                    "disabled": "data.integration != 0",
                     "newLine": true,
                     "xs": 12,
                     "sm": 12,
@@ -148,6 +150,7 @@
                     "label": "sl.meterId",
                     "newLine": true,
                     "tooltip": "The Meter modbus ID",
+                    "disabled": "data.integration != 1",
                     "xs": 12,
                     "sm": 12,
                     "md": 6,
@@ -179,7 +182,7 @@
                 },
                 "chipsTxt": {
                     "type": "staticText",
-                    "text": "Third party device such as wallbox, energy manager etc. can receive data even if the modbus interface of inverter is already in use. In addition you can mirror the sun2000 data to another IoBroker instance.",
+                    "text": "Third party device such as wallbox, energy manager etc. can receive and send data even if the modbus interface of inverter is already in use. In addition you can mirror the sun2000 data to another IoBroker instance.",
                     "newLine": true
                 },
                 "ms_active": {

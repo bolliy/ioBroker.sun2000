@@ -65,6 +65,10 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* SDongle data was not written as object states
+* adjust setting page
+
 ### 0.15.0 (2024-10-24)
 * dependency and configuration updates
 * display a clearly legible table bar #121
