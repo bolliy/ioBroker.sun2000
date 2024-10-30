@@ -65,6 +65,9 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* check to read additional register data of Huawei Emma
+
 ### 0.15.2 (2024-10-30)
 * EMMA Device was not initialized
 
