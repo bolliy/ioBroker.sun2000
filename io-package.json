@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.15.1",
+    "version": "0.15.2",
     "news": {
+      "0.15.2": {
+        "en": "EMMA Device was not initialized",
+        "de": "EMMA Gerät wurde nicht initialisiert",
+        "ru": "EMMA Устройство не было инициализировано",
+        "pt": "EMPRESA Dispositivo não inicializado",
+        "nl": "EMMA Apparaat is niet geïnitialiseerd",
+        "fr": "EMMA L'appareil n'a pas été initialisé",
+        "it": "EMMA Il dispositivo non è stato inizializzato",
+        "es": "EMMA No se inicializó el dispositivo",
+        "pl": "EMMA Urządzenie nie zostało zainicjowane",
+        "uk": "ЕММА Пристрої не було ініціалізовано",
+        "zh-cn": "埃马 设备未初始化"
+      },
       "0.15.1": {
         "en": "SDongle data was not written as object states\nadjust the adapter settings",
         "de": "SDongle Daten wurden nicht als Objektzustände geschrieben\nanpassung der adaptereinstellungen",
@@ -80,19 +93,6 @@
         "pl": "Wymagania dotyczące kontroli ioBroker i serwisu Bot # 104\ndodany zestaw baterii # 85\ndodany panel konfiguracyjny \"Dalszy rejestr '",
         "uk": "Вимоги до ioBroker Check and Service Bot #104\nдоданий акумуляторний пакет #85\nдодано панель налаштувань `Further Реєстр й",
         "zh-cn": "ioBroker检查和服务瓶的所需经费#104\n添加电池包# 85\n添加配置面板“ 进一步登记” `"
-      },
-      "0.11.0": {
-        "en": "added a donation link in the adapter settings\ndependency updated",
-        "de": "einen spendenlink in den adaptereinstellungen hinzugefügt\naktualisierte abhängigkeit",
-        "ru": "добавлена ссылка пожертвований в настройках адаптера\nобновленные данные",
-        "pt": "adicionou um link de doação nas configurações do adaptador\ndependência atualizada",
-        "nl": "een donatielink toegevoegd in de adapterinstellingen\nafhankelijkheid bijgewerkt",
-        "fr": "ajouté un lien de don dans les paramètres de l'adaptateur\nmise à jour de la dépendance",
-        "it": "aggiunto un link di donazione nelle impostazioni dell'adattatore\naggiornamento della dipendenza",
-        "es": "añadido un enlace de donación en la configuración del adaptador\nactualización de la dependencia",
-        "pl": "dodano link do darowizny w ustawieniach adaptera\nzaktualizowana zależność",
-        "uk": "додано посилання пожертвування в налаштуваннях адаптера\nоновлення залежності",
-        "zh-cn": "在适配器设置中添加一个捐赠链接\n更新依赖关系"
       }
     },
     "titleLang": {
