@@ -1,8 +1,60 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.13.0",
+    "version": "0.15.2",
     "news": {
+      "0.15.2": {
+        "en": "EMMA Device was not initialized",
+        "de": "EMMA Gerät wurde nicht initialisiert",
+        "ru": "EMMA Устройство не было инициализировано",
+        "pt": "EMPRESA Dispositivo não inicializado",
+        "nl": "EMMA Apparaat is niet geïnitialiseerd",
+        "fr": "EMMA L'appareil n'a pas été initialisé",
+        "it": "EMMA Il dispositivo non è stato inizializzato",
+        "es": "EMMA No se inicializó el dispositivo",
+        "pl": "EMMA Urządzenie nie zostało zainicjowane",
+        "uk": "ЕММА Пристрої не було ініціалізовано",
+        "zh-cn": "埃马 设备未初始化"
+      },
+      "0.15.1": {
+        "en": "SDongle data was not written as object states\nadjust the adapter settings",
+        "de": "SDongle Daten wurden nicht als Objektzustände geschrieben\nanpassung der adaptereinstellungen",
+        "ru": "Данные SDongle не были написаны как состояния объектов\nнастроить настройки адаптера",
+        "pt": "Os dados do SDongle não foram escritos como estados de objeto\najustar as configurações do adaptador",
+        "nl": "SDongle-gegevens zijn niet geschreven als objecttoestanden\nde adapterinstellingen aanpassen",
+        "fr": "Les données de SDongle n'ont pas été écrites comme des états d'objet\najuster les paramètres de l'adaptateur",
+        "it": "I dati SDongle non sono stati scritti come stati oggetto\nregolare le impostazioni dell'adattatore",
+        "es": "Los datos de SDongle no fueron escritos como estados objeto\najustar la configuración del adaptador",
+        "pl": "Dane SDongle nie zostały zapisane jako stany obiektu\nustawić ustawienia adaptera",
+        "uk": "Дані SDongle не були написані як об'єкти\nналаштування адаптера",
+        "zh-cn": "SDongle 数据没有作为对象状态写入\n调整适配器设置"
+      },
+      "0.15.0": {
+        "en": "dependency and configuration updates\ndisplay a clearly legible table bar #121\nmodbus-proxy write data also to the read cache #119",
+        "de": "abhängigkeits- und konfigurationsupdates\neine deutlich lesbare tischleiste #121 anzeigen\nmodbus-proxy schreibdaten auch zum lesespeicher #119",
+        "ru": "обновления зависимости и конфигурации\n#121\nmodbus-proxy пишут данные также кэшу #119",
+        "pt": "atualizações de dependência e configuração\nexibir uma barra de mesa claramente legível #121\nmodbus-proxy escrever dados também para o cache de leitura #119",
+        "nl": "afhankelijkheid en configuratie-updates\neen duidelijk leesbare tafelbalk #121 tonen\nmodbus-proxy schrijf gegevens ook naar de leescache #119",
+        "fr": "mises à jour de la dépendance et de la configuration\nafficher une barre de table clairement lisible #121\nmodbus-proxy écrire les données aussi au cache lecture #119",
+        "it": "aggiornamenti di dipendenza e configurazione\nvisualizza una barra da tavolo chiaramente leggibile #121\nmodbus-proxy scrivere i dati anche alla cache di lettura #119",
+        "es": "actualizaciones de dependencia y configuración\nmostrar una barra de mesa claramente legible #121\nmodbus-proxy escribe datos también al caché de lectura #119",
+        "pl": "aktualizacje zależności i konfiguracji\nwyświetla czytelny pasek tabeli # 121\nmodbus- proxy write data also to the read cache # 119",
+        "uk": "оновлення залежності та конфігурації\nдисплей чітко нижня білизна #121\nmodbus-proxy пише дані також для читання кеш #119",
+        "zh-cn": "依赖和配置更新\n显示清晰可见的表栏 # 121\nmodbus- 代理写入数据到读缓存 # 119"
+      },
+      "0.14.0": {
+        "en": "adjust for Responsive Design #121\nlock on asynchronous modbus code\nwriting data ​​via the modbus-proxy #119\nread additional register data of Huawei Emma",
+        "de": "anpassung für Responsive Design #121\nasynchrone modbus-code blockieren\nschreiben von daten über die modbus-proxy #119\nweitere Registrierungsdaten von Huawei Emma lesen",
+        "ru": "#121\nзамок на асинхронном коде modbus\nзаписи данных через modbus-proxy #119\nпрочитать дополнительные данные реестра Huawei Эмма",
+        "pt": "ajustar para Design responsivo #121\nbloqueio no código modbus assíncrono\nescrever dados através do modbus-proxy #119\nleia dados de registro adicionais de Huawei Emma",
+        "nl": "aanpassen voor Responsive Design #121\nvergrendelen op asynchrone modbus-code\nschrijven van gegevens via de modbus-proxy #119\nlees extra registergegevens van Huawei Emma",
+        "fr": "ajuster pour Responsive Design #121\nverrouillage du code modbus asynchrone\nécrire des données via le modbus-proxy #119\nlire les données supplémentaires du registre de Huawei Emma",
+        "it": "regolazione per Responsive Design #121\nblocco su codice modbus asincrono\ndati di scrittura tramite il modbus-proxy #119\nleggere ulteriori dati di registro di Huawei Emma",
+        "es": "ajuste para el diseño responsable #121\nbloqueo en código modbus asincrónico\nescribir datos a través del modbus-proxy #119\nleer más datos de registro de Huawei Emma",
+        "pl": "dostosowanie do projektu Responsive Design # 121\nblokada asynchronicznego kodu modbusa\nzapisywanie danych za pośrednictwem modbus- proxy # 119\nprzeczytaj dodatkowe dane rejestru Huawei Emma",
+        "uk": "регульований для відповідального дизайну #121\nблокування на коді asynchronous modbus\nнаписання даних через modbus-proxy #119\nчитати додаткові реєстраційні дані Huawei Emma",
+        "zh-cn": "适应设计 # 121\n锁定同步调制解码\n通过modbus- 代理 119 写入数据\n读取 Huawei Emma 的额外注册数据"
+      },
       "0.13.0": {
         "en": "improve Modbus reconnection #116\nconfiguration update\nsimple Integration of Huawei Emma (Huawei Energy Management Assistant) #63",
         "de": "modbus-Reconnection #116 verbessern\nkonfigurationsupdate\neinfache Integration von Huawei Emma (Huawei Energy Management Assistant) #63",
@@ -41,58 +93,6 @@
         "pl": "Wymagania dotyczące kontroli ioBroker i serwisu Bot # 104\ndodany zestaw baterii # 85\ndodany panel konfiguracyjny \"Dalszy rejestr '",
         "uk": "Вимоги до ioBroker Check and Service Bot #104\nдоданий акумуляторний пакет #85\nдодано панель налаштувань `Further Реєстр й",
         "zh-cn": "ioBroker检查和服务瓶的所需经费#104\n添加电池包# 85\n添加配置面板“ 进一步登记” `"
-      },
-      "0.11.0": {
-        "en": "added a donation link in the adapter settings\ndependency updated",
-        "de": "einen spendenlink in den adaptereinstellungen hinzugefügt\naktualisierte abhängigkeit",
-        "ru": "добавлена ссылка пожертвований в настройках адаптера\nобновленные данные",
-        "pt": "adicionou um link de doação nas configurações do adaptador\ndependência atualizada",
-        "nl": "een donatielink toegevoegd in de adapterinstellingen\nafhankelijkheid bijgewerkt",
-        "fr": "ajouté un lien de don dans les paramètres de l'adaptateur\nmise à jour de la dépendance",
-        "it": "aggiunto un link di donazione nelle impostazioni dell'adattatore\naggiornamento della dipendenza",
-        "es": "añadido un enlace de donación en la configuración del adaptador\nactualización de la dependencia",
-        "pl": "dodano link do darowizny w ustawieniach adaptera\nzaktualizowana zależność",
-        "uk": "додано посилання пожертвування в налаштуваннях адаптера\nоновлення залежності",
-        "zh-cn": "在适配器设置中添加一个捐赠链接\n更新依赖关系"
-      },
-      "0.10.0": {
-        "en": "dependency and configuration updates\nadjust roles in the control path\nBattery control: add backup power SOC #84\nfix: wrong state name `control.battery.targetSOC` with trailing space",
-        "de": "abhängigkeits- und konfigurationsupdates\nrollen im kontrollpfad anpassen\nBatteriesteuerung: Backup-Leistung hinzufügen SOC #84\nfix: falscher Zustandsname `control.battery.targetSOC` mit Trailing Space",
-        "ru": "обновления зависимости и конфигурации\nкорректировать роли на пути управления\n#84\nисправить: неправильное название состояния `control.battery.targetSOC' с отслеживающим пространством",
-        "pt": "atualizações de dependência e configuração\najustar funções no caminho de controle\nControle da bateria: adicionar energia de backup SOC #84\ncorreção: nome de estado errado `control.battery.targetSOC` com espaço de trilha",
-        "nl": "afhankelijkheid en configuratie-updates\nde rollen in het controlepad aanpassen\nBatterij controle: voeg back-up vermogen SOC #84\nfix: verkeerde staat naam ",
-        "fr": "mises à jour de la dépendance et de la configuration\najuster les rôles dans le chemin de contrôle\nCommande de la batterie: ajouter la puissance de secours SOC #84\ncorrection : nom d'état incorrect `control.battery.targetSOC` avec espace de traînage",
-        "it": "aggiornamenti di dipendenza e configurazione\nregolare i ruoli nel percorso di controllo\nControllo della batteria: aggiungere la potenza di backup SOC #84\nfix: nome di stato sbagliato `control.battery.targetSOC` con lo spazio trailing",
-        "es": "actualizaciones de dependencia y configuración\najustar funciones en la ruta de control\nControl de batería: añadir potencia de respaldo SOC #84\nfijado: nombre de estado equivocado `control.battery.targetSOC` con espacio de seguimiento",
-        "pl": "aktualizacje zależności i konfiguracji\ndostosować role w ścieżce sterowania\nKontrola baterii: dodać zasilanie awaryjne SOC # 84\nfix: błędna nazwa stanu 'control.battery.ActivitSOC' z przepustnicą",
-        "uk": "оновлення залежності та конфігурації\nрегулювання ролі в шляху управління\nКонтроль акумулятора: додаємо резервну потужність SOC #84\nвиправити: неправильне ім'я держави `control.battery.targetSOC` з причепом",
-        "zh-cn": "依赖和配置更新\n调整控制路径中的角色\n电池控制: 添加备份功率 SOC #84\n修补:错误的州名`control.battery.targetSOC ' ,带有后端空间"
-      },
-      "0.9.0": {
-        "en": "dependency and configuration updates\nmodbus device remains active in standby on the inverter M2,M3",
-        "de": "abhängigkeits- und konfigurationsupdates\nmodbus-Gerät bleibt im Standby am Wechselrichter M2,M3 aktiv",
-        "ru": "обновления зависимости и конфигурации\nmodbus device остается активным в режиме ожидания на инверторе M2,M3",
-        "pt": "atualizações de dependência e configuração\ndispositivo modbus permanece ativo em espera no inversor M2, M3",
-        "nl": "afhankelijkheid en configuratie-updates\nmodbus apparaat blijft actief in stand-by op de omvormer M2,M3",
-        "fr": "mises à jour de la dépendance et de la configuration\nmodbus reste actif en veille sur l'onduleur M2,M3",
-        "it": "aggiornamenti di dipendenza e configurazione\ndispositivo modbus rimane attivo in standby sull'inverter M2,M3",
-        "es": "actualizaciones de dependencia y configuración\ndispositivo modbus permanece activo en espera en el inversor M2,M3",
-        "pl": "aktualizacje zależności i konfiguracji\nurządzenie modbus pozostaje aktywne w gotowości na falowniku M2, M3",
-        "uk": "оновлення залежності та конфігурації\nмотузковий пристрій залишається активним в автономному режимі на інверторі M2,M3",
-        "zh-cn": "依赖和配置更新\nmodbus设备仍然在反转器M2,M3上处于待机状态"
-      },
-      "0.8.0": {
-        "en": "Check numerical values for plausibility #75\nrealization the \"limit the power fed to grid\" (Export control)\nrealization the \"forcible Charge or Discharge Power\"\nIf the error 'ECONNRESET' appear, the modbus proxy should not terminate",
-        "de": "Zahlenwerte für Plausibilität prüfen #75\nrealisierung der \"begrenzt die Stromzufuhr zum Netz\" (Exportsteuerung)\nrealisierung der \"forcible Charge or Discharge Power\"\nWenn der Fehler 'ECONNRESET' angezeigt wird, sollte der Modbus-Proxy nicht enden",
-        "ru": "Проверьте численные значения правдоподобности #75\nреализация «ограничения мощности, подаваемой в сетку» (Export control)\nреализация «сильной зарядки или выдающейся силы»\nЕсли появляется ошибка \"ECONNRESET\", то прокси-модуль не должен прекращать",
-        "pt": "Verificar valores numéricos para plausibilidade #75\nrealização do \"limite o poder alimentado à grade\" (controle de exportação)\nrealização do \"poder de carga ou descarga forcível\"\nSe o erro 'ECONNRESET' aparecer, o proxy modbus não deve terminar",
-        "nl": "Numerieke waarden controleren op plausibiliteit #75\nrealisatie van de \"limit the power feed to grid\" (Export control)\nrealisatie van de \"forcible charge or discharge power\"\nAls de fout 'ECONNRESET' verschijnt, moet de modbus-proxy niet worden beëindigd",
-        "fr": "Vérifier les valeurs numériques pour la plausibilité #75\nréalisation de la \"limite de la puissance alimentée au réseau\" (contrôle des exportations)\nréalisation de la \"puissance de charge ou de décharge forcée\"\nSi l'erreur 'ECONNESET' apparaît, le proxy modbus ne doit pas se terminer",
-        "it": "Controlla i valori numerici per la plausibilità #75\nrealizzazione del \"limite la potenza alimentata alla griglia\" (Controllo dell'esportazione)\nrealizzazione del \"Forcible Charge or Discharge Power\"\nSe viene visualizzato l'errore 'ECONNRESET', il proxy modbus non deve terminare",
-        "es": "Compruebe los valores numéricos para la plausibilidad #75\nrealización del \"limitar el poder alimentado a la red\" (Control de exportación)\nrealización del \"poder de carga forzosa o descarga\"\nSi aparece el error 'ECONNRESET', el modbus proxy no debe terminar",
-        "pl": "Sprawdź wartości numeryczne pod względem wiarygodności # 75\nrealizacja \"ograniczenie mocy zasilanej do siatki\" (Kontrola eksportu)\nrealizacja \"mocy ładowania lub wyładowania\"\nJeśli pojawi się błąd 'ECONNRESET', proxy modbusa nie powinny kończyć",
-        "uk": "Перевірити чисельні значення для плати #75\nреалізація \"випуску потужності, що надходить до сітки\"\nреалізація \"потужного заряду або розряду\"\nЯкщо з'явиться помилка «ЕКОНРЕСЕТ», то модбус не повинен припинити",
-        "zh-cn": "请检查archive-date=中的日期值 (帮助) 75\n实现“将供电限制在网格上”(出口管制)\n实现“强制充电或放电”\n如果错误“ ECONRESET” 出现, modbus 代理不应该终止"
       }
     },
     "titleLang": {

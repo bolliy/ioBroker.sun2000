@@ -61,7 +61,7 @@ class Sun2000 extends utils.Adapter {
 			},
 			ds: {
 				batteryUnits : true,
-				batterPacks : false
+				batteryPacks : false
 			}
 		};
 
@@ -190,11 +190,6 @@ class Sun2000 extends utils.Adapter {
 					native: {}
 				});
 			}
-			/*
-			if (item.driverClass == driverClasses.emmaMeter) {
-				item.path = '';
-			}
-			*/
 
 		}
 	}
@@ -325,10 +320,6 @@ class Sun2000 extends utils.Adapter {
 			this.config.integration = 1;
 			this.updateConfig(this.config);
 		}
-		if (this.config.sd_active) { //SDongle
-			this.config.sd_active = false;
-			this.updateConfig(this.config);
-		}
 
 		await this.setState('info.ip', {val: this.config.address, ack: true});
 		await this.setState('info.port', {val: this.config.port, ack: true});
@@ -357,7 +348,6 @@ class Sun2000 extends utils.Adapter {
 			this.settings.ms.active = this.config.ms_active;
 			this.settings.ms.log = this.config.ms_log;
 			//SmartLogger
-			//this.settings.sl.active = this.config.sl_active;
 			this.settings.integration = this.config.integration;
 			this.settings.sl.meterId = this.config.sl_meterId;
 			//battery charge control
@@ -365,7 +355,6 @@ class Sun2000 extends utils.Adapter {
 			//further battery register
 			this.settings.ds.batteryUnits = this.config.ds_bu;
 			this.settings.ds.batteryPacks = this.config.ds_bp;
-
 
 			if (this.settings.modbusAdjust) {
 				await this.setState('info.JSONhealth', {val: '{message: "Adjust modbus settings"}', ack: true});
@@ -384,6 +373,17 @@ class Sun2000 extends utils.Adapter {
 						meter: (i==0 && this.settings.integration === 0)
 					});
 				}
+
+				//SDongle
+				if (this.settings.integration === 0 && this.settings.sd.active) {
+					this.devices.push({
+						index: 0,
+						duration: 0,
+						modbusId: this.settings.sd.sDongleId,
+						driverClass: driverClasses.sdongle
+					});
+				}
+
 				//SmartLogger
 				if (this.settings.integration === 1) {
 					this.devices.push({
@@ -403,7 +403,7 @@ class Sun2000 extends utils.Adapter {
 					}
 				}
 
-				//Emma
+				//EMMA
 				if (this.settings.integration === 2) {
 					this.devices.push({
 						index: 0,
@@ -412,16 +412,6 @@ class Sun2000 extends utils.Adapter {
 						modbusId: 0,
 						meter : true,
 						driverClass: driverClasses.emma
-					});
-				}
-
-				//SDongle
-				if (this.settings.sd.active) {
-					this.devices.push({
-						index: 0,
-						duration: 0,
-						modbusId: this.settings.sd.sDongleId,
-						driverClass: driverClasses.sdongle
 					});
 				}
 
@@ -456,8 +446,8 @@ class Sun2000 extends utils.Adapter {
 		}
 		await this.state.runPostProcessHooks(dataRefreshRate.high);
 
+		//Low Loop
 		if (timeLeft(nextLoop) > 0) {
-			//Low Loop
 			for (const [i,item] of this.devices.entries()) {
 				//this.log.debug('+++++ Loop: '+i+' Left Time: '+timeLeft(nextLoop,(i+1)/this.devices.length)+' Faktor '+((i+1)/this.devices.length));
 				this.lastStateUpdatedLow += await this.state.updateStates(item,this.modbusClient,dataRefreshRate.low,timeLeft(nextLoop,(i+1)/this.devices.length));

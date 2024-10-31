@@ -44,6 +44,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 * HUAWEI Luna2000 Battery
 * HUAWEI Smart Power Sensor DTSU666-H or DDSU666-H
 * HUAWEI Smart Logger / min. Softwareversion: V300R023C10SPC311
+* HUAWEI EMMA / min. Softwareversion: V100R024C00SPC101
 
 ## Feature list
 
@@ -56,7 +57,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 * [`Export Control`](https://github.com/bolliy/ioBroker.sun2000/wiki/Begrenzung-Netzeinspeisung-(Export-Control)): The excess PV energy is fed into the power grid, but not all countries allow users to sell electricity. Some countries have introduced regulations to restrict the sale of electricity to the grid. 
 * [`modbus-proxy`](https://github.com/bolliy/ioBroker.sun2000/wiki/Modbus-Proxy): Third party device such as wallbox, energy manager etc. can receive data even if the modbus interface of inverter is already in use. In addition you can mirror the sun2000 data to another IoBroker instance.
 * Huawei [`SmartLogger`](https://github.com/bolliy/ioBroker.sun2000/wiki/SmartLogger) integration: Monitors and manages the PV power system. The adapter saves the collected data in the same way as it does when read out the inverter directly.
-* Huawei [`Emma`]()
+* Huawei [`Emma`]() integration: The Modbus access, network connectivity (WiFi and Ethernet) and the DDSU/DTSU-666H smart meter functions are integrated in one unit - the use of the Sdongle becomes redundant. In addition Huawei EV chargers and load shedding/control (via selected Shelly devices) are supported and "intelligent" controlled.
 
 ## Changelog
 
@@ -64,10 +65,31 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* check to read additional register data of Huawei Emma
+
+### 0.15.2 (2024-10-30)
+* EMMA Device was not initialized
+
+### 0.15.1 (2024-10-28)
+* SDongle data was not written as object states
+* adjust the adapter settings
+
+### 0.15.0 (2024-10-24)
+* dependency and configuration updates
+* display a clearly legible table bar #121
+* modbus-proxy write data also to the read cache #119
+
+### 0.14.0 (2024-10-20)
+* adjust for Responsive Design #121
+* lock on asynchronous modbus code
+* writing data ​​via the modbus-proxy #119
+* read additional register data of Huawei Emma
+
 ### 0.13.0 (2024-10-11)
 * improve Modbus reconnection #116
 * configuration update
-* simple Integration of Huawei Emma (Huawei Energy Management Assistant) #63
+* initial Integration of Huawei Emma (Huawei Energy Management Assistant) #63
 
 ### 0.12.1 (2024-09-29)
 * no warning from check the valid number during standby: "no irradiation"
