@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.15.2",
+    "version": "0.16.0",
     "news": {
+      "0.16.0": {
+        "en": "dependency and configuration updates\nread additional register data of Huawei Emma",
+        "de": "abhängigkeits- und konfigurationsupdates\nweitere Registrierungsdaten von Huawei Emma lesen",
+        "ru": "обновления зависимости и конфигурации\nпрочитать дополнительные данные реестра Huawei Эмма",
+        "pt": "atualizações de dependência e configuração\nleia dados de registro adicionais de Huawei Emma",
+        "nl": "afhankelijkheid en configuratie-updates\nlees extra registergegevens van Huawei Emma",
+        "fr": "mises à jour de la dépendance et de la configuration\nlire les données supplémentaires du registre de Huawei Emma",
+        "it": "aggiornamenti di dipendenza e configurazione\nleggere ulteriori dati di registro di Huawei Emma",
+        "es": "actualizaciones de dependencia y configuración\nleer más datos de registro de Huawei Emma",
+        "pl": "aktualizacje zależności i konfiguracji\nprzeczytaj dodatkowe dane rejestru Huawei Emma",
+        "uk": "оновлення залежності та конфігурації\nчитати додаткові реєстраційні дані Huawei Emma",
+        "zh-cn": "依赖和配置更新\n读取 Huawei Emma 的额外注册数据"
+      },
       "0.15.2": {
         "en": "EMMA Device was not initialized",
         "de": "EMMA Gerät wurde nicht initialisiert",
@@ -80,19 +93,6 @@
         "pl": "brak ostrzeżenia z sprawdzenia poprawnego numeru podczas czuwania: \"brak napromieniowania\"",
         "uk": "без попередження про перевірку дійсного числа під час очікування: \"не опромінення\"",
         "zh-cn": "在待命时不检查有效号码的警告 : “ 不辐射 ”"
-      },
-      "0.12.0": {
-        "en": "Requirements from ioBroker Check and Service Bot #104\nadded battery packs #85\nadded config panel `Further Register`",
-        "de": "Anforderungen an ioBroker Check und Service Bot #104\nakkupacks #85\nhinzufügen config panel `Weiter registrieren `",
-        "ru": "Требования от ioBroker Check and Service Bot #104\n#85\nдобавленная панель конфигурации `Further Register \"",
-        "pt": "Requisitos de ioBroker Check e Service Bot #104\npacotes de bateria adicionados #85\nadicionado painel de configuração `Further Register \"",
-        "nl": "Vereisten van ioBroker Check and Service Bot #104\ntoegevoegde batterijpakketten #85\ntoegevoegd config paneel \"Verder registreren\" Wat",
-        "fr": "Exigences de ioBroker Check and Service Bot #104\npacks de batterie supplémentaires #85\najouté panneau de configuration `Plus grand registre \"",
-        "it": "Requisiti da ioBroker Check and Service Bot #104\nbatterie aggiunte #85\naggiunto pannello di configurazione `Further Register #",
-        "es": "Requisitos de ioBroker Check and Service Bot #104\nañadir paquetes de batería #85\npanel de configuración añadido `Más registro `",
-        "pl": "Wymagania dotyczące kontroli ioBroker i serwisu Bot # 104\ndodany zestaw baterii # 85\ndodany panel konfiguracyjny \"Dalszy rejestr '",
-        "uk": "Вимоги до ioBroker Check and Service Bot #104\nдоданий акумуляторний пакет #85\nдодано панель налаштувань `Further Реєстр й",
-        "zh-cn": "ioBroker检查和服务瓶的所需经费#104\n添加电池包# 85\n添加配置面板“ 进一步登记” `"
       }
     },
     "titleLang": {
