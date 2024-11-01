@@ -66,6 +66,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
+* dependency and configuration updates
 * read additional register data of Huawei Emma
 
 ### 0.15.2 (2024-10-30)
