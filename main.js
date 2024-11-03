@@ -320,7 +320,6 @@ class Sun2000 extends utils.Adapter {
 			this.config.integration = 1;
 			this.updateConfig(this.config);
 		}
-
 		await this.setState('info.ip', {val: this.config.address, ack: true});
 		await this.setState('info.port', {val: this.config.port, ack: true});
 		await this.setState('info.modbusIds', {val: this.config.modbusIds, ack: true});
@@ -339,6 +338,7 @@ class Sun2000 extends utils.Adapter {
 			this.settings.modbusIds = this.config.modbusIds.split(',').map((n) => {return Number(n);});
 			//SmartDongle
 			this.settings.sd.active = this.config.sd_active;
+			// eslint-disable-next-line no-constant-binary-expression
 			this.settings.sd.sDongleId = Number(this.config.sDongleId) ?? 0;
 			if (this.settings.sd.sDongleId < 0 || this.settings.sd.sDongleId >= 255) this.settings.sd.active = false;
 			this.settings.highInterval = this.config.updateInterval*1000; //ms
@@ -527,7 +527,7 @@ class Sun2000 extends utils.Adapter {
 			this.modbusClient && this.modbusClient.close();
 			this.setState('info.connection', false, true);
 			callback();
-		} catch (e) {
+		} catch {
 			callback();
 		}
 	}

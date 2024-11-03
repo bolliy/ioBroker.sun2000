@@ -65,6 +65,11 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+* Upgrade to ESLint 9.x
+* node >= 20.9
+
 ### 0.16.0 (2024-11-01)
 * dependency and configuration updates
 * read additional register data of Huawei Emma
