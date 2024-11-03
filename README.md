@@ -68,7 +68,8 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 
 ### **WORK IN PROGRESS**
 * Upgrade to ESLint 9.x
-* node >= 20.9
+* node >= v18.18.0
+* modbus-proxy: enabled reading data via input register
 
 ### 0.16.0 (2024-11-01)
 * dependency and configuration updates
