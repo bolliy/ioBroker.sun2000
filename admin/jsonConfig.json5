@@ -11,7 +11,12 @@
             "items": {
                 "donateTxt": {
                     "type": "staticText",
-                    "text": "donateTxt"
+                    "text": "donateTxt",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
                 },
                 "donateImage": {
                     "type": "staticImage",
@@ -19,8 +24,8 @@
                     "href" : "https://www.paypal.com/donate/?hosted_button_id=ZTX3VP9LZBDCG",
                     "src" : "paypal-button.png",
                     "newLine": true,
-                    "xs": 8,
-                    "sm": 10,
+                    "xs": 6,
+                    "sm": 4,
                     "md": 2,
                     "lg": 2,
                     "xl": 2
@@ -114,7 +119,12 @@
                 "chipsTxt": {
                     "type": "staticText",
                     "text": "Provides the collected data from the SDongle",
-                    "newLine": true
+                    "newLine": true,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
                 },
                 "sd_active": {
                     "type": "checkbox",
@@ -166,7 +176,12 @@
                 "chipsTxt1": {
                     "type": "staticText",
                     "text": "Placeholder for future Settings",
-                    "newLine": true
+                    "newLine": true,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
                 }
             }
         },
@@ -183,7 +198,12 @@
                 "chipsTxt": {
                     "type": "staticText",
                     "text": "Third party device such as wallbox, energy manager etc. can receive and send data even if the modbus interface of inverter is already in use. In addition you can mirror the sun2000 data to another IoBroker instance.",
-                    "newLine": true
+                    "newLine": true,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
                 },
                 "ms_active": {
                     "type": "checkbox",
@@ -244,7 +264,12 @@
                 "chipsTxt1": {
                     "type": "staticText",
                     "text": "This control is set in the opject path `sun2000.0.inverter.x.control.battery`",
-                    "newLine": true
+                    "newLine": true,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
                 },
                 "cb_tou": {
                     "type": "checkbox",
@@ -279,7 +304,12 @@
                 "chipsTxt2": {
                     "type": "staticText",
                     "text": "This control is set in the opject path `sun2000.0.inverter.x.control.battery`",
-                    "newLine": true
+                    "newLine": true,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
                 },
                 "staticLink2": {
                     "type": "staticLink",
@@ -303,7 +333,12 @@
                 "chipsTxt3": {
                     "type": "staticText",
                     "text": "This control is set in the opject path `sun2000.0.inverter.0.control.grid`",
-                    "newLine": true
+                    "newLine": true,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
                 },
                 "staticLink3": {
                     "type": "staticLink",
@@ -429,7 +464,12 @@
                 "chipsTxt": {
                     "type": "staticText",
                     "text": "Do you need help? There are multiple ways of getting support. ",
-                    "newLine": true
+                    "newLine": true,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
                 },
                 "staticLink1": {
                     "type": "staticLink",
