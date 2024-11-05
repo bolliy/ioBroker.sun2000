@@ -68,7 +68,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 
 ### **WORK IN PROGRESS**
 * adjust for Responsive Design #134
-* Upgrade to ESLint 9.x
+* migrate to ESLint 9.x
 * node >= v18.18.0
 * modbus-proxy: enabled reading data via input register
 
