@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.16.0",
+    "version": "0.17.0",
     "news": {
+      "0.17.0": {
+        "en": "adjust for Responsive Design #134\nmigrate to ESLint 9.x\nnode >= v18.18.0\nmodbus-proxy: enabled reading data via input register",
+        "de": "anpassung für Responsive Design #134\nmigration auf ESLint 9.x\nknoten >= v18.18.0\nmodbus-proxy: lesedaten über eingaberegister aktiviert",
+        "ru": "#134\nмигрировать в ESLint 9.x\nnode >= v18.18.0\nmodbus-proxy: включено чтение данных через регистр ввода",
+        "pt": "ajustar para Design responsivo #134\nmigrar para ESLint 9.x\nnode >= v18.18.0\nmodbus-proxy: dados de leitura habilitados via registro de entrada",
+        "nl": "aanpassen voor Responsive Design #134\nmigreren naar ESLint 9.x\nn.v.t\nmodbus-proxy: leesgegevens ingeschakeld via invoerregister",
+        "fr": "ajuster pour Responsive Design #134\nmigrer vers ESLint 9.x\nnoeud >= v18.18.0\nmodbus-proxy: activé la lecture des données via le registre d'entrée",
+        "it": "regolazione per Responsive Design #134\nmigrare a ESLint 9.x\nnodo >= v18.18.0\nmodbus-proxy: dati di lettura abilitati tramite registro input",
+        "es": "ajuste para el diseño responsable #134\nmigrar a ESLint 9.x\nnodo\nmodbus-proxy: datos de lectura habilitados mediante registro de entrada",
+        "pl": "dostosowanie dla Responsive Design # 134\nmigrate do ESLint 9.x\nwęzeł > = v18.18.0\nmodbus- proxy: włączone odczytywanie danych poprzez rejestr wejściowy",
+        "uk": "конфігурація для відповідального дизайну #134\nmigrate до ESLint 9.x\nвершина >= v18.18.0\nmodbus-proxy: ввімкнено дані читання через вхідний реєстр",
+        "zh-cn": "调整响应设计 # 134\n迁移到 ESLint 9.x\n节点 {v18.18.0}\nmodbus- 代理: 启用通过输入寄存器读取数据"
+      },
       "0.16.0": {
         "en": "dependency and configuration updates\nread additional register data of Huawei Emma",
         "de": "abhängigkeits- und konfigurationsupdates\nweitere Registrierungsdaten von Huawei Emma lesen",
@@ -80,19 +93,6 @@
         "pl": "poprawić ponowne połączenie Modbus # 116\naktualizacja konfiguracji\nprosta integracja Huawei Emma (Huawei Energy Management Assistant) # 63",
         "uk": "поліпшення відключення Modbus #116\nоновлення конфігурації\nпроста інтеграція Huawei Emma (Huawei Energy Management Assistant) #63",
         "zh-cn": "改进 Modbus 重联 # 116\n配置更新\n简单整合Huawei Emma(Huawei能源管理助理)#63"
-      },
-      "0.12.1": {
-        "en": "no warning from check the valid number during standby: \"no irradiation\"",
-        "de": "keine warnung vor der prüfung der gültigen nummer im standby: \"keine bestrahlung\"",
-        "ru": "не предупредить проверить действительный номер во время ожидания: «без облучения»",
-        "pt": "sem aviso de verificar o número válido durante o standby: \"nenhuma irradiação\"",
-        "nl": "geen waarschuwing van controle van het geldige nummer tijdens standby: \"geen bestraling\"",
-        "fr": "aucun avertissement de vérifier le nombre valide en attente: \"pas d'irradiation\"",
-        "it": "nessun avviso da controllare il numero valido durante la standby: \"nessuna irradiazione\"",
-        "es": "no hay advertencia de comprobar el número válido durante la espera: \"no irradiación\"",
-        "pl": "brak ostrzeżenia z sprawdzenia poprawnego numeru podczas czuwania: \"brak napromieniowania\"",
-        "uk": "без попередження про перевірку дійсного числа під час очікування: \"не опромінення\"",
-        "zh-cn": "在待命时不检查有效号码的警告 : “ 不辐射 ”"
       }
     },
     "titleLang": {
