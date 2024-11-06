@@ -475,27 +475,27 @@ class Sun2000 extends utils.Adapter {
 					this.setState('info.JSONhealth', {val: '{errno:1, message: "Can\'t connect to inverter"}', ack: true});
 				}
 				const ret = this.state.CheckReadError(this.settings.lowInterval*2);
-				const obj = {...ret,modbus: {...this.modbusClient.info}};
 				this.logger.debug(JSON.stringify(this.modbusClient.info));
 				//v0.8.x
 				if (!this.isReady) this.isReady = this.isConnected && !ret.errno;
 				// after 2 Minutes
-				if (this.alreadyRunWatchDog) {
+				if (this.toggleRunWatchDog) {
 					if (ret.errno) this.logger.warn(ret.message);
+					const obj = {...ret,modbus: {...this.modbusClient.info}};
 					this.setState('info.JSONhealth', {val: JSON.stringify(obj), ack: true});
-					if (this.modbusServer) {
-						!this.modbusServer.isConnected && this.modbusServer.connect();
-						if (this.settings.ms.log) {
-							//const stat = this.modbusServer.info?.stat;
-							//object is not empty
-							//if (Object.keys(stat).length > 0) this.log.info('Modbus tcp server: '+JSON.stringify(this.modbusServer.info));
-							this.logger.info('Modbus tcp server: '+JSON.stringify(this.modbusServer.info));
-						}
+				}
+				if (this.modbusServer) {
+					!this.modbusServer.isConnected && this.modbusServer.connect();
+					if (this.settings.ms.log) {
+						//const stat = this.modbusServer.info?.stat;
+						//object is not empty
+						//if (Object.keys(stat).length > 0) this.log.info('Modbus tcp server: '+JSON.stringify(this.modbusServer.info));
+						this.logger.info('Modbus tcp server: '+JSON.stringify(this.modbusServer.info));
 					}
 				}
 			}
 
-			if (!this.alreadyRunWatchDog) this.alreadyRunWatchDog = true;
+			this.toggleRunWatchDog = !this.toggleRunWatchDog;
 			this.lastStateUpdatedLow = 0;
 			this.lastStateUpdatedHigh = 0;
 
