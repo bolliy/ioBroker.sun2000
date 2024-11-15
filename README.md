@@ -65,6 +65,9 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* isConnected if inverter in standby
+
 ### 0.17.0 (2024-11-05)
 * adjust for Responsive Design #134
 * migrate to ESLint 9.x
