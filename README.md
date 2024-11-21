@@ -65,7 +65,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.17.1 (2024-11-21)
 * during the device status "Standby: detecting irradiation" (0x0002) register data is now also read from the inverter
 * The reading order of the battery data has been adjusted
 

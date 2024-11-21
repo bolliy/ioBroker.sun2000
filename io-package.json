@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.17.0",
+    "version": "0.17.1",
     "news": {
+      "0.17.1": {
+        "en": "during the device status \"Standby: detecting irradiation\" (0x0002) register data is now also read from the inverter\nThe reading order of the battery data has been adjusted",
+        "de": "während des Gerätestatus \"Standby: Detektion von Bestrahlung\" (0x0002) werden nun auch Registerdaten aus dem Wechselrichter gelesen\nDie Lesereihenfolge der Batteriedaten wurde angepasst",
+        "ru": "во время состояния устройства «Стандби: обнаружение облучения» (0x0002) данные регистров теперь также читаются из инвертора\nПорядок чтения данных батареи был скорректирован",
+        "pt": "durante o status do dispositivo \"Standby: detecção de irradiação\" (0x0002) dados de registro agora também é lido a partir do inversor\nA ordem de leitura dos dados da bateria foi ajustada",
+        "nl": "tijdens de apparaatstatus \"Standby: detectie van bestraling\" (0x0002) worden nu ook gegevens van de omvormer gelezen\nDe leesvolgorde van de batterijgegevens is aangepast",
+        "fr": "pendant l'état de l'appareil \"Standby: détecter l'irradiation\" (0x0002) les données du registre sont maintenant également lues à partir de l'onduleur\nL'ordre de lecture des données de la batterie a été ajusté",
+        "it": "durante lo stato del dispositivo \"Standby: rilevamento dell'irradiazione\" (0x0002) i dati di registro sono ora letti anche dall'inverter\nL'ordine di lettura dei dati della batteria è stato regolato",
+        "es": "durante el estado del dispositivo \"Standby: detecting irradiation\" (0x0002) datos del registro ahora también se lee desde el inversor\nEl orden de lectura de los datos de la batería se ha ajustado",
+        "pl": "podczas statusu urządzenia \"Standby: detection irradiation\" (0x0002) dane rejestru są teraz również odczytywane z inwertera\nKolejność odczytu danych baterii została dostosowana",
+        "uk": "при статусі пристрою \"Стандарт: виявлення опромінення\" (0x0002) реєстраційні дані тепер також читайте з інвертора\nВиправлено порядок читання даних акумулятора",
+        "zh-cn": "在设备状态“ Standby: 检测辐照” (0x0002) 注册数据现在也从反转器读取\n电池数据的读取顺序已调整"
+      },
       "0.17.0": {
         "en": "adjust for Responsive Design #134\nmigrate to ESLint 9.x\nnode >= v18.18.0\nmodbus-proxy: enabled reading data via input register",
         "de": "anpassung für Responsive Design #134\nmigration auf ESLint 9.x\nknoten >= v18.18.0\nmodbus-proxy: lesedaten über eingaberegister aktiviert",
@@ -80,19 +93,6 @@
         "pl": "dostosowanie do projektu Responsive Design # 121\nblokada asynchronicznego kodu modbusa\nzapisywanie danych za pośrednictwem modbus- proxy # 119\nprzeczytaj dodatkowe dane rejestru Huawei Emma",
         "uk": "регульований для відповідального дизайну #121\nблокування на коді asynchronous modbus\nнаписання даних через modbus-proxy #119\nчитати додаткові реєстраційні дані Huawei Emma",
         "zh-cn": "适应设计 # 121\n锁定同步调制解码\n通过modbus- 代理 119 写入数据\n读取 Huawei Emma 的额外注册数据"
-      },
-      "0.13.0": {
-        "en": "improve Modbus reconnection #116\nconfiguration update\nsimple Integration of Huawei Emma (Huawei Energy Management Assistant) #63",
-        "de": "modbus-Reconnection #116 verbessern\nkonfigurationsupdate\neinfache Integration von Huawei Emma (Huawei Energy Management Assistant) #63",
-        "ru": "#116\nобновление\nпростая интеграция Huawei Эмма (Huawei Energy Management Assistant) #63",
-        "pt": "melhorar a reconexão Modbus #116\natualização de configuração\nsimples integração de Huawei Emma (Huawei Energy Management Assistant) #63",
-        "nl": "modbus reconnectie #116 verbeteren\nconfiguratie-update\neenvoudige integratie van Huawei Emma (Huawei Energie Management Assistent) #63",
-        "fr": "améliorer la connexion Modbus #116\nmise à jour de configuration\nsimple intégration de Huawei Emma (Huawei Energy Management Assistant) #63",
-        "it": "migliorare la riconnessione Modbus #116\naggiornamento configurazione\nintegrazione semplice di Huawei Emma (Huawei Energy Management Assistant) #63",
-        "es": "mejorar la reconexión Modbus #116\nactualización de configuración\nsimple integración de Huawei Emma (Auxiliador de Gestión de Energía de Huawei) #63",
-        "pl": "poprawić ponowne połączenie Modbus # 116\naktualizacja konfiguracji\nprosta integracja Huawei Emma (Huawei Energy Management Assistant) # 63",
-        "uk": "поліпшення відключення Modbus #116\nоновлення конфігурації\nпроста інтеграція Huawei Emma (Huawei Energy Management Assistant) #63",
-        "zh-cn": "改进 Modbus 重联 # 116\n配置更新\n简单整合Huawei Emma(Huawei能源管理助理)#63"
       }
     },
     "titleLang": {
