@@ -68,6 +68,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 
 ### ** WORK IN PROGRESS**
 * dependency and configuration updates
+* modbus-proxy: the modbus ID 250 is mapped to ID 0
 
 ### 0.17.1 (2024-11-21)
 * during the device status "Standby: detecting irradiation" (0x0002) register data is now also read from the inverter
