@@ -66,7 +66,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	### **WORK IN PROGRESS**
 -->
 
-### ** WORK IN PROGRESS**
+### **WORK IN PROGRESS**
 * dependency and configuration updates
 * modbus-proxy: the modbus ID 250 is mapped to ID 0
 
