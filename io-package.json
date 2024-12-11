@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.17.1",
+    "version": "0.18.0",
     "news": {
+      "0.18.0": {
+        "en": "dependency and configuration updates\nmodbus-proxy: the modbus ID 250 is mapped to ID 0",
+        "de": "abhängigkeits- und konfigurationsupdates\nmodbus-proxy: die modbus ID 250 wird auf ID 0 abgebildet",
+        "ru": "обновления зависимости и конфигурации\nmodbus-proxy: modbus ID 250 отображается на ID 0",
+        "pt": "atualizações de dependência e configuração\nmodbus-proxy: o modbus ID 250 é mapeado para ID 0",
+        "nl": "afhankelijkheid en configuratie-updates\nmodbus-proxy: de modbus ID 250 is toegewezen aan ID 0",
+        "fr": "mises à jour de la dépendance et de la configuration\nmodbus-proxy: le modbus ID 250 est mapé à ID 0",
+        "it": "aggiornamenti di dipendenza e configurazione\nmodbus-proxy: il modbus ID 250 è mappato su ID 0",
+        "es": "actualizaciones de dependencia y configuración\nmodbus-proxy: el modbus ID 250 se asigna al ID 0",
+        "pl": "aktualizacje zależności i konfiguracji\nmodbus- proxy: modbus ID 250 jest odwzorowany na ID 0",
+        "uk": "оновлення залежності та конфігурації\nmodbus-proxy: modbus ID 250 is mapped to ID 0",
+        "zh-cn": "依赖和配置更新\nmodbus-代用:modbus ID 250被映射到ID 0"
+      },
       "0.17.1": {
         "en": "during the device status \"Standby: detecting irradiation\" (0x0002) register data is now also read from the inverter\nThe reading order of the battery data has been adjusted",
         "de": "während des Gerätestatus \"Standby: Detektion von Bestrahlung\" (0x0002) werden nun auch Registerdaten aus dem Wechselrichter gelesen\nDie Lesereihenfolge der Batteriedaten wurde angepasst",
@@ -80,19 +93,6 @@
         "pl": "aktualizacje zależności i konfiguracji\nwyświetla czytelny pasek tabeli # 121\nmodbus- proxy write data also to the read cache # 119",
         "uk": "оновлення залежності та конфігурації\nдисплей чітко нижня білизна #121\nmodbus-proxy пише дані також для читання кеш #119",
         "zh-cn": "依赖和配置更新\n显示清晰可见的表栏 # 121\nmodbus- 代理写入数据到读缓存 # 119"
-      },
-      "0.14.0": {
-        "en": "adjust for Responsive Design #121\nlock on asynchronous modbus code\nwriting data ​​via the modbus-proxy #119\nread additional register data of Huawei Emma",
-        "de": "anpassung für Responsive Design #121\nasynchrone modbus-code blockieren\nschreiben von daten über die modbus-proxy #119\nweitere Registrierungsdaten von Huawei Emma lesen",
-        "ru": "#121\nзамок на асинхронном коде modbus\nзаписи данных через modbus-proxy #119\nпрочитать дополнительные данные реестра Huawei Эмма",
-        "pt": "ajustar para Design responsivo #121\nbloqueio no código modbus assíncrono\nescrever dados através do modbus-proxy #119\nleia dados de registro adicionais de Huawei Emma",
-        "nl": "aanpassen voor Responsive Design #121\nvergrendelen op asynchrone modbus-code\nschrijven van gegevens via de modbus-proxy #119\nlees extra registergegevens van Huawei Emma",
-        "fr": "ajuster pour Responsive Design #121\nverrouillage du code modbus asynchrone\nécrire des données via le modbus-proxy #119\nlire les données supplémentaires du registre de Huawei Emma",
-        "it": "regolazione per Responsive Design #121\nblocco su codice modbus asincrono\ndati di scrittura tramite il modbus-proxy #119\nleggere ulteriori dati di registro di Huawei Emma",
-        "es": "ajuste para el diseño responsable #121\nbloqueo en código modbus asincrónico\nescribir datos a través del modbus-proxy #119\nleer más datos de registro de Huawei Emma",
-        "pl": "dostosowanie do projektu Responsive Design # 121\nblokada asynchronicznego kodu modbusa\nzapisywanie danych za pośrednictwem modbus- proxy # 119\nprzeczytaj dodatkowe dane rejestru Huawei Emma",
-        "uk": "регульований для відповідального дизайну #121\nблокування на коді asynchronous modbus\nнаписання даних через modbus-proxy #119\nчитати додаткові реєстраційні дані Huawei Emma",
-        "zh-cn": "适应设计 # 121\n锁定同步调制解码\n通过modbus- 代理 119 写入数据\n读取 Huawei Emma 的额外注册数据"
       }
     },
     "titleLang": {
