@@ -6,7 +6,7 @@
 	"Update interval (sec)": "Update interval [sec]",
 	"The device ip address": "The device ip address",
 	"The modbus TCP port" : "The modbus TCP port",
-	"The modbus inverter IDs, separated with character ," : "The modbus inverter IDs, separated with character ,",
+	"The modbus inverter IDs, separated with character ," : "Inverter IDs, the master must be entered first, separated by ,",
 	"Update interval to update the values from the inverters" : "Update interval to update the values from the inverters",
 	"modbus connection timeout" : "modbus connection timeout",
 	"delay between modbus requests" : "delay between modbus requests",

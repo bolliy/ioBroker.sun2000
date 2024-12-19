@@ -7,7 +7,7 @@ Which Huawei device should be used to establish the Modbus tcp connection
 ### Device Settings
 * `address`: Device IP address
 * `port`: Device modbus port (default: 502)
-* `modbusIds`: inverter IDs, separated with "," (default: 1, max. 5 inverters)
+* `modbusIds`: Inverter IDs, the master must be entered first, separated by "," (default: 1, max. 5 inverters)
 * `updateInterval`: Fast update interval (default: 20 sec, smallest 5 seconds per inverter)
 
 ## Integration Settings
