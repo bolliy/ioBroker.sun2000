@@ -279,7 +279,7 @@ class Sun2000 extends utils.Adapter {
 			this.settings.highInterval = 10000*this.settings.modbusIds.length;
 		} else {
 			let minInterval = this.settings.modbusIds.length*this.settings.modbusDelay*2.5; //len*5*delay/2
-			if (this.settings.integration > 0) { //SmartLogger
+			if (this.settings.integration > 0) { //SmartLogger, Emma
 				minInterval += 5000;
 			} else {
 				for (const device of this.devices) {
