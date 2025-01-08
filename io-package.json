@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "0.18.0",
+    "version": "0.18.1",
     "news": {
+      "0.18.1": {
+        "en": "dependency and configuration updates\ncontrol: if the battery is not running, events related to the battery are discarded\nmodbus-proxy: adjusted advanced logging",
+        "de": "abhängigkeits- und konfigurationsupdates\nsteuerung: wenn die batterie nicht läuft, werden ereignisse im zusammenhang mit der batterie verworfen\nmodbus-proxy: angepasste erweiterte protokollierung",
+        "ru": "обновления зависимости и конфигурации\nуправление: если батарея не работает, события, связанные с батареей, отбрасываются\nmodbus-proxy: скорректированные передовые лесозаготовки",
+        "pt": "atualizações de dependência e configuração\ncontrole: se a bateria não estiver funcionando, os eventos relacionados à bateria são descartados\nmodbus-proxy: log avançado ajustado",
+        "nl": "afhankelijkheid en configuratie-updates\ncontrole: als de batterij niet draait, worden gebeurtenissen in verband met de batterij weggegooid\nmodbus-proxy: aangepaste geavanceerde logging",
+        "fr": "mises à jour de la dépendance et de la configuration\ncontrôle: si la batterie ne fonctionne pas, les événements liés à la batterie sont jetés\nmodbus-proxy: enregistrement avancé ajusté",
+        "it": "aggiornamenti di dipendenza e configurazione\ncontrollo: se la batteria non è in esecuzione, gli eventi relativi alla batteria vengono scartati\nmodbus-proxy: registrazione avanzata regolata",
+        "es": "actualizaciones de dependencia y configuración\ncontrol: si la batería no funciona, los eventos relacionados con la batería son descartados\nmodbus-proxy: registro avanzado ajustado",
+        "pl": "aktualizacje zależności i konfiguracji\nsterowanie: jeśli akumulator nie jest uruchomiony, zdarzenia związane z akumulatorem są odrzucane\nmodbus- proxy: dostosowane zaawansowane logowanie",
+        "uk": "оновлення залежності та конфігурації\nконтроль: якщо акумулятор не працює, події, пов'язані з акумулятором, відкидаються\nmodbus-proxy: регульований розширений журналювання",
+        "zh-cn": "依赖和配置更新\n控件: 如果电池没有运行, 与电池相关的事件会被丢弃\nmodbus-代用:经过调整的高级记录"
+      },
       "0.18.0": {
         "en": "dependency and configuration updates\nmodbus-proxy: the modbus ID 250 is mapped to ID 0",
         "de": "abhängigkeits- und konfigurationsupdates\nmodbus-proxy: die modbus ID 250 wird auf ID 0 abgebildet",
@@ -80,19 +93,6 @@
         "pl": "Dane SDongle nie zostały zapisane jako stany obiektu\nustawić ustawienia adaptera",
         "uk": "Дані SDongle не були написані як об'єкти\nналаштування адаптера",
         "zh-cn": "SDongle 数据没有作为对象状态写入\n调整适配器设置"
-      },
-      "0.15.0": {
-        "en": "dependency and configuration updates\ndisplay a clearly legible table bar #121\nmodbus-proxy write data also to the read cache #119",
-        "de": "abhängigkeits- und konfigurationsupdates\neine deutlich lesbare tischleiste #121 anzeigen\nmodbus-proxy schreibdaten auch zum lesespeicher #119",
-        "ru": "обновления зависимости и конфигурации\n#121\nmodbus-proxy пишут данные также кэшу #119",
-        "pt": "atualizações de dependência e configuração\nexibir uma barra de mesa claramente legível #121\nmodbus-proxy escrever dados também para o cache de leitura #119",
-        "nl": "afhankelijkheid en configuratie-updates\neen duidelijk leesbare tafelbalk #121 tonen\nmodbus-proxy schrijf gegevens ook naar de leescache #119",
-        "fr": "mises à jour de la dépendance et de la configuration\nafficher une barre de table clairement lisible #121\nmodbus-proxy écrire les données aussi au cache lecture #119",
-        "it": "aggiornamenti di dipendenza e configurazione\nvisualizza una barra da tavolo chiaramente leggibile #121\nmodbus-proxy scrivere i dati anche alla cache di lettura #119",
-        "es": "actualizaciones de dependencia y configuración\nmostrar una barra de mesa claramente legible #121\nmodbus-proxy escribe datos también al caché de lectura #119",
-        "pl": "aktualizacje zależności i konfiguracji\nwyświetla czytelny pasek tabeli # 121\nmodbus- proxy write data also to the read cache # 119",
-        "uk": "оновлення залежності та конфігурації\nдисплей чітко нижня білизна #121\nmodbus-proxy пише дані також для читання кеш #119",
-        "zh-cn": "依赖和配置更新\n显示清晰可见的表栏 # 121\nmodbus- 代理写入数据到读缓存 # 119"
       }
     },
     "titleLang": {

@@ -64,7 +64,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS** 
+### 0.18.1 (2025-01-08) 
 * dependency and configuration updates
 * control: if the battery is not running, events related to the battery are discarded
 * modbus-proxy: adjusted advanced logging
