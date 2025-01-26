@@ -163,22 +163,22 @@
         "condition": {
           "operand": "and",
           "rules": [
-            "oldVersion<=0.6.2",
-            "newVersion>0.6.2"
+            "oldVersion<=0.18.1",
+            "newVersion>0.18.1"
           ]
         },
         "title": {
-          "en": "node.js 18.x or higher required",
-          "de": "node.js 18.x oder höher erforderlich",
-          "ru": "node.js 18.x или выше требуется",
-          "pt": "node.js 18.x ou superior requerido",
-          "nl": "node.js 18.x of hoger vereist",
-          "fr": "node.js 18.x ou plus requis",
-          "it": "node.js 18.x o superiore richiesto",
-          "es": "node.js 18.x o superior requerido",
-          "pl": "node.js 18,x lub wyższa wymagana",
-          "uk": "node.js 18.x або вище потрібно",
-          "zh-cn": "节点.js 18.x或更高"
+          "en": "node.js 20.x or higher required",
+          "de": "node.js 20.x oder höher erforderlich",
+          "ru": "node.js 20.x или выше требуется",
+          "pt": "node.js 20.x ou superior requerido",
+          "nl": "node.js 20.x of hoger vereist",
+          "fr": "node.js 20.x ou plus requis",
+          "it": "node.js 20.x o superiore richiesto",
+          "es": "node.js 20.x o superior requerido",
+          "pl": "node.js 20,x lub wyższa wymagana",
+          "uk": "node.js 20.x або вище потрібно",
+          "zh-cn": "节点.js 20.x或更高"
         },
         "text": {
           "en": "Please try to stay current with your Node.js version because the support is limited in time. As of now all Node.js versions below 18.x are no longer supported. (End Of Life).",
@@ -216,12 +216,12 @@
     ],
     "dependencies": [
       {
-        "js-controller": ">=5.0.19"
+        "js-controller": ">=6.0.11"
       }
     ],
     "globalDependencies": [
       {
-        "admin": ">=5.1.13"
+        "admin": ">=6.13.16"
       }
     ],
     "plugins": {

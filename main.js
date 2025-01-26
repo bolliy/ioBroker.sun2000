@@ -9,22 +9,21 @@
 const utils = require('@iobroker/adapter-core');
 
 // Load your modules here, e.g.:
-const Registers = require(__dirname + '/lib/register.js');
-const ModbusConnect = require(__dirname + '/lib/modbus/modbus_connect.js');
-const ModbusServer = require(__dirname + '/lib/modbus/modbus_server.js');
-const {driverClasses,dataRefreshRate} = require(__dirname + '/lib/types.js');
-const {Logging,getAstroDate,isSunshine} = require(__dirname + '/lib/tools.js');
+const Registers = require(`${__dirname}/lib/register.js`);
+const ModbusConnect = require(`${__dirname}/lib/modbus/modbus_connect.js`);
+const ModbusServer = require(`${__dirname}/lib/modbus/modbus_server.js`);
+const { driverClasses, dataRefreshRate } = require(`${__dirname}/lib/types.js`);
+const { Logging, getAstroDate, isSunshine } = require(`${__dirname}/lib/tools.js`);
 
 class Sun2000 extends utils.Adapter {
-
 	/**
-	 * @param {Partial<utils.AdapterOptions>} [options={}]
+	 * @param [options]
 	 */
 	constructor(options) {
 		super({
 			...options,
 			name: 'sun2000',
-			useFormatDate: true
+			useFormatDate: true,
 		});
 
 		this.lastTimeUpdated = new Date().getTime();
@@ -35,34 +34,34 @@ class Sun2000 extends utils.Adapter {
 
 		this.devices = [];
 		this.settings = {
-			highInterval : 20000,
-			lowInterval : 60000,
-			mediumInterval : 30000,
-			address : '',
-			port : 520,
-			modbusTimeout : 10000,
-			modbusConnectDelay : 5000,
-			modbusDelay : 0,
-			modbusAdjust : false,
-			ms : {
-				address : '0.0.0.0',
-				port : 520,
-				active : false
+			highInterval: 20000,
+			lowInterval: 60000,
+			mediumInterval: 30000,
+			address: '',
+			port: 520,
+			modbusTimeout: 10000,
+			modbusConnectDelay: 5000,
+			modbusDelay: 0,
+			modbusAdjust: false,
+			ms: {
+				address: '0.0.0.0',
+				port: 520,
+				active: false,
 			},
 			sl: {
-				meterId: 11
+				meterId: 11,
 			},
 			sd: {
-				active : false,
-				sDongleId : 100
+				active: false,
+				sDongleId: 100,
 			},
 			cb: {
-				tou : false
+				tou: false,
 			},
 			ds: {
-				batteryUnits : true,
-				batteryPacks : false
-			}
+				batteryUnits: true,
+				batteryPacks: false,
+			},
 		};
 
 		//v0.6.
@@ -80,54 +79,54 @@ class Sun2000 extends utils.Adapter {
 		await this.extendObject('meter', {
 			type: 'device',
 			common: {
-				name: 'device meter'
+				name: 'device meter',
 			},
-			native: {}
+			native: {},
 		});
 		await this.extendObject('collected', {
 			type: 'channel',
 			common: {
-				name: 'channel collected'
+				name: 'channel collected',
 			},
-			native: {}
+			native: {},
 		});
 
 		await this.extendObject('inverter', {
 			type: 'device',
 			common: {
-				name: 'device inverter'
+				name: 'device inverter',
 			},
-			native: {}
+			native: {},
 		});
 
 		for (const item of this.devices) {
 			if (item.driverClass == driverClasses.inverter) {
-				const path = 'inverter.'+item.index.toString();
+				const path = `inverter.${item.index.toString()}`;
 				item.path = path;
 				await this.extendObject(path, {
 					type: 'channel',
 					common: {
-						name: 'channel inverter '+item.index.toString(),
-						role: 'indicator'
+						name: `channel inverter ${item.index.toString()}`,
+						role: 'indicator',
 					},
-					native: {}
+					native: {},
 				});
 
-				await this.extendObject(path+'.grid', {
+				await this.extendObject(`${path}.grid`, {
 					type: 'channel',
 					common: {
-						name: 'channel grid'
+						name: 'channel grid',
 					},
-					native: {}
+					native: {},
 				});
 
-				await this.extendObject(path+'.info', {
+				await this.extendObject(`${path}.info`, {
 					type: 'channel',
 					common: {
 						name: 'channel info',
-						role: 'info'
+						role: 'info',
 					},
-					native: {}
+					native: {},
 				});
 				/*
 				await this.extendObject(path+'.battery', {
@@ -138,42 +137,42 @@ class Sun2000 extends utils.Adapter {
 					native: {}
 				});
 				*/
-				await this.extendObject(path+'.string', {
+				await this.extendObject(`${path}.string`, {
 					type: 'channel',
 					common: {
-						name: 'channel string'
+						name: 'channel string',
 					},
-					native: {}
+					native: {},
 				});
 
-				await this.extendObject(path+'.derived', {
+				await this.extendObject(`${path}.derived`, {
 					type: 'channel',
 					common: {
-						name: 'channel derived'
+						name: 'channel derived',
 					},
-					native: {}
+					native: {},
 				});
 			}
 
 			if (item.driverClass == driverClasses.sdongle) {
 				item.path = '';
-				await this.extendObject(item.path+'sdongle', {
+				await this.extendObject(`${item.path}sdongle`, {
 					type: 'device',
 					common: {
-						name: 'device SDongle'
+						name: 'device SDongle',
 					},
-					native: {}
+					native: {},
 				});
 			}
 
 			if (item.driverClass == driverClasses.logger) {
 				item.path = '';
-				await this.extendObject(item.path+'slogger', {
+				await this.extendObject(`${item.path}slogger`, {
 					type: 'device',
 					common: {
-						name: 'device SmartLogger'
+						name: 'device SmartLogger',
 					},
-					native: {}
+					native: {},
 				});
 			}
 			if (item.driverClass == driverClasses.loggerMeter) {
@@ -182,15 +181,14 @@ class Sun2000 extends utils.Adapter {
 
 			if (item.driverClass == driverClasses.emma) {
 				item.path = '';
-				await this.extendObject(item.path+'emma', {
+				await this.extendObject(`${item.path}emma`, {
 					type: 'device',
 					common: {
-						name: 'device Emma'
+						name: 'device Emma',
 					},
-					native: {}
+					native: {},
 				});
 			}
-
 		}
 	}
 
@@ -202,34 +200,38 @@ class Sun2000 extends utils.Adapter {
 			this.settings.modbusAdjust = isSunshine(this);
 			//this.logger.debug('Sunshine: '+this.settings.modbusAdjust);
 		}
-		this.modbusClient = new ModbusConnect(this,this.settings);
+		this.modbusClient = new ModbusConnect(this, this.settings);
 		this.modbusClient.setCallback(this.endOfmodbusAdjust.bind(this));
 		this.dataPolling();
 		this.runWatchDog();
 
 		if (this.settings.ms?.active) {
-			this.modbusServer = new ModbusServer(this,this.settings.ms.address,this.settings.ms.port);
+			this.modbusServer = new ModbusServer(this, this.settings.ms.address, this.settings.ms.port);
 			this.modbusServer.connect();
 		}
 	}
 
 	async atMidnight() {
-		this.settings.sunrise = getAstroDate(this,'sunrise');
-		this.settings.sunset = getAstroDate(this,'sunset');
+		this.settings.sunrise = getAstroDate(this, 'sunrise');
+		this.settings.sunset = getAstroDate(this, 'sunset');
 
 		const now = new Date();
 		const night = new Date(
 			now.getFullYear(),
 			now.getMonth(),
 			now.getDate() + 1, // the next day, ...
-			0, 0, 0 // ...at 00:00:00 hours
+			0,
+			0,
+			0, // ...at 00:00:00 hours
 		);
 		const msToMidnight = night.getTime() - now.getTime();
 
-		if (this.mitnightTimer) this.clearTimeout(this.mitnightTimer);
+		if (this.mitnightTimer) {
+			this.clearTimeout(this.mitnightTimer);
+		}
 		this.mitnightTimer = this.setTimeout(async () => {
-			await this.state.mitnightProcess();   //      the function being called at midnight.
-			this.atMidnight();    	              //      reset again next midnight.
+			await this.state.mitnightProcess(); //      the function being called at midnight.
+			this.atMidnight(); //      reset again next midnight.
 		}, msToMidnight);
 	}
 
@@ -250,20 +252,30 @@ class Sun2000 extends utils.Adapter {
 	}
 	*/
 
-	async endOfmodbusAdjust (info) {
+	async endOfmodbusAdjust(info) {
 		if (!info.modbusAdjust) {
 			this.settings.modbusAdjust = info.modbusAdjust;
 			this.settings.modbusDelay = Math.round(info.delay);
 			//siehe jsonConfig.json
-			if (this.settings.modbusDelay > 6000) this.settings.modbusDelay = 6000;
+			if (this.settings.modbusDelay > 6000) {
+				this.settings.modbusDelay = 6000;
+			}
 			this.settings.modbusTimeout = Math.round(info.timeout);
-			if (this.settings.modbusTimeout > 30000) this.settings.modbusTimeout = 30000;
-			if (this.settings.modbusTimeout < 5000) this.settings.modbusTimeout = 5000;
+			if (this.settings.modbusTimeout > 30000) {
+				this.settings.modbusTimeout = 30000;
+			}
+			if (this.settings.modbusTimeout < 5000) {
+				this.settings.modbusTimeout = 5000;
+			}
 			this.settings.modbusConnectDelay = Math.round(info.connectDelay);
-			if (this.settings.modbusConnectDelay > 10000) this.settings.modbusConnectDelay = 10000;
-			if (this.settings.modbusConnectDelay < 2000) this.settings.modbusConnectDelay = 2000;
+			if (this.settings.modbusConnectDelay > 10000) {
+				this.settings.modbusConnectDelay = 10000;
+			}
+			if (this.settings.modbusConnectDelay < 2000) {
+				this.settings.modbusConnectDelay = 2000;
+			}
 			//orignal Interval
-			this.settings.highInterval = this.config.updateInterval*1000;
+			this.settings.highInterval = this.config.updateInterval * 1000;
 			this.config.autoAdjust = this.settings.modbusAdjust;
 			this.config.connectDelay = this.settings.modbusConnectDelay;
 			this.config.delay = this.settings.modbusDelay;
@@ -274,19 +286,22 @@ class Sun2000 extends utils.Adapter {
 		}
 	}
 
-	async adjustInverval () {
+	async adjustInverval() {
 		if (this.settings.modbusAdjust) {
-			this.settings.highInterval = 10000*this.settings.modbusIds.length;
+			this.settings.highInterval = 10000 * this.settings.modbusIds.length;
 		} else {
-			let minInterval = this.settings.modbusIds.length*this.settings.modbusDelay*2.5; //len*5*delay/2
-			if (this.settings.integration > 0) { //SmartLogger, Emma
+			let minInterval = this.settings.modbusIds.length * this.settings.modbusDelay * 2.5; //len*5*delay/2
+			if (this.settings.integration > 0) {
+				//SmartLogger, Emma
 				minInterval += 5000;
 			} else {
 				for (const device of this.devices) {
-					if (device.duration) minInterval += device.duration;
+					if (device.duration) {
+						minInterval += device.duration;
+					}
 				}
 			}
-			if (minInterval> this.settings.highInterval) {
+			if (minInterval > this.settings.highInterval) {
 				this.settings.highInterval = Math.round(minInterval);
 			}
 		}
@@ -294,15 +309,15 @@ class Sun2000 extends utils.Adapter {
 		if (this.settings.highInterval > this.settings.lowInterval) {
 			this.settings.lowInterval = this.settings.highInterval;
 		}
-		this.settings.mediumInterval = Math.round(this.settings.lowInterval/2);
-		const newHighInterval = Math.round(this.settings.highInterval/1000);
+		this.settings.mediumInterval = Math.round(this.settings.lowInterval / 2);
+		const newHighInterval = Math.round(this.settings.highInterval / 1000);
 		if (!this.settings.modbusAdjust) {
 			if (this.config.updateInterval < newHighInterval) {
-				this.logger.warn('The interval is too small. The value has been changed on '+newHighInterval+' sec.');
+				this.logger.warn(`The interval is too small. The value has been changed on ${newHighInterval} sec.`);
 				this.logger.warn('Please check your configuration!');
 			}
 		}
-		await this.setState('info.modbusUpdateInterval', {val: newHighInterval, ack: true});
+		await this.setState('info.modbusUpdateInterval', { val: newHighInterval, ack: true });
 	}
 
 	/**
@@ -312,36 +327,41 @@ class Sun2000 extends utils.Adapter {
 		// Initialize your adapter here
 		// tiemout is now in ms
 		if (this.config.timeout <= 10) {
-			this.config.timeout = this.config.timeout*1000;
+			this.config.timeout = this.config.timeout * 1000;
 			this.updateConfig(this.config);
 		}
-		if (this.config.sl_active) { //old Smartlogger
+		if (this.config.sl_active) {
+			//old Smartlogger
 			this.config.sl_active = false;
 			this.config.integration = 1;
 			this.updateConfig(this.config);
 		}
-		await this.setState('info.ip', {val: this.config.address, ack: true});
-		await this.setState('info.port', {val: this.config.port, ack: true});
-		await this.setState('info.modbusIds', {val: this.config.modbusIds, ack: true});
-		await this.setState('info.modbusTimeout', {val: this.config.timeout, ack: true});
-		await this.setState('info.modbusConnectDelay', {val: this.config.connectDelay, ack: true});
-		await this.setState('info.modbusDelay', {val: this.config.delay, ack: true});
-		await this.setState('info.modbusTcpServer', {val: this.config.ms_active, ack: true});
+		await this.setState('info.ip', { val: this.config.address, ack: true });
+		await this.setState('info.port', { val: this.config.port, ack: true });
+		await this.setState('info.modbusIds', { val: this.config.modbusIds, ack: true });
+		await this.setState('info.modbusTimeout', { val: this.config.timeout, ack: true });
+		await this.setState('info.modbusConnectDelay', { val: this.config.connectDelay, ack: true });
+		await this.setState('info.modbusDelay', { val: this.config.delay, ack: true });
+		await this.setState('info.modbusTcpServer', { val: this.config.ms_active, ack: true });
 		// Load user settings
-		if (this.config.address != '' && this.config.port > 0 && this.config.modbusIds != '' && this.config.updateInterval > 0 ) {
+		if (this.config.address != '' && this.config.port > 0 && this.config.modbusIds != '' && this.config.updateInterval > 0) {
 			this.settings.address = this.config.address;
 			this.settings.port = this.config.port;
 			this.settings.modbusTimeout = this.config.timeout; //ms
 			this.settings.modbusDelay = this.config.delay; //ms
 			this.settings.modbusConnectDelay = this.config.connectDelay; //ms
 			this.settings.modbusAdjust = this.config.autoAdjust;
-			this.settings.modbusIds = this.config.modbusIds.split(',').map((n) => {return Number(n);});
+			this.settings.modbusIds = this.config.modbusIds.split(',').map(n => {
+				return Number(n);
+			});
 			//SmartDongle
 			this.settings.sd.active = this.config.sd_active;
 			// eslint-disable-next-line no-constant-binary-expression
 			this.settings.sd.sDongleId = Number(this.config.sDongleId) ?? 0;
-			if (this.settings.sd.sDongleId < 0 || this.settings.sd.sDongleId >= 255) this.settings.sd.active = false;
-			this.settings.highInterval = this.config.updateInterval*1000; //ms
+			if (this.settings.sd.sDongleId < 0 || this.settings.sd.sDongleId >= 255) {
+				this.settings.sd.active = false;
+			}
+			this.settings.highInterval = this.config.updateInterval * 1000; //ms
 			//Modbus-Proxy
 			this.settings.ms.address = this.config.ms_address;
 			this.settings.ms.port = this.config.ms_port;
@@ -357,20 +377,20 @@ class Sun2000 extends utils.Adapter {
 			this.settings.ds.batteryPacks = this.config.ds_bp;
 
 			if (this.settings.modbusAdjust) {
-				await this.setState('info.JSONhealth', {val: '{message: "Adjust modbus settings"}', ack: true});
+				await this.setState('info.JSONhealth', { val: '{message: "Adjust modbus settings"}', ack: true });
 			} else {
-				await this.setState('info.JSONhealth', {val: '{message : "Information is collected"}', ack: true});
+				await this.setState('info.JSONhealth', { val: '{message : "Information is collected"}', ack: true });
 			}
 
 			if (this.settings.modbusIds.length > 0 && this.settings.modbusIds.length < 6) {
 				//ES6 use a for (const [index, item] of array.entries()) of loop
-				for (const [i,id] of this.settings.modbusIds.entries()) {
+				for (const [i, id] of this.settings.modbusIds.entries()) {
 					this.devices.push({
 						index: i,
 						duration: 5000,
 						modbusId: id,
 						driverClass: driverClasses.inverter,
-						meter: (i==0 && this.settings.integration === 0)
+						meter: i == 0 && this.settings.integration === 0,
 					});
 				}
 
@@ -380,7 +400,7 @@ class Sun2000 extends utils.Adapter {
 						index: 0,
 						duration: 0,
 						modbusId: this.settings.sd.sDongleId,
-						driverClass: driverClasses.sdongle
+						driverClass: driverClasses.sdongle,
 					});
 				}
 
@@ -390,15 +410,15 @@ class Sun2000 extends utils.Adapter {
 						index: 0,
 						duration: 0,
 						modbusId: 0,
-						driverClass: driverClasses.logger
+						driverClass: driverClasses.logger,
 					});
 					if (this.settings.sl.meterId > 0) {
 						this.devices.push({
 							index: 0,
 							duration: 0,
-							meter : true,
+							meter: true,
 							modbusId: this.settings.sl.meterId,
-							driverClass: driverClasses.loggerMeter
+							driverClass: driverClasses.loggerMeter,
 						});
 					}
 				}
@@ -410,15 +430,15 @@ class Sun2000 extends utils.Adapter {
 						duration: 0,
 						//modbusId: 1,
 						modbusId: 0,
-						meter : true,
-						driverClass: driverClasses.emma
+						meter: true,
+						driverClass: driverClasses.emma,
 					});
 				}
 
 				await this.adjustInverval();
 				await this.StartProcess();
 			} else {
-				this.adapterDisable('*** Adapter deactivated, can\'t parse modbusIds! ***');
+				this.adapterDisable("*** Adapter deactivated, can't parse modbusIds! ***");
 			}
 		} else {
 			this.adapterDisable('*** Adapter deactivated, Adapter Settings incomplete! ***');
@@ -426,36 +446,45 @@ class Sun2000 extends utils.Adapter {
 	}
 
 	async dataPolling() {
-		function timeLeft(target,factor =1) {
-			const left = Math.round((target - new Date().getTime())*factor);
-			if (left < 0) return 0;
+		function timeLeft(target, factor = 1) {
+			const left = Math.round((target - new Date().getTime()) * factor);
+			if (left < 0) {
+				return 0;
+			}
 			return left;
 		}
 
 		const start = new Date().getTime();
-		this.logger.debug('### DataPolling START '+ Math.round((start-this.lastTimeUpdated)/1000)+' sec ###');
-		if (this.lastTimeUpdated > 0 && (start-this.lastTimeUpdated)/1000 > this.settings.highInterval/1000 + 1) {
-			this.logger.debug('Interval '+(start-this.lastTimeUpdated)/1000+' sec');
+		this.logger.debug(`### DataPolling START ${Math.round((start - this.lastTimeUpdated) / 1000)} sec ###`);
+		if (this.lastTimeUpdated > 0 && (start - this.lastTimeUpdated) / 1000 > this.settings.highInterval / 1000 + 1) {
+			this.logger.debug(`Interval ${(start - this.lastTimeUpdated) / 1000} sec`);
 		}
 		this.lastTimeUpdated = start;
-		const nextLoop = this.settings.highInterval - start % (this.settings.highInterval) + start;
+		const nextLoop = this.settings.highInterval - (start % this.settings.highInterval) + start;
 
 		//High Loop
 		for (const item of this.devices) {
-			this.lastStateUpdatedHigh += await this.state.updateStates(item,this.modbusClient,dataRefreshRate.high,timeLeft(nextLoop));
+			this.lastStateUpdatedHigh += await this.state.updateStates(item, this.modbusClient, dataRefreshRate.high, timeLeft(nextLoop));
 		}
 		await this.state.runPostProcessHooks(dataRefreshRate.high);
 
 		//Low Loop
 		if (timeLeft(nextLoop) > 0) {
-			for (const [i,item] of this.devices.entries()) {
+			for (const [i, item] of this.devices.entries()) {
 				//this.log.debug('+++++ Loop: '+i+' Left Time: '+timeLeft(nextLoop,(i+1)/this.devices.length)+' Faktor '+((i+1)/this.devices.length));
-				this.lastStateUpdatedLow += await this.state.updateStates(item,this.modbusClient,dataRefreshRate.low,timeLeft(nextLoop,(i+1)/this.devices.length));
+				this.lastStateUpdatedLow += await this.state.updateStates(
+					item,
+					this.modbusClient,
+					dataRefreshRate.low,
+					timeLeft(nextLoop, (i + 1) / this.devices.length),
+				);
 			}
 		}
 		await this.state.runPostProcessHooks(dataRefreshRate.low);
 
-		if (this.pollingTimer) this.clearTimeout(this.pollingTimer);
+		if (this.pollingTimer) {
+			this.clearTimeout(this.pollingTimer);
+		}
 		this.pollingTimer = this.setTimeout(() => {
 			this.dataPolling(); //recursiv
 		}, timeLeft(nextLoop));
@@ -464,27 +493,33 @@ class Sun2000 extends utils.Adapter {
 
 	runWatchDog() {
 		this.watchDogHandle && this.clearInterval(this.watchDogHandle);
-		this.watchDogHandle = this.setInterval( () => {
+		this.watchDogHandle = this.setInterval(() => {
 			const sinceLastUpdate = new Date().getTime() - this.lastTimeUpdated; //ms
-			this.logger.debug('### Watchdog: time since last update '+sinceLastUpdate/1000+' sec');
+			this.logger.debug(`### Watchdog: time since last update ${sinceLastUpdate / 1000} sec`);
 			const lastIsConnected = this.isConnected;
 			//this.isConnected = this.lastStateUpdatedHigh > 0 && sinceLastUpdate < this.settings.highInterval*3;
 			this.isConnected = this.lastStateUpdatedHigh > 0 || this.lastStateUpdatedLow > 0;
 
-			if (this.isConnected !== lastIsConnected ) this.setState('info.connection', this.isConnected, true);
+			if (this.isConnected !== lastIsConnected) {
+				this.setState('info.connection', this.isConnected, true);
+			}
 			if (!this.settings.modbusAdjust) {
 				if (!this.isConnected) {
-					this.setState('info.JSONhealth', {val: '{errno:1, message: "Can\'t connect to inverter"}', ack: true});
+					this.setState('info.JSONhealth', { val: '{errno:1, message: "Can\'t connect to inverter"}', ack: true });
 				}
-				const ret = this.state.CheckReadError(this.settings.lowInterval*2);
+				const ret = this.state.CheckReadError(this.settings.lowInterval * 2);
 				this.logger.debug(JSON.stringify(this.modbusClient.info));
 				//v0.8.x
-				if (!this.isReady) this.isReady = this.isConnected && !ret.errno;
+				if (!this.isReady) {
+					this.isReady = this.isConnected && !ret.errno;
+				}
 				// after 2 Minutes
 				if (this.toggleRunWatchDog) {
-					if (ret.errno) this.logger.warn(ret.message);
-					const obj = {...ret,modbus: {...this.modbusClient.info}};
-					this.setState('info.JSONhealth', {val: JSON.stringify(obj), ack: true});
+					if (ret.errno) {
+						this.logger.warn(ret.message);
+					}
+					const obj = { ...ret, modbus: { ...this.modbusClient.info } };
+					this.setState('info.JSONhealth', { val: JSON.stringify(obj), ack: true });
 				}
 				if (this.modbusServer) {
 					!this.modbusServer.isConnected && this.modbusServer.connect();
@@ -492,7 +527,7 @@ class Sun2000 extends utils.Adapter {
 						//const stat = this.modbusServer.info?.stat;
 						//object is not empty
 						//if (Object.keys(stat).length > 0) this.log.info('Modbus tcp server: '+JSON.stringify(this.modbusServer.info));
-						this.logger.info('Modbus tcp server: '+JSON.stringify(this.modbusServer.info));
+						this.logger.info(`Modbus tcp server: ${JSON.stringify(this.modbusServer.info)}`);
 					}
 				}
 			}
@@ -501,23 +536,23 @@ class Sun2000 extends utils.Adapter {
 			this.lastStateUpdatedLow = 0;
 			this.lastStateUpdatedHigh = 0;
 
-			if (sinceLastUpdate > this.settings.highInterval*10) {
-				this.setState('info.JSONhealth', {val: '{errno:2, message: "Internal loop error"}', ack: true});
+			if (sinceLastUpdate > this.settings.highInterval * 10) {
+				this.setState('info.JSONhealth', { val: '{errno:2, message: "Internal loop error"}', ack: true });
 				this.logger.warn('watchdog: restart Adapter...');
 				this.restart();
 			}
-
-		},this.settings.lowInterval);
+		}, this.settings.lowInterval);
 	}
 
 	adapterDisable(errMsg) {
 		this.logger.error(errMsg);
-		this.setForeignState('system.adapter.' + this.namespace + '.alive', false);
+		this.setForeignState(`system.adapter.${this.namespace}.alive`, false);
 	}
 
 	/**
 	 * Is called when adapter shuts down - callback has to be called under any circumstances!
-	 * @param {() => void} callback
+	 *
+	 * @param callback
 	 */
 	onUnload(callback) {
 		try {
@@ -536,21 +571,24 @@ class Sun2000 extends utils.Adapter {
 
 	/**
 	 * Is called if a subscribed state changes
+	 *
 	 * @param {string} id
 	 * @param {ioBroker.State | null | undefined} state
-	 **/
+	 */
 
 	onStateChange(id, state) {
 		if (state) {
 			// The state was changed
 			// sun2000.0.inverter.0.control
 			const idArray = id.split('.');
-			if ( idArray[2] == 'inverter' ) {
+			if (idArray[2] == 'inverter') {
 				const control = this.devices[Number(idArray[3])].instance.control;
 				if (control) {
 					let serviceId = idArray[5];
-					for (let i=6 ; i < idArray.length; i++ ) serviceId += '.'+idArray[i];
-					control.set(serviceId,state);
+					for (let i = 6; i < idArray.length; i++) {
+						serviceId += `.${idArray[i]}`;
+					}
+					control.set(serviceId, state);
 				}
 				//this.log.info(`### state ${id} changed: ${state.val} (ack = ${state.ack})`);
 			}
@@ -559,8 +597,6 @@ class Sun2000 extends utils.Adapter {
 			this.logger.info(`state ${id} deleted`);
 		}
 	}
-
-
 
 	// If you need to accept messages in your adapter, uncomment the following block and the corresponding line in the constructor.
 	// /**
@@ -579,15 +615,14 @@ class Sun2000 extends utils.Adapter {
 	// 		}
 	// 	}
 	// }
-
 }
 
 if (require.main !== module) {
 	// Export the constructor in compact mode
 	/**
-	 * @param {Partial<utils.AdapterOptions>} [options={}]
+	 * @param [options]
 	 */
-	module.exports = (options) => new Sun2000(options);
+	module.exports = options => new Sun2000(options);
 } else {
 	// otherwise start the instance directly
 	new Sun2000();
