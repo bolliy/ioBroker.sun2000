@@ -66,13 +66,15 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 -->
 ### **WORK IN PROGRESS**
 * dependency and configuration updates
+* updated case sensitivity of the object status name
 * Interval time of the slave inverter increased slightly
-* during the device status "Standby: detecting irradiation" (0x0002) register data is not read from the slave inverter
+* Register data is not read in "Standby: detecting irradiation" (0x0002) of the slave inverter
 * Control: battery.maximumDischargePower is deprecated use "maximumDischargingPower" instead
 * Control: battery.maximumChargePower is deprecated use "maximumChargingPower" instead
 * breaking changes
 	- Node.js 20 or higher required
 	- ioBroker host (js-controller) 6.0.1 or higher
+	- ioBroker admin 6.13.16 or higher 
 
 ### 0.18.1 (2025-01-08) 
 * dependency and configuration updates
