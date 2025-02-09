@@ -527,7 +527,7 @@ class Sun2000 extends utils.Adapter {
 						//const stat = this.modbusServer.info?.stat;
 						//object is not empty
 						//if (Object.keys(stat).length > 0) this.log.info('Modbus tcp server: '+JSON.stringify(this.modbusServer.info));
-						this.logger.info(`Modbus tcp server: ${JSON.stringify(this.modbusServer.info)}`);
+						this.logger.info(`Modbus-proxy: ${JSON.stringify(this.modbusServer.info)}`);
 					}
 				}
 			}
