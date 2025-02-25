@@ -27,10 +27,10 @@ Read and write register data from Huawei SUN2000 inverter and LUNA2000 battery u
 
 Feel free to follow the discussions in the german [iobroker forum](https://forum.iobroker.net/topic/71768/test-adapter-sun2000-v0-1-x-huawei-wechselrichter)
 
-## Dependencies
+## Requirements
 * Node.js 20 or higher
 * ioBroker host (js-controller) 6.0.11 or higher
-* ioBroker admin 6.13.16 or higher
+* ioBroker admin 6.17.14 or higher
 
 ## Documentation
 
@@ -64,6 +64,11 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+* updated case sensitivity of the object status name
+* require ioBroker admin 6.17.14 or higher #154
+
 ### 1.0.0 (2025-02-10)
 * dependency and configuration updates
 * updated case sensitivity of the object status name
