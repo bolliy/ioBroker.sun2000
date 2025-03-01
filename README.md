@@ -66,8 +66,8 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 -->
 
 ### **WORK IN PROGRESS**
-* updated case sensitivity of the object status name
-* require ioBroker admin 6.17.14 or higher #154
+* updated further case sensitivity of the object status name
+* require ioBroker admin 7.4.10 or higher #154
 
 ### 1.0.0 (2025-02-10)
 * dependency and configuration updates
