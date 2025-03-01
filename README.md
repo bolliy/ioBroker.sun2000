@@ -64,8 +64,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 1.0.1 (2025-03-01)
 * updated further case sensitivity of the object status name
 * require ioBroker admin 7.4.10 or higher #154
 

@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "news": {
+      "1.0.1": {
+        "en": "updated further case sensitivity of the object status name\nrequire ioBroker admin 7.4.10 or higher #154",
+        "de": "aktualisierte weitere fallempfindlichkeit des objektstatusnamens\nioBroker admin 7.4.10 oder höher #154",
+        "ru": "обновлена дополнительная деловая чувствительность названия статуса объекта\nтребуется админ ioBroker 7.4.10 или выше #154",
+        "pt": "sensibilidade de caso adicional atualizada do nome de status do objeto\nexigir ioBroker admin 7.4.10 ou superior #154",
+        "nl": "bijgewerkte verdere gevoeligheid van de statusnaam van het object\nvereisen ioBroker admin 7.4.10 of hoger #154",
+        "fr": "mise à jour de la sensibilité du nom d'état de l'objet\nrequiert ioBroker admin 7.4.10 ou supérieur #154",
+        "it": "aggiornato ulteriore sensibilità caso del nome di stato dell'oggetto\nrichiedono ioBroker admin 7.4.10 o superiore #154",
+        "es": "actualizado más sensibilidad de caso del nombre del estado del objeto\nrequiere ioBroker admin 7.4.10 o superior #154",
+        "pl": "zaktualizowana dalsza wrażliwość przypadku nazwy statusu obiektu\nwymagają joBroker admin 7.4.10 lub wyższy # 154",
+        "uk": "оновлений подальший випадок чутливості назви стану об'єкта\nпотрібно ioBroker admin 7.4.10 або вище #154",
+        "zh-cn": "更新对象状态名称的进一步大小写灵敏度\n需要 ioBroker 管理员 7.4.10 或 以上 # 154"
+      },
       "1.0.0": {
         "en": "dependency and configuration updates\nupdated case sensitivity of the object status name\nInterval time of the slave inverter increased slightly\nRegister data is not read in \"Standby: detecting irradiation\" (0x0002) of the slave inverter\nControl: battery.maximumDischargePower is deprecated use \"maximumDischargingPower\" instead\nControl: battery.maximumChargePower is deprecated use \"maximumChargingPower\" instead\nbreaking changes\nNode.js 20 or higher required\nioBroker host (js-controller) 6.0.1 or higher\nioBroker admin 6.13.16 or higher",
         "de": "abhängigkeits- und konfigurationsupdates\naktualisierte fallempfindlichkeit des objektstatusnamens\nDie Laufzeit des Slave-Wechselrichters stieg leicht an\nRegisterdaten werden nicht in \"Standby: Detektion von Bestrahlung\" (0x0002) des Slave-Wechselrichters gelesen\nSteuerung: batterie.maximumDischargePower ist deprecated verwenden \"maximumDischargingPower\" statt\nSteuerung: Batterie.maximumChargePower wird mit \"maximumChargingPower\" depreciert\nänderungen\nNode.js 20 oder höher erforderlich\nioBroker Host (js-controller) 6.0.1 oder höher\nioBroker admin 6.13.16 oder höher",
@@ -80,19 +93,6 @@
         "pl": "aktualizacje zależności i konfiguracji\nprzeczytaj dodatkowe dane rejestru Huawei Emma",
         "uk": "оновлення залежності та конфігурації\nчитати додаткові реєстраційні дані Huawei Emma",
         "zh-cn": "依赖和配置更新\n读取 Huawei Emma 的额外注册数据"
-      },
-      "0.15.2": {
-        "en": "EMMA Device was not initialized",
-        "de": "EMMA Gerät wurde nicht initialisiert",
-        "ru": "EMMA Устройство не было инициализировано",
-        "pt": "EMPRESA Dispositivo não inicializado",
-        "nl": "EMMA Apparaat is niet geïnitialiseerd",
-        "fr": "EMMA L'appareil n'a pas été initialisé",
-        "it": "EMMA Il dispositivo non è stato inizializzato",
-        "es": "EMMA No se inicializó el dispositivo",
-        "pl": "EMMA Urządzenie nie zostało zainicjowane",
-        "uk": "ЕММА Пристрої не було ініціалізовано",
-        "zh-cn": "埃马 设备未初始化"
       }
     },
     "titleLang": {
