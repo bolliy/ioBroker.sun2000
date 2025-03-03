@@ -30,7 +30,7 @@ Feel free to follow the discussions in the german [iobroker forum](https://forum
 ## Requirements
 * Node.js 20 or higher
 * ioBroker host (js-controller) 6.0.11 or higher
-* ioBroker admin 6.17.14 or higher
+* ioBroker admin 7.4.10 or higher
 
 ## Documentation
 
@@ -64,6 +64,10 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+* new state usableSurplusPower
+
 ### 1.0.1 (2025-03-01)
 * updated further case sensitivity of the object status name
 * require ioBroker admin 7.4.10 or higher #154
