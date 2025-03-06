@@ -67,6 +67,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 
 ### **WORK IN PROGRESS**
 * new state usableSurplusPower
+* control: checking and rounding integer numbers
 
 ### 1.0.1 (2025-03-01)
 * updated further case sensitivity of the object status name
