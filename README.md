@@ -66,8 +66,9 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 -->
 
 ### **WORK IN PROGRESS**
-* new state usableSurplusPower
+* new state [usableSurplusPower](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(surplus))
 * control: checking and rounding integer numbers
+* better solution for math rounding
 
 ### 1.0.1 (2025-03-01)
 * updated further case sensitivity of the object status name
