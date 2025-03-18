@@ -66,6 +66,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 -->
 
 ### **WORK IN PROGRESS**
+* startupTime/shutdownTime are read from the inverter as local time and not in UTC - fixed times are saved in path `derived`
 * new state [usableSurplusPower](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(surplus))
 * control: checking and rounding integer numbers
 * better solution for math rounding

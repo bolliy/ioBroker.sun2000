@@ -74,6 +74,15 @@ class Sun2000 extends utils.Adapter {
 	}
 
 	async initPath() {
+		/*
+		await this.extendObject('config', {
+			type: 'channel',
+			common: {
+				name: 'channel config',
+			},
+			native: {},
+		});
+		*/
 		//inverter
 		await this.extendObject('meter', {
 			type: 'device',
@@ -590,6 +599,10 @@ class Sun2000 extends utils.Adapter {
 					control.set(serviceId, state);
 				}
 				//this.log.info(`### state ${id} changed: ${state.val} (ack = ${state.ack})`);
+			}
+			//New config path
+			if (idArray[2] == 'config') {
+				this.log.info(`### state ${id} changed: ${state.val} (ack = ${state.ack})`);
 			}
 		} else {
 			// The state was deleted
