@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "news": {
+      "1.1.0": {
+        "en": "startupTime/shutdownTime are read from the inverter as local time and not as UTC - fixed times are saved in path `derived`\nnew state [usableSurplusPower](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(surplus))\ncontrol: checking and rounding integer numbers\nbetter solution for math rounding",
+        "de": "startzeit/Shutdown Zeit wird vom Wechselrichter als Ortszeit gelesen und nicht als UTC - Festzeiten werden im Pfad gespeichert `derived `\nneuer Staat [usableSurplusPower](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(surplus))\nsteuerung: überprüfung und rundung ganzzahliger zahlen\nbessere lösung für matherundung",
+        "ru": "startupTime/Sutdown Время считывается с инвертора как локальное время, а не как UTC - фиксированное время сохраняется в пути пункт\nновое состояние [usableSurplusPower] (https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(surplus))\nконтроль: проверка и округление целых чисел\nлучшее решение для математического округления",
+        "pt": "startupTime/shutdown O tempo é lido do inversor como hora local e não como UTC - os tempos fixos são salvos no caminho `derivod \"\nnovo estado [usableSurplusPower](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(surplus)))\ncontrole: números inteiros de verificação e arredondamento\nmelhor solução para arredondamento de matemática",
+        "nl": "opstartenTijd/afsluiten De tijd wordt van de inverter gelezen als lokale tijd en niet als UTC - vaste tijden worden opgeslagen in het pad uit Wat\nnieuwe staat [bruikbaarSurplusPower](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(surplus))\ncontrole: controle en afronding van gehele getallen\nbetere oplossing voor wiskunde afronden",
+        "fr": "startupTime/shutdown Le temps est lu à partir de l'onduleur en tant qu'heure locale et non pas en tant que UTC - les temps fixes sont sauvegardés dans le chemin « dérivé \"\nnouvel état [utilisableSurplusPower](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(surplus))\ncontrôle: contrôle et arrondi des nombres entiers\nmeilleure solution pour arrondir les maths",
+        "it": "startupTime/shutdown Il tempo viene letto dall'inverter come ora locale e non come UTC - i tempi fissi vengono salvati nel percorso `derivati #\nnuovo stato [usableSurplusPower](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(plus)\ncontrollo: controllo e arrotondamento numeri interi\nmigliore soluzione per arrotondamento di matematica",
+        "es": "startupTime/shutdown El tiempo se lee desde el inversor como hora local y no como UTC - los tiempos fijos se salvan en el camino `derived `\nnuevo estado [utilizableSurplusPower](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(superávit))\ncontrol: números enteros de comprobación y redondeo\nmejor solución para redondeo de matemáticas",
+        "pl": "startupTime / shutdown Czas jest odczytywany z inwertera jako czasu lokalnego, a nie jako UTC - stałe czasy są zapisywane w ścieżce 'pochodnej'\nnową ustawę [usableSurplusPower] (https: / / github.com / bolliy / ioBroker.sun2000 / wiki /% C3% 9Cberschuss- (nadwyżka))\nkontrola: sprawdzanie i zaokrąglanie liczb całkowitych\nlepsze rozwiązanie do zaokrąglania matematycznego",
+        "uk": "javaScript licenses API Веб-сайт Час читає з інвертора як локальний час, так і не як UTC - виправлені часи зберігаються в шляху `derived й\nновий стан [usableSurplusPower](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(surplus)))\nконтроль: перевірка та округлення цілих чисел\nкраще рішення для закруглення математики",
+        "zh-cn": "启动时间/下调 时间从反转器读作本地时间,而不是世界协调时 - 固定时间保存在路径中`衍生' `\n新状态[可使用SurpusPower](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9 Cberschuss-(盈余))\n控件: 检查和四舍五入整数\n更好的数学四舍五入解决方案"
+      },
       "1.0.1": {
         "en": "updated further case sensitivity of the object status name\nrequire ioBroker admin 7.4.10 or higher #154",
         "de": "aktualisierte weitere fallempfindlichkeit des objektstatusnamens\nioBroker admin 7.4.10 oder höher #154",
@@ -80,19 +93,6 @@
         "pl": "dostosowanie dla Responsive Design # 134\nmigrate do ESLint 9.x\nwęzeł > = v18.18.0\nmodbus- proxy: włączone odczytywanie danych poprzez rejestr wejściowy",
         "uk": "конфігурація для відповідального дизайну #134\nmigrate до ESLint 9.x\nвершина >= v18.18.0\nmodbus-proxy: ввімкнено дані читання через вхідний реєстр",
         "zh-cn": "调整响应设计 # 134\n迁移到 ESLint 9.x\n节点 {v18.18.0}\nmodbus- 代理: 启用通过输入寄存器读取数据"
-      },
-      "0.16.0": {
-        "en": "dependency and configuration updates\nread additional register data of Huawei Emma",
-        "de": "abhängigkeits- und konfigurationsupdates\nweitere Registrierungsdaten von Huawei Emma lesen",
-        "ru": "обновления зависимости и конфигурации\nпрочитать дополнительные данные реестра Huawei Эмма",
-        "pt": "atualizações de dependência e configuração\nleia dados de registro adicionais de Huawei Emma",
-        "nl": "afhankelijkheid en configuratie-updates\nlees extra registergegevens van Huawei Emma",
-        "fr": "mises à jour de la dépendance et de la configuration\nlire les données supplémentaires du registre de Huawei Emma",
-        "it": "aggiornamenti di dipendenza e configurazione\nleggere ulteriori dati di registro di Huawei Emma",
-        "es": "actualizaciones de dependencia y configuración\nleer más datos de registro de Huawei Emma",
-        "pl": "aktualizacje zależności i konfiguracji\nprzeczytaj dodatkowe dane rejestru Huawei Emma",
-        "uk": "оновлення залежності та конфігурації\nчитати додаткові реєстраційні дані Huawei Emma",
-        "zh-cn": "依赖和配置更新\n读取 Huawei Emma 的额外注册数据"
       }
     },
     "titleLang": {
