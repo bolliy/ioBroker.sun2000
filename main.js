@@ -13,6 +13,7 @@ const ModbusConnect = require(`${__dirname}/lib/modbus/modbus_connect.js`);
 const ModbusServer = require(`${__dirname}/lib/modbus/modbus_server.js`);
 const { driverClasses, dataRefreshRate } = require(`${__dirname}/lib/types.js`);
 const { Logging, getAstroDate, isSunshine } = require(`${__dirname}/lib/tools.js`);
+const ConfigMap = require(`${__dirname}/lib/controls/config_map.js`);
 
 class Sun2000 extends utils.Adapter {
 	/**
@@ -29,8 +30,7 @@ class Sun2000 extends utils.Adapter {
 		this.lastStateUpdatedHigh = 0;
 		this.lastStateUpdatedLow = 0;
 		this.isConnected = false;
-		this.isReady = false; //v0.8.x
-
+		this.isReady = false;
 		this.devices = [];
 		this.settings = {
 			highInterval: 20000,
@@ -66,6 +66,9 @@ class Sun2000 extends utils.Adapter {
 		//v0.6.
 		this.logger = new Logging(this); //only for adapter
 
+		//1.1.0
+		this.control = new ConfigMap(this);
+
 		this.on('ready', this.onReady.bind(this));
 		this.on('stateChange', this.onStateChange.bind(this));
 		// this.on('objectChange', this.onObjectChange.bind(this));
@@ -74,15 +77,14 @@ class Sun2000 extends utils.Adapter {
 	}
 
 	async initPath() {
-		/*
-		await this.extendObject('config', {
+		await this.extendObject('control', {
 			type: 'channel',
 			common: {
-				name: 'channel config',
+				name: 'channel control',
 			},
 			native: {},
 		});
-		*/
+
 		//inverter
 		await this.extendObject('meter', {
 			type: 'device',
@@ -202,6 +204,8 @@ class Sun2000 extends utils.Adapter {
 
 	async StartProcess() {
 		await this.initPath();
+		await this.control.init();
+
 		this.state = new Registers(this);
 		await this.atMidnight();
 		if (this.settings.modbusAdjust) {
@@ -587,8 +591,12 @@ class Sun2000 extends utils.Adapter {
 	onStateChange(id, state) {
 		if (state) {
 			// The state was changed
-			// sun2000.0.inverter.0.control
+			if (state.ack) {
+				//this.logger.info(`state ${id} was changed but the ack flag was set. Therefore, no processing takes place!`);
+				return;
+			}
 			const idArray = id.split('.');
+			// sun2000.0.inverter.0.control
 			if (idArray[2] == 'inverter') {
 				const control = this.devices[Number(idArray[3])].instance.control;
 				if (control) {
@@ -600,9 +608,14 @@ class Sun2000 extends utils.Adapter {
 				}
 				//this.log.info(`### state ${id} changed: ${state.val} (ack = ${state.ack})`);
 			}
-			//New config path
-			if (idArray[2] == 'config') {
-				this.log.info(`### state ${id} changed: ${state.val} (ack = ${state.ack})`);
+			// sun2000.0.inverter.0.config
+			if (idArray[2] == 'control') {
+				let serviceId = idArray[3];
+				for (let i = 4; i < idArray.length; i++) {
+					serviceId += `.${idArray[i]}`;
+				}
+				//this.log.info(`### id: ${serviceId} state ${id} changed: ${state.val} (ack = ${state.ack})`);
+				this.control.set(serviceId, state);
 			}
 		} else {
 			// The state was deleted

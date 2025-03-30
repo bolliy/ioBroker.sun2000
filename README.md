@@ -66,7 +66,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 -->
 ### **WORK IN PROGRESS**
 * fix: Object state sDongle.OSVersion to short
-
+* control: set usableSurplus parameters
 
 ### 1.1.0 (2025-03-19)
 * startupTime/shutdownTime are read from the inverter as local time and not as UTC - fixed times are saved in path `derived`
