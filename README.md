@@ -64,6 +64,9 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* dependency update
+
 ### 1.2.0 (2025-04-01)
 * dependency and configuration updates
 * fix: Object state sDongle.OSVersion to short
