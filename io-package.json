@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "1.2.1",
+    "version": "1.2.2-alpha.0",
     "news": {
+      "1.2.2-alpha.0": {
+        "en": "test release",
+        "de": "prüfbericht",
+        "ru": "испытательный выпуск",
+        "pt": "liberação de teste",
+        "nl": "loslaten van de test",
+        "fr": "libération d'essai",
+        "it": "rilascio del test",
+        "es": "prueba de liberación",
+        "pl": "uwalnianie testowe",
+        "uk": "тестовий реліз",
+        "zh-cn": "测试发布"
+      },
       "1.2.1": {
         "en": "dependency update",
         "de": "aktualisierung der abhängigkeit",
@@ -80,19 +93,6 @@
         "pl": "aktualizacje zależności i konfiguracji\nsterowanie: jeśli akumulator nie jest uruchomiony, zdarzenia związane z akumulatorem są odrzucane\nmodbus- proxy: dostosowane zaawansowane logowanie",
         "uk": "оновлення залежності та конфігурації\nконтроль: якщо акумулятор не працює, події, пов'язані з акумулятором, відкидаються\nmodbus-proxy: регульований розширений журналювання",
         "zh-cn": "依赖和配置更新\n控件: 如果电池没有运行, 与电池相关的事件会被丢弃\nmodbus-代用:经过调整的高级记录"
-      },
-      "0.18.0": {
-        "en": "dependency and configuration updates\nmodbus-proxy: the modbus ID 250 is mapped to ID 0",
-        "de": "abhängigkeits- und konfigurationsupdates\nmodbus-proxy: die modbus ID 250 wird auf ID 0 abgebildet",
-        "ru": "обновления зависимости и конфигурации\nmodbus-proxy: modbus ID 250 отображается на ID 0",
-        "pt": "atualizações de dependência e configuração\nmodbus-proxy: o modbus ID 250 é mapeado para ID 0",
-        "nl": "afhankelijkheid en configuratie-updates\nmodbus-proxy: de modbus ID 250 is toegewezen aan ID 0",
-        "fr": "mises à jour de la dépendance et de la configuration\nmodbus-proxy: le modbus ID 250 est mapé à ID 0",
-        "it": "aggiornamenti di dipendenza e configurazione\nmodbus-proxy: il modbus ID 250 è mappato su ID 0",
-        "es": "actualizaciones de dependencia y configuración\nmodbus-proxy: el modbus ID 250 se asigna al ID 0",
-        "pl": "aktualizacje zależności i konfiguracji\nmodbus- proxy: modbus ID 250 jest odwzorowany na ID 0",
-        "uk": "оновлення залежності та конфігурації\nmodbus-proxy: modbus ID 250 is mapped to ID 0",
-        "zh-cn": "依赖和配置更新\nmodbus-代用:modbus ID 250被映射到ID 0"
       }
     },
     "titleLang": {
