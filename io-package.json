@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "news": {
+      "1.2.1": {
+        "en": "dependency update",
+        "de": "aktualisierung der abhängigkeit",
+        "ru": "обновление зависимостей",
+        "pt": "atualização de dependência",
+        "nl": "afhankelijkheidsupdate",
+        "fr": "mise à jour de la dépendance",
+        "it": "aggiornamento della dipendenza",
+        "es": "actualización de la dependencia",
+        "pl": "aktualizacja zależności",
+        "uk": "оновлення залежності",
+        "zh-cn": "依赖性更新"
+      },
       "1.2.0": {
         "en": "dependency and configuration updates updates\nfix: Object state sDongle.OSVersion to short\nnew setting path for controlling the usableSurplus parameters `control.usableSurplus`",
         "de": "abhängigkeit und konfiguration updates\nfix: Objektzustand sDongle. OSVersion kurz\nneuer Einstellpfad zur Steuerung des Nutzbar Überschüssige Parameter `control.usableSurplus `",
@@ -80,19 +93,6 @@
         "pl": "aktualizacje zależności i konfiguracji\nmodbus- proxy: modbus ID 250 jest odwzorowany na ID 0",
         "uk": "оновлення залежності та конфігурації\nmodbus-proxy: modbus ID 250 is mapped to ID 0",
         "zh-cn": "依赖和配置更新\nmodbus-代用:modbus ID 250被映射到ID 0"
-      },
-      "0.17.1": {
-        "en": "during the device status \"Standby: detecting irradiation\" (0x0002) register data is now also read from the inverter\nThe reading order of the battery data has been adjusted",
-        "de": "während des Gerätestatus \"Standby: Detektion von Bestrahlung\" (0x0002) werden nun auch Registerdaten aus dem Wechselrichter gelesen\nDie Lesereihenfolge der Batteriedaten wurde angepasst",
-        "ru": "во время состояния устройства «Стандби: обнаружение облучения» (0x0002) данные регистров теперь также читаются из инвертора\nПорядок чтения данных батареи был скорректирован",
-        "pt": "durante o status do dispositivo \"Standby: detecção de irradiação\" (0x0002) dados de registro agora também é lido a partir do inversor\nA ordem de leitura dos dados da bateria foi ajustada",
-        "nl": "tijdens de apparaatstatus \"Standby: detectie van bestraling\" (0x0002) worden nu ook gegevens van de omvormer gelezen\nDe leesvolgorde van de batterijgegevens is aangepast",
-        "fr": "pendant l'état de l'appareil \"Standby: détecter l'irradiation\" (0x0002) les données du registre sont maintenant également lues à partir de l'onduleur\nL'ordre de lecture des données de la batterie a été ajusté",
-        "it": "durante lo stato del dispositivo \"Standby: rilevamento dell'irradiazione\" (0x0002) i dati di registro sono ora letti anche dall'inverter\nL'ordine di lettura dei dati della batteria è stato regolato",
-        "es": "durante el estado del dispositivo \"Standby: detecting irradiation\" (0x0002) datos del registro ahora también se lee desde el inversor\nEl orden de lectura de los datos de la batería se ha ajustado",
-        "pl": "podczas statusu urządzenia \"Standby: detection irradiation\" (0x0002) dane rejestru są teraz również odczytywane z inwertera\nKolejność odczytu danych baterii została dostosowana",
-        "uk": "при статусі пристрою \"Стандарт: виявлення опромінення\" (0x0002) реєстраційні дані тепер також читайте з інвертора\nВиправлено порядок читання даних акумулятора",
-        "zh-cn": "在设备状态“ Standby: 检测辐照” (0x0002) 注册数据现在也从反转器读取\n电池数据的读取顺序已调整"
       }
     },
     "titleLang": {
