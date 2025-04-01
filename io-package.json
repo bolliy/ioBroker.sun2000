@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "news": {
+      "1.2.0": {
+        "en": "dependency and configuration updates updates\nfix: Object state sDongle.OSVersion to short\nnew setting path for controlling the usableSurplus parameters `control.usableSurplus`",
+        "de": "abhängigkeit und konfiguration updates\nfix: Objektzustand sDongle. OSVersion kurz\nneuer Einstellpfad zur Steuerung des Nutzbar Überschüssige Parameter `control.usableSurplus `",
+        "ru": "обновления зависимостей и конфигураций\nобсуждение Object State sDongle. OSVersion to Short\nновый путь настройки для контроля полезного Дополнительные параметры 'control.usable Surplus пункт",
+        "pt": "atualizações de dependência e configuração\ncorreção: Objeto estado sDongle. OSVersion to short\nnovo caminho de configuração para controlar a usável Parâmetros do Surplus `control.usableSurplus \"",
+        "nl": "afhankelijkheid en configuratie updates\nfix: Object state sDongle. OSVersion to short\nnieuw instellingspad voor het bedienen van het bruikbare Overschotparameters Controle.bruikbaarSurplus Wat",
+        "fr": "mises à jour de la dépendance et de la configuration\ncorrection : État de l'objet sDongle. OSVersion à court\nnouveau chemin de réglage pour contrôler l'utilisable Paramètres excédentaires \"control.usableExcédent \"",
+        "it": "aggiornamenti di dipendenza e configurazione\ncorrezione: SDongle di stato dell'oggetto. OSVersione a breve\nnuovo percorso di regolazione per il controllo dell'utilizzabile Parametri in eccesso `control.usableSurplus #",
+        "es": "actualizaciones de dependencia y configuración\nresolver: \"Objeto estado sDongle\". OSVersion to short\nnuevo camino de configuración para controlar el usable Parámetros adicionales `control.usableSurplus `",
+        "pl": "aktualizacje zależności i konfiguracji\nfix: Object state sDongle. OSVersion to short\nnowa ścieżka ustawień do sterowania użytecznym Parametry nadwyżki 'control.usableSurplus'",
+        "uk": "оновлення залежності та конфігурації\nвиправити: Об'єктний стан sDongle. OSVersion до короткого\nновий шлях налаштування для контролю Параметри Surplus `control.usableSurplus й",
+        "zh-cn": "依赖性和配置更新\n固定:对象状态 sDongle。 OSVsion 缩写\n用于控制可用的新设置路径 盈余参数 `控制.可使用余额' `"
+      },
       "1.1.0": {
         "en": "startupTime/shutdownTime are read from the inverter as local time and not as UTC - fixed times are saved in path `derived`\nnew state [usableSurplusPower](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(surplus))\ncontrol: checking and rounding integer numbers\nbetter solution for math rounding",
         "de": "startzeit/Shutdown Zeit wird vom Wechselrichter als Ortszeit gelesen und nicht als UTC - Festzeiten werden im Pfad gespeichert `derived `\nneuer Staat [usableSurplusPower](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(surplus))\nsteuerung: überprüfung und rundung ganzzahliger zahlen\nbessere lösung für matherundung",
@@ -80,19 +93,6 @@
         "pl": "podczas statusu urządzenia \"Standby: detection irradiation\" (0x0002) dane rejestru są teraz również odczytywane z inwertera\nKolejność odczytu danych baterii została dostosowana",
         "uk": "при статусі пристрою \"Стандарт: виявлення опромінення\" (0x0002) реєстраційні дані тепер також читайте з інвертора\nВиправлено порядок читання даних акумулятора",
         "zh-cn": "在设备状态“ Standby: 检测辐照” (0x0002) 注册数据现在也从反转器读取\n电池数据的读取顺序已调整"
-      },
-      "0.17.0": {
-        "en": "adjust for Responsive Design #134\nmigrate to ESLint 9.x\nnode >= v18.18.0\nmodbus-proxy: enabled reading data via input register",
-        "de": "anpassung für Responsive Design #134\nmigration auf ESLint 9.x\nknoten >= v18.18.0\nmodbus-proxy: lesedaten über eingaberegister aktiviert",
-        "ru": "#134\nмигрировать в ESLint 9.x\nnode >= v18.18.0\nmodbus-proxy: включено чтение данных через регистр ввода",
-        "pt": "ajustar para Design responsivo #134\nmigrar para ESLint 9.x\nnode >= v18.18.0\nmodbus-proxy: dados de leitura habilitados via registro de entrada",
-        "nl": "aanpassen voor Responsive Design #134\nmigreren naar ESLint 9.x\nn.v.t\nmodbus-proxy: leesgegevens ingeschakeld via invoerregister",
-        "fr": "ajuster pour Responsive Design #134\nmigrer vers ESLint 9.x\nnoeud >= v18.18.0\nmodbus-proxy: activé la lecture des données via le registre d'entrée",
-        "it": "regolazione per Responsive Design #134\nmigrare a ESLint 9.x\nnodo >= v18.18.0\nmodbus-proxy: dati di lettura abilitati tramite registro input",
-        "es": "ajuste para el diseño responsable #134\nmigrar a ESLint 9.x\nnodo\nmodbus-proxy: datos de lectura habilitados mediante registro de entrada",
-        "pl": "dostosowanie dla Responsive Design # 134\nmigrate do ESLint 9.x\nwęzeł > = v18.18.0\nmodbus- proxy: włączone odczytywanie danych poprzez rejestr wejściowy",
-        "uk": "конфігурація для відповідального дизайну #134\nmigrate до ESLint 9.x\nвершина >= v18.18.0\nmodbus-proxy: ввімкнено дані читання через вхідний реєстр",
-        "zh-cn": "调整响应设计 # 134\n迁移到 ESLint 9.x\n节点 {v18.18.0}\nmodbus- 代理: 启用通过输入寄存器读取数据"
       }
     },
     "titleLang": {
