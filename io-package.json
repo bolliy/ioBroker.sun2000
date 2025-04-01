@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "1.2.2-alpha.0",
+    "version": "1.2.2",
     "news": {
+      "1.2.2": {
+        "en": "deploy 1.2",
+        "de": "bereitstellung 1.2",
+        "ru": "развернуть 1.2",
+        "pt": "implementação 1.2",
+        "nl": "1.2 inzetten",
+        "fr": "déploiement 1,2",
+        "it": "distribuzione 1.2",
+        "es": "despliegue 1.2",
+        "pl": "rozmieszczenie 1.2",
+        "uk": "розгортання 1.2",
+        "zh-cn": "部署"
+      },
       "1.2.2-alpha.0": {
         "en": "test release",
         "de": "prüfbericht",
@@ -80,19 +93,6 @@
         "pl": "aktualizacje zależności i konfiguracji\nzaktualizowana czułość przypadku nazwy statusu obiektu\nCzas interval inverter niewolnika nieznacznie wzrosła\nDane rejestracyjne nie są odczytywane w \"Standby: detection irradiation\" (0x0002) inwertera niewolnika\nKontrola: battery.maximumDischargePower jest zdeprecjonowane użycie \"maximumDischargingPower\" zamiast\nKontrola: battery.maximumChargePower jest przestarzałe użycie \"maximumChargingPower\" zamiast\nłamanie zmian\nNode.js 20 lub wyższe wymagane\njoBroker host (kontroler js-) 6.0.1 lub wyższy\njoBroker admin 6.13.16 lub wyższy",
         "uk": "оновлення залежності та конфігурації\nоновлена чутливість корпусу назви стану об'єкта\nМіжвалий час раба інвертора трохи збільшилася\nЗареєструвати дані не читають в \"Станбі: виявлення опромінення\" (0x0002) рабоінвертора\nКонтроль: акумулятор.maximumDischargePower deprecated use \"maximumDischargingPower\" замість\nКонтроль: акумулятор.maximumChargePower deprecated use \"maximumChargingPower\" замість\nполомка змін\nNode.js 20 або вище\nioBroker host (js-controller) 6.0.1 або вище\nioBroker admin 6.13.16 або вище",
         "zh-cn": "依赖和配置更新\n更新对象状态名称的大小写灵敏度\n奴隶倒转的间隔时间略有增加\n在奴隶反转器的\"Standby:检测辐照\"(0x0002)中不读登记数据\n控制: 电池. 最大充电Power被贬值 使用\"最大充电Power\"代替\n控制:电池. 最大管理员Power被贬值 使用\"最大充电Power\"代替\n断开更改\n需要20个或以上的节点\nioBroker 主机(js-controller) 6.0.1 或更高\nioBroker 管理员 6.13.16或以上"
-      },
-      "0.18.1": {
-        "en": "dependency and configuration updates\ncontrol: if the battery is not running, events related to the battery are discarded\nmodbus-proxy: adjusted advanced logging",
-        "de": "abhängigkeits- und konfigurationsupdates\nsteuerung: wenn die batterie nicht läuft, werden ereignisse im zusammenhang mit der batterie verworfen\nmodbus-proxy: angepasste erweiterte protokollierung",
-        "ru": "обновления зависимости и конфигурации\nуправление: если батарея не работает, события, связанные с батареей, отбрасываются\nmodbus-proxy: скорректированные передовые лесозаготовки",
-        "pt": "atualizações de dependência e configuração\ncontrole: se a bateria não estiver funcionando, os eventos relacionados à bateria são descartados\nmodbus-proxy: log avançado ajustado",
-        "nl": "afhankelijkheid en configuratie-updates\ncontrole: als de batterij niet draait, worden gebeurtenissen in verband met de batterij weggegooid\nmodbus-proxy: aangepaste geavanceerde logging",
-        "fr": "mises à jour de la dépendance et de la configuration\ncontrôle: si la batterie ne fonctionne pas, les événements liés à la batterie sont jetés\nmodbus-proxy: enregistrement avancé ajusté",
-        "it": "aggiornamenti di dipendenza e configurazione\ncontrollo: se la batteria non è in esecuzione, gli eventi relativi alla batteria vengono scartati\nmodbus-proxy: registrazione avanzata regolata",
-        "es": "actualizaciones de dependencia y configuración\ncontrol: si la batería no funciona, los eventos relacionados con la batería son descartados\nmodbus-proxy: registro avanzado ajustado",
-        "pl": "aktualizacje zależności i konfiguracji\nsterowanie: jeśli akumulator nie jest uruchomiony, zdarzenia związane z akumulatorem są odrzucane\nmodbus- proxy: dostosowane zaawansowane logowanie",
-        "uk": "оновлення залежності та конфігурації\nконтроль: якщо акумулятор не працює, події, пов'язані з акумулятором, відкидаються\nmodbus-proxy: регульований розширений журналювання",
-        "zh-cn": "依赖和配置更新\n控件: 如果电池没有运行, 与电池相关的事件会被丢弃\nmodbus-代用:经过调整的高级记录"
       }
     },
     "titleLang": {
