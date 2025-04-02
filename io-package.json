@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "1.2.2",
+    "version": "1.3.0",
     "news": {
+      "1.3.0": {
+        "en": "usableSurplusPower: new control state `sun2000.0.control.usableSurplus.allowNegativeValue`",
+        "de": "usableSurplusPower: neuer Steuerzustand `sun2000.0.control.usableSurplus.allowNegativeValue `",
+        "ru": "usableSurplusPower: новое состояние управления 'sun2000.0.control.usableSurplus.allowНегативная ценность пункт",
+        "pt": "usableSurplusPower: novo estado de controle `sun2000.0.control.usableSurplus.allowValue negativo \"",
+        "nl": "bruikbareSurplusPower: nieuwe controlestatus  Wat",
+        "fr": "utilisableSurplusPower: nouvel état de contrôle `sun2000.0.control.usableSurplus.allowNegativeValue \"",
+        "it": "usableSurplusPower: nuovo stato di controllo `sun2000.0.control.usableSurplus.allowValore negativo #",
+        "es": "usableSurplusPower: nuevo estado de control `sun2000.0.control.usableSurplus.allowNegativeValue `",
+        "pl": "usableSurplusPower: nowy stan kontroli 'Sun2000.0.control.usableSurplus.allowNegativeValue'",
+        "uk": "english, Українська, Français... й",
+        "zh-cn": "可用SurpusPower: 新的控制状态 `sun 2000.control.usurplus.allow NegativeValue ' `"
+      },
       "1.2.2": {
         "en": "deploy 1.2",
         "de": "bereitstellung 1.2",
@@ -80,19 +93,6 @@
         "pl": "zaktualizowana dalsza wrażliwość przypadku nazwy statusu obiektu\nwymagają joBroker admin 7.4.10 lub wyższy # 154",
         "uk": "оновлений подальший випадок чутливості назви стану об'єкта\nпотрібно ioBroker admin 7.4.10 або вище #154",
         "zh-cn": "更新对象状态名称的进一步大小写灵敏度\n需要 ioBroker 管理员 7.4.10 或 以上 # 154"
-      },
-      "1.0.0": {
-        "en": "dependency and configuration updates\nupdated case sensitivity of the object status name\nInterval time of the slave inverter increased slightly\nRegister data is not read in \"Standby: detecting irradiation\" (0x0002) of the slave inverter\nControl: battery.maximumDischargePower is deprecated use \"maximumDischargingPower\" instead\nControl: battery.maximumChargePower is deprecated use \"maximumChargingPower\" instead\nbreaking changes\nNode.js 20 or higher required\nioBroker host (js-controller) 6.0.1 or higher\nioBroker admin 6.13.16 or higher",
-        "de": "abhängigkeits- und konfigurationsupdates\naktualisierte fallempfindlichkeit des objektstatusnamens\nDie Laufzeit des Slave-Wechselrichters stieg leicht an\nRegisterdaten werden nicht in \"Standby: Detektion von Bestrahlung\" (0x0002) des Slave-Wechselrichters gelesen\nSteuerung: batterie.maximumDischargePower ist deprecated verwenden \"maximumDischargingPower\" statt\nSteuerung: Batterie.maximumChargePower wird mit \"maximumChargingPower\" depreciert\nänderungen\nNode.js 20 oder höher erforderlich\nioBroker Host (js-controller) 6.0.1 oder höher\nioBroker admin 6.13.16 oder höher",
-        "ru": "обновления зависимости и конфигурации\nобновленная чувствительность случая имени состояния объекта\nИнтервал времени инвертора раба несколько увеличился\nРегистрационные данные не считываются в «Standby: Выявление облучения» (0x0002) рабского инвертора\nУправление: батарея.maximumDischargePower вместо этого депрецируется использование \"maximumDischargingPower\"\nУправление: батарея.maximumChargePower вместо этого депрецируется использование \"maximumChargingPower\"\nизменения\nNode.js 20 или выше требуется\nioBroker host (js-controller) 6.0.1 или выше\nioBroker admin 6.13.16 или выше",
-        "pt": "atualizações de dependência e configuração\nsensibilidade de caso atualizada do nome de status do objeto\nO tempo de intervalo do inversor de escravos aumentou ligeiramente\nOs dados de registro não são lidos em \"Standby: detecção de irradiação\" (0x0002) do inversor de escravos\nControl: battery.maximumDischargePower é deprecated use \"maximumDischargingPower\" em vez\nControle: battery.maximumChargePower é deprecated use \"maximumChargingPower\" em vez\nalterações de ruptura\nNode.js 20 ou mais necessários\nhospedeiro ioBroker (js-controller) 6.0.1 ou superior\nioBroker admin 6.13.16 ou superior",
-        "nl": "afhankelijkheid en configuratie-updates\nbijgewerkte gevoeligheid van de statusnaam van het object\nIntervaltijd van de slavenomvormer nam licht toe\nRegistergegevens worden niet gelezen in \"Standby: detectie van bestraling\" (0x0002) van de slavenomvormer\nControle: batterij.maximumDischargePower is verouderd gebruik \"maximumDischargingPower\" in plaats daarvan\nControle: batterij.maximumChargePower is verouderd gebruik \"maximumChargingPower\" in plaats daarvan\nwijzigingen breken\nNode.js 20 of hoger vereist\nioBroker-host (js-controller) 6.0.1 of hoger\nioBroker admin 6.13.16 of hoger",
-        "fr": "mises à jour de la dépendance et de la configuration\nsensibilité mise à jour du nom d'état de l'objet\nTemps d'intervalle de l'onduleur esclave augmenté légèrement\nLes données du registre ne sont pas lues dans \"Standby: detecting irradiation\" (0x0002) de l'onduleur esclave\nContrôle: batterie.maximumDischargePower est déprécié utiliser \"maximumDischargingPower\" à la place\nContrôle: batterie.maximumChargePower est déprécié utiliser \"maximumChargingPower\" à la place\ncasser les changements\nNode.js 20 ou plus requis\nioBroker host (js-controller) 6.0.1 ou plus\nioBroker admin 6.13.16 ou supérieur",
-        "it": "aggiornamenti di dipendenza e configurazione\nsensibilità caso aggiornata del nome di stato dell'oggetto\nIl tempo intervalente dell'inverter schiavo è aumentato leggermente\nI dati di registro non sono letti in \"Standby: rilevamento dell'irradiazione\" (0x0002) dell'inverter slave\nControllo: batteria.maximumDischargePower è deprecato uso \"maximumDischargingPower\" invece\nControllo: batteria.maximumChargePower è deprecato uso \"maximumChargingPower\" invece\ncambiamenti di rottura\nNode.js 20 o superiore richiesto\nioBroker host (js-controller) 6.0.1 o superiore\nioBroker admin 6.13.16 o superiore",
-        "es": "actualizaciones de dependencia y configuración\nsensibilidad actualizada del caso del nombre del estado del objeto\nEl tiempo intervalido del inversor de esclavos aumentó ligeramente\nLos datos del registro no se leen en \"Standby: detección de irradiación\" (0x0002) del inversor de esclavos\nControl: batería.maximumDischargePower es deprecated use \"maximumDischargingPower\" en su lugar\nControl: batería.maximumChargePower es el uso deprecatado \"maximumChargingPower\" en su lugar\ncambios de ruptura\nNode.js 20 o superior requerido\nioBroker host (js-controller) 6.0.1 o superior\nioBroker admin 6.13.16 o superior",
-        "pl": "aktualizacje zależności i konfiguracji\nzaktualizowana czułość przypadku nazwy statusu obiektu\nCzas interval inverter niewolnika nieznacznie wzrosła\nDane rejestracyjne nie są odczytywane w \"Standby: detection irradiation\" (0x0002) inwertera niewolnika\nKontrola: battery.maximumDischargePower jest zdeprecjonowane użycie \"maximumDischargingPower\" zamiast\nKontrola: battery.maximumChargePower jest przestarzałe użycie \"maximumChargingPower\" zamiast\nłamanie zmian\nNode.js 20 lub wyższe wymagane\njoBroker host (kontroler js-) 6.0.1 lub wyższy\njoBroker admin 6.13.16 lub wyższy",
-        "uk": "оновлення залежності та конфігурації\nоновлена чутливість корпусу назви стану об'єкта\nМіжвалий час раба інвертора трохи збільшилася\nЗареєструвати дані не читають в \"Станбі: виявлення опромінення\" (0x0002) рабоінвертора\nКонтроль: акумулятор.maximumDischargePower deprecated use \"maximumDischargingPower\" замість\nКонтроль: акумулятор.maximumChargePower deprecated use \"maximumChargingPower\" замість\nполомка змін\nNode.js 20 або вище\nioBroker host (js-controller) 6.0.1 або вище\nioBroker admin 6.13.16 або вище",
-        "zh-cn": "依赖和配置更新\n更新对象状态名称的大小写灵敏度\n奴隶倒转的间隔时间略有增加\n在奴隶反转器的\"Standby:检测辐照\"(0x0002)中不读登记数据\n控制: 电池. 最大充电Power被贬值 使用\"最大充电Power\"代替\n控制:电池. 最大管理员Power被贬值 使用\"最大充电Power\"代替\n断开更改\n需要20个或以上的节点\nioBroker 主机(js-controller) 6.0.1 或更高\nioBroker 管理员 6.13.16或以上"
       }
     },
     "titleLang": {
