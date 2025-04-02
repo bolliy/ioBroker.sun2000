@@ -64,6 +64,9 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* usableSurplusPower: new control state `sun2000.0.control.usableSurplus.allowNegativeValue`
+
 ### 1.2.2 (2025-04-01)
 * deploy 1.2
 
