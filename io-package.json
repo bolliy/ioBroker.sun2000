@@ -42,32 +42,6 @@
         "uk": "тестовий реліз",
         "zh-cn": "测试发布"
       },
-      "1.2.1": {
-        "en": "dependency update",
-        "de": "aktualisierung der abhängigkeit",
-        "ru": "обновление зависимостей",
-        "pt": "atualização de dependência",
-        "nl": "afhankelijkheidsupdate",
-        "fr": "mise à jour de la dépendance",
-        "it": "aggiornamento della dipendenza",
-        "es": "actualización de la dependencia",
-        "pl": "aktualizacja zależności",
-        "uk": "оновлення залежності",
-        "zh-cn": "依赖性更新"
-      },
-      "1.2.0": {
-        "en": "dependency and configuration updates updates\nfix: Object state sDongle.OSVersion to short\nnew setting path for controlling the usableSurplus parameters `control.usableSurplus`",
-        "de": "abhängigkeit und konfiguration updates\nfix: Objektzustand sDongle. OSVersion kurz\nneuer Einstellpfad zur Steuerung des Nutzbar Überschüssige Parameter `control.usableSurplus `",
-        "ru": "обновления зависимостей и конфигураций\nобсуждение Object State sDongle. OSVersion to Short\nновый путь настройки для контроля полезного Дополнительные параметры 'control.usable Surplus пункт",
-        "pt": "atualizações de dependência e configuração\ncorreção: Objeto estado sDongle. OSVersion to short\nnovo caminho de configuração para controlar a usável Parâmetros do Surplus `control.usableSurplus \"",
-        "nl": "afhankelijkheid en configuratie updates\nfix: Object state sDongle. OSVersion to short\nnieuw instellingspad voor het bedienen van het bruikbare Overschotparameters Controle.bruikbaarSurplus Wat",
-        "fr": "mises à jour de la dépendance et de la configuration\ncorrection : État de l'objet sDongle. OSVersion à court\nnouveau chemin de réglage pour contrôler l'utilisable Paramètres excédentaires \"control.usableExcédent \"",
-        "it": "aggiornamenti di dipendenza e configurazione\ncorrezione: SDongle di stato dell'oggetto. OSVersione a breve\nnuovo percorso di regolazione per il controllo dell'utilizzabile Parametri in eccesso `control.usableSurplus #",
-        "es": "actualizaciones de dependencia y configuración\nresolver: \"Objeto estado sDongle\". OSVersion to short\nnuevo camino de configuración para controlar el usable Parámetros adicionales `control.usableSurplus `",
-        "pl": "aktualizacje zależności i konfiguracji\nfix: Object state sDongle. OSVersion to short\nnowa ścieżka ustawień do sterowania użytecznym Parametry nadwyżki 'control.usableSurplus'",
-        "uk": "оновлення залежності та конфігурації\nвиправити: Об'єктний стан sDongle. OSVersion до короткого\nновий шлях налаштування для контролю Параметри Surplus `control.usableSurplus й",
-        "zh-cn": "依赖性和配置更新\n固定:对象状态 sDongle。 OSVsion 缩写\n用于控制可用的新设置路径 盈余参数 `控制.可使用余额' `"
-      },
       "1.1.0": {
         "en": "startupTime/shutdownTime are read from the inverter as local time and not as UTC - fixed times are saved in path `derived`\nnew state [usableSurplusPower](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(surplus))\ncontrol: checking and rounding integer numbers\nbetter solution for math rounding",
         "de": "startzeit/Shutdown Zeit wird vom Wechselrichter als Ortszeit gelesen und nicht als UTC - Festzeiten werden im Pfad gespeichert `derived `\nneuer Staat [usableSurplusPower](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(surplus))\nsteuerung: überprüfung und rundung ganzzahliger zahlen\nbessere lösung für matherundung",

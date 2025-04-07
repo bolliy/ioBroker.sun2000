@@ -64,6 +64,10 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* control: new control state `sun2000.0.control.externalPower`
+* fixed issue detected by repository checker #166
+
 ### 1.3.0 (2025-04-02)
 * usableSurplusPower: new control state `sun2000.0.control.usableSurplus.allowNegativeValue`
 
