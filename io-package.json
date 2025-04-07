@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "1.3.0",
+    "version": "1.4.0",
     "news": {
+      "1.4.0": {
+        "en": "control: new control state `sun2000.0.control.externalPower` #76\nfixed issue detected by repository checker #166",
+        "de": "steuerung: neuer Steuerzustand `sun2000.0.control.externalPower` #76\nbehobenes problem erkannt von repository checker #166",
+        "ru": "новый контрольный режим «sun2000.0.control.externalPower» #76\nфиксированная проблема, обнаруженная проверкой репозитория #166",
+        "pt": "controle: novo estado de controle `sun2000.0.control.externalPower` #76\nproblema fixo detectado pelo verificador de repositório #166",
+        "nl": "controle: nieuwe controle staat  #76\nvaste uitgifte gedetecteerd door repository checker #166",
+        "fr": "contrôle: nouvel état de contrôle `sun2000.0.control.externalPower` #76\nproblème corrigé détecté par le vérificateur de dépôt #166",
+        "it": "controllo: nuovo stato di controllo `sun2000.0.control.externalPower` #76\nproblema fisso rilevato da repository checker #166",
+        "es": "control: nuevo estado de control `sun2000.0.control.externalPower` #76\nnúmero fijo detectado por el repositorio #166",
+        "pl": "control: nowy stan kontroli 'sun2000.0.control.externalPower' # 76\nstała emisja wykryta przez kontroler repozytorium # 166",
+        "uk": "контроль: новий стан управління `sun2000.0.control.externalPower` #76\nвиправлено проблему, виявлену репозиторійною перевіркою #166",
+        "zh-cn": "控制:新的控制状态`sun 2000.0.control.external Power ' 76号\n仓库检查器检测到的固定问题 # 166"
+      },
       "1.3.0": {
         "en": "usableSurplusPower: new control state `sun2000.0.control.usableSurplus.allowNegativeValue`",
         "de": "usableSurplusPower: neuer Steuerzustand `sun2000.0.control.usableSurplus.allowNegativeValue `",
