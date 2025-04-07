@@ -65,7 +65,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* control: new control state `sun2000.0.control.externalPower`
+* control: new control state `sun2000.0.control.externalPower` #76
 * fixed issue detected by repository checker #166
 
 ### 1.3.0 (2025-04-02)
