@@ -71,12 +71,6 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 ### 1.3.0 (2025-04-02)
 * usableSurplusPower: new control state `sun2000.0.control.usableSurplus.allowNegativeValue`
 
-### 1.2.2 (2025-04-01)
-* deploy 1.2
-
-### 1.2.1 (2025-04-01)
-* dependency update
-
 ### 1.2.0 (2025-04-01)
 * dependency and configuration updates
 * fix: Object state sDongle.OSVersion to short
