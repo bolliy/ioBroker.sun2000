@@ -29,6 +29,7 @@ export default [
              'jsdoc/require-jsdoc': 'off',
              //https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-param-description.md#repos-sticky-header
              'jsdoc/require-param-description': ["error"|"warn", {"contexts":["any"]}],
+             //edit
              "jsdoc/no-types": ["error"|"warn", {"contexts":["any"]}],
              "jsdoc/tag-lines": ["error"|"warn", "always"],
              curly: ["error", "multi-line"]
