@@ -64,7 +64,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### 1.4.1-alpha.2 (2025-05-20)
+### **WORK IN PROGRESS**
 * update dependencies
 * fix: surplus power during battery discharge
 * control: new control value `sun2000.0.control.usableSurplus.bufferHysteresis`
