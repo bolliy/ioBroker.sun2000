@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "1.4.1-alpha.1",
+    "version": "1.4.1-alpha.2",
     "news": {
+      "1.4.1-alpha.2": {
+        "en": "update dependencies\nfix: surplus power during battery discharge\ncontrol: new control value `sun2000.0.control.usableSurplus.bufferHysteresis`",
+        "de": "aktualisierung der abhängigkeiten\nfix: überschussleistung während der batterieentladung\nsteuerung: neuer Steuerwert `sun2000.0.control.usableSurplus.bufferHysteresis`",
+        "ru": "обновление зависимостей\nисправление: избыточная мощность во время разрядки батареи\nконтроль: новое значение управления 'sun2000.0.control.usableSurplus.bufferHysteresis'",
+        "pt": "dependências\ncorreção: energia excedente durante a descarga da bateria\ncontrol: novo valor de controle `sun2000.0.control.usableSurplus.bufferHysteresis`",
+        "nl": "afhankelijkheden bijwerken\nfix: overtollig vermogen tijdens batterijontlading\ncontrole: nieuwe controlewaarde ",
+        "fr": "mettre à jour les dépendances\nfix: puissance excédentaire pendant la décharge de la batterie\ncontrôle: nouvelle valeur de contrôle `sun2000.0.control.usableSurplus.bufferHystérésis`",
+        "it": "aggiornamento dipendenze\nfix: potenza in eccesso durante la scarica della batteria\ncontrollo: nuovo valore di controllo `sun2000.0.control.usableSurplus.bufferHysteresis`",
+        "es": "dependencias de actualización\nfijación: superávit durante la descarga de la batería\ncontrol: nuevo valor de control `sun2000.0.control.usableSurplus.bufferHysteresis`",
+        "pl": "aktualizacji zależności\nfix: nadwyżka mocy podczas rozładowania akumulatora\ncontrol: nowa wartość kontrolna 'sun2000.0.control.usableSurplus.buverHysteresis'",
+        "uk": "оновлення залежності\nвиправити: надлишок живлення при розряді акумулятора\n`sun2000.0.control.usableSurplus.bufferHysteresis`",
+        "zh-cn": "更新依赖关系\n固定:电池放电时的剩余功率\n控制: 新的控制值 `sun2000.control.ulySurplus.bufferHysteresis'"
+      },
       "1.4.0": {
         "en": "control: new control state `sun2000.0.control.externalPower` #76\nfixed issue detected by repository checker #166",
         "de": "steuerung: neuer Steuerzustand `sun2000.0.control.externalPower` #76\nbehobenes problem erkannt von repository checker #166",
