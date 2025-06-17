@@ -48,7 +48,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 
 ## Feature list
 
-* Maximum `5 inverters` (master/slave) can be processed, each with a battery module (max. 15kWh).
+* Maximum `5 inverters` (master/slave) can be processed, each with a battery module.
 * `Real-time` values such as input power, output power, charging/discharging power and the grid consumption are read out at a fixed interval. 
 * States are only written for changed data from the inverter. This relieves the burden on the iobroker instance.
 * The states “inputPower” or “activePower” in the “collected” path can be monitored with a “was updated” trigger element. Because these states are always written within the set interval.

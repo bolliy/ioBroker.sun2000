@@ -76,6 +76,119 @@ class Sun2000 extends utils.Adapter {
 		this.on('unload', this.onUnload.bind(this));
 	}
 
+	async initDevicePath(item) {
+		if (item.driverClass == driverClasses.inverter) {
+			const path = `inverter.${item.index.toString()}`;
+			item.path = path;
+			await this.extendObject(path, {
+				type: 'channel',
+				common: {
+					name: `channel inverter ${item.index.toString()}`,
+					role: 'indicator',
+				},
+				native: {},
+			});
+
+			await this.extendObject(`${path}.grid`, {
+				type: 'channel',
+				common: {
+					name: 'channel grid',
+				},
+				native: {},
+			});
+
+			await this.extendObject(`${path}.info`, {
+				type: 'channel',
+				common: {
+					name: 'channel info',
+					role: 'info',
+				},
+				native: {},
+			});
+			/*
+				await this.extendObject(path+'.battery', {
+					type: 'channel',
+					common: {
+						name: 'channel battery'
+					},
+					native: {}
+				});
+				*/
+			await this.extendObject(`${path}.string`, {
+				type: 'channel',
+				common: {
+					name: 'channel string',
+				},
+				native: {},
+			});
+
+			await this.extendObject(`${path}.derived`, {
+				type: 'channel',
+				common: {
+					name: 'channel derived',
+				},
+				native: {},
+			});
+		}
+
+		if (item.driverClass == driverClasses.sdongle) {
+			item.path = '';
+			await this.extendObject(`${item.path}sdongle`, {
+				type: 'device',
+				common: {
+					name: 'device SDongle',
+				},
+				native: {},
+			});
+		}
+
+		if (item.driverClass == driverClasses.logger) {
+			item.path = '';
+			await this.extendObject(`${item.path}slogger`, {
+				type: 'device',
+				common: {
+					name: 'device SmartLogger',
+				},
+				native: {},
+			});
+		}
+		if (item.driverClass == driverClasses.loggerMeter) {
+			item.path = '';
+		}
+
+		if (item.driverClass == driverClasses.emma) {
+			item.path = '';
+			await this.extendObject(`${item.path}emma`, {
+				type: 'device',
+				common: {
+					name: 'device Emma',
+				},
+				native: {},
+			});
+		}
+
+		if (item.driverClass == driverClasses.emmaCharger) {
+			if (item.index == 0) {
+				await this.extendObject('charger', {
+					type: 'channel',
+					common: {
+						name: 'channel charger',
+					},
+					native: {},
+				});
+			}
+			item.path = `charger.${item.index.toString()}`;
+			await this.extendObject(item.path, {
+				type: 'channel',
+				common: {
+					name: `channel charger ${item.index.toString()}`,
+					role: 'indicator',
+				},
+				native: {},
+			});
+		}
+	}
+
 	async initPath() {
 		await this.extendObject('control', {
 			type: 'channel',
@@ -110,95 +223,7 @@ class Sun2000 extends utils.Adapter {
 		});
 
 		for (const item of this.devices) {
-			if (item.driverClass == driverClasses.inverter) {
-				const path = `inverter.${item.index.toString()}`;
-				item.path = path;
-				await this.extendObject(path, {
-					type: 'channel',
-					common: {
-						name: `channel inverter ${item.index.toString()}`,
-						role: 'indicator',
-					},
-					native: {},
-				});
-
-				await this.extendObject(`${path}.grid`, {
-					type: 'channel',
-					common: {
-						name: 'channel grid',
-					},
-					native: {},
-				});
-
-				await this.extendObject(`${path}.info`, {
-					type: 'channel',
-					common: {
-						name: 'channel info',
-						role: 'info',
-					},
-					native: {},
-				});
-				/*
-				await this.extendObject(path+'.battery', {
-					type: 'channel',
-					common: {
-						name: 'channel battery'
-					},
-					native: {}
-				});
-				*/
-				await this.extendObject(`${path}.string`, {
-					type: 'channel',
-					common: {
-						name: 'channel string',
-					},
-					native: {},
-				});
-
-				await this.extendObject(`${path}.derived`, {
-					type: 'channel',
-					common: {
-						name: 'channel derived',
-					},
-					native: {},
-				});
-			}
-
-			if (item.driverClass == driverClasses.sdongle) {
-				item.path = '';
-				await this.extendObject(`${item.path}sdongle`, {
-					type: 'device',
-					common: {
-						name: 'device SDongle',
-					},
-					native: {},
-				});
-			}
-
-			if (item.driverClass == driverClasses.logger) {
-				item.path = '';
-				await this.extendObject(`${item.path}slogger`, {
-					type: 'device',
-					common: {
-						name: 'device SmartLogger',
-					},
-					native: {},
-				});
-			}
-			if (item.driverClass == driverClasses.loggerMeter) {
-				item.path = '';
-			}
-
-			if (item.driverClass == driverClasses.emma) {
-				item.path = '';
-				await this.extendObject(`${item.path}emma`, {
-					type: 'device',
-					common: {
-						name: 'device Emma',
-					},
-					native: {},
-				});
-			}
+			await this.initDevicePath(item);
 		}
 	}
 
@@ -366,6 +391,11 @@ class Sun2000 extends utils.Adapter {
 			this.settings.modbusIds = this.config.modbusIds.split(',').map(n => {
 				return Number(n);
 			});
+			/*
+			this.settings.chargerIds = this.config.chargerIds.split(',').map(n => {
+				return Number(n);
+			});
+			*/
 			//SmartDongle
 			this.settings.sd.active = this.config.sd_active;
 			// eslint-disable-next-line no-constant-binary-expression
@@ -445,6 +475,16 @@ class Sun2000 extends utils.Adapter {
 						meter: true,
 						driverClass: driverClasses.emma,
 					});
+					/*
+					for (const [i, id] of this.settings.chargerIds.entries()) {
+						this.devices.push({
+							index: i,
+							duration: 0,
+							modbusId: id,
+							driverClass: driverClasses.emmaCharger,
+						});
+					}
+					*/
 				}
 
 				await this.adjustInverval();
