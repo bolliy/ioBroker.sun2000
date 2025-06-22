@@ -170,9 +170,9 @@ class Sun2000 extends utils.Adapter {
 		if (item.driverClass == driverClasses.emmaCharger) {
 			if (item.index == 0) {
 				await this.extendObject('charger', {
-					type: 'channel',
+					type: 'device',
 					common: {
-						name: 'channel charger',
+						name: 'device charger',
 					},
 					native: {},
 				});
