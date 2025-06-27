@@ -64,6 +64,14 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+* add support for chargers via Emma and save the data in the charger path #171
+* Establish data consistency between meter.activePower and the power of the meter phases #174
+* allows control.battery.chargeFromGridFunction when using the Emma
+* breaking change: 
+   - the value sun2000.x.inverter.x.battery.runningStatus is saved as a number. The translated value (such as STANDBY, RUNNING etc.) is stored in the path sun2000.x.inverter.x.battery.derived
+
 ### 1.5.0 (2025-05-20)
 * update dependencies
 * fix: surplus power during battery discharge
