@@ -58,6 +58,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 * [`modbus-proxy`](https://github.com/bolliy/ioBroker.sun2000/wiki/Modbus-Proxy): Third party device such as wallbox, energy manager etc. can receive data even if the modbus interface of inverter is already in use. In addition you can mirror the sun2000 data to another IoBroker instance.
 * Huawei [`SmartLogger`](https://github.com/bolliy/ioBroker.sun2000/wiki/SmartLogger) integration: Monitors and manages the PV power system. The adapter saves the collected data in the same way as it does when read out the inverter directly.
 * Huawei [`Emma`](https://github.com/bolliy/ioBroker.sun2000/wiki/Emma) integration: The Modbus access, network connectivity (WiFi and Ethernet) and the DDSU/DTSU-666H smart meter functions are integrated in one unit - the use of the Sdongle becomes redundant. In addition Huawei EV chargers and load shedding/control (via selected Shelly devices) are supported and "intelligent" controlled.
+* Huawei [`Charger`](https://github.com/bolliy/ioBroker.sun2000/issues/171) via Emma integration: The chargers are automatically recognized and the data is saved in their own path. 
 
 ## Changelog
 <!--
