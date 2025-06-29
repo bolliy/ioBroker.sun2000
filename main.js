@@ -475,16 +475,6 @@ class Sun2000 extends utils.Adapter {
 						meter: true,
 						driverClass: driverClasses.emma,
 					});
-					/*
-					for (const [i, id] of this.settings.chargerIds.entries()) {
-						this.devices.push({
-							index: i,
-							duration: 0,
-							modbusId: id,
-							driverClass: driverClasses.emmaCharger,
-						});
-					}
-					*/
 				}
 
 				await this.adjustInverval();
