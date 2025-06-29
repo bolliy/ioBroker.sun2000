@@ -65,8 +65,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 2.0.0 (2025-06-29)
 * add support for chargers via Emma and save the data in the charger path #171
 * Establish data consistency between meter.activePower and the power of the meter phases #174
 * allows `control.battery.chargeFromGridFunction` when using the Emma
