@@ -66,7 +66,8 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-
+* emma: system time is being determined [#179](https://github.com/bolliy/ioBroker.sun2000/issues/179)
+* add grid power scheduling functionality to inverter driver [#176](https://github.com/bolliy/ioBroker.sun2000/issues/176)
 
 ### 2.0.0 (2025-06-29)
 * add support for chargers via Emma and save the data in the charger path #171
