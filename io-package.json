@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "news": {
+      "2.1.0": {
+        "en": "emma: system time is being determined [#179](https://github.com/bolliy/ioBroker.sun2000/issues/179)\ncontrol: add grid power scheduling functionality to inverter driver [#176](https://github.com/bolliy/ioBroker.sun2000/issues/176)",
+        "de": "emma: Die Systemzeit wird bestimmt [#179](https://github.com/bolliy/ioBroker.sun2000/issues/179)\nsteuerung: Netz-Leistungs-Scheduling-Funktionalität zum Wechselrichtertreiber hinzufügen [#176](https://github.com/bolliy/ioBroker.sun2000/issues/176)",
+        "ru": "emma: системное время определяется [#179] (https://github.com/bolliy/ioBroker.sun2000/issues/179)\nуправление: добавьте функцию планирования мощности сети к драйверу инвертора [#176] (https://github.com/bolliy/ioBroker.sun2000/issues/176)",
+        "pt": "emma: tempo do sistema está sendo determinado [#179](https://github.com/bolliy/ioBroker.sun2000/issues/179)\ncontrol: add grid power screaming functionality to inverter driver [#176](https://github.com/bolliy/ioBroker.sun2000/issues/176)",
+        "nl": "emma: de systeemtijd wordt bepaald [#179](https://github.com/bolliy/ioBroker.sun2000/issues/179)\ncontrole: voeg net stroom planning functionaliteit aan omvormer driver [#176](https://github.com/bolliy/ioBroker.sun2000/issues/176)",
+        "fr": "emma: le temps du système est déterminé [#179](https://github.com/bolliy/ioBroker.sun2000/issues/179)\ncontrôle: ajouter la fonctionnalité de programmation du réseau au pilote d'onduleur [#176](https://github.com/bolliy/ioBroker.sun2000/issues/176)",
+        "it": "emma: il tempo di sistema viene determinato [#179](https://github.com/bolliy/ioBroker.sun2000/issues/179)\ncontrollo: aggiungere funzionalità di programmazione della griglia al driver inverter [#176](https://github.com/bolliy/ioBroker.sun2000/issues/176)",
+        "es": "emma: El tiempo del sistema se determina [#179](https://github.com/bolliy/ioBroker.sun2000/issues/179)\ncontrol: añadir funcionalidad de programación de energía de red al controlador inverter [#176](https://github.com/bolliy/ioBroker.sun2000/issues/176)",
+        "pl": "emma: ustala się czas systemowy [# 179] (https: / / github.com / bolliy / ioBroker.sun2000 / issues / 179)\ncontrol: add grid Power Scheduling Functional to inverter driver [# 176] (https: / / github.com / bolliy / ioBroker.sun2000 / issues / 176)",
+        "uk": "emma: час системи визначається [#179](https://github.com/bolliy/ioBroker.sun2000/products/179)\ncontrol: add power scheduling features to inverter драйвер [#176](https://github.com/bolliy/ioBroker.sun2000/issues/176)",
+        "zh-cn": "emma:系统时间正在确定 [# 179] (https://github.com/bolliy/ioBroker.sun2000/issues/179)\n控制:向反向驱动器添加电网电源调度功能[#176](https://github.com/bolliy/ioBroker.sun2000/issues/1976)"
+      },
       "2.0.0": {
         "en": "add support for chargers via Emma and save the data in the charger path #171\nEstablish data consistency between meter.activePower and the power of the meter phases #174\nallows `control.battery.chargeFromGridFunction` when using the Emma\nbreaking change: \nthe value `sun2000.x.inverter.x.battery.runningStatus` is saved as a number. The translated value (such as STANDBY, RUNNING etc.) is stored in the path sun2000.x.inverter.x.battery.derived",
         "de": "unterstützung für Ladegeräte über Emma hinzufügen und die Daten im Ladepfad #171 speichern\nDatenkonsistenz zwischen meter.activePower und der Leistung der Zählerphasen #174 einstellen\nerlaubt `control.battery.chargeFromGridFunction` bei Verwendung der Emma\nänderung:\nder Wert `sun2000.x.inverter.x.battery.runningStatus` wird als Nummer gespeichert. Der übersetzte Wert (wie STANDBY, RUNNING etc.) wird im Pfad sun2000.x.inverter.x.battery.derived gespeichert",
@@ -80,19 +93,6 @@
         "pl": "uwalnianie testowe",
         "uk": "тестовий реліз",
         "zh-cn": "测试发布"
-      },
-      "1.1.0": {
-        "en": "startupTime/shutdownTime are read from the inverter as local time and not as UTC - fixed times are saved in path `derived`\nnew state [usableSurplusPower](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(surplus))\ncontrol: checking and rounding integer numbers\nbetter solution for math rounding",
-        "de": "startzeit/Shutdown Zeit wird vom Wechselrichter als Ortszeit gelesen und nicht als UTC - Festzeiten werden im Pfad gespeichert `derived `\nneuer Staat [usableSurplusPower](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(surplus))\nsteuerung: überprüfung und rundung ganzzahliger zahlen\nbessere lösung für matherundung",
-        "ru": "startupTime/Sutdown Время считывается с инвертора как локальное время, а не как UTC - фиксированное время сохраняется в пути пункт\nновое состояние [usableSurplusPower] (https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(surplus))\nконтроль: проверка и округление целых чисел\nлучшее решение для математического округления",
-        "pt": "startupTime/shutdown O tempo é lido do inversor como hora local e não como UTC - os tempos fixos são salvos no caminho `derivod \"\nnovo estado [usableSurplusPower](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(surplus)))\ncontrole: números inteiros de verificação e arredondamento\nmelhor solução para arredondamento de matemática",
-        "nl": "opstartenTijd/afsluiten De tijd wordt van de inverter gelezen als lokale tijd en niet als UTC - vaste tijden worden opgeslagen in het pad uit Wat\nnieuwe staat [bruikbaarSurplusPower](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(surplus))\ncontrole: controle en afronding van gehele getallen\nbetere oplossing voor wiskunde afronden",
-        "fr": "startupTime/shutdown Le temps est lu à partir de l'onduleur en tant qu'heure locale et non pas en tant que UTC - les temps fixes sont sauvegardés dans le chemin « dérivé \"\nnouvel état [utilisableSurplusPower](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(surplus))\ncontrôle: contrôle et arrondi des nombres entiers\nmeilleure solution pour arrondir les maths",
-        "it": "startupTime/shutdown Il tempo viene letto dall'inverter come ora locale e non come UTC - i tempi fissi vengono salvati nel percorso `derivati #\nnuovo stato [usableSurplusPower](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(plus)\ncontrollo: controllo e arrotondamento numeri interi\nmigliore soluzione per arrotondamento di matematica",
-        "es": "startupTime/shutdown El tiempo se lee desde el inversor como hora local y no como UTC - los tiempos fijos se salvan en el camino `derived `\nnuevo estado [utilizableSurplusPower](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(superávit))\ncontrol: números enteros de comprobación y redondeo\nmejor solución para redondeo de matemáticas",
-        "pl": "startupTime / shutdown Czas jest odczytywany z inwertera jako czasu lokalnego, a nie jako UTC - stałe czasy są zapisywane w ścieżce 'pochodnej'\nnową ustawę [usableSurplusPower] (https: / / github.com / bolliy / ioBroker.sun2000 / wiki /% C3% 9Cberschuss- (nadwyżka))\nkontrola: sprawdzanie i zaokrąglanie liczb całkowitych\nlepsze rozwiązanie do zaokrąglania matematycznego",
-        "uk": "javaScript licenses API Веб-сайт Час читає з інвертора як локальний час, так і не як UTC - виправлені часи зберігаються в шляху `derived й\nновий стан [usableSurplusPower](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(surplus)))\nконтроль: перевірка та округлення цілих чисел\nкраще рішення для закруглення математики",
-        "zh-cn": "启动时间/下调 时间从反转器读作本地时间,而不是世界协调时 - 固定时间保存在路径中`衍生' `\n新状态[可使用SurpusPower](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9 Cberschuss-(盈余))\n控件: 检查和四舍五入整数\n更好的数学四舍五入解决方案"
       }
     },
     "titleLang": {
