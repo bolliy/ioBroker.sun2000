@@ -3,7 +3,9 @@
   "configurations": [
      {
            //dev-server run --noStart
+           //
            //node --inspect=0.0.0.0:9229 --inspect-wait .dev-server/default/node_modules/iobroker.sun2000/ --logs --force --debug
+           //node --inspect=0.0.0.0:9229 --inspect-brk .dev-server/default/node_modules/iobroker.sun2000/ --logs --force --debug
             "name": "Attach to remote",
             "port": 9229,
             "request": "attach",
