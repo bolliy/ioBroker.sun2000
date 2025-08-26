@@ -1,6 +1,89 @@
 {
   "version": "0.2.0",
   "configurations": [
+     {
+           //dev-server run --noStart
+           //node --inspect=0.0.0.0:9229 --inspect-wait .dev-server/default/node_modules/iobroker.sun2000/ --logs --force --debug
+            "name": "Attach to remote",
+            "port": 9229,
+            "request": "attach",
+            "resolveSourceMapLocations": [
+                "${workspaceFolder}/.dev-server/default/node_modules/**"
+            ],
+            "restart": true,
+            "type": "node",
+            //"localRoot": "${workspaceFolder}",
+            //"remoteRoot": "${workspaceFolder}/.dev-server/default/node_modules/iobroker.sun2000"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "launch of Martin",
+            "skipFiles": ["<node_internals>/**"],
+            "args": ["--instance","0","--force","--logs","--debug"],
+            "program": "${workspaceFolder}/.dev-server/default/node_modules/iobroker.sun2000/main.js",
+            //"cwd": "${workspaceFolder}/.dev-server/default",
+            "stopOnEntry": true,
+            "sourceMaps": true,
+             "sourceMapPathOverrides": {
+		            "${workspaceFolder}/.dev-server/default/node_modules/iobroker.sun2000/*" : "${workspaceFolder}/*"
+                
+	          },
+            "console": "internalConsole",
+            "outputCapture": "std",
+            "env":{"NODE_PATH":"${workspaceFolder}/.dev-server/default/node_modules"},
+           
+    },
+    {
+      "type": "node",
+            "request": "launch",
+            "name": "default Launch ioBroker Adapter ",
+            "skipFiles": ["<node_internals>/**"],
+            "args": ["--debug", "0"],
+            "program": "node_modules/iobroker.sun2000/main.js",
+            "cwd": "${workspaceFolder}/.dev-server/default",
+            "stopOnEntry": true,
+            "sourceMaps": true,
+            "console": "internalConsole",
+            "outputCapture": "std",
+            "trace" : true,
+            "resolveSourceMapLocations": [
+		            "${workspaceFolder}/**",
+		            // only exclude node_modules from the workspace folder
+		            // If we exclude node_modules from .dev-server/..., we don't get sourcemaps
+		            "!${workspaceFolder}/node_modules/**"
+	          ],
+	          "sourceMapPathOverrides": {
+		            "${workspaceFolder}/.dev-server/default/node_modules/iobroker.sun2000/*" : "${workspaceFolder}/*"
+                
+	          }
+    },
+     {
+      "type": "node",
+            "request": "launch",
+            "name": "Launch ioBroker Adapter test 1",
+            "skipFiles": ["<node_internals>/**"],
+            "args": ["--debug", "0"],
+            "program": "node_modules/iobroker.sun2000/main.js",
+            "cwd": "${workspaceFolder}/.dev-server/default",
+            "stopOnEntry": true,
+            //"sourceMaps": true,
+            //"trace" : true,
+            "console": "integratedTerminal",
+            "outputCapture": "std",
+            //"localRoot": "${workspaceFolder}",
+            //"remoteRoot": "${workspaceFolder}/.dev-server/default/node_modules/iobroker.sun2000",
+            "resolveSourceMapLocations": [
+		            "${workspaceFolder}/**",
+                "**/node_modules/**",
+		            // only exclude node_modules from the workspace folder
+		            // If we exclude node_modules from .dev-server/..., we don't get sourcemaps
+		            "!${workspaceFolder}/node_modules/**"
+	          ],
+            "sourceMapPathOverrides": {
+		            "../*" : "${workspaceFolder}/*"
+	          }
+    },
     {
       "type": "node",
       "request": "launch",
@@ -8,15 +91,15 @@
       "skipFiles": ["<node_internals>/**"],
       //"args": ["--debug", "0"],
       "args": ["--instance", "0", "--force", "--logs", "--debug"],
-      //"program": "node_modules/iobroker.sun2000-ems/main.mjs",
-      "program": "${workspaceFolder}/main.js",
+      //"program": "node_modules/iobroker.sun2000/main.js",
       //"cwd": "${workspaceFolder}/.dev-server/default",
-      "env": {"NODE_PATH":"${workspaceFolder}/.dev-server/default/node_modules"},
-      //"cwd": "${workspaceFolder}",
+      "program": "${workspaceFolder}/main.js",
+      "cwd": "${workspaceFolder}",
+      "env":{"NODE_PATH": "${workspaceFolder}/.dev-server/default/node_modules"},
       "stopOnEntry": true,
       "console": "integratedTerminal",
       "sourceMaps": true,
       "resolveSourceMapLocations": ["${workspaceFolder}/**", "**/node_modules/**"]
-    }
+    } 
   ]
 }
