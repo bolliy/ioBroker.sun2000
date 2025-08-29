@@ -67,6 +67,8 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 -->
 ### **WORK IN PROGRESS**
 * fix: adjust event value limits based on usableSurplus parameters
+* new state sun2000.x.collected.[surplusPower](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(surplus))
+
 
 ### 2.1.0 (2025-07-06)
 * emma: system time is being determined [#179](https://github.com/bolliy/ioBroker.sun2000/issues/179)
