@@ -66,8 +66,11 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
+* dependency and configuration updates
 * fix: adjust event value limits based on usableSurplus parameters
-* fix: improve power calculation with exponential moving average in EmmaCharger
+* fix: swap register values for power consumption in Emma driver #190
+* emma: improve power calculation with exponential moving average in EmmaCharger
+* update surplus power state definitions and deprecate old identifiers
 
 ### 2.1.0 (2025-07-06)
 * emma: system time is being determined [#179](https://github.com/bolliy/ioBroker.sun2000/issues/179)

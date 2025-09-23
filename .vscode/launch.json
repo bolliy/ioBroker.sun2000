@@ -14,8 +14,8 @@
             ],
             "restart": true,
             "type": "node",
-            //"localRoot": "${workspaceFolder}",
-            //"remoteRoot": "${workspaceFolder}/.dev-server/default/node_modules/iobroker.sun2000"
+            "localRoot": "${workspaceFolder}",
+            "remoteRoot": "${workspaceFolder}/.dev-server/default/node_modules/iobroker.sun2000"
     },
     {
       "type": "node",
