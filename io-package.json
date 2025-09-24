@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "2.1.0",
+    "version": "2.1.1",
     "news": {
+      "2.1.1": {
+        "en": "dependency and configuration updates\nfix: adjust event value limits based on usableSurplus parameters\nfix: swap register values for power consumption in Emma driver #190\nemma: improve power calculation with exponential moving average in EmmaCharger\nupdate surplus power state definitions and deprecate old identifiers",
+        "de": "abhängigkeits- und konfigurationsupdates\nfix: Event-Wert-Grenze basierend auf nutzbar Überschüssige Parameter\nfix: Swap-Registerwerte für den Stromverbrauch in Emma Treiber #190\nemma: Leistungsberechnung mit exponentiellem Bewegungsmittel in EmmaCharger verbessern\naktualisierung der überschussstrom-zustandsdefinitionen und abschreibung alter kennungen",
+        "ru": "обновления зависимостей и конфигурации\nисправление: корректировка предельных значений событий на основе пригодных для использования Дополнительные параметры\nисправление: значения регистра свопов для энергопотребления в драйвере Emma #190\nemma: улучшите расчет мощности с экспоненциальной скользящей средней в EmmaCharger\nобновить определения состояния избыточной мощности и обесценить старые идентификаторы",
+        "pt": "atualizações de dependência e configuração\ncorreção: ajustar os limites do valor do evento com base no utilizável Parâmetros do excedente\ncorreção: valores de registro de swap para consumo de energia em Emma driver #190\nemma: melhorar o cálculo de potência com média móvel exponencial em EmmaCharger\natualizar definições de estado de potência excedente e depreciar identificadores antigos",
+        "nl": "afhankelijkheid en configuratie-updates\nfix: aanpassen gebeurtenis waarde limieten op basis van bruikbaar Overschotparameters\nfix: swap register waarden voor energieverbruik in Emma driver #190\nemma: verbeteren van de stroomberekening met exponentieel bewegend gemiddelde in EmmaCharger\nde definitie van overtollige vermogenstoestand bij te werken en oude identificatienummers te schrappen",
+        "fr": "mises à jour de la dépendance et de la configuration\nfix: ajuster les limites de valeur d'événement en fonction de la valeur utilisable Paramètres excédentaires\nfix: valeurs de registre d'échange pour la consommation d'énergie en Emma driver #190\nemma: améliorer le calcul de la puissance avec la moyenne mobile exponentielle en EmmaCharger\nmettre à jour les définitions de l'état de puissance excédentaire et supprimer les anciens identifiants",
+        "it": "aggiornamenti di dipendenza e configurazione\ncorrezione: regolare i limiti del valore dell'evento in base all'utilizzabile Parametri in eccesso\ncorrezione: swap valori di registro per il consumo di energia in Emma driver #190\nemma: migliorare il calcolo di potenza con una media mobile esponenziale in EmmaCharger\naggiornare le definizioni di stato di potenza eccedente e deprecare vecchi identificatori",
+        "es": "actualizaciones de dependencia y configuración\nfijación: ajustar los límites de valor de evento basados en utilizables Parámetros adicionales\nfijado: cambiar los valores de registro para el consumo de energía en el controlador Emma #190\nemma: mejorar el cálculo de potencia con promedio de movimiento exponencial en EmmaCharger\nactualizar las definiciones de estado de excedente de energía y depreparar identificadores antiguos",
+        "pl": "aktualizacje zależności i konfiguracji\nfix: dostosować wartości graniczne dla zdarzeń w oparciu o wartość użytkową Parametry nadwyżki\nfix: wartości rejestru swap dla zużycia energii w sterowniku Emma # 190\nemma: ulepszenie obliczania mocy przy zastosowaniu wykładniczej średniej ruchomej w EmmaCharger\naktualizacja definicji nadwyżek energii elektrycznej i deprecjacja starych identyfikatorów",
+        "uk": "оновлення залежності та конфігурації\nвиправити: регулювати ліміти значення події на основі Параметри Surplus\nвиправити: значення swap для споживання енергії в машині Емма #190\nемма: поліпшення розрахунку потужності з постійним рухомим середнім в ЕммаКхаргер\nоновлення надлишок визначення стану живлення та депресувати старі ідентифікатори",
+        "zh-cn": "依赖和配置更新\n固定:根据可用值调整事件值限制 盈余参数\n修补: Emma 驱动器中用电量的交换记录值 # 190\nemma: 改进电量计算, 以 Emmacourer 中的指数移动平均值\n更新剩余电源状态定义并折旧旧标识符"
+      },
       "2.1.0": {
         "en": "emma: system time is being determined [#179](https://github.com/bolliy/ioBroker.sun2000/issues/179)\ncontrol: add grid power scheduling functionality to inverter driver [#176](https://github.com/bolliy/ioBroker.sun2000/issues/176)",
         "de": "emma: Die Systemzeit wird bestimmt [#179](https://github.com/bolliy/ioBroker.sun2000/issues/179)\nsteuerung: Netz-Leistungs-Scheduling-Funktionalität zum Wechselrichtertreiber hinzufügen [#176](https://github.com/bolliy/ioBroker.sun2000/issues/176)",
@@ -80,19 +93,6 @@
         "pl": "rozmieszczenie 1.2",
         "uk": "розгортання 1.2",
         "zh-cn": "部署"
-      },
-      "1.2.2-alpha.0": {
-        "en": "test release",
-        "de": "prüfbericht",
-        "ru": "испытательный выпуск",
-        "pt": "liberação de teste",
-        "nl": "loslaten van de test",
-        "fr": "libération d'essai",
-        "it": "rilascio del test",
-        "es": "prueba de liberación",
-        "pl": "uwalnianie testowe",
-        "uk": "тестовий реліз",
-        "zh-cn": "测试发布"
       }
     },
     "titleLang": {
