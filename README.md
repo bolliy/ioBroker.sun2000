@@ -65,6 +65,10 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* dependency and configuration updates
+* new: state `meter.signConventionForPowerFeed-in` 
+
 ### 2.1.1 (2025-09-24)
 * dependency and configuration updates
 * fix: adjust event value limits based on usableSurplus parameters
