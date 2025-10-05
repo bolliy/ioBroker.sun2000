@@ -65,7 +65,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.2.0 (2025-10-05)
 * dependency and configuration updates
 * new state `meter.derived.signConventionForPowerFeed-in` sign of meter.activePower that is currently being fed into the power grid
 * new state `meter.derived.feed-inPower` electric power that is supplied to a grid ("fed in")

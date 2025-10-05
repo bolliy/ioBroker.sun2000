@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "2.1.1",
+    "version": "2.2.0",
     "news": {
+      "2.2.0": {
+        "en": "dependency and configuration updates\nnew state `meter.derived.signConventionForPowerFeed-in` sign of meter.activePower that is currently being fed into the power grid\nnew state `meter.derived.feed-inPower` electric power that is supplied to a grid (\"fed in\")",
+        "de": "abhängigkeits- und konfigurationsupdates\nneuer Zustand `meter.derived.signConventionForPowerFeed-in` Zeichen von meter.active Strom, der derzeit in das Stromnetz eingespeist wird\nneue Zustand `meter.derived.feed-inPower` elektrische Leistung, die einem Netz zugeführt wird (\"fed in\")",
+        "ru": "обновления зависимостей и конфигурации\nновый государственный знак «meter.derived.signConventionForPowerFeed-in» Мощность, которая в настоящее время подается в электросеть\nэлектрическая мощность нового состояния «meter.derived.feed-inPower», которая подается в сеть («питается в»)",
+        "pt": "atualizações de dependência e configuração\nnovo estado `meter.derived.signConventionForPowerFeed-in` sinal do medidor.active Energia que está sendo alimentada na rede de energia\nnovo estado `meter.derived.feed-inPower` energia elétrica que é fornecida a uma grade (\"feed in\")",
+        "nl": "afhankelijkheid en configuratie-updates\nnieuwe staat  Energie die momenteel wordt gevoed in het elektriciteitsnet\nnieuwe toestand ",
+        "fr": "mises à jour de la dépendance et de la configuration\nnouvel état `meter.derived.signConventionForPowerFeed-in` signe de meter.active Puissance qui est actuellement introduite dans le réseau électrique\nnouvel état `meter.derived.feed-inPower` électricité qui est fourni à un réseau (\"feed in\")",
+        "it": "aggiornamenti di dipendenza e configurazione\nnuovo stato `meter.derived.signConventionForPowerFeed-in` segno di metro.active Potenza che sta attualmente alimentando nella rete elettrica\nnuovo stato `meter.derived.feed-inPower` potere elettrico che viene fornito a una griglia (\"fed in\")",
+        "es": "actualizaciones de dependencia y configuración\nnuevo estado `meter.derived.signConventionForPowerFeed-in` signo de medidor.active Potencia que actualmente está siendo alimentada en la red eléctrica\nnuevo estado `meter.derived.feed-inPower` energía eléctrica que se suministra a una red (\"fed in\")",
+        "pl": "aktualizacje zależności i konfiguracji\nnowy stan 'meter.derived.signConventionForPowerFeed- in' znak meter.active Energia zasilana obecnie do sieci energetycznej\nnowy stan 'meter.derived.feed-inPower' energia elektryczna, która jest dostarczana do sieci (\"karmiona w\")",
+        "uk": "оновлення залежності та конфігурації\nновий стан `meter.derived.signConventionForPowerFeed-in` знак лічильника.active Потужність, яка в даний час вдається в електромережу\nновий стан `meter.derived.feed-inPower` електрична потужність, яка подається в сітку (\"fed in\")",
+        "zh-cn": "依赖和配置更新\n新的状态“ 公尺” 。 生成。 签署 Convention ForPowerFeed- in' sign of meter. 活动 目前输入电网的电力\n新状态“ met. entered. feed-inpower” 供电给电网(“ feeded in”)"
+      },
       "2.1.1": {
         "en": "dependency and configuration updates\nfix: adjust event value limits based on usableSurplus parameters\nfix: swap register values for power consumption in Emma driver #190\nemma: improve power calculation with exponential moving average in EmmaCharger\nupdate surplus power state definitions and deprecate old identifiers",
         "de": "abhängigkeits- und konfigurationsupdates\nfix: Event-Wert-Grenze basierend auf nutzbar Überschüssige Parameter\nfix: Swap-Registerwerte für den Stromverbrauch in Emma Treiber #190\nemma: Leistungsberechnung mit exponentiellem Bewegungsmittel in EmmaCharger verbessern\naktualisierung der überschussstrom-zustandsdefinitionen und abschreibung alter kennungen",
@@ -80,19 +93,6 @@
         "pl": "usableSurplusPower: nowy stan kontroli 'Sun2000.0.control.usableSurplus.allowNegativeValue'",
         "uk": "english, Українська, Français... й",
         "zh-cn": "可用SurpusPower: 新的控制状态 `sun 2000.control.usurplus.allow NegativeValue ' `"
-      },
-      "1.2.2": {
-        "en": "deploy 1.2",
-        "de": "bereitstellung 1.2",
-        "ru": "развернуть 1.2",
-        "pt": "implementação 1.2",
-        "nl": "1.2 inzetten",
-        "fr": "déploiement 1,2",
-        "it": "distribuzione 1.2",
-        "es": "despliegue 1.2",
-        "pl": "rozmieszczenie 1.2",
-        "uk": "розгортання 1.2",
-        "zh-cn": "部署"
       }
     },
     "titleLang": {
