@@ -16,7 +16,7 @@ The following variables are used or can be calculated yourself:
 - [`Daily Solar yield`](https://github.com/bolliy/ioBroker.sun2000/wiki/Energieertrag-%28Yield-today%29/#dailysolaryield): sun2000.0.collected.dailySolarYield
 - `Grid total, positive active Energy`: sun2000.0.meter.positiveActiveEnergy
 - `Grid total, reverse active Energy`: sun2000.0.meter.reverseActiveEnergy
-- `Grid active power`: sun2000.0.meter.activePower
+- `Grid active power`: sun2000.0.meter.derived.feed-inPower
 - `active power`: sun2000.0.collected.activePower
 - `Energy yield Accumulated`: sun2000.0.collected.accumulatedEnergyYield
 - [`Energy yield Daily`](https://github.com/bolliy/ioBroker.sun2000/wiki/Energieertrag-(Yield-today)): sun2000.0.collected.dailyEnergyYield
