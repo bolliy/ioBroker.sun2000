@@ -470,7 +470,7 @@ class Sun2000 extends utils.Adapter {
 					this.devices.push({
 						index: 0,
 						duration: 0,
-						//modbusId: 1,
+						//modbusId: 1, --> testMode
 						modbusId: 0,
 						meter: true,
 						driverClass: driverClasses.emma,
@@ -638,7 +638,7 @@ class Sun2000 extends utils.Adapter {
 				}
 				//this.log.info(`### state ${id} changed: ${state.val} (ack = ${state.ack})`);
 			}
-			// sun2000.0.inverter.0.config
+			// sun2000.0.control
 			if (idArray[2] == 'control') {
 				let serviceId = idArray[3];
 				for (let i = 4; i < idArray.length; i++) {
@@ -646,6 +646,18 @@ class Sun2000 extends utils.Adapter {
 				}
 				//this.log.info(`### id: ${serviceId} state ${id} changed: ${state.val} (ack = ${state.ack})`);
 				this.control.set(serviceId, state);
+			}
+			// sun2000.0.emma.control
+			if (idArray[2] == 'emma') {
+				const emma = this.devices.find(d => d.driverClass == driverClasses.emma);
+				if (emma && emma.instance && emma.instance.control) {
+					let serviceId = idArray[4];
+					for (let i = 5; i < idArray.length; i++) {
+						serviceId += `.${idArray[i]}`;
+					}
+					this.log.info(`### state ${id} changed: ${state.val} (ack = ${state.ack})`);
+					emma.instance.control.set(serviceId, state);
+				}
 			}
 		} else {
 			// The state was deleted
