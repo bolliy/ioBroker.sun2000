@@ -63,10 +63,8 @@ class Sun2000 extends utils.Adapter {
 			},
 		};
 
-		//v0.6.
 		this.logger = new Logging(this); //only for adapter
 
-		//1.1.0
 		this.control = new ConfigMap(this);
 
 		this.on('ready', this.onReady.bind(this));
@@ -655,7 +653,7 @@ class Sun2000 extends utils.Adapter {
 					for (let i = 5; i < idArray.length; i++) {
 						serviceId += `.${idArray[i]}`;
 					}
-					this.log.info(`### state ${id} changed: ${state.val} (ack = ${state.ack})`);
+					//this.log.info(`### state ${id} changed: ${state.val} (ack = ${state.ack})`);
 					emma.instance.control.set(serviceId, state);
 				}
 			}
