@@ -66,7 +66,10 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* Add startup and shutdown registers
+* control: add startup and shutdown registers [#199](https://github.com/bolliy/ioBroker.sun2000/issues/199)
+* fix: Device status name has been corrected [#202](https://github.com/bolliy/ioBroker.sun2000/pull/202)
+* add device status `Shutdown: End of the ESS discharge process` 
+* control: new control value ` emma.control.battery.ESSControlMode`. You can now configure EMMA with TOU-mode (Time of Use) to charge the battery from grid. [#200](https://github.com/bolliy/ioBroker.sun2000/discussions/200)
 
 ### 2.2.0 (2025-10-05)
 * dependency and configuration updates
