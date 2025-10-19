@@ -469,7 +469,7 @@ class Sun2000 extends utils.Adapter {
 						index: 0,
 						duration: 0,
 						//modbusId: 1, --> testMode
-						modbusId: 1,
+						modbusId: 0,
 						meter: true,
 						driverClass: driverClasses.emma,
 					});
