@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@iobroker/adapter-core": "^3.3.2",
-    "modbus-serial": "^8.0.22",
+    "modbus-serial": "^8.0.23",
     "suncalc2": "^1.8.1",
     "tcp-port-used": "^1.0.2"
   },
