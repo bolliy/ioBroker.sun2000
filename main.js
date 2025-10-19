@@ -469,7 +469,7 @@ class Sun2000 extends utils.Adapter {
 						index: 0,
 						duration: 0,
 						//modbusId: 1, --> testMode
-						modbusId: 0,
+						modbusId: 1,
 						meter: true,
 						driverClass: driverClasses.emma,
 					});
@@ -576,7 +576,7 @@ class Sun2000 extends utils.Adapter {
 			this.lastStateUpdatedLow = 0;
 			this.lastStateUpdatedHigh = 0;
 
-			if (sinceLastUpdate > this.settings.highInterval * 10) {
+			if (sinceLastUpdate > this.settings.lowInterval * 20) {
 				this.setState('info.JSONhealth', { val: '{errno:2, message: "Internal loop error"}', ack: true });
 				this.logger.warn('watchdog: restart Adapter...');
 				this.restart();
