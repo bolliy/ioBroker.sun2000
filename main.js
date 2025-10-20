@@ -549,7 +549,7 @@ class Sun2000 extends utils.Adapter {
 				}
 				const ret = this.state.CheckReadError(this.settings.lowInterval * 2);
 				this.logger.debug(JSON.stringify(this.modbusClient.info));
-				//v0.8.x
+
 				if (!this.isReady) {
 					this.isReady = this.isConnected && !ret.errno;
 				}
