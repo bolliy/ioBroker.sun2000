@@ -65,6 +65,9 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* new release for npm migrates to Trusted Publishing
+
 ### 2.2.1-alpha.0 (2025-10-21)
 * inverter control: add same state for startup and shutdown an inverter [#199](https://github.com/bolliy/ioBroker.sun2000/issues/199)
 * fix: Device status name has been corrected [#202](https://github.com/bolliy/ioBroker.sun2000/pull/202)
