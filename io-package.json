@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "2.2.1-alpha.0",
+    "version": "2.3.0",
     "news": {
+      "2.3.0": {
+        "en": "new release for npm migrates to Trusted Publishing",
+        "de": "neue Veröffentlichung für npm migriert Trusted Publishing",
+        "ru": "новый релиз для npm перенесен в Trusted Publishing",
+        "pt": "nova versão para npm migra para a publicação confiável",
+        "nl": "nieuwe release voor npm-migraties naar Trusted Publishing",
+        "fr": "nouvelle version pour npm migre vers Trusted Publishing",
+        "it": "nuovo rilascio per npm migra a Trusted Publishing",
+        "es": "nueva versión para npm migrates a Trusted Publishing",
+        "pl": "nowa wersja dla migratów npm do zaufanej publikacji",
+        "uk": "новий реліз для npm migrats для Trusted Publishing",
+        "zh-cn": "npm 的新版本迁移到信任出版"
+      },
       "2.2.1-alpha.0": {
         "en": "inverter control: add same state for startup and shutdown an inverter [#199](https://github.com/bolliy/ioBroker.sun2000/issues/199)\nfix: Device status name has been corrected [#202](https://github.com/bolliy/ioBroker.sun2000/pull/202)\nadd undocumented device status `Shutdown: End of the ESS discharge process` \nemma control: new state ` emma.control.battery.ESSControlMode`. You can now configure EMMA with TOU-mode (Time of Use) to charge the battery from grid. [#200](https://github.com/bolliy/ioBroker.sun2000/discussions/200)\nif an Emma is installed, some control states of the inverter are deactivated (read only). Mainly for the grid settings.\ndeprecated control states have been removed.\na workaround for issue [#582](https://github.com/yaacov/node-modbus-serial/issues/582) of node-modbus-serial has been implemented.",
         "de": "inverter-Steuerung: Fügen Sie den gleichen Zustand für Start und Abschaltung eines Inverters [#199](https://github.com/bolliy/ioBroker.sun2000/issues/199) hinzu\nbehoben: Gerätestatusname wurde korrigiert [#202](https://github.com/bolliy/ioBroker.sun2000/pull/202)\n`Shutdown: Ende des ESS-Entladungsvorgangs`\nemma control: new state ` emma.control.battery.ESSControlMode`. Sie können nun EMMA mit TOU-Modus (Time of Use) konfigurieren, um den Akku aus dem Netz zu laden. [#200](https://github.com/bolliy/ioBroker.sun2000/discussions/200)\nwenn eine Emma installiert ist, werden einige Steuerzustände des Wechselrichters deaktiviert (nur lesen). Hauptsächlich für die Netzeinstellungen.\ndeprekierte steuerzustände wurden entfernt.\nein workaround für ausgabe [#582](https://github.com/yaacov/node-modbus-serial/issues/582) von node-modbus-serial wurde implementiert.",
@@ -80,19 +93,6 @@
         "pl": "aktualizacji zależności\nfix: nadwyżka mocy podczas rozładowania akumulatora\ncontrol: nowa wartość kontrolna 'sun2000.0.control.usableSurplus.buverHysteresis'",
         "uk": "оновлення залежності\nвиправити: надлишок живлення при розряді акумулятора\n`sun2000.0.control.usableSurplus.bufferHysteresis`",
         "zh-cn": "更新依赖关系\n固定:电池放电时的剩余功率\n控制: 新的控制值 `sun2000.control.ulySurplus.bufferHysteresis'"
-      },
-      "1.4.0": {
-        "en": "control: new control state `sun2000.0.control.externalPower` #76\nfixed issue detected by repository checker #166",
-        "de": "steuerung: neuer Steuerzustand `sun2000.0.control.externalPower` #76\nbehobenes problem erkannt von repository checker #166",
-        "ru": "новый контрольный режим «sun2000.0.control.externalPower» #76\nфиксированная проблема, обнаруженная проверкой репозитория #166",
-        "pt": "controle: novo estado de controle `sun2000.0.control.externalPower` #76\nproblema fixo detectado pelo verificador de repositório #166",
-        "nl": "controle: nieuwe controle staat  #76\nvaste uitgifte gedetecteerd door repository checker #166",
-        "fr": "contrôle: nouvel état de contrôle `sun2000.0.control.externalPower` #76\nproblème corrigé détecté par le vérificateur de dépôt #166",
-        "it": "controllo: nuovo stato di controllo `sun2000.0.control.externalPower` #76\nproblema fisso rilevato da repository checker #166",
-        "es": "control: nuevo estado de control `sun2000.0.control.externalPower` #76\nnúmero fijo detectado por el repositorio #166",
-        "pl": "control: nowy stan kontroli 'sun2000.0.control.externalPower' # 76\nstała emisja wykryta przez kontroler repozytorium # 166",
-        "uk": "контроль: новий стан управління `sun2000.0.control.externalPower` #76\nвиправлено проблему, виявлену репозиторійною перевіркою #166",
-        "zh-cn": "控制:新的控制状态`sun 2000.0.control.external Power ' 76号\n仓库检查器检测到的固定问题 # 166"
       }
     },
     "titleLang": {
