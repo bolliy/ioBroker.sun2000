@@ -65,6 +65,9 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* fix: handle potential null values in set method of RegisterMap
+
 ### 2.3.0 (2025-10-21)
 * new release for npm migrates to Trusted Publishing
 
