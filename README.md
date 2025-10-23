@@ -65,6 +65,9 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* allows again `control.battery.chargeFromGridFunction` when using the Emma
+
 ### 2.3.1 (2025-10-21)
 * fix: handle potential null values in set method of RegisterMap
 
@@ -75,7 +78,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 * inverter control: add same state for startup and shutdown an inverter [#199](https://github.com/bolliy/ioBroker.sun2000/issues/199)
 * fix: Device status name has been corrected [#202](https://github.com/bolliy/ioBroker.sun2000/pull/202)
 * add undocumented device status `Shutdown: End of the ESS discharge process` 
-* emma control: new state ` emma.control.battery.ESSControlMode`. You can now configure EMMA with TOU-mode (Time of Use) to charge the battery from grid. [#200](https://github.com/bolliy/ioBroker.sun2000/discussions/200)
+* emma control: new state `emma.control.battery.ESSControlMode`. You can now configure EMMA with TOU-mode (Time of Use) to charge the battery from grid. [#200](https://github.com/bolliy/ioBroker.sun2000/discussions/200)
 * if an Emma is installed, some control states of the inverter are deactivated (read only). Mainly for the grid settings.
 * deprecated control states have been removed.
 * a workaround for issue [#582](https://github.com/yaacov/node-modbus-serial/issues/582) of node-modbus-serial has been implemented.
