@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "2.3.1",
+    "version": "2.3.2",
     "news": {
+      "2.3.2": {
+        "en": "allows again `control.battery.chargeFromGridFunction` when using the Emma",
+        "de": "erlaubt wieder `control.battery.chargeFromGridFunction` bei Verwendung der Emma",
+        "ru": "позволяет снова «control.battery.chargeFromGridFunction» при использовании Emma",
+        "pt": "permite novamente `control.battery.chargeFromGridFunction` ao usar a Emma",
+        "nl": "maakt het mogelijk opnieuw te controleren.battery.chargeFromGridFunction",
+        "fr": "permet de nouveau `control.battery.chargeFromGridFunction` lors de l'utilisation de l'Emma",
+        "it": "permette di nuovo `control.battery.chargeFromGridFunction` quando si utilizza Emma",
+        "es": "permite de nuevo 'control.battery.chargeDesdeGridFunction' al utilizar Emma",
+        "pl": "pozwala ponownie 'control.battery.chargeFromGridFunction' podczas korzystania z Emmy",
+        "uk": "дозволяє знову `control.battery.chargeЗ альбомуGridFunction` при використанні Емма",
+        "zh-cn": "允许在使用 Emma 时再次使用 \" control.battery. charge from GridFunction \" "
+      },
       "2.3.1": {
         "en": "fix: handle potential null values in set method of RegisterMap",
         "de": "fix: griff potenzielle Nullwerte in der eingestellten Methode des Registrierens Landkarte",
@@ -80,19 +93,6 @@
         "pl": "emma: ustala się czas systemowy [# 179] (https: / / github.com / bolliy / ioBroker.sun2000 / issues / 179)\ncontrol: add grid Power Scheduling Functional to inverter driver [# 176] (https: / / github.com / bolliy / ioBroker.sun2000 / issues / 176)",
         "uk": "emma: час системи визначається [#179](https://github.com/bolliy/ioBroker.sun2000/products/179)\ncontrol: add power scheduling features to inverter драйвер [#176](https://github.com/bolliy/ioBroker.sun2000/issues/176)",
         "zh-cn": "emma:系统时间正在确定 [# 179] (https://github.com/bolliy/ioBroker.sun2000/issues/179)\n控制:向反向驱动器添加电网电源调度功能[#176](https://github.com/bolliy/ioBroker.sun2000/issues/1976)"
-      },
-      "2.0.0": {
-        "en": "add support for chargers via Emma and save the data in the charger path #171\nEstablish data consistency between meter.activePower and the power of the meter phases #174\nallows `control.battery.chargeFromGridFunction` when using the Emma\nbreaking change: \nthe value `sun2000.x.inverter.x.battery.runningStatus` is saved as a number. The translated value (such as STANDBY, RUNNING etc.) is stored in the path sun2000.x.inverter.x.battery.derived",
-        "de": "unterstützung für Ladegeräte über Emma hinzufügen und die Daten im Ladepfad #171 speichern\nDatenkonsistenz zwischen meter.activePower und der Leistung der Zählerphasen #174 einstellen\nerlaubt `control.battery.chargeFromGridFunction` bei Verwendung der Emma\nänderung:\nder Wert `sun2000.x.inverter.x.battery.runningStatus` wird als Nummer gespeichert. Der übersetzte Wert (wie STANDBY, RUNNING etc.) wird im Pfad sun2000.x.inverter.x.battery.derived gespeichert",
-        "ru": "добавьте поддержку зарядных устройств через Emma и сохраните данные в пути зарядного устройства #171\nУстановить согласованность данных между meter.activePower и мощностью фаз счетчика #174\nпозволяет «control.battery.chargeFromGridFunction» при использовании Emma\nпреодоление изменений:\nзначение 'sun2000.x.inverter.x.battery.runningStatus' сохраняется в виде числа. Переведенное значение (например, STANDBY, RUNNING и т.д.) сохраняется в пути sun2000.x.inverter.x.battery.derived",
-        "pt": "adicionar suporte para carregadores via Emma e salvar os dados no caminho do carregador #171\nEstabelecer a consistência dos dados entre a potência do medidor e a potência das fases do medidor #174\npermite `control.battery.chargeFromGridFunction` ao usar a Emma\nalteração de quebra:\no valor `sun2000.x.inverter.x.battery.runningStatus` é salvo como um número. O valor traduzido (como STADBY, RUNNING etc.) é armazenado no caminho sun2000.x.inverter.x.battery.derived",
-        "nl": "ondersteuning voor opladers toevoegen via Emma en de gegevens opslaan in het opladerpad #171\nVaststelling van gegevens consistentie tussen meter.activePower en het vermogen van de meter fasen #174\nstaat control.battery.chargeFromGridFunction\nbreek verandering:\nde waarde  De vertaalde waarde (zoals STANDBY, RUNNING etc.) wordt opgeslagen in het pad sun2000.x.inverter.x.battery. afgeleide",
-        "fr": "ajouter le support pour les chargeurs via Emma et enregistrer les données dans le chemin de chargeur #171\nÉtablir la cohérence des données entre le compteur.activePower et la puissance des phases du compteur #174\npermet `control.battery.chargeFromGridFunction` lors de l'utilisation de l'Emma\nrupture du changement:\nla valeur `sun2000.x.inverter.x.battery.runningStatus` est enregistrée en nombre. La valeur traduite (comme STANDBY, RUNNING, etc.) est stockée dans le chemin sun2000.x.inverter.x.battery.derived",
-        "it": "aggiungere supporto per i caricatori tramite Emma e salvare i dati nel percorso del caricabatterie #171\nStabilire la consistenza dei dati tra metro.activePower e la potenza delle fasi metro #174\npermette `control.battery.chargeFromGridFunction` quando si utilizza Emma\ncambiamento di rottura:\nil valore `sun2000.x.inverter.x.battery.runningStatus` viene salvato come numero. Il valore tradotto (come STANDBY, RUNNING ecc.) è memorizzato nel percorso sun2000.x.inverter.x.battery.derived",
-        "es": "añadir soporte para los cargadores a través de Emma y guardar los datos en la ruta del cargador #171\nEstablecer la coherencia de los datos entre el medidor.activePower y la potencia de las fases del medidor #174\npermite 'control.battery.chargeDesdeGridFunction' al usar Emma\ncambio de ruptura:\nel valor `sun2000.x.inverter.x.battery.runningStatus` se guarda como un número. El valor traducido (como STANDBY, RUNNING etc.) se almacena en el camino sun2000.x.inverter.x.battery.derived",
-        "pl": "dodaj obsługę ładowarek przez Emmę i zapisz dane w ścieżce ładowarki # 171\nUstanowienie spójności danych między miernikiem. ActivePower i mocą faz miernika # 174\npozwala 'control.battery.chargeFromGridFunction' przy użyciu Emmy\nzmiana\nwartość 'sun2000.x.inverter.x.battery.runningStatus' jest zapisywana jako liczba. Wartość przetłumaczona (taka jak STANDBY, RUNNING itp.) jest przechowywana w ścieżce Sun2000.x.inverter.x.battery.deriver",
-        "uk": "додати підтримку зарядних пристроїв через Емма і зберегти дані в шляху зарядного пристрою #171\nВстановити консистенцію даних між лічильником.activePower і потужністю метрових фаз #174\nдозволяє `control.battery.chargeЗ альбомуGridFunction` при використанні Емма\nзміна розриву:\nзначення `sun2000.x.inverter.x.battery.runningStatus` зберігається як номер. Перекладено значення (наприклад, STANDBY, RUNNING тощо) зберігається в шляху сонце2000.x.inverter.x.battery.derived",
-        "zh-cn": "通过 Emma 添加对充电器的支持, 并保存充电器路径 # 171 中的数据\n在 meter.activePower和meter阶段的功率之间建立数据一致性 #174\n在使用 Emma 时允许“ control. battery. force from GridFunction ”\n断开更改 :\n将“sun2000.x.inverter.x.battery.running Status”作为数字保存。 翻译值( 如 STANDBY, RUNNING 等) 存储在路径 sun2000.x.inverter.x.battery. 衍生"
       }
     },
     "titleLang": {
