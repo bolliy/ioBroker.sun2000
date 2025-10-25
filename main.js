@@ -463,7 +463,7 @@ class Sun2000 extends utils.Adapter {
 					}
 				}
 
-				//EMMA
+				//EMMA with TestMode
 				if (this.settings.integration === 2) {
 					this.devices.push({
 						index: 0,
