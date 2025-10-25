@@ -67,7 +67,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 -->
 
 ### **WORK IN PROGRESS**
-* new state `inverter.x.derived.dailyActiveEnergy` inverter daily active energy
+* new state `inverter.x.derived.dailyActiveEnergy` Inverter daily active energy, which is determined via the Riemann sum of `inverter.x.activePower`
 
 ### 2.3.2 (2025-10-24)
 * allows again `control.battery.chargeFromGridFunction` when using the Emma
