@@ -425,6 +425,11 @@ class Sun2000 extends utils.Adapter {
 			if (this.settings.modbusIds.length > 0 && this.settings.modbusIds.length < 6) {
 				//ES6 use a for (const [index, item] of array.entries()) of loop
 				for (const [i, id] of this.settings.modbusIds.entries()) {
+					//Inverter
+					if (id < 1 || id >= 250) {
+						this.adapterDisable(`*** Adapter deactivated, modbus Id ${id} is not permitted for an inverter! ***`);
+						return;
+					}
 					this.devices.push({
 						index: i,
 						duration: 5000,
@@ -478,10 +483,10 @@ class Sun2000 extends utils.Adapter {
 				await this.adjustInverval();
 				await this.StartProcess();
 			} else {
-				this.adapterDisable("*** Adapter deactivated, can't parse modbusIds! ***");
+				this.adapterDisable(`*** Adapter deactivated, can't parse modbusIds! ***`);
 			}
 		} else {
-			this.adapterDisable('*** Adapter deactivated, Adapter Settings incomplete! ***');
+			this.adapterDisable(`*** Adapter deactivated, Adapter Settings incomplete! ***`);
 		}
 	}
 
