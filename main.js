@@ -379,7 +379,7 @@ class Sun2000 extends utils.Adapter {
 		await this.setState('info.modbusDelay', { val: this.config.delay, ack: true });
 		await this.setState('info.modbusTcpServer', { val: this.config.ms_active, ack: true });
 		// Load user settings
-		if (this.config.address != '' && this.config.port > 0 && this.config.modbusIds != '' && this.config.updateInterval > 0) {
+		if (this.config.address != '' && this.config.port > 0 && this.config.updateInterval > 0) {
 			this.settings.address = this.config.address;
 			this.settings.port = this.config.port;
 			this.settings.modbusTimeout = this.config.timeout; //ms
@@ -421,70 +421,70 @@ class Sun2000 extends utils.Adapter {
 			} else {
 				await this.setState('info.JSONhealth', { val: '{message : "Information is collected"}', ack: true });
 			}
-
-			if (this.settings.modbusIds.length > 0 && this.settings.modbusIds.length < 6) {
-				//ES6 use a for (const [index, item] of array.entries()) of loop
-				for (const [i, id] of this.settings.modbusIds.entries()) {
-					//Inverter
-					if (id < 1 || id >= 250) {
-						this.adapterDisable(`*** Adapter deactivated, modbus Id ${id} is not permitted for an inverter! ***`);
-						return;
-					}
-					this.devices.push({
-						index: i,
-						duration: 5000,
-						modbusId: id,
-						driverClass: driverClasses.inverter,
-						meter: i == 0 && this.settings.integration === 0,
-					});
-				}
-
-				//SDongle
-				if (this.settings.integration === 0 && this.settings.sd.active) {
-					this.devices.push({
-						index: 0,
-						duration: 0,
-						modbusId: this.settings.sd.sDongleId,
-						driverClass: driverClasses.sdongle,
-					});
-				}
-
-				//SmartLogger
-				if (this.settings.integration === 1) {
-					this.devices.push({
-						index: 0,
-						duration: 0,
-						modbusId: 0,
-						driverClass: driverClasses.logger,
-					});
-					if (this.settings.sl.meterId > 0) {
-						this.devices.push({
-							index: 0,
-							duration: 0,
-							meter: true,
-							modbusId: this.settings.sl.meterId,
-							driverClass: driverClasses.loggerMeter,
-						});
-					}
-				}
-
-				//EMMA with TestMode
-				if (this.settings.integration === 2) {
-					this.devices.push({
-						index: 0,
-						duration: 0,
-						//modbusId: 1, --> testMode
-						modbusId: 0,
-						meter: true,
-						driverClass: driverClasses.emma,
-					});
-				}
-
-				await this.adjustInverval();
-				await this.StartProcess();
-			} else {
-				this.adapterDisable(`*** Adapter deactivated, can't parse modbusIds! ***`);
+			//future: if (this.settings.integration !== 2 && (this.settings.modbusIds.length === 0 || this.settings.modbusIds.length > 5)) {
+			if (this.settings.modbusIds.length === 0 || this.settings.modbusIds.length > 5) {
+				this.adapterDisable(`*** Adapter deactivated, inverter modbus Ids is invalid! ***`);
+				return;
 			}
+			//ES6 use a for (const [index, item] of array.entries()) of loop
+			for (const [i, id] of this.settings.modbusIds.entries()) {
+				//Inverter
+				if (id < 1 || id >= 250) {
+					this.adapterDisable(`*** Adapter deactivated, inverter modbus Id ${id} is not permitted! ***`);
+					return;
+				}
+				this.devices.push({
+					index: i,
+					duration: 5000,
+					modbusId: id,
+					driverClass: driverClasses.inverter,
+					meter: i == 0 && this.settings.integration === 0,
+				});
+			}
+
+			//SDongle
+			if (this.settings.integration === 0 && this.settings.sd.active) {
+				this.devices.push({
+					index: 0,
+					duration: 0,
+					modbusId: this.settings.sd.sDongleId,
+					driverClass: driverClasses.sdongle,
+				});
+			}
+
+			//SmartLogger
+			if (this.settings.integration === 1) {
+				this.devices.push({
+					index: 0,
+					duration: 0,
+					modbusId: 0,
+					driverClass: driverClasses.logger,
+				});
+				if (this.settings.sl.meterId > 0) {
+					this.devices.push({
+						index: 0,
+						duration: 0,
+						meter: true,
+						modbusId: this.settings.sl.meterId,
+						driverClass: driverClasses.loggerMeter,
+					});
+				}
+			}
+
+			//EMMA with TestMode
+			if (this.settings.integration === 2) {
+				this.devices.push({
+					index: 0,
+					duration: 0,
+					//modbusId: 1, --> testMode
+					modbusId: 0,
+					meter: true,
+					driverClass: driverClasses.emma,
+				});
+			}
+
+			await this.adjustInverval();
+			await this.StartProcess();
 		} else {
 			this.adapterDisable(`*** Adapter deactivated, Adapter Settings incomplete! ***`);
 		}
