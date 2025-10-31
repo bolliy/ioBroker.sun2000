@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "2.3.2",
+    "version": "2.3.3",
     "news": {
+      "2.3.3": {
+        "en": "Improved verification of the adapter configuration\nnew state `inverter.x.derived.dailyActiveEnergy` Inverter daily active energy, which is determined via the Riemann sum of `inverter.x.activePower`\nstate `collected.dailyInputYield` was redisigned based on inverter.[0..n-1].derived.dailyActiveEnergy",
+        "de": "Verbesserte Überprüfung der Adapterkonfiguration\n`inverter.x.derived.dailyActiveEnergy` Inverter tägliche aktive Energie, die über die Riemann Summe von `inverter.x.activePower bestimmt wird `\nstate `collected.dailyInputYield` wurde basierend auf Inverter zurückgeteilt. [0.n-1].derived.dailyActiveEnergy",
+        "ru": "Улучшенная проверка конфигурации адаптера\nновое состояние «inverter.x.derived.dailyActiveEnergy» Инверторная ежедневная активная энергия, которая определяется через сумму Римана 'inverter.x.activePower пункт\nstate 'collected.dailyInputYield' была переопределена на основе инвертора. [0..n-1].derived.dailyActiveEnergy",
+        "pt": "Verificação melhorada da configuração do adaptador\nnovo estado «inverter.x.derived.dailyActiveEnergy» Energia ativa diária do inversor, que é determinada através da soma Riemann de `inverter.x.activePower `\nestado `colleted.dailyInputYield` foi reassinado com base no inversor. [0..n-1].derivado.diárioAtividadeEnergia",
+        "nl": "Verbeterde verificatie van de configuratie van de adapter\nnieuwe staat  Inverter dagelijkse actieve energie, die wordt bepaald via de Riemann som van  Wat\nstaat  [0..n-1].afgeleid.dailyActiveEnergy",
+        "fr": "Amélioration de la vérification de la configuration de l'adaptateur\nnouvel état `inverter.x.derived.dailyActiveEnergy` Inverter l'énergie active quotidienne, qui est déterminée par la somme Riemann de `inverter.x.activePower \"\nl'état `collected.dailyInputYield` a été résigné sur la base de l'onduleur. Énergie active",
+        "it": "Verifica migliorata della configurazione dell'adattatore\nnuovo stato `inverter.x.derived.dailyActiveEnergy` Inverter energia attiva quotidiana, che è determinata tramite la somma Riemann di `inverter.x.activePower #\nstato `collect.dailyInputYield` è stato ridisegnato sulla base di inverter. [0.n-1]",
+        "es": "Mejor verificación de la configuración del adaptador\nnuevo estado `inverter.x.derived.dailyActiveEnergy` Inverter energía activa diaria, que se determina a través de la suma Riemann de `inverter.x.activePower `\nestado `colected.dailyInputYield` fue redisigned basado en inverter. [0.n-1].derived.dailyActiveEnergy",
+        "pl": "Ulepszona weryfikacja konfiguracji adaptera\nnowy stan 'inverter.x.derived.dailyActiveEnergy' Inwerter dzienna aktywna energia, która jest określana za pomocą sumy Riemann 'inverter.x.activePower'\nstan 'collected.dailyInputYield' został wycofany na podstawie inwertera. [0.. n-1] .derived.dailyActiveEnergy",
+        "uk": "Покращена перевірка конфігурації адаптера\nновий стан `inverter.x.derived.dailyActiveEnergy` Інверторна щоденна активна енергія, яка визначається за рахунок `inverter.x.activePower й\n`collected.dailyInputYield` був перерахований на основі інвертора. [0..n-1].derived.dailyActiveEnergy",
+        "zh-cn": "改进适配器配置的核查\n新州`反转器.x.衍生的每日能源 ' 每日反转活性能量,通过`反转器.x.activePower的Riemann总和确定 `\ndaily InputYield)根据反差重新签名。 [0.n-1]. 衍生的每日能源"
+      },
       "2.3.2": {
         "en": "allows again `control.battery.chargeFromGridFunction` when using the Emma",
         "de": "erlaubt wieder `control.battery.chargeFromGridFunction` bei Verwendung der Emma",
@@ -80,19 +93,6 @@
         "pl": "aktualizacje zależności i konfiguracji\nfix: dostosować wartości graniczne dla zdarzeń w oparciu o wartość użytkową Parametry nadwyżki\nfix: wartości rejestru swap dla zużycia energii w sterowniku Emma # 190\nemma: ulepszenie obliczania mocy przy zastosowaniu wykładniczej średniej ruchomej w EmmaCharger\naktualizacja definicji nadwyżek energii elektrycznej i deprecjacja starych identyfikatorów",
         "uk": "оновлення залежності та конфігурації\nвиправити: регулювати ліміти значення події на основі Параметри Surplus\nвиправити: значення swap для споживання енергії в машині Емма #190\nемма: поліпшення розрахунку потужності з постійним рухомим середнім в ЕммаКхаргер\nоновлення надлишок визначення стану живлення та депресувати старі ідентифікатори",
         "zh-cn": "依赖和配置更新\n固定:根据可用值调整事件值限制 盈余参数\n修补: Emma 驱动器中用电量的交换记录值 # 190\nemma: 改进电量计算, 以 Emmacourer 中的指数移动平均值\n更新剩余电源状态定义并折旧旧标识符"
-      },
-      "2.1.0": {
-        "en": "emma: system time is being determined [#179](https://github.com/bolliy/ioBroker.sun2000/issues/179)\ncontrol: add grid power scheduling functionality to inverter driver [#176](https://github.com/bolliy/ioBroker.sun2000/issues/176)",
-        "de": "emma: Die Systemzeit wird bestimmt [#179](https://github.com/bolliy/ioBroker.sun2000/issues/179)\nsteuerung: Netz-Leistungs-Scheduling-Funktionalität zum Wechselrichtertreiber hinzufügen [#176](https://github.com/bolliy/ioBroker.sun2000/issues/176)",
-        "ru": "emma: системное время определяется [#179] (https://github.com/bolliy/ioBroker.sun2000/issues/179)\nуправление: добавьте функцию планирования мощности сети к драйверу инвертора [#176] (https://github.com/bolliy/ioBroker.sun2000/issues/176)",
-        "pt": "emma: tempo do sistema está sendo determinado [#179](https://github.com/bolliy/ioBroker.sun2000/issues/179)\ncontrol: add grid power screaming functionality to inverter driver [#176](https://github.com/bolliy/ioBroker.sun2000/issues/176)",
-        "nl": "emma: de systeemtijd wordt bepaald [#179](https://github.com/bolliy/ioBroker.sun2000/issues/179)\ncontrole: voeg net stroom planning functionaliteit aan omvormer driver [#176](https://github.com/bolliy/ioBroker.sun2000/issues/176)",
-        "fr": "emma: le temps du système est déterminé [#179](https://github.com/bolliy/ioBroker.sun2000/issues/179)\ncontrôle: ajouter la fonctionnalité de programmation du réseau au pilote d'onduleur [#176](https://github.com/bolliy/ioBroker.sun2000/issues/176)",
-        "it": "emma: il tempo di sistema viene determinato [#179](https://github.com/bolliy/ioBroker.sun2000/issues/179)\ncontrollo: aggiungere funzionalità di programmazione della griglia al driver inverter [#176](https://github.com/bolliy/ioBroker.sun2000/issues/176)",
-        "es": "emma: El tiempo del sistema se determina [#179](https://github.com/bolliy/ioBroker.sun2000/issues/179)\ncontrol: añadir funcionalidad de programación de energía de red al controlador inverter [#176](https://github.com/bolliy/ioBroker.sun2000/issues/176)",
-        "pl": "emma: ustala się czas systemowy [# 179] (https: / / github.com / bolliy / ioBroker.sun2000 / issues / 179)\ncontrol: add grid Power Scheduling Functional to inverter driver [# 176] (https: / / github.com / bolliy / ioBroker.sun2000 / issues / 176)",
-        "uk": "emma: час системи визначається [#179](https://github.com/bolliy/ioBroker.sun2000/products/179)\ncontrol: add power scheduling features to inverter драйвер [#176](https://github.com/bolliy/ioBroker.sun2000/issues/176)",
-        "zh-cn": "emma:系统时间正在确定 [# 179] (https://github.com/bolliy/ioBroker.sun2000/issues/179)\n控制:向反向驱动器添加电网电源调度功能[#176](https://github.com/bolliy/ioBroker.sun2000/issues/1976)"
       }
     },
     "titleLang": {

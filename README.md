@@ -65,8 +65,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-
-### **WORK IN PROGRESS**
+### 2.3.3 (2025-10-31)
 * Improved verification of the adapter configuration
 * new state `inverter.x.derived.dailyActiveEnergy` Inverter daily active energy, which is determined via the Riemann sum of `inverter.x.activePower`
 * state `collected.dailyInputYield` was redisigned based on inverter.[0..n-1].derived.dailyActiveEnergy
