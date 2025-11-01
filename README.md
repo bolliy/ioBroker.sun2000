@@ -65,7 +65,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.3.4 (2025-11-01)
 * dependency and configuration updates
 * new state `collected.dailyExternalYield` Riemann sum of `collected.externalPower`
 
