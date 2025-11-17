@@ -419,27 +419,34 @@ class Sun2000 extends utils.Adapter {
 			if (this.settings.modbusAdjust) {
 				await this.setState('info.JSONhealth', { val: '{message: "Adjust modbus settings"}', ack: true });
 			} else {
-				await this.setState('info.JSONhealth', { val: '{message : "Information is collected"}', ack: true });
+				await this.setState('info.JSONhealth', { val: '{message : "Information is collected..."}', ack: true });
 			}
-			//future: if (this.settings.integration !== 2 && (this.settings.modbusIds.length === 0 || this.settings.modbusIds.length > 5)) {
-			if (this.settings.modbusIds.length === 0 || this.settings.modbusIds.length > 5) {
-				this.adapterDisable(`*** Adapter deactivated, inverter modbus Ids is invalid! ***`);
+			//validate modbus Ids
+			if (this.settings.modbusIds.length > 5) {
+				this.adapterDisable(`*** Adapter deactivated, Only a maximum of 5 inverters are allowed! ***`);
+				return;
+			}
+			if (this.settings.integration !== 2 && this.settings.modbusIds.length === 0) {
+				this.adapterDisable(`*** Adapter deactivated, inverter Modbus IDs must be entered! ***`);
 				return;
 			}
 			//ES6 use a for (const [index, item] of array.entries()) of loop
 			for (const [i, id] of this.settings.modbusIds.entries()) {
 				//Inverter
-				if (id < 1 || id >= 250) {
+				if (id >= 250) {
 					this.adapterDisable(`*** Adapter deactivated, inverter modbus Id ${id} is not permitted! ***`);
 					return;
 				}
-				this.devices.push({
-					index: i,
-					duration: 5000,
-					modbusId: id,
-					driverClass: driverClasses.inverter,
-					meter: i == 0 && this.settings.integration === 0,
-				});
+				//inverter modbus id 0 does not exist with emma
+				if (this.settings.integration !== 2 || id > 0) {
+					this.devices.push({
+						index: i,
+						duration: 5000,
+						modbusId: id,
+						driverClass: driverClasses.inverter,
+						meter: i == 0 && this.settings.integration === 0,
+					});
+				}
 			}
 
 			//SDongle
