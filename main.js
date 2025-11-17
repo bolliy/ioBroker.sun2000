@@ -386,14 +386,13 @@ class Sun2000 extends utils.Adapter {
 			this.settings.modbusDelay = this.config.delay; //ms
 			this.settings.modbusConnectDelay = this.config.connectDelay; //ms
 			this.settings.modbusAdjust = this.config.autoAdjust;
-			this.settings.modbusIds = this.config.modbusIds.split(',').map(n => {
-				return Number(n);
-			});
-			/*
-			this.settings.chargerIds = this.config.chargerIds.split(',').map(n => {
-				return Number(n);
-			});
-			*/
+			if (this.config.modbusIds !== '') {
+				this.settings.modbusIds = this.config.modbusIds.split(',').map(n => {
+					return Number(n);
+				});
+			} else {
+				this.settings.modbusIds = [];
+			}
 			//SmartDongle
 			this.settings.sd.active = this.config.sd_active;
 			// eslint-disable-next-line no-constant-binary-expression
