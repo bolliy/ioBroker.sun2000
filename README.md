@@ -66,6 +66,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
+* dependency and configuration updates
 * Battery status check was suspended in inverter control [#220](https://github.com/bolliy/ioBroker.sun2000/issues/220)
 * Emma: dynamic detection of sun2000 inverters and integration of devices such as sun2000
 * allow Modbus ID 0 when using the sDongle [#218](https://github.com/bolliy/ioBroker.sun2000/issues/118)
