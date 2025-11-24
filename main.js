@@ -103,15 +103,7 @@ class Sun2000 extends utils.Adapter {
 				},
 				native: {},
 			});
-			/*
-				await this.extendObject(path+'.battery', {
-					type: 'channel',
-					common: {
-						name: 'channel battery'
-					},
-					native: {}
-				});
-				*/
+
 			await this.extendObject(`${path}.string`, {
 				type: 'channel',
 				common: {
@@ -326,6 +318,12 @@ class Sun2000 extends utils.Adapter {
 			this.settings.highInterval = 10000 * this.settings.modbusIds.length;
 		} else {
 			let minInterval = this.settings.modbusIds.length * this.settings.modbusDelay * 2.5; //len*5*delay/2
+			for (const device of this.devices) {
+				if (device.duration) {
+					minInterval += device.duration;
+				}
+			}
+			/*
 			if (this.settings.integration > 0) {
 				//SmartLogger, Emma
 				minInterval += 5000;
@@ -335,6 +333,11 @@ class Sun2000 extends utils.Adapter {
 						minInterval += device.duration;
 					}
 				}
+			}
+			*/
+			//
+			if (minInterval < 5000) {
+				minInterval = 5000;
 			}
 			if (minInterval > this.settings.highInterval) {
 				this.settings.highInterval = Math.round(minInterval);
@@ -477,7 +480,7 @@ class Sun2000 extends utils.Adapter {
 				}
 			}
 
-			//EMMA with TestMode
+			//EMMA
 			if (this.settings.integration === 2) {
 				this.devices.push({
 					index: 0,
@@ -548,7 +551,6 @@ class Sun2000 extends utils.Adapter {
 			const sinceLastUpdate = new Date().getTime() - this.lastTimeUpdated; //ms
 			this.logger.debug(`### Watchdog: time since last update ${sinceLastUpdate / 1000} sec`);
 			const lastIsConnected = this.isConnected;
-			//this.isConnected = this.lastStateUpdatedHigh > 0 && sinceLastUpdate < this.settings.highInterval*3;
 			this.isConnected = this.lastStateUpdatedHigh > 0 || this.lastStateUpdatedLow > 0;
 
 			if (this.isConnected !== lastIsConnected) {
