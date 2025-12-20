@@ -317,25 +317,13 @@ class Sun2000 extends utils.Adapter {
 		if (this.settings.modbusAdjust) {
 			this.settings.highInterval = 10000 * this.settings.modbusIds.length;
 		} else {
+			this.settings.highInterval = this.config.updateInterval * 1000; //ms
 			let minInterval = this.settings.modbusIds.length * this.settings.modbusDelay * 2.5; //len*5*delay/2
 			for (const device of this.devices) {
 				if (device.duration) {
 					minInterval += device.duration;
 				}
 			}
-			/*
-			if (this.settings.integration > 0) {
-				//SmartLogger, Emma
-				minInterval += 5000;
-			} else {
-				for (const device of this.devices) {
-					if (device.duration) {
-						minInterval += device.duration;
-					}
-				}
-			}
-			*/
-			//
 			if (minInterval < 5000) {
 				minInterval = 5000;
 			}
@@ -351,8 +339,8 @@ class Sun2000 extends utils.Adapter {
 		const newHighInterval = Math.round(this.settings.highInterval / 1000);
 		if (!this.settings.modbusAdjust) {
 			if (this.config.updateInterval < newHighInterval) {
-				this.logger.warn(`The interval is too small. The value has been changed on ${newHighInterval} sec.`);
-				this.logger.warn('Please check your configuration!');
+				this.logger.info(`The interval is too small. The value has been changed on ${newHighInterval} sec.`);
+				//this.logger.warn('Please check your configuration!');
 			}
 		}
 		await this.setState('info.modbusUpdateInterval', { val: newHighInterval, ack: true });
@@ -403,7 +391,7 @@ class Sun2000 extends utils.Adapter {
 			if (this.settings.sd.sDongleId < 0 || this.settings.sd.sDongleId >= 255) {
 				this.settings.sd.active = false;
 			}
-			this.settings.highInterval = this.config.updateInterval * 1000; //ms
+			//this.settings.highInterval = this.config.updateInterval * 1000; //ms
 			//Modbus-Proxy
 			this.settings.ms.address = this.config.ms_address;
 			this.settings.ms.port = this.config.ms_port;
