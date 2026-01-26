@@ -68,7 +68,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 
 ### **WORK IN PROGRESS**
 * dependency and configuration updates
-* new state `inverter.x.derived.alarmsJSON` : json array with intverter alarms (id, name, level) [#221](https://github.com/bolliy/ioBroker.sun2000/issues/221)
+* new state `inverter.x.derived.alarmsJSON` : json array with intverter alarms (id, name, level) [#226](https://github.com/bolliy/ioBroker.sun2000/issues/226)
 * add ChargeDischargePower for Battery units [#234](https://github.com/bolliy/ioBroker.sun2000/issues/234)
 
 ### 2.3.5 (2025-11-17)
