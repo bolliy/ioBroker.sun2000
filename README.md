@@ -65,7 +65,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.3.7 (2026-02-01)
 * deleted deprecated state `collected.usableSurplusPower`
 
 ### 2.3.6 (2026-01-29)

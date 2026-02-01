@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "2.3.6",
+    "version": "2.3.7",
     "news": {
+      "2.3.7": {
+        "en": "deleted deprecated state `collected.usableSurplusPower`",
+        "de": "gelöschter deprecated state `collect.usableSurplusPower `",
+        "ru": "удаленное устаревшее состояние 'collected.usableSurplusPower пункт",
+        "pt": "estado desactualizado excluído `colected.usableSurplusPower `",
+        "nl": "verwijderde verouderde staat  Wat",
+        "fr": "état obsolète supprimé `collected.usableSurplusPower \"",
+        "it": "cancellato stato deprecato `colletto.usableSurplusPower #",
+        "es": "borrado estado deprecatado `collected.usableSurplusPower `",
+        "pl": "usunięty stan zdepregatowany \"collected.usableSurplusPower '",
+        "uk": "вилучена депресована держава `collected.usableSurplusPower й",
+        "zh-cn": "删除已贬值状态“ 已收集。 可使用 SurplusPower `"
+      },
       "2.3.6": {
         "en": "dependency and configuration updates\nnew state `inverter.x.derived.alarmsJSON` : json array with intverter alarms (id, name, level) [#226](https://github.com/bolliy/ioBroker.sun2000/issues/226)\nadd ChargeDischargePower for Battery units [#234](https://github.com/bolliy/ioBroker.sun2000/issues/234)\nadd minimum and maximum temperature for battery packs [#236](https://github.com/bolliy/ioBroker.sun2000/issues/236)",
         "de": "abhängigkeits- und konfigurationsupdates\nneuer Zustand `inverter.x.derived.alarmsJSON`: json array with intverter alarms (id, name, level) [#226](https://github.com/bolliy/ioBroker.sun2000/issues/226)\nadd ChargeDischargePower for Battery Units [#234](https://github.com/bolliy/ioBroker.sun2000/issues/234)\nmindest- und Höchsttemperatur für Akkupacks [#236](https://github.com/bolliy/ioBroker.sun2000/issues/236)",
@@ -80,19 +93,6 @@
         "pl": "fix: obsługi potencjalnych wartości null w ustawieniu metody rejestru Mapa",
         "uk": "виправити: обробляти потенціал null значення в встановленому методі Реєстру Мапа",
         "zh-cn": "固定值:在设定的登记方法中处理潜在的无效值 地图"
-      },
-      "2.3.0": {
-        "en": "new release for npm migrates to Trusted Publishing",
-        "de": "neue Veröffentlichung für npm migriert Trusted Publishing",
-        "ru": "новый релиз для npm перенесен в Trusted Publishing",
-        "pt": "nova versão para npm migra para a publicação confiável",
-        "nl": "nieuwe release voor npm-migraties naar Trusted Publishing",
-        "fr": "nouvelle version pour npm migre vers Trusted Publishing",
-        "it": "nuovo rilascio per npm migra a Trusted Publishing",
-        "es": "nueva versión para npm migrates a Trusted Publishing",
-        "pl": "nowa wersja dla migratów npm do zaufanej publikacji",
-        "uk": "новий реліз для npm migrats для Trusted Publishing",
-        "zh-cn": "npm 的新版本迁移到信任出版"
       }
     },
     "titleLang": {
