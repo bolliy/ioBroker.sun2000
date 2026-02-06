@@ -33,14 +33,19 @@
 	const start = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0);
 	start.setDate(start.getDate() - 10);
 	const hours = [];
+    
 	for (let d = 0; d < 10; d++) {
+        let consumptionToday = 0.0;
 		for (let h = 0; h < 24; h++) {
 			const from = new Date(start.getFullYear(), start.getMonth(), start.getDate() + d, h, 0, 0, 0);
 			const to = new Date(from);
 			to.setHours(to.getHours() + 1);
 			const isoFrom = from.toISOString().replace('Z', '+00:00');
 			const isoTo = to.toISOString().replace('Z', '+00:00');
-			hours.push({ from: isoFrom, to: isoTo, consumption: (1.0).toFixed(3) });
+
+            consumptionToday += 1.0;
+			hours.push({ from: isoFrom, to: isoTo, consumption: (1.0).toFixed(3), consumptionToday: consumptionToday.toFixed(3) });
+            console.log(`Hour ${d * 24 + h}: from ${isoFrom} to ${isoTo}, consumption: ${(1.0).toFixed(3)}, consumptionToday: ${consumptionToday.toFixed(3)}`);
 		}
 	}
 
