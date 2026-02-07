@@ -247,6 +247,8 @@
     "ms_log": false,
     "sl_meterId": 11,
     "ds_bu": true,
+    "ds_bp": false,
+    "cb_tou": false,
     "integration": 0
   },
   "objects": [],

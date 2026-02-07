@@ -356,9 +356,9 @@ class Sun2000 extends utils.Adapter {
 			this.config.timeout = this.config.timeout * 1000;
 			this.updateConfig(this.config);
 		}
-		if (this.config.sl_active) {
+		if (this.config['sl_active']) {
 			//old Smartlogger
-			this.config.sl_active = false;
+			this.config['sl_active'] = false;
 			this.config.integration = 1;
 			this.updateConfig(this.config);
 		}

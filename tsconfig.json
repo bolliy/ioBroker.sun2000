@@ -1,0 +1,50 @@
+// Root tsconfig to set the settings and power editor support for all TS files
+{
+	// To update the compilation target, install a different version of @tsconfig/node... and reference it here
+	// https://github.com/tsconfig/bases#node-20-tsconfigjson
+	"extends": "@tsconfig/node20/tsconfig.json",
+	"compilerOptions": {
+		// do not compile anything, this file is just to configure type checking
+		"noEmit": true,
+
+		// check JS files
+		"allowJs": true,
+		// If you want to disable type checking for JS files, uncomment the following line
+		//"checkJs": true,
+
+		//"module": "ES6",
+		//"module": "CommonJS",
+		"module": "es2020",
+		
+		//"module": "ESNext",
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+
+
+		// This is necessary for the automatic typing of the adapter config
+		"resolveJsonModule": true,
+
+		// If you want to disable the stricter type checks (not recommended), uncomment the following line
+		// "strict": false,
+		// And enable some of those features for more fine-grained control
+		// "strictNullChecks": true,
+		// "strictPropertyInitialization": true,
+		// "strictBindCallApply": true,
+		"noImplicitAny": false,
+		// "noImplicitOverride": true,
+		// "noUnusedLocals": true,
+		// "noUnusedParameters": true,
+		"useUnknownInCatchVariables": false,
+		// Consider targetting es2019 or higher if you only support Node.js 12+
+        "target": "es2022"
+
+	},
+	"include": [
+		"**/*.js",
+		"**/*.d.ts"
+, "main.mjs"	],
+	"exclude": [
+		"node_modules/**",
+		"widgets/**"
+	]
+}

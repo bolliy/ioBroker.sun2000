@@ -2,8 +2,9 @@
   "version": "0.2.0",
   "configurations": [
      {
-           //dev-server run --noStart
-           //dev-server upload
+           //Terminal 1: dev-server run --noStart
+           //Terminal 2: dev-server upload
+           //Terminal 3: 
            //node --inspect=0.0.0.0:9229 .dev-server/default/node_modules/iobroker.sun2000/ --logs --force --debug
            //node --inspect=0.0.0.0:9229 --inspect-wait .dev-server/default/node_modules/iobroker.sun2000/ --logs --force --debug
            //node --inspect=0.0.0.0:9229 --inspect-brk .dev-server/default/node_modules/iobroker.sun2000/ --logs --force --debug
