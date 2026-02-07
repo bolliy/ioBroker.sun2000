@@ -4,6 +4,6 @@
 		"noImplicitAny": false
 	},
 	"include": [
-		"./**/*.js"
+		"./**/*.ts"
 	]
 }
