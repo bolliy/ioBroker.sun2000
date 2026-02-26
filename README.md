@@ -30,7 +30,7 @@ Feel free to follow the discussions in the german [iobroker forum](https://forum
 ## Requirements
 * Node.js 20 or higher
 * ioBroker host (js-controller) 6.0.11 or higher
-* ioBroker admin 7.6.17 or higher
+* ioBroker admin 7.6.20 or higher
 
 ## Documentation
 
@@ -67,7 +67,8 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 -->
 ### **WORK IN PROGRESS**
 * fix: the order of bit assignment corrected of alarmsJSON
-* emma alarmSN
+* new state `inverter.x.emma.activeAlarmSN` and `inverter.x.emma.HistoricalAlarmSN` : emma alarms  [#226](https://github.com/bolliy/ioBroker.sun2000/issues/226)
+* statistics 
 
 ### 2.3.7 (2026-02-01)
 * deleted deprecated state `collected.usableSurplusPower`
