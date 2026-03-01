@@ -677,8 +677,8 @@ class Sun2000 extends utils.Adapter {
 		if (typeof obj === 'object' && obj.message) {
 			// support a dedicated command 'statistics' to generate chart data
 			if (obj.command === 'statistics') {
-				if (this.statistics && typeof this.statistics.handleFlexMessage === 'function') {
-					this.statistics.handleFlexMessage(obj.message, result => {
+				if (this.state.statistics && typeof this.state.statistics.handleFlexMessage === 'function') {
+					this.state.statistics.handleFlexMessage(obj.message, result => {
 						if (obj.callback) this.sendTo(obj.from, obj.command, result, obj.callback);
 					});
 				} else {
@@ -687,7 +687,6 @@ class Sun2000 extends utils.Adapter {
 			}
 		}
 	}
-
 }
 
 if (require.main !== module) {

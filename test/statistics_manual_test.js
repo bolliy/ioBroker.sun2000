@@ -27,6 +27,7 @@
 	}
 
 	const stateCache = new MockStateCache();
+	const stats = new Statistics(fakeAdapter, stateCache);
 
 	// prepare hourly data for the past 10 days (1.0 per hour)
 	const now = new Date();

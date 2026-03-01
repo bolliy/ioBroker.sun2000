@@ -27,3 +27,38 @@ The following additional states are available for output:
 - `Inverter Temperature`: sun2000.0.inverter.0.internalTemperature (temperature or '0' if in standby)
 - `Battery Unit Temperature`: sun2000.0.inverter.0.battery.unit.1.batteryTemperature (temperature or '0' if in standby)
 - `Grid Frequency`: sun2000.0.meter.gridFrequency 
+
+
+## Flexcharts support for statistics
+
+The adapter now generates JSON arrays for hourly/daily/weekly/monthly/annual
+statistics in states such as `sun2000.0.statistics.jsonHourly` etc.  These can
+be rendered by the [ioBroker.flexcharts](https://github.com/MyHomeMyData/ioBroker.flexcharts)
+adapter by using a small script or via the built‑in message callback.
+
+A state `sun2000.0.statistics.flexChartTemplate` is provided where you can store
+an eCharts options object – only the parts you want to customise.  The adapter
+will merge this template into a default chart layout and fill the `xAxis` and
+`series` data automatically.
+
+To request a chart via message box you can send a message with `command: "statistics"`
+and a `message.chart` property equal to `hourly`, `daily`, `weekly`, `monthly`
+or `annual`.  The payload returned is the final chart options object, which
+flexcharts can consume when using `source=script`.
+
+Example script (in JavaScript adapter instance 0):
+
+```js
+onMessage(obj => {
+    if (obj.command === 'statistics') {
+        // forward to sun2000 instance
+        sendTo('sun2000.0', 'statistics', obj.message, res => {
+            // res contains chart options, set a state or return to flexcharts
+            setState('0_userdata.0.flexcharts.sun2000.chart', JSON.stringify(res));
+        });
+    }
+});
+```
+
+The default template plots every tracked `targetPath` in a separate line series.
+You can override layout, colours, tooltips etc. via the template state.

@@ -52,5 +52,10 @@ describe('statistics.flexchart', function () {
         assert.strictEqual(chart.xAxis[0].data.length, 2);
         assert.ok(chart.series.length >= 1);
         assert.deepStrictEqual(chart.series[0].data, [1,2]);
+
+        // also try the helper message handler
+        stats.handleFlexMessage({ chart: 'hourly' }, result => {
+            assert.deepStrictEqual(result, chart);
+        });
     });
 });
