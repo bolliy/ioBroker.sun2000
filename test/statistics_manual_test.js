@@ -49,22 +49,21 @@
 		}
 	}
 
-	stateCache.set('statistics.consumption.jsonHourly', JSON.stringify(hours));
-
-	const stats = new Statistics(fakeAdapter, stateCache);
-	// stop the background timer created in constructor
-	if (stats.taskTimer) fakeAdapter.clearTimeout(stats.taskTimer);
-
+	stateCache.set('statistics.jsonHourly', JSON.stringify(hours));
 	await stats._calculateDaily();
-	console.log('jsonDaily:', stateCache.get('statistics.consumption.jsonDaily')?.value);
+	console.log('jsonDaily:', stateCache.get('statistics.jsonDaily')?.value);
 
 	await stats._calculateWeekly();
-	console.log('jsonWeekly:', stateCache.get('statistics.consumption.jsonWeekly')?.value);
+	console.log('jsonWeekly:', stateCache.get('statistics.jsonWeekly')?.value);
 
 	await stats._calculateMonthly();
-	console.log('jsonMonthly:', stateCache.get('statistics.consumption.jsonMonthly')?.value);
+	console.log('jsonMonthly:', stateCache.get('statistics.jsonMonthly')?.value);
 
 	await stats._calculateAnnual();
-	console.log('jsonAnnual:', stateCache.get('statistics.consumption.jsonAnnual')?.value);
+	console.log('jsonAnnual:', stateCache.get('statistics.jsonAnnual')?.value);
+
+	// demonstrate flexchart builder (hourly)
+	const chart = stats._buildFlexchart('hourly');
+	console.log('built chart options:', JSON.stringify(chart, null, 2));
 
 })();
