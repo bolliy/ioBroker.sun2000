@@ -42,8 +42,8 @@ describe('statistics.flexchart', function () {
         const stateCache = new MockStateCache();
         // put two hours of dummy data
         stateCache.set('statistics.jsonHourly', JSON.stringify([
-            { from: '2025-01-01T00:00:00.000+00:00', to: '2025-01-01T01:00:00.000+00:00', consumption: 1 },
-            { from: '2025-01-01T01:00:00.000+00:00', to: '2025-01-01T02:00:00.000+00:00', consumption: 2 },
+            { from: '2025-01-01T00:00:00.000+00:00', to: '2025-01-01T01:00:00.000+00:00', consumption: { value: 1 } },
+            { from: '2025-01-01T01:00:00.000+00:00', to: '2025-01-01T02:00:00.000+00:00', consumption: { value: 2 } },
         ]));
         const stats = new Statistics(fakeAdapter, stateCache);
         stateCache.set('statistics.flexChartTemplate', '{}');
@@ -57,5 +57,33 @@ describe('statistics.flexchart', function () {
         stats.handleFlexMessage({ chart: 'hourly' }, result => {
             assert.deepStrictEqual(result, chart);
         });
+    });
+
+    it('should merge a provided template', () => {
+        const fakeAdapter = {
+            logger: { debug: () => {}, warn: () => {}, log: () => {} },
+            setTimeout: (fn, ms) => global.setTimeout(fn, ms),
+            clearTimeout: id => global.clearTimeout(id),
+            getState: async () => ({ val: undefined }),
+        };
+        class MockStateCache {
+            constructor() { this.map = new Map(); }
+            get(k) { const v = this.map.get(k); return v === undefined ? undefined : { value: v }; }
+            set(k, v) { this.map.set(k, v); }
+        }
+        const stateCache = new MockStateCache();
+        // add one data point
+        stateCache.set('statistics.jsonHourly', JSON.stringify([
+            { from: '2025-01-01T00:00:00.000+00:00', to: '2025-01-01T01:00:00.000+00:00', consumption: 1 }
+        ]));
+        // provide a template overriding title and adding a custom series
+        stateCache.set(
+            'statistics.flexChartTemplate',
+            JSON.stringify({ title: { text: 'Custom' }, series: [{ name: 'Consumption', type: 'bar' }] })
+        );
+        const stats = new Statistics(fakeAdapter, stateCache);
+        const c = stats._buildFlexchart('hourly');
+        assert.strictEqual(c.title.text.startsWith('Custom'), true);
+        assert.strictEqual(c.series[0].type, 'bar');
     });
 });
