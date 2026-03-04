@@ -39,7 +39,9 @@ adapter by using a small script or via the built‑in message callback.
 A state `sun2000.0.statistics.flexChartTemplate` is provided where you can store
 an eCharts options object – only the parts you want to customise.  The adapter
 will merge this template into a default chart layout and fill the `xAxis` and
-`series` data automatically.
+`series` data automatically.  **Units are read from the statistic definitions
+and injected into the axis label and tooltip; you no longer need to hard‑code
+"kWh" in the template.**
 
 To request a chart via message box you can send a message with `command: "statistics"`
 and a `message.chart` property equal to `hourly`, `daily`, `weekly`, `monthly`
@@ -61,4 +63,16 @@ onMessage(obj => {
 ```
 
 The default template plots every tracked `targetPath` in a separate line series.
-You can override layout, colours, tooltips etc. via the template state.
+You can override layout, colours, tooltips etc. via the template state; the
+adapter adds unit strings automatically.  For example, a bare template might
+look like this (no `kWh` anywhere):
+
+```js
+{
+  title: { text: 'sun2000 – Statistik', left: 'center' },
+  legend: { top: 30 },
+  grid: { left: 50, right: 20, bottom: 50 },
+  colour: ['#5470C6', '#91CC75', '#EE6666'],
+  // tooltip/yAxis formatting will be filled in by adapter based on units
+}
+```
