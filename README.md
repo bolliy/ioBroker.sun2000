@@ -59,6 +59,8 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 * Huawei [`SmartLogger`](https://github.com/bolliy/ioBroker.sun2000/wiki/SmartLogger) integration: Monitors and manages the PV power system. The adapter saves the collected data in the same way as it does when read out the inverter directly.
 * Huawei [`Emma`](https://github.com/bolliy/ioBroker.sun2000/wiki/Emma) integration: The Modbus access, network connectivity (WiFi and Ethernet) and the DDSU/DTSU-666H smart meter functions are integrated in one unit - the use of the Sdongle becomes redundant. In addition Huawei EV chargers and load shedding/control (via selected Shelly devices) are supported and "intelligent" controlled.
 * Huawei [`Charger`](https://github.com/bolliy/ioBroker.sun2000/issues/171) via Emma integration: The chargers are automatically recognized and the data is saved in their own path. 
+* Statistics: Aggregates historical collected datapoints into time-based summaries (e.g. hourly, daily, monthly, yearly).
+In the mid-term, these statistics are intended to be visualized in ioBroker VIS using the ioBroker.flexcharts adapter to create interactive charts for inverter performance and energy production.
 
 ## Changelog
 <!--
@@ -68,7 +70,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 ### **WORK IN PROGRESS**
 * fix: the order of bit assignment corrected of alarmsJSON
 * new state `inverter.x.emma.activeAlarmSN` and `inverter.x.emma.HistoricalAlarmSN` : emma alarms  [#226](https://github.com/bolliy/ioBroker.sun2000/issues/226)
-* statistics 
+* statistics: Aggregates historical collected datapoints into time-based summaries (e.g. hourly, daily, monthly, yearly). The data is stored in the path `statistics` as JSON.
 
 ### 2.3.7 (2026-02-01)
 * deleted deprecated state `collected.usableSurplusPower`
