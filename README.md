@@ -69,7 +69,7 @@ In the medium term, these statistics should be able to be visualized in ioBroker
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.4.0 (2026-03-14)
 * fix: the order of bit assignment corrected of alarmsJSON
 * new state `inverter.x.emma.activeAlarmSN` and `inverter.x.emma.HistoricalAlarmSN` : emma alarms  [#226](https://github.com/bolliy/ioBroker.sun2000/issues/226)
 * statistics: Aggregates historical collected datapoints into time-based summaries (e.g. hourly, daily, monthly, yearly). The data is stored in the path `statistics` as JSON.
