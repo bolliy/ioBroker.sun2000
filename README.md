@@ -60,7 +60,9 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 * Huawei [`Emma`](https://github.com/bolliy/ioBroker.sun2000/wiki/Emma) integration: The Modbus access, network connectivity (WiFi and Ethernet) and the DDSU/DTSU-666H smart meter functions are integrated in one unit - the use of the Sdongle becomes redundant. In addition Huawei EV chargers and load shedding/control (via selected Shelly devices) are supported and "intelligent" controlled.
 * Huawei [`Charger`](https://github.com/bolliy/ioBroker.sun2000/issues/171) via Emma integration: The chargers are automatically recognized and the data is saved in their own path. 
 * Statistics: Aggregates historical collected datapoints into time-based summaries (e.g. hourly, daily, monthly, yearly).
-In the mid-term, these statistics are intended to be visualized in ioBroker VIS using the ioBroker.flexcharts adapter to create interactive charts for inverter performance and energy production.
+In the medium term, these statistics should be able to be visualized in ioBroker VIS using the flexcharts adapter to create interactive diagrams for inverter performance and energy production.
+
+
 
 ## Changelog
 <!--
