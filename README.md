@@ -58,7 +58,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 * Huawei [`SmartLogger`](https://github.com/bolliy/ioBroker.sun2000/wiki/SmartLogger) integration: Monitors and manages the PV power system. The adapter saves the collected data in the same way as it does when read out the inverter directly.
 * Huawei [`Emma`](https://github.com/bolliy/ioBroker.sun2000/wiki/Emma) integration: The Modbus access, network connectivity (WiFi and Ethernet) and the DDSU/DTSU-666H smart meter functions are integrated in one unit - the use of the Sdongle becomes redundant. In addition Huawei EV chargers and load shedding/control (via selected Shelly devices) are supported and "intelligent" controlled.
 * Huawei [`Charger`](https://github.com/bolliy/ioBroker.sun2000/issues/171) via Emma integration: The chargers are automatically recognized and the data is saved in their own path. 
-* `Statistics`: Aggregates historical collected datapoints into time-based summaries (e.g. hourly, daily, monthly, yearly).
+* [`Statistics`](https://github.com/bolliy/ioBroker.sun2000/wiki/Statistk-(statistics)): Aggregates historical collected datapoints into time-based summaries (e.g. hourly, daily, monthly, yearly).
 In the medium term, these statistics should be able to be visualized in ioBroker VIS using the flexcharts adapter to create interactive diagrams for inverter performance and energy production.
 * [`Surplus Power Control`](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(surplus))
 The sun2000 adapter calculates how much of your self-generated solar energy is available to power devices in your home — instead of sending it to the grid.
