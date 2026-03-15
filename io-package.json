@@ -129,6 +129,7 @@
       "modbus",
       "sun2000",
       "luna2000",
+      "emma",
       "inverter",
       "smartcharger",
       "sdongle"
