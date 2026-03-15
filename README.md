@@ -17,7 +17,6 @@
 
 **This adapter uses Sentry libraries to automatically report exceptions and code errors to the developers.**\
 For more details and for information how to disable the error reporting see [Sentry-Plugin Documentation](https://github.com/ioBroker/plugin-sentry#plugin-sentry)!\
-Sentry reporting is used starting with js-controller 3.0.
 
 ## sun2000 adapter for ioBroker
 
@@ -59,16 +58,22 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 * Huawei [`SmartLogger`](https://github.com/bolliy/ioBroker.sun2000/wiki/SmartLogger) integration: Monitors and manages the PV power system. The adapter saves the collected data in the same way as it does when read out the inverter directly.
 * Huawei [`Emma`](https://github.com/bolliy/ioBroker.sun2000/wiki/Emma) integration: The Modbus access, network connectivity (WiFi and Ethernet) and the DDSU/DTSU-666H smart meter functions are integrated in one unit - the use of the Sdongle becomes redundant. In addition Huawei EV chargers and load shedding/control (via selected Shelly devices) are supported and "intelligent" controlled.
 * Huawei [`Charger`](https://github.com/bolliy/ioBroker.sun2000/issues/171) via Emma integration: The chargers are automatically recognized and the data is saved in their own path. 
+* [`Statistics`](https://github.com/bolliy/ioBroker.sun2000/wiki/Statistk-(statistics)): Aggregates historical collected datapoints into time-based summaries (e.g. hourly, daily, monthly, yearly).
+In the medium term, these statistics should be able to be visualized in ioBroker VIS using the flexcharts adapter to create interactive diagrams for inverter performance and energy production.
+* [`Surplus Power Control`](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(surplus))
+The sun2000 adapter calculates how much of your self-generated solar energy is available to power devices in your home — instead of sending it to the grid.
+
+
 
 ## Changelog
 <!--
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.4.0 (2026-03-14)
 * fix: the order of bit assignment corrected of alarmsJSON
 * new state `inverter.x.emma.activeAlarmSN` and `inverter.x.emma.HistoricalAlarmSN` : emma alarms  [#226](https://github.com/bolliy/ioBroker.sun2000/issues/226)
-* statistics 
+* statistics: Aggregates historical collected datapoints into time-based summaries (e.g. hourly, daily, monthly, yearly). The data is stored in the path `statistics` as JSON.
 
 ### 2.3.7 (2026-02-01)
 * deleted deprecated state `collected.usableSurplusPower`

@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "2.3.7",
+    "version": "2.4.0",
     "news": {
+      "2.4.0": {
+        "en": "fix: the order of bit assignment corrected of alarmsJSON\nnew state `inverter.x.emma.activeAlarmSN` and `inverter.x.emma.HistoricalAlarmSN` : emma alarms  [#226](https://github.com/bolliy/ioBroker.sun2000/issues/226)\nstatistics: Aggregates historical collected datapoints into time-based summaries (e.g. hourly, daily, monthly, yearly). The data is stored in the path `statistics` as JSON.",
+        "de": "fix: die Reihenfolge der Bitzuweisung korrigiert von Alarmen JSON\nneuer Zustand `inverter.x.emma.activeAlarmSN` und `inverter.x.emma.HistoricalAlarmSN`: Emma alarms [#226](https://github.com/bolliy/ioBroker.sun2000/issues/226)\nstatistik: Aggregate historische gesammelte Datenpunkte in zeitbasierte Zusammenfassungen (z.B. stündlich, täglich, monatlich, jährlich). Die Daten werden im Pfad `statistics` als JSON gespeichert.",
+        "ru": "исправление: порядок назначения битов исправлен сигнализацией Джон\nновое состояние 'inverter.x.emma.activeAlarmSN' и 'inverter.x.emma.HistoricalAlarmSN': emma alarms [#226] (https://github.com/bolliy/ioBroker.sun2000/issues/226)\nстатистика: Собирает исторические собранные точки данных в основанные на времени резюме (например, почасовые, ежедневные, ежемесячные, годовые). Данные хранятся в «статистике» пути JSON.",
+        "pt": "corrigir: a ordem de atribuição de bits corrigida dos alarmes JSON\nnovo estado `inverter.x.emma.activeAlarmSN` e `inverter.x.emma.HistoricAlarmSN` : alarmes emma [#226](https://github.com/bolliy/ioBroker.sun2000/issues/226)\nestatísticas: Agrega pontos de dados históricos recolhidos em resumos baseados no tempo (por exemplo, horários, diários, mensais, anuais). Os dados são armazenados no caminho `statistics` como JSON.",
+        "nl": "fix: de volgorde van bittoewijzing gecorrigeerd van alarmen JSON\nnieuwe staat \nstatistieken: Verzamelt historische verzamelde datapunten in tijdgebaseerde samenvattingen (bv. uur, dag, maand, jaar). De gegevens worden opgeslagen in het pad .",
+        "fr": "correction : l'ordre d'attribution des bits corrigé des alarmes JSON\nnouvel état `inverter.x.emma.activeAlarmSN` et `inverter.x.emma.HistoricalAlarmSN`: emma alarms [#226](https://github.com/bolliy/ioBroker.sun2000/issues/226)\nstatistiques : Agrége les points de données historiques collectés en résumés chronologiques (p. ex. horaires, quotidiens, mensuels, annuels). Les données sont stockées dans le chemin `statistique` comme JSON.",
+        "it": "fix: l'ordine di bit assegnazione corretto di allarmi JSON\nnuovo stato `inverter.x.emma.activeAlarmSN` e `inverter.x.emma.HistoricalAlarmSN` : allarme emma [#226](https://github.com/bolliy/ioBroker.sun2000/problems/226)\nstatistiche: Aggrega i datapoint storici raccolti in riassunti basati sul tempo (es. orario, giornaliero, mensile, annuale). I dati vengono memorizzati nel percorso `statistics` come JSON.",
+        "es": "fijación: el orden de asignación de bits corregido de alarmas JSON\nnuevo estado `inverter.x.emma.activeAlarmSN` e `inverter.x.emma.HistoricalAlarmSN` : emma alarms [#226](https://github.com/bolliy/ioBroker.sun2000/issues/226)\nestadística: Aggregates historical collected datapoints into time-based summaries (e.g. hourly, daily, monthly, yearly). Los datos se almacenan en el camino 'estadística' como JSON.",
+        "pl": "fix: kolejność przypisywania bitów poprawionych alarmów JSON\nw języku angielskim:\nstatystyki: Zagregowane historyczne zbierane punkty danych w skróty czasowe (np. godzinowe, dzienne, miesięczne, roczne). Dane są przechowywane w ścieżce \"statystyki\" jako JSON.",
+        "uk": "фіксувати: порядок відведення біту виправлено тривоги Сонце\nновий стан `inverter.x.emma.activeAlarmSN` і `inverter.x.emma.HistoricalAlarmSN` : emma тривоги [#226](https://github.com/bolliy/ioBroker.sun2000/products/226)\nстатистика: Агрегати історичних зібраних точок даних на часові суми (наприклад, час, щоденно, щомісяця, рік). Дані зберігаються на шляху `statistics` як JSON.",
+        "zh-cn": "固定: 修改提醒的位任务顺序 贾森\n新状态`inverter.x.emma.active AlarmSN ' 和`inverter.x.emma. Historical AlarmSN ' : emma警报[# 226](https://github.com/bolliy/ioBroker.sun2000/issues/226)\n统计: 将历史收集的数据点汇总为时间摘要(如小时、每日、每月、每年)。 数据作为JSON储存在路径`统计'中."
+      },
       "2.3.7": {
         "en": "deleted deprecated state `collected.usableSurplusPower`",
         "de": "gelöschter deprecated state `collect.usableSurplusPower `",
@@ -80,19 +93,6 @@
         "pl": "pozwala ponownie 'control.battery.chargeFromGridFunction' podczas korzystania z Emmy",
         "uk": "дозволяє знову `control.battery.chargeЗ альбомуGridFunction` при використанні Емма",
         "zh-cn": "允许在使用 Emma 时再次使用 \" control.battery. charge from GridFunction \" "
-      },
-      "2.3.1": {
-        "en": "fix: handle potential null values in set method of RegisterMap",
-        "de": "fix: griff potenzielle Nullwerte in der eingestellten Methode des Registrierens Landkarte",
-        "ru": "исправление: обработка потенциальных нулевых значений в установленном методе Регистра Карта",
-        "pt": "corrigir: manusear valores nulos potenciais no método definido de Registro Mapa",
-        "nl": "fix: handle potentiële nulwaarden in set methode van Register Kaart",
-        "fr": "fix: gérer les valeurs null potentielles dans la méthode définie de Register Carte",
-        "it": "fix: gestire potenziali valori null nel metodo impostato di Registrazione Mappa",
-        "es": "fijación: manejar valores nulos potenciales en el método set de Registro Mapa",
-        "pl": "fix: obsługi potencjalnych wartości null w ustawieniu metody rejestru Mapa",
-        "uk": "виправити: обробляти потенціал null значення в встановленому методі Реєстру Мапа",
-        "zh-cn": "固定值:在设定的登记方法中处理潜在的无效值 地图"
       }
     },
     "titleLang": {
