@@ -2,7 +2,7 @@
 {
 	// To update the compilation target, install a different version of @tsconfig/node... and reference it here
 	// https://github.com/tsconfig/bases#node-20-tsconfigjson
-	"extends": "@tsconfig/node20/tsconfig.json",
+	"extends": "@tsconfig/node22/tsconfig.json",
 	"compilerOptions": {
 		// do not compile anything, this file is just to configure type checking
 		"noEmit": true,
@@ -14,12 +14,12 @@
 
 		//"module": "ES6",
 		//"module": "CommonJS",
-		"module": "es2020",
+		//"module": "es2020",
 		
 		//"module": "ESNext",
-        "moduleResolution": "node",
-        "esModuleInterop": true,
-
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"esModuleInterop": true,
 
 		// This is necessary for the automatic typing of the adapter config
 		"resolveJsonModule": true,
@@ -36,7 +36,7 @@
 		// "noUnusedParameters": true,
 		"useUnknownInCatchVariables": false,
 		// Consider targetting es2019 or higher if you only support Node.js 12+
-        "target": "es2022"
+		"target": "es2022",
 
 	},
 	"include": [

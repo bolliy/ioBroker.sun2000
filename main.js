@@ -660,11 +660,11 @@ class Sun2000 extends utils.Adapter {
 				}
 			}
 
-			//sun2000.0.statistics.flexChart.template
-			if (idArray[2] == 'statistics') {
+			//sun2000.0.statistics.flexCharts.template
+			if (idArray[2] == 'statistics' && idArray[3] == 'flexCharts' && idArray[4] == 'template') {
 				let serviceId = idArray[5];
 				if (this.state.statistics) {
-					this.state.statistics.renewalTemplate(serviceId, state);
+					this.state.statistics.handleTemplateChange(serviceId, state);
 				}
 			}
 		} else {
