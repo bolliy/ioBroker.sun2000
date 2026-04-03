@@ -659,6 +659,14 @@ class Sun2000 extends utils.Adapter {
 					emma.instance.control.set(serviceId, state);
 				}
 			}
+
+			//sun2000.0.statistics.flexCharts.template
+			if (idArray[2] == 'statistics' && idArray[3] == 'flexCharts' && idArray[4] == 'template') {
+				const chartType = idArray[5];
+				if (this.state.statistics && typeof this.state.statistics.handleTemplateChange === 'function') {
+					this.state.statistics.handleTemplateChange(chartType, state);
+				}
+			}
 		} else {
 			// The state was deleted
 			this.logger.info(`state ${id} deleted`);
