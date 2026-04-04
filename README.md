@@ -69,7 +69,7 @@ The sun2000 adapter calculates how much of your self-generated solar energy is a
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.4.2 (2026-04-04)
 * fix test-and-release: deploy with 24.x
 
 ### 2.4.1 (2026-04-04)

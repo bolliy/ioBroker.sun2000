@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "2.4.1",
+    "version": "2.4.2",
     "news": {
+      "2.4.2": {
+        "en": "fix test-and-release: deploy with 24.x",
+        "de": "fix test-and-release: einsatz mit 24.x",
+        "ru": "исправление тест-и-релиз: развертывание с 24.x",
+        "pt": "corrigir teste e liberação: implantar com 24.x",
+        "nl": "fix test-and-release: inzet met 24.x",
+        "fr": "correction test-and-release: déployer avec 24.x",
+        "it": "fix test-and-release: implementare con 24.x",
+        "es": "fijar prueba y liberación: desplegar con 24.x",
+        "pl": "fix test- and- release: rozmieszczanie z 24.x",
+        "uk": "виправити тест-і-випуск: розгортання з 24.x",
+        "zh-cn": "固定测试和释放:部署24x"
+      },
       "2.4.1": {
         "en": "statistics: flexcharts integration — built-in Apache ECharts configuration with bar and line chart support\nstatistics: day-break visualization with alternating shaded areas for hourly charts\nstatistics: per chart-type templates (`statistics.flexCharts.template.hourly` etc.) for full ECharts customization including functions\nstatistics: data placeholders (`%%solarYield%%`, `%%gridExport%%` etc.) allow complete chart layout control via template states\nstatistics: chart output states (`statistics.flexCharts.jsonOutput.hourly` etc.) updated automatically each hour",
         "de": "statistik: flexcharts integration — integrierte Apache ECharts-Konfiguration mit Bar- und Liniendiagrammunterstützung\nstatistik: tages-früh-visualisierung mit alternierenden schattierten bereichen für stundendiagramme\nstatistiken: pro Diagrammvorlagen (`statistics.flexCharts.template.hourly` etc.) für die vollständige ECharts Anpassung einschließlich Funktionen\nstatistik: Datenplatzhalter (`%%solar%%%%`, `%%gridExport%% ` etc.) ermöglichen vollständige Chart-Layout-Kontrolle über Template-Staaten\nstatistiken: Diagrammausgabezustände (`statistics.flexCharts.jsonOutput.hourly` etc.) automatisch jede Stunde aktualisiert",
@@ -80,19 +93,6 @@
         "pl": "aktualizacje zależności i konfiguracji\nnowy stan \"collected.dailyExternalYield\" Riemann sum of 'collected.externalPower'",
         "uk": "оновлення залежності та конфігурації\nновий стан `collected.dailyExternalYield` Сума Riemann `collected.externalPower й",
         "zh-cn": "依赖和配置更新\n新国家`收集.每日外部耶尔德' 收集的里曼总和。 `"
-      },
-      "2.3.3": {
-        "en": "Improved verification of the adapter configuration\nnew state `inverter.x.derived.dailyActiveEnergy` Inverter daily active energy, which is determined via the Riemann sum of `inverter.x.activePower`\nstate `collected.dailyInputYield` was redisigned based on inverter.[0..n-1].derived.dailyActiveEnergy",
-        "de": "Verbesserte Überprüfung der Adapterkonfiguration\n`inverter.x.derived.dailyActiveEnergy` Inverter tägliche aktive Energie, die über die Riemann Summe von `inverter.x.activePower bestimmt wird `\nstate `collected.dailyInputYield` wurde basierend auf Inverter zurückgeteilt. [0.n-1].derived.dailyActiveEnergy",
-        "ru": "Улучшенная проверка конфигурации адаптера\nновое состояние «inverter.x.derived.dailyActiveEnergy» Инверторная ежедневная активная энергия, которая определяется через сумму Римана 'inverter.x.activePower пункт\nstate 'collected.dailyInputYield' была переопределена на основе инвертора. [0..n-1].derived.dailyActiveEnergy",
-        "pt": "Verificação melhorada da configuração do adaptador\nnovo estado «inverter.x.derived.dailyActiveEnergy» Energia ativa diária do inversor, que é determinada através da soma Riemann de `inverter.x.activePower `\nestado `colleted.dailyInputYield` foi reassinado com base no inversor. [0..n-1].derivado.diárioAtividadeEnergia",
-        "nl": "Verbeterde verificatie van de configuratie van de adapter\nnieuwe staat  Inverter dagelijkse actieve energie, die wordt bepaald via de Riemann som van  Wat\nstaat  [0..n-1].afgeleid.dailyActiveEnergy",
-        "fr": "Amélioration de la vérification de la configuration de l'adaptateur\nnouvel état `inverter.x.derived.dailyActiveEnergy` Inverter l'énergie active quotidienne, qui est déterminée par la somme Riemann de `inverter.x.activePower \"\nl'état `collected.dailyInputYield` a été résigné sur la base de l'onduleur. Énergie active",
-        "it": "Verifica migliorata della configurazione dell'adattatore\nnuovo stato `inverter.x.derived.dailyActiveEnergy` Inverter energia attiva quotidiana, che è determinata tramite la somma Riemann di `inverter.x.activePower #\nstato `collect.dailyInputYield` è stato ridisegnato sulla base di inverter. [0.n-1]",
-        "es": "Mejor verificación de la configuración del adaptador\nnuevo estado `inverter.x.derived.dailyActiveEnergy` Inverter energía activa diaria, que se determina a través de la suma Riemann de `inverter.x.activePower `\nestado `colected.dailyInputYield` fue redisigned basado en inverter. [0.n-1].derived.dailyActiveEnergy",
-        "pl": "Ulepszona weryfikacja konfiguracji adaptera\nnowy stan 'inverter.x.derived.dailyActiveEnergy' Inwerter dzienna aktywna energia, która jest określana za pomocą sumy Riemann 'inverter.x.activePower'\nstan 'collected.dailyInputYield' został wycofany na podstawie inwertera. [0.. n-1] .derived.dailyActiveEnergy",
-        "uk": "Покращена перевірка конфігурації адаптера\nновий стан `inverter.x.derived.dailyActiveEnergy` Інверторна щоденна активна енергія, яка визначається за рахунок `inverter.x.activePower й\n`collected.dailyInputYield` був перерахований на основі інвертора. [0..n-1].derived.dailyActiveEnergy",
-        "zh-cn": "改进适配器配置的核查\n新州`反转器.x.衍生的每日能源 ' 每日反转活性能量,通过`反转器.x.activePower的Riemann总和确定 `\ndaily InputYield)根据反差重新签名。 [0.n-1]. 衍生的每日能源"
       }
     },
     "titleLang": {
