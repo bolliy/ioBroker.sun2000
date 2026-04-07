@@ -69,6 +69,14 @@ The sun2000 adapter calculates how much of your self-generated solar energy is a
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* statistics: new state `statistics.jsonToday` — live summary of today's energy values
+* statistics: computed values `selfSufficiency` and `selfConsumption` calculated automatically in all time-series states
+* statistics: default chart shows energy flows above/below zero line, SOC (hourly only), self-sufficiency and self-consumption on second Y-axis
+* statistics: no-data hint per chart type when no entries are available yet
+* statistics: data placeholders (`%%solarYield%%`, `%%selfSufficiency%%` etc.) and negated variants (`%%gridExportNeg%%` etc.) for mirrored chart layouts
+* statistics: built-in `%%tooltipFormatter%%` placeholder — always shows positive values with correct units
+
 ### 2.4.2 (2026-04-04)
 * fix test-and-release: deploy with 24.x
 
