@@ -79,8 +79,6 @@ The sun2000 adapter calculates how much of your self-generated solar energy is a
 
 ### 2.4.2 (2026-04-04)
 * fix test-and-release: deploy with 24.x
-
-### 2.4.1 (2026-04-04)
 * statistics: flexcharts integration — built-in Apache ECharts configuration with bar and line chart support
 * statistics: day-break visualization with alternating shaded areas for hourly charts
 * statistics: per chart-type templates (`statistics.flexCharts.template.hourly` etc.) for full ECharts customization including functions
