@@ -67,7 +67,7 @@ The sun2000 adapter calculates how much of your self-generated solar energy is a
 ## Changelog
 <!--
 	Placeholder for the next version (at the beginning of the line):
-	### **WORK IN PROGRESS**
+### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
 * statistics: new state `statistics.jsonToday` — live summary of today's energy values
