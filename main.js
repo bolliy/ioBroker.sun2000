@@ -280,6 +280,75 @@ class Sun2000 extends utils.Adapter {
 	}
 	*/
 
+	/**
+	 * Sends anonymous usage statistics via the Sentry plugin.
+	 * Only fires if the Sentry plugin is available and the user has
+	 * opted in via adapter config (sendStatistics: true).
+	 *
+	 * No personal data, no IPs, no identifiers — only aggregated
+	 * feature flags and hardware counts.
+	 */
+	sendAnonymousStatistics() {
+		try {
+			if (!this.config.sendStatistics) return;
+
+			if (!this.supportsFeature?.('PLUGINS')) return;
+
+			const sentryInstance = this.getPluginInstance('sentry');
+			if (!sentryInstance) return;
+
+			const Sentry = sentryInstance.getSentryObject();
+			if (!Sentry) return;
+
+			const payload = {
+				// Adapter
+				adapterVersion: this.version,
+
+				// Platform / environment
+				platform: process.platform, // 'linux', 'win32', 'darwin'
+				nodeVersion: process.version, // 'v20.x.x'
+				arch: process.arch, // 'arm', 'x64'
+
+				// Device type
+				deviceType: this.config.deviceType ?? 'unknown', // 'emma' | 'smartLogger' | 'sDongle'
+
+				// Features (true/false only)
+				modbusProxy: this.config.modbusProxy ?? false,
+				statistics: this.config.statistics ?? false,
+				exportControl: this.config.exportControl ?? false,
+				batteryControl: this.config.batteryControl ?? false,
+				forcedCharge: this.config.forcedCharge ?? false,
+				gridScheduling: this.config.gridScheduling ?? false,
+
+				// Hardware counts (numbers only, no IDs)
+				inverterCount: (this.config.modbusIds ?? '1').split(',').filter(Boolean).length,
+				hasBattery: this.config.hasBattery ?? false,
+			};
+
+			Sentry.withScope(scope => {
+				scope.setLevel('info');
+
+				// Each payload field as a separate Sentry extra — visible in Sentry dashboard
+				for (const [key, value] of Object.entries(payload)) {
+					scope.setExtra(key, value);
+				}
+
+				// Tag the most important fields so they are filterable in Sentry
+				scope.setTag('adapterVersion', payload.adapterVersion);
+				scope.setTag('platform', payload.platform);
+				scope.setTag('deviceType', payload.deviceType);
+				scope.setTag('inverterCount', String(payload.inverterCount));
+
+				Sentry.captureMessage('sun2000.statistics', 'info');
+			});
+
+			this.logger.debug('sun2000: anonymous statistics sent via Sentry');
+		} catch (e) {
+			// Never let statistics reporting affect adapter operation
+			this.logger.debug(`sun2000: statistics reporting failed silently: ${e.message}`);
+		}
+	}
+
 	async endOfmodbusAdjust(info) {
 		if (!info.modbusAdjust) {
 			this.settings.modbusAdjust = info.modbusAdjust;
@@ -483,6 +552,9 @@ class Sun2000 extends utils.Adapter {
 
 			await this.adjustInverval();
 			await this.StartProcess();
+
+			this.setTimeout(() => {				this.sendAnonymousStatistics();
+			}, 10000);
 		} else {
 			this.adapterDisable(`*** Adapter deactivated, Adapter Settings incomplete! ***`);
 		}
