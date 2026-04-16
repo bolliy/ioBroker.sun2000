@@ -290,7 +290,7 @@ class Sun2000 extends utils.Adapter {
 	 */
 	sendAnonymousStatistics() {
 		try {
-			//if (!this.config.sendStatistics) return;
+			if (!this.config.sendStatistics) return;
 
 			if (!this.supportsFeature?.('PLUGINS')) return;
 
@@ -299,6 +299,14 @@ class Sun2000 extends utils.Adapter {
 
 			const Sentry = sentryInstance.getSentryObject();
 			if (!Sentry) return;
+
+			// --- Device counts from this.devices ---
+			const inverterCount = this.devices.filter(d => d.driverClass === driverClasses.inverter).length;
+			const emmaCharger = this.devices.filter(d => d.driverClass === driverClasses.emmacharger).length;
+
+			// --- Integration type as readable string ---
+			const integrationMap = { 0: 'sDongle', 1: 'smartLogger', 2: 'emma' };
+			const integration = integrationMap[this.settings.integration] ?? 'unknown';
 
 			const payload = {
 				// Adapter
@@ -309,20 +317,20 @@ class Sun2000 extends utils.Adapter {
 				nodeVersion: process.version, // 'v20.x.x'
 				arch: process.arch, // 'arm', 'x64'
 
-				// Device type
-				deviceType: this.config.deviceType ?? 'unknown', // 'emma' | 'smartLogger' | 'sDongle'
+				// Integration type
+				integration, // 'sDongle' | 'smartLogger' | 'emma'
 
-				// Features (true/false only)
-				modbusProxy: this.config.modbusProxy ?? false,
-				statistics: this.config.statistics ?? false,
-				exportControl: this.config.exportControl ?? false,
-				batteryControl: this.config.batteryControl ?? false,
-				forcedCharge: this.config.forcedCharge ?? false,
-				gridScheduling: this.config.gridScheduling ?? false,
+				emmaCharger,
 
-				// Hardware counts (numbers only, no IDs)
-				inverterCount: (this.config.modbusIds ?? '1').split(',').filter(Boolean).length,
-				hasBattery: this.config.hasBattery ?? false,
+				// Device counts and types
+				inverterCount,
+
+				// Features
+				modbusProxy: this.settings.ms?.active ?? false,
+				batteryTOU: this.settings.cb?.tou ?? false,
+
+				// Timing (gives insight into installation size / load)
+				highInterval: Math.round(this.settings.highInterval / 1000), // seconds
 			};
 
 			Sentry.withScope(scope => {
@@ -333,16 +341,19 @@ class Sun2000 extends utils.Adapter {
 					scope.setExtra(key, value);
 				}
 
-				// Tag the most important fields so they are filterable in Sentry
+				// Most important fields as filterable tags
 				scope.setTag('adapterVersion', payload.adapterVersion);
 				scope.setTag('platform', payload.platform);
-				scope.setTag('deviceType', payload.deviceType);
+				scope.setTag('arch', payload.arch);
+				scope.setTag('integration', payload.integration);
 				scope.setTag('inverterCount', String(payload.inverterCount));
+				scope.setTag('emmaCharger', String(payload.emmaCharger));
+				scope.setTag('modbusProxy', String(payload.modbusProxy));
 
-				Sentry.captureMessage('sun2000.statistics', 'info');
+				Sentry.captureMessage('sun2000.adapterStatistics', 'info');
 			});
 
-			this.logger.info('sun2000: anonymous statistics sent via Sentry');
+			this.logger.debug('sun2000: anonymous statistics sent via Sentry');
 		} catch (e) {
 			// Never let statistics reporting affect adapter operation
 			this.logger.debug(`sun2000: statistics reporting failed silently: ${e.message}`);
@@ -552,10 +563,6 @@ class Sun2000 extends utils.Adapter {
 
 			await this.adjustInverval();
 			await this.StartProcess();
-
-			this.setTimeout(() => {
-				this.sendAnonymousStatistics();
-			}, 10000);
 		} else {
 			this.adapterDisable(`*** Adapter deactivated, Adapter Settings incomplete! ***`);
 		}
