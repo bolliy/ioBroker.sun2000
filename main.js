@@ -290,7 +290,7 @@ class Sun2000 extends utils.Adapter {
 	 */
 	sendAnonymousStatistics() {
 		try {
-			if (!this.config.sendStatistics) return;
+			//if (!this.config.sendStatistics) return;
 
 			if (!this.supportsFeature?.('PLUGINS')) return;
 
@@ -342,7 +342,7 @@ class Sun2000 extends utils.Adapter {
 				Sentry.captureMessage('sun2000.statistics', 'info');
 			});
 
-			this.logger.debug('sun2000: anonymous statistics sent via Sentry');
+			this.logger.info('sun2000: anonymous statistics sent via Sentry');
 		} catch (e) {
 			// Never let statistics reporting affect adapter operation
 			this.logger.debug(`sun2000: statistics reporting failed silently: ${e.message}`);
@@ -553,7 +553,8 @@ class Sun2000 extends utils.Adapter {
 			await this.adjustInverval();
 			await this.StartProcess();
 
-			this.setTimeout(() => {				this.sendAnonymousStatistics();
+			this.setTimeout(() => {
+				this.sendAnonymousStatistics();
 			}, 10000);
 		} else {
 			this.adapterDisable(`*** Adapter deactivated, Adapter Settings incomplete! ***`);
