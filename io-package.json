@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "2.4.2",
+    "version": "2.4.3",
     "news": {
+      "2.4.3": {
+        "en": "statistics: new state `statistics.jsonToday` — live summary of today's energy values",
+        "de": "statistik: new state `statistics.jsonToday` — Live-Zusammenfassung der heutigen Energiewerte",
+        "ru": "статистика: новый государственный «statistics.jsonToday» — живое резюме сегодняшних энергетических ценностей",
+        "pt": "estatística: novo estado `statistics.jsonToday` — resumo ao vivo dos valores energéticos atuais",
+        "nl": "statistieken: nieuwe staat statistiek.jsonVandaag de dag een live samenvatting van de huidige energiewaarden",
+        "fr": "statistiques: nouvel état \"statistics.jsonAujourd'hui\" — résumé en direct des valeurs énergétiques actuelles",
+        "it": "statistiche: nuovo stato `statistics.jsonToday` — sintesi dal vivo dei valori energetici di oggi",
+        "es": "estadística: nuevo estado `estadística.jsonToday` — resumen en vivo de los valores energéticos de hoy",
+        "pl": "statystyki: nowy stan 'statistics.jsonToday' - streszczenie dzisiejszych wartości energetycznych",
+        "uk": "статистика: новий стан `statistics.jsonToday`` — живий підсумок цін на сьогодні",
+        "zh-cn": "统计:新国家`统计学.json Today'——今日能源价值实况摘要"
+      },
       "2.4.2": {
         "en": "fix test-and-release: deploy with 24.x",
         "de": "fix test-and-release: einsatz mit 24.x",
@@ -80,19 +93,6 @@
         "pl": "aktualizacje zależności i konfiguracji\nKontrola stanu baterii została zawieszona w kontrolach inwertera [# 220] (https: / / github.com / bolliy / ioBroker.sun2000 / issues / 220)\nEmma: dynamiczna detekcja inwerterów sun2000 i integracja urządzeń takich jak sun2000\nw przypadku stosowania sDongle [# 218] (https: / / github.com / bolliy / ioBroker.sun2000 / issues / 118)",
         "uk": "оновлення залежності та конфігурації\nПеревірка стану акумулятора була припинена в інверторному режимі [#220] (https://github.com/bolliy/ioBroker.sun2000/issues/220)\nЕмма: динамічне виявлення інверторів сонця2000 та інтеграції пристроїв, таких як сонце2000\nдозволити Modbus ID 0 при використанні sDongle [#218](https://github.com/bolliy/ioBroker.sun2000/issues/118)",
         "zh-cn": "依赖和配置更新\n在反转控制中暂停了电池状态检查[#220](https://github.com/bolliy/ioBroker.sun2000/issues/220)\n艾玛:对太阳2000反转器的动态检测和太阳2000等设备的集成\n允许在使用 sDongle [# 218] 时使用 Modbus ID (https:// github.com/ bolliy/ioBroker.sun2000/issues/118) "
-      },
-      "2.3.4": {
-        "en": "dependency and configuration updates\nnew state `collected.dailyExternalYield` Riemann sum of `collected.externalPower`",
-        "de": "abhängigkeits- und konfigurationsupdates\nneuer Zustand `collect.dailyExternalYield` Riemann Summe von `collected.externalPower `",
-        "ru": "обновления зависимостей и конфигурации\nновый государственный «коллектив.dailyExternalYield» Riemann sum of 'collected.externalPower пункт",
-        "pt": "atualizações de dependência e configuração\nnovo estado «colected.dailyEnergieYield» Riemann soma de `colected.externalPower `",
-        "nl": "afhankelijkheid en configuratie-updates\nnieuwe staat  Riemann som van gecollecteerd.externe kracht Wat",
-        "fr": "mises à jour de la dépendance et de la configuration\nnouvel état `collected.dailyExternalYield` Riemann somme de `collected.externalPower \"",
-        "it": "aggiornamenti di dipendenza e configurazione\nnuovo stato `colletto.dailyExternalYield` Riemann somma di `colletto.Power esterno #",
-        "es": "actualizaciones de dependencia y configuración\nnuevo estado `colected.dailyExternalYield` Riemann sum of `collected.externalPower `",
-        "pl": "aktualizacje zależności i konfiguracji\nnowy stan \"collected.dailyExternalYield\" Riemann sum of 'collected.externalPower'",
-        "uk": "оновлення залежності та конфігурації\nновий стан `collected.dailyExternalYield` Сума Riemann `collected.externalPower й",
-        "zh-cn": "依赖和配置更新\n新国家`收集.每日外部耶尔德' 收集的里曼总和。 `"
       }
     },
     "titleLang": {
