@@ -1,5 +1,61 @@
 ## Changelog
 
+## 2.3.5 (2025-11-17)
+* dependency and configuration updates
+* Battery status check was suspended in inverter control [#220](https://github.com/bolliy/ioBroker.sun2000/issues/220)
+* Emma: dynamic detection of sun2000 inverters and integration of devices such as sun2000
+* allow Modbus ID 0 when using the sDongle [#218](https://github.com/bolliy/ioBroker.sun2000/issues/218)
+
+## 2.3.4 (2025-11-01)
+* dependency and configuration updates
+* new state `collected.dailyExternalYield` Riemann sum of `collected.externalPower`
+
+## 2.3.3 (2025-10-31)
+* Improved verification of the adapter configuration
+* new state `inverter.x.derived.dailyActiveEnergy` Inverter daily active energy, which is determined via the Riemann sum of `inverter.x.activePower`
+* state `collected.dailyInputYield` was redisigned based on inverter.[0..n-1].derived.dailyActiveEnergy
+
+## 2.3.2 (2025-10-24)
+* allows again `control.battery.chargeFromGridFunction` when using the Emma
+
+## 2.3.1 (2025-10-21)
+* fix: handle potential null values in set method of RegisterMap
+
+## 2.3.0 (2025-10-21)
+* new release for npm migrates to Trusted Publishing
+
+## 2.2.1-alpha.0 (2025-10-21)
+* inverter control: add same state for startup and shutdown an inverter [#199](https://github.com/bolliy/ioBroker.sun2000/issues/199)
+* fix: Device status name has been corrected [#202](https://github.com/bolliy/ioBroker.sun2000/pull/202)
+* add undocumented device status `Shutdown: End of the ESS discharge process` 
+* emma control: new state `emma.control.battery.ESSControlMode`. You can now configure EMMA with TOU-mode (Time of Use) to charge the battery from grid. [#200](https://github.com/bolliy/ioBroker.sun2000/discussions/200)
+* if an Emma is installed, some control states of the inverter are deactivated (read only). Mainly for the grid settings.
+* deprecated control states have been removed.
+* a workaround for issue [#582](https://github.com/yaacov/node-modbus-serial/issues/582) of node-modbus-serial has been implemented.
+
+## 2.2.0 (2025-10-05)
+* dependency and configuration updates
+* new state `meter.derived.signConventionForPowerFeed-in` sign of meter.activePower that is currently being fed into the power grid
+* new state `meter.derived.feed-inPower` electric power that is supplied to a grid ("fed in")
+
+## 2.1.1 (2025-09-24)
+* dependency and configuration updates
+* fix: adjust event value limits based on usableSurplus parameters
+* fix: swap register values for power consumption in Emma driver #190
+* emma: improve power calculation with exponential moving average in EmmaCharger
+* update surplus power state definitions and deprecate old identifiers
+
+## 2.1.0 (2025-07-06)
+* emma: system time is being determined [#179](https://github.com/bolliy/ioBroker.sun2000/issues/179)
+* control: add grid power scheduling functionality to inverter driver [#176](https://github.com/bolliy/ioBroker.sun2000/issues/176)
+
+## 2.0.0 (2025-06-29)
+* add support for chargers via Emma and save the data in the charger path #171
+* Establish data consistency between meter.activePower and the power of the meter phases #174
+* allows `control.battery.chargeFromGridFunction` when using the Emma
+* breaking change: 
+   - the value `sun2000.x.inverter.x.battery.runningStatus` is saved as a number. The translated value (such as STANDBY, RUNNING etc.) is stored in the path sun2000.x.inverter.x.battery.derived
+
 ### 1.5.0 (2025-05-20)
 * update dependencies
 * fix: surplus power during battery discharge
@@ -199,84 +255,4 @@
 Dependency and configuration updates
 
 ### 0.0.1 
-initial release
-
-## License
-MIT License
-
-Copyright (c) 2025-2026 bolliy <stephan@mante.info>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-[def]: https://github.com/bolliy/ioBroker.sun2000/wiki
-## 2.3.5 (2025-11-17)
-* dependency and configuration updates
-* Battery status check was suspended in inverter control [#220](https://github.com/bolliy/ioBroker.sun2000/issues/220)
-* Emma: dynamic detection of sun2000 inverters and integration of devices such as sun2000
-* allow Modbus ID 0 when using the sDongle [#218](https://github.com/bolliy/ioBroker.sun2000/issues/218)
-
-## 2.3.4 (2025-11-01)
-* dependency and configuration updates
-* new state `collected.dailyExternalYield` Riemann sum of `collected.externalPower`
-
-## 2.3.3 (2025-10-31)
-* Improved verification of the adapter configuration
-* new state `inverter.x.derived.dailyActiveEnergy` Inverter daily active energy, which is determined via the Riemann sum of `inverter.x.activePower`
-* state `collected.dailyInputYield` was redisigned based on inverter.[0..n-1].derived.dailyActiveEnergy
-
-## 2.3.2 (2025-10-24)
-* allows again `control.battery.chargeFromGridFunction` when using the Emma
-
-## 2.3.1 (2025-10-21)
-* fix: handle potential null values in set method of RegisterMap
-
-## 2.3.0 (2025-10-21)
-* new release for npm migrates to Trusted Publishing
-
-## 2.2.1-alpha.0 (2025-10-21)
-* inverter control: add same state for startup and shutdown an inverter [#199](https://github.com/bolliy/ioBroker.sun2000/issues/199)
-* fix: Device status name has been corrected [#202](https://github.com/bolliy/ioBroker.sun2000/pull/202)
-* add undocumented device status `Shutdown: End of the ESS discharge process` 
-* emma control: new state `emma.control.battery.ESSControlMode`. You can now configure EMMA with TOU-mode (Time of Use) to charge the battery from grid. [#200](https://github.com/bolliy/ioBroker.sun2000/discussions/200)
-* if an Emma is installed, some control states of the inverter are deactivated (read only). Mainly for the grid settings.
-* deprecated control states have been removed.
-* a workaround for issue [#582](https://github.com/yaacov/node-modbus-serial/issues/582) of node-modbus-serial has been implemented.
-
-## 2.2.0 (2025-10-05)
-* dependency and configuration updates
-* new state `meter.derived.signConventionForPowerFeed-in` sign of meter.activePower that is currently being fed into the power grid
-* new state `meter.derived.feed-inPower` electric power that is supplied to a grid ("fed in")
-
-## 2.1.1 (2025-09-24)
-* dependency and configuration updates
-* fix: adjust event value limits based on usableSurplus parameters
-* fix: swap register values for power consumption in Emma driver #190
-* emma: improve power calculation with exponential moving average in EmmaCharger
-* update surplus power state definitions and deprecate old identifiers
-
-## 2.1.0 (2025-07-06)
-* emma: system time is being determined [#179](https://github.com/bolliy/ioBroker.sun2000/issues/179)
-* control: add grid power scheduling functionality to inverter driver [#176](https://github.com/bolliy/ioBroker.sun2000/issues/176)
-
-## 2.0.0 (2025-06-29)
-* add support for chargers via Emma and save the data in the charger path #171
-* Establish data consistency between meter.activePower and the power of the meter phases #174
-* allows `control.battery.chargeFromGridFunction` when using the Emma
-* breaking change: 
-   - the value `sun2000.x.inverter.x.battery.runningStatus` is saved as a number. The translated value (such as STANDBY, RUNNING etc.) is stored in the path sun2000.x.inverter.x.battery.derived
+initial release   
