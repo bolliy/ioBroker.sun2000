@@ -480,7 +480,23 @@
                     "xl": 4
                 }          
             }
-        },  
+        }, 
+        "tab8":{
+            "type": "panel",
+            "label": "Telemetry",
+            "items": {
+                "telemetryInfo": {
+                    "type": "staticText",
+                    "text": "Support development by contributing anonymous usage statistics. This helps improve reliability and compatibility for all users."
+                },
+                "telemetryEnabled": {
+                    "type": "checkbox",
+                    "label": "Help improve this adapter by sharing anonymous usage data",
+                    "tooltip": "Help improve compatibility and stability for your setup by sharing anonymous usage data.\n\nThis helps us understand:\n• how many inverters are used\n• which features matter most (e.g. Modbus proxy)\n• how to improve real-world installations\n\nNo personal data, IP addresses, or device identifiers are collected.\n\nThis feature is optional and can be disabled at any time.",
+                    "default": false
+                }
+            }
+        }, 
         "tab6": {
             "type": "panel",
             "label": "help",
