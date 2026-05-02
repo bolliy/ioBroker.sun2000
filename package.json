@@ -24,7 +24,7 @@
     "url": "https://github.com/bolliy/ioBroker.sun2000.git"
   },
   "engines": {
-    "node": ">= 20"
+    "node": ">= 22"
   },
   "dependencies": {
     "@iobroker/adapter-core": "^3.3.2",
