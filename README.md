@@ -77,7 +77,6 @@ The sun2000 adapter calculates how much of your self-generated solar energy is a
 * statistics: computed values `selfSufficiency` and `selfConsumption` calculated automatically in all time-series states
 * statistics: data placeholders (`%%solarYield%%`, `%%selfSufficiency%%` etc.) and negated variants (`%%gridExportNeg%%` etc.) for mirrored chart layouts
 
-
 ### 2.4.2 (2026-04-04)
 * fix test-and-release: deploy with 24.x
 * statistics: flexcharts integration — built-in Apache ECharts configuration with bar and line chart support
