@@ -70,7 +70,6 @@ The sun2000 adapter calculates how much of your self-generated solar energy is a
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-- (copilot) Adapter requires node.js >= 22 now
 
 ### 2.4.3 (2026-04-19)
 * statistics: new state `statistics.jsonToday` — live summary of today's energy values
