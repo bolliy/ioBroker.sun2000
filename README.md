@@ -69,6 +69,9 @@ The sun2000 adapter calculates how much of your self-generated solar energy is a
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* statistics fix: return weekly range up to current Monday
+
 ### 2.4.4 (2026-05-04)
 * statistics fix: add error handling for waitForValue function
 
