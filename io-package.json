@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "2.4.3",
+    "version": "2.4.4",
     "news": {
+      "2.4.4": {
+        "en": "statistics fix: add error handling for waitForValue function",
+        "de": "statistik fix: Fehlerbehandlung für waitForValue-Funktion hinzufügen",
+        "ru": "исправление статистики: добавьте обработку ошибок в функцию WaitForValue",
+        "pt": "estatística corrigir: adicionar o tratamento de erro para a função waitForValue",
+        "nl": "statistieken fix: voeg fout behandeling voor waitForValue functie",
+        "fr": "correction statistique : ajouter la gestion des erreurs pour la fonction waitForValue",
+        "it": "statistiche fix: aggiungere la gestione degli errori per la funzione WaitForValue",
+        "es": "estadística fijado: añadir error de manejo para waitForValue función",
+        "pl": "statystyki naprawić: dodać obsługę błędów dla funkcji waitForValue",
+        "uk": "виправлення статистичних даних: Додавання обробки помилок для очікування",
+        "zh-cn": "统计修补: 添加waitForValue函数的错误处理"
+      },
       "2.4.3": {
         "en": "statistics: new state `statistics.jsonToday` — live summary of today's energy values",
         "de": "statistik: new state `statistics.jsonToday` — Live-Zusammenfassung der heutigen Energiewerte",

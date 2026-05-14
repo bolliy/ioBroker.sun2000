@@ -1,4 +1,9 @@
 ## Changelog
+## 2.3.6 (2026-01-29)
+* dependency and configuration updates
+* new state `inverter.x.derived.alarmsJSON` : json array with intverter alarms (id, name, level) [#226](https://github.com/bolliy/ioBroker.sun2000/issues/226)
+* add ChargeDischargePower for Battery units [#234](https://github.com/bolliy/ioBroker.sun2000/issues/234)
+* add minimum and maximum temperature for battery packs [#236](https://github.com/bolliy/ioBroker.sun2000/issues/236)
 
 ## 2.3.5 (2025-11-17)
 * dependency and configuration updates
@@ -255,4 +260,4 @@
 Dependency and configuration updates
 
 ### 0.0.1 
-initial release   
+initial release
