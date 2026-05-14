@@ -69,7 +69,7 @@ The sun2000 adapter calculates how much of your self-generated solar energy is a
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.4.5 (2026-05-14)
 * statistics fix: return weekly range up to current Monday
 * statistics: added support for generating statistics templates directly from built-in charts
 * statistics: improved tooltip formatter - tooltip units are now provided explicitly via tooltip.valueFormatter
@@ -95,12 +95,6 @@ The sun2000 adapter calculates how much of your self-generated solar energy is a
 * fix: the order of bit assignment corrected of alarmsJSON
 * new state `inverter.x.emma.activeAlarmSN` and `inverter.x.emma.HistoricalAlarmSN` : emma alarms  [#226](https://github.com/bolliy/ioBroker.sun2000/issues/226)
 * statistics: Aggregates historical collected datapoints into time-based summaries (e.g. hourly, daily, monthly, yearly). The data is stored in the path `statistics` as JSON.
-
-### 2.3.7 (2026-02-01)
-* deleted deprecated state `collected.usableSurplusPower`
-
-
-[Older changelogs can be found there](CHANGELOG_OLD.md)
 
 ## License
 MIT License
