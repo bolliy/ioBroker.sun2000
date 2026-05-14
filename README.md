@@ -97,6 +97,9 @@ The sun2000 adapter calculates how much of your self-generated solar energy is a
 ### 2.3.7 (2026-02-01)
 * deleted deprecated state `collected.usableSurplusPower`
 
+
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 MIT License
 
