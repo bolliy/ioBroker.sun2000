@@ -747,6 +747,13 @@ class Sun2000 extends utils.Adapter {
 					this.state.statistics.handleTemplateChange(chartType, state);
 				}
 			}
+
+			//sun2000.0.statistics.consumptionBreakdown
+			if (idArray[2] == 'statistics' && idArray[3] == 'consumptionBreakdown') {
+				if (this.state.statistics && typeof this.state.statistics.handleBreakdownChange === 'function') {
+					this.state.statistics.handleBreakdownChange(state);
+				}
+			}
 		} else {
 			// The state was deleted
 			this.logger.info(`state ${id} deleted`);
