@@ -748,8 +748,8 @@ class Sun2000 extends utils.Adapter {
 				}
 			}
 
-			//sun2000.0.statistics.consumptionBreakdown
-			if (idArray[2] == 'statistics' && idArray[3] == 'consumptionBreakdown') {
+			//sun2000.0.statistics.dataDef.consumptionBreakdown
+			if (idArray[2] == 'statistics' && idArray[3] == 'dataDef' && idArray[4] == 'consumptionBreakdown') {
 				if (this.state.statistics && typeof this.state.statistics.handleBreakdownChange === 'function') {
 					this.state.statistics.handleBreakdownChange(state);
 				}
