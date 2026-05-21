@@ -1,4 +1,4 @@
-const Statistics = require('../lib/statistics.js');
+const Statistics = require('../lib/statistics/statistics.js');
 
 // very simple unit tests for the flexchart builder
 const assert = require('assert');

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 (async () => {
-	const Statistics = require('../lib/statistics.js');
+	const Statistics = require('../lib/statistics/statistics.js');
 
 	const fakeAdapter = {
 		logger: {
