@@ -2,9 +2,6 @@
 ## 2.3.7 (2026-02-01)
 * deleted deprecated state `collected.usableSurplusPower`
 
-
-[Older changelogs can be found there](CHANGELOG_OLD.md)
-
 ## 2.3.6 (2026-01-29)
 * dependency and configuration updates
 * new state `inverter.x.derived.alarmsJSON` : json array with intverter alarms (id, name, level) [#226](https://github.com/bolliy/ioBroker.sun2000/issues/226)

@@ -96,6 +96,7 @@ The sun2000 adapter calculates how much of your self-generated solar energy is a
 * new state `inverter.x.emma.activeAlarmSN` and `inverter.x.emma.HistoricalAlarmSN` : emma alarms  [#226](https://github.com/bolliy/ioBroker.sun2000/issues/226)
 * statistics: Aggregates historical collected datapoints into time-based summaries (e.g. hourly, daily, monthly, yearly). The data is stored in the path `statistics` as JSON.
 
+
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 
 ## License
