@@ -251,7 +251,8 @@
     "ds_bu": true,
     "ds_bp": false,
     "cb_tou": false,
-    "integration": 0
+    "integration": 0,
+    "stat_liveInterval" : 5
   },
   "objects": [],
   "instanceObjects": [

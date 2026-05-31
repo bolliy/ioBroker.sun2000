@@ -486,6 +486,8 @@ class Sun2000 extends utils.Adapter {
 			//further battery register
 			this.settings.ds.batteryUnits = this.config.ds_bu;
 			this.settings.ds.batteryPacks = this.config.ds_bp;
+			//statistics
+			this.settings.statistics = { liveInterval: this.config.stat_liveInterval || 5 }; //min
 
 			if (this.settings.modbusAdjust) {
 				await this.setState('info.JSONhealth', { val: '{message: "Adjust modbus settings"}', ack: true });

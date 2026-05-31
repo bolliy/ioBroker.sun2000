@@ -385,6 +385,39 @@
                 }
             }
         },  
+        "tab8": {
+            "type": "panel",
+            "label": "Statistics",
+            "items": {
+                "staticLink1": {
+                    "type": "staticLink",
+                    "text": "Settings for the statistics, which are explained in the wiki",
+                    "href": "https://github.com/bolliy/ioBroker.sun2000/wiki/Begrenzung-Netzeinspeisung-(Export-Control)",
+                    "button": true,
+                    "icon": "info",
+                    "newLine": true,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 3,
+                    "xl": 3
+                },
+                "stat_liveInterval": {
+                    "type": "number",
+                    "label": "Live chart interval (min)",
+                    "min" : 1,
+                    "max" : 15,
+                    "newLine": true,
+                    "tooltip": "Live chart update interval in minutes",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
+                }     
+            }
+
+        },
         "tab7": {
             "type": "panel",
             "label": "Further Register",
