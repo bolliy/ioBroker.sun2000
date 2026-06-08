@@ -686,6 +686,9 @@ class Sun2000 extends utils.Adapter {
 			this.mitnightTimer && this.clearTimeout(this.mitnightTimer);
 			this.watchDogHandle && this.clearInterval(this.watchDogHandle);
 			this.modbusClient && this.modbusClient.close();
+			if (typeof this.state.destroy === 'function') {
+				this.state.destroy();
+			}
 			this.setState('info.connection', false, true);
 			callback();
 		} catch {
