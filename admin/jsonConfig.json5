@@ -391,8 +391,8 @@
             "items": {
                 "staticLink1": {
                     "type": "staticLink",
-                    "text": "Settings for the statistics, which are explained in the wiki",
-                    "href": "https://github.com/bolliy/ioBroker.sun2000/wiki/Begrenzung-Netzeinspeisung-(Export-Control)",
+                    "text": "Information and settings regarding the statistics explained in the wiki",
+                    "href": "https://github.com/bolliy/ioBroker.sun2000/wiki/Statistk-(statistics)",
                     "button": true,
                     "icon": "info",
                     "newLine": true,
