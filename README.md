@@ -71,8 +71,8 @@ The sun2000 adapter calculates how much of your self-generated solar energy is a
 -->
 ### **WORK IN PROGRESS**
 * (bolliy) statistics: added live power chart (statistics.jsonLive)
-* (bolliy) statistics: consumption breakdown — breakdown values are now subtracted from the total `consumption` entry so the lower chart panel shows the remainder separately from the breakdown series
-* (bolliy) statistics: if no battery is present, the charts are generated without battery information (SOC, charge, discharge).
+* (bolliy) statistics: consumption breakdown — breakdown values are now subtracted from the total `consumption` entry 
+* (bolliy) statistics: if no battery is present, the charts are generated without battery informations
 * (bolliy) fix emma: update register addresses of meter.activePowerL1-L3 ([#282](https://github.com/bolliy/ioBroker.sun2000/issues/282))
 * (bolliy) requires node.js >= 22 
 
