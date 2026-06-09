@@ -76,6 +76,7 @@ The sun2000 adapter calculates how much of your self-generated solar energy is a
 * (bolliy) statistics: tooltip formatter refactored — `formatTooltipValue(unit, negative, decimals)` helper used consistently across all series
 * (bolliy) statistics: if no battery is present, the charts are generated without battery information (SOC, charge, discharge).
 * (bolliy) fix emma: update register addresses of meter.activePowerL1-L3 ([#282](https://github.com/bolliy/ioBroker.sun2000/issues/282))
+* (bolliy) requires node.js >= 22 
 
 ### 2.4.5 (2026-05-14)
 * statistics fix: return weekly range up to current Monday
