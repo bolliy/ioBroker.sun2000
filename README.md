@@ -70,14 +70,12 @@ The sun2000 adapter calculates how much of your self-generated solar energy is a
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-* (bolliy) statistics: added live power chart (`statistics.jsonLive`) updated every 5 minutes, showing average kW per interval over a 48-hour retention window
+* (bolliy) statistics: added live power chart (statistics.jsonLive)
 * (bolliy) statistics: consumption breakdown — breakdown values are now subtracted from the total `consumption` entry so the lower chart panel shows the remainder separately from the breakdown series
-* (bolliy) statistics: `statistics.dataDef.consumptionBreakdown` is the new state ID for the breakdown configuration 
-* (bolliy) statistics: breakdown series and `Consumption` series now share the same stack group (`consumptionBreakdown`) in the lower panel
-* (bolliy) statistics: template and output states now cover all chart types including `live` (`statistics.flexCharts.template.live`, `statistics.flexCharts.jsonOutput.live`)
 * (bolliy) statistics: `xAxisFormatter` for the live chart only labels full-hour ticks to avoid clutter
 * (bolliy) statistics: tooltip formatter refactored — `formatTooltipValue(unit, negative, decimals)` helper used consistently across all series
 * (bolliy) statistics: if no battery is present, the charts are generated without battery information (SOC, charge, discharge).
+* (bolliy) fix emma: update register addresses of meter.activePowerL1-L3 ([#282](https://github.com/bolliy/ioBroker.sun2000/issues/282))
 
 ### 2.4.5 (2026-05-14)
 * statistics fix: return weekly range up to current Monday
