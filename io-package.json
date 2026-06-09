@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "2.4.5",
+    "version": "2.5.0",
     "news": {
+      "2.5.0": {
+        "en": "statistics: added live power chart (statistics.jsonLive)\nrequires node.js >= 22",
+        "de": "statistiken: Live Power Chart hinzugefügt (statistics.jsonLive)\nrequires node.js >= 22",
+        "ru": "статистика: добавлена живая диаграмма мощности (statistics.jsonLive)\nrequires node.js >= 22",
+        "pt": "estatísticas: gráfico de potência ao vivo adicionado (statistics.jsonLive)\nrequires node.js >= 22",
+        "nl": "statistieken: toegevoegde live power chart (statistics.jsonLive)",
+        "fr": "statistiques: tableau de puissance en direct ajouté (statistiques.jsonLive)\nrequires node.js >= 22",
+        "it": "statistiche: aggiunto live power chart (statistics.jsonLive)\nrequires node.js >= 22",
+        "es": "estadística: añadido gráfico de potencia en vivo (statistics.jsonLive)\nrequires node.js >= 22",
+        "pl": "statystyki: dodany live power chart (statistics.jsonLive)\nrequires node.js >= 22",
+        "uk": "статистика: додано графік живої потужності (statistics.jsonLive)\nrequires node.js >= 22",
+        "zh-cn": "统计:增加的实电图(统计学.jsonLive)"
+      },
       "2.4.5": {
         "en": "statistics fix: return weekly range up to current Monday\nstatistics: added support for generating statistics templates directly from built-in charts\nstatistics: improved tooltip formatter - tooltip units are now provided explicitly via tooltip.valueFormatter",
         "de": "statistik fix: wöchentliche Rückgabe bis zum aktuellen Montag\nstatistik: unterstützung für die erstellung von statistiken vorlagen direkt aus integrierten diagrammen\nstatistiken: verbesserter Tooltip-Formater - Tooltip-Einheiten werden nun explizit über tooltip.valueFormatter bereitgestellt",
@@ -80,19 +93,6 @@
         "pl": "usunięty stan zdepregatowany \"collected.usableSurplusPower '",
         "uk": "вилучена депресована держава `collected.usableSurplusPower й",
         "zh-cn": "删除已贬值状态“ 已收集。 可使用 SurplusPower `"
-      },
-      "2.3.6": {
-        "en": "dependency and configuration updates\nnew state `inverter.x.derived.alarmsJSON` : json array with intverter alarms (id, name, level) [#226](https://github.com/bolliy/ioBroker.sun2000/issues/226)\nadd ChargeDischargePower for Battery units [#234](https://github.com/bolliy/ioBroker.sun2000/issues/234)\nadd minimum and maximum temperature for battery packs [#236](https://github.com/bolliy/ioBroker.sun2000/issues/236)",
-        "de": "abhängigkeits- und konfigurationsupdates\nneuer Zustand `inverter.x.derived.alarmsJSON`: json array with intverter alarms (id, name, level) [#226](https://github.com/bolliy/ioBroker.sun2000/issues/226)\nadd ChargeDischargePower for Battery Units [#234](https://github.com/bolliy/ioBroker.sun2000/issues/234)\nmindest- und Höchsttemperatur für Akkupacks [#236](https://github.com/bolliy/ioBroker.sun2000/issues/236)",
-        "ru": "обновления зависимостей и конфигурации\njson array with intverter alarms (id, name, level) [#226] (https://github.com/bolliy/ioBroker.sun2000/issues/226)\nдобавить ChargeDischargePower для батарейных блоков [#234] (https://github.com/bolliy/ioBroker.sun2000/issues/234)\nдобавить минимальную и максимальную температуру для аккумуляторных батарей [#236] (https://github.com/bolliy/ioBroker.sun2000/issues/236)",
-        "pt": "atualizações de dependência e configuração\nnovo estado `inverter.x.derived.alarmsJSON` : json array com alarmes de inversor (id, name, level) [#226](https://github.com/bolliy/ioBroker.sun2000/issues/226)\nadicionar ChargeDischargePower for Battery units [#234](https://github.com/bolliy/ioBroker.sun2000/issues/234)\nadicionar temperatura mínima e máxima para pacotes de bateria [#236](https://github.com/bolliy/ioBroker.sun2000/issues/236)",
-        "nl": "afhankelijkheid en configuratie-updates\nnieuwe staat \nchargeDischargePower for Battery units [#234](https://github.com/bolliy/ioBroker.sun2000/issues/234)\nminimum- en maximumtemperatuur toevoegen voor batterijpakketten [#236](https://github.com/bolliy/ioBroker.sun2000/issues/236)",
-        "fr": "mises à jour de la dépendance et de la configuration\nnouvel état `inverter.x.derived.alarmsJSON` : tableau json avec alarmes d'intverter (id, nom, niveau) [#226](https://github.com/bolliy/ioBroker.sun2000/issues/226)\najouter ChargeDischargePower pour les unités de batterie [#234](https://github.com/bolliy/ioBroker.sun2000/issues/234)\najouter la température minimale et maximale pour les batteries [#236](https://github.com/bolliy/ioBroker.sun2000/issues/236)",
-        "it": "aggiornamenti di dipendenza e configurazione\nnuovo stato `inverter.x.derived.alarmsJSON` : json array con allarme intverter (id, nome, livello) [#226](https://github.com/bolliy/ioBroker.sun2000/problems/226)\naggiungi ChargeDischargePower per batterie [#234](https://github.com/bolliy/ioBroker.sun2000/issues/234)\naggiungere la temperatura minima e massima per le batterie [#236](https://github.com/bolliy/ioBroker.sun2000/issues/236)",
-        "es": "actualizaciones de dependencia y configuración\nnuevo estado `inverter.x.derived.alarmsJSON` : json array with intverter alarms (id, name, level) [#226](https://github.com/bolliy/ioBroker.sun2000/issues/226)\nañadir ChargeDischargePower for Battery units [#234](https://github.com/bolliy/ioBroker.sun2000/issues/234)\nañadir la temperatura mínima y máxima para los paquetes de baterías [#236](https://github.com/bolliy/ioBroker.sun2000/issues/236)",
-        "pl": "aktualizacje zależności i konfiguracji\nnowość \"inverter.x.derived.alarmsJSON\": tablica json z alarmami intverter (id, name, level) [# 226] (https: / / github.com / bolliy / ioBroker.sun2000 / issues / 226)\ndata umieszczenia w wykazie\ndodać minimalną i maksymalną temperaturę dla baterii [# 236] (https: / / github.com / bolliy / ioBroker.sun2000 / issues / 236)",
-        "uk": "оновлення залежності та конфігурації\nновий стан `inverter.x.derived.alarmsJSON` : json array with intverter тривоги (id, назва, рівень) [#226](https://github.com/bolliy/ioBroker.sun2000/products/226)\nadd ChargeDischargePower для батарей [#234](https://github.com/bolliy/ioBroker.sun2000/products/234)\nдодайте мінімальну і максимальну температуру для акумуляторних пакетів [#236](https://github.com/bolliy/ioBroker.sun2000/products/236)",
-        "zh-cn": "依赖和配置更新\nnew state `inverter.x. inducted.alarmsJSON ' : json 数组带内置式警报器(id, name, level) [# 226] (https://github.com/bolliy/ioBroker.sun2000/issues/226) (中文(简体) )\n添加电池单位充电放电器[#234](https://github.com/bolliy/ioBroker.sun2000/issues/234)\n增加电池包的最低和最高温度[第236号](https://github.com/bolliy/ioBroker.sun2000/issues/236)"
       }
     },
     "titleLang": {
@@ -252,7 +252,7 @@
     "ds_bp": false,
     "cb_tou": false,
     "integration": 0,
-    "stat_liveInterval" : 5
+    "stat_liveInterval": 5
   },
   "objects": [],
   "instanceObjects": [

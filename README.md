@@ -69,7 +69,7 @@ The sun2000 adapter calculates how much of your self-generated solar energy is a
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.5.0 (2026-06-09)
 * statistics: added live power chart (statistics.jsonLive)
 
 ### 2.4.5 (2026-05-14)
@@ -93,12 +93,6 @@ The sun2000 adapter calculates how much of your self-generated solar energy is a
 * statistics: per chart-type templates (`statistics.flexCharts.template.hourly` etc.) for full ECharts customization including functions
 * statistics: data placeholders (`%%solarYield%%`, `%%gridExport%%` etc.) allow complete chart layout control via template states
 * statistics: chart output states (`statistics.flexCharts.jsonOutput.hourly` etc.) updated automatically each hour
-
-### 2.4.0 (2026-03-14)
-* fix: the order of bit assignment corrected of alarmsJSON
-* new state `inverter.x.emma.activeAlarmSN` and `inverter.x.emma.HistoricalAlarmSN` : emma alarms  [#226](https://github.com/bolliy/ioBroker.sun2000/issues/226)
-* statistics: Aggregates historical collected datapoints into time-based summaries (e.g. hourly, daily, monthly, yearly). The data is stored in the path `statistics` as JSON.
-
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 
