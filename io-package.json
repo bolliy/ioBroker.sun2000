@@ -286,7 +286,7 @@
           "de": "Gerät angeschlossen"
         },
         "type": "boolean",
-        "role": "value",
+        "role": "sensor",
         "read": true,
         "write": false,
         "desc": "Is the device connected?"
@@ -301,7 +301,7 @@
           "de": "Geräte IP"
         },
         "type": "string",
-        "role": "value",
+        "role": "text.ip",
         "read": true,
         "write": false,
         "desc": "Device IP address"
@@ -331,7 +331,7 @@
           "de": "Modbus IDs der Geräte"
         },
         "type": "string",
-        "role": "value",
+        "role": "text.id",
         "read": true,
         "write": false,
         "desc": "device modbus IDs"
