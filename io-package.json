@@ -286,7 +286,7 @@
           "de": "Gerät angeschlossen"
         },
         "type": "boolean",
-        "role": "info.connected",
+        "role": "value",
         "read": true,
         "write": false,
         "desc": "Is the device connected?"
@@ -301,7 +301,7 @@
           "de": "Geräte IP"
         },
         "type": "string",
-        "role": "info.ip",
+        "role": "value",
         "read": true,
         "write": false,
         "desc": "Device IP address"
@@ -316,7 +316,7 @@
           "de": "Modbusport"
         },
         "type": "number",
-        "role": "info.port",
+        "role": "value",
         "read": true,
         "write": false,
         "desc": "Device modbus port"
@@ -331,7 +331,7 @@
           "de": "Modbus IDs der Geräte"
         },
         "type": "string",
-        "role": "info.id",
+        "role": "value",
         "read": true,
         "write": false,
         "desc": "device modbus IDs"
@@ -378,7 +378,7 @@
           "de": "modbus delay"
         },
         "type": "number",
-        "role": "time.delay",
+        "role": "time.span",
         "read": true,
         "write": false,
         "desc": "delay between modbus requests",
@@ -394,7 +394,7 @@
           "de": "modbus connect delay"
         },
         "type": "number",
-        "role": "time.delay",
+        "role": "time.span",
         "read": true,
         "write": false,
         "desc": "delay after modbus connected",
@@ -410,7 +410,7 @@
           "de": "Gesundheitsinformation"
         },
         "type": "string",
-        "role": "info.health",
+        "role": "json",
         "read": true,
         "write": false,
         "desc": "",
