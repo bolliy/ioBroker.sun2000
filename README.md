@@ -72,6 +72,7 @@ The sun2000 adapter calculates how much of your self-generated solar energy is a
 ### **WORK IN PROGRESS**
 - (bolliy) statistics fix: adjust reset handling logic to treat significant drops in value as potential resets
 - (bolliy) enhance state value storage by rounding to configurable decimal places
+- (bolliy) update role states properties according to ioBroker.repochecker requirements
 
 ### 2.5.0 (2026-06-09)
 * (bolliy) statistics: added live power chart (statistics.jsonLive)
