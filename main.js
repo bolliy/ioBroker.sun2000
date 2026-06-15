@@ -681,14 +681,14 @@ class Sun2000 extends utils.Adapter {
 	onUnload(callback) {
 		try {
 			this.logger.info('cleaned everything up...');
+			if (typeof this.state.destroy === 'function') {
+				this.state.destroy();
+			}
 			this.modbusServer && this.modbusServer.close();
 			this.pollingTimer && this.clearTimeout(this.pollingTimer);
 			this.mitnightTimer && this.clearTimeout(this.mitnightTimer);
 			this.watchDogHandle && this.clearInterval(this.watchDogHandle);
 			this.modbusClient && this.modbusClient.close();
-			if (typeof this.state.destroy === 'function') {
-				this.state.destroy();
-			}
 			this.setState('info.connection', false, true);
 			callback();
 		} catch {
