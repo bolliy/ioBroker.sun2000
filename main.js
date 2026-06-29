@@ -556,9 +556,9 @@ class Sun2000 extends utils.Adapter {
 				this.devices.push({
 					index: 0,
 					duration: 0,
-					//modbusId: 1, --> testMode
 					modbusId: 0,
 					meter: true,
+					//testMode: true,
 					driverClass: driverClasses.emma,
 				});
 			}
@@ -707,19 +707,20 @@ class Sun2000 extends utils.Adapter {
 		if (state) {
 			// The state was changed
 			if (state.ack) {
-				//this.logger.info(`state ${id} was changed but the ack flag was set. Therefore, no processing takes place!`);
+				//this.logger.warn(`state ${id} was changed but the ack flag was set. Therefore, no processing takes place!`);
 				return;
 			}
 			const idArray = id.split('.');
 			// sun2000.0.inverter.0.control
 			if (idArray[2] == 'inverter') {
-				const control = this.devices[Number(idArray[3])].instance.control;
-				if (control) {
+				const inverter = this.devices.find(d => d.driverClass == driverClasses.inverter && d.index == Number(idArray[3]));
+				//const control = this.devices[Number(idArray[3])].instance.control;
+				if (inverter && inverter.instance.control) {
 					let serviceId = idArray[5];
 					for (let i = 6; i < idArray.length; i++) {
 						serviceId += `.${idArray[i]}`;
 					}
-					control.set(serviceId, state);
+					inverter.instance.control.set(serviceId, state);
 				}
 				//this.log.info(`### state ${id} changed: ${state.val} (ack = ${state.ack})`);
 			}
