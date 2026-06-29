@@ -69,7 +69,7 @@ The sun2000 adapter calculates how much of your self-generated solar energy is a
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.5.1 (2026-06-29)
 - (bolliy) fix: update service queue logic ([#283](https://github.com/bolliy/ioBroker.sun2000/discussions/283))
 - (bolliy) statistics fix: adjust reset handling logic to treat significant drops in value as potential resets
 
@@ -80,8 +80,7 @@ The sun2000 adapter calculates how much of your self-generated solar energy is a
 * (bolliy) statistics: tooltip formatter refactored — `formatTooltipValue(unit, negative, decimals)` helper used consistently across all series
 * (bolliy) statistics: if no battery is present, the charts are generated without battery information (SOC, charge, discharge).
 * (bolliy) fix emma: update register addresses of meter.activePowerL1-L3 ([#282](https://github.com/bolliy/ioBroker.sun2000/issues/282))
-* (bolliy) requires node.js >= 22 
-
+* (bolliy) requires node.js >= 22
 
 ### 2.4.5 (2026-05-14)
 * statistics fix: return weekly range up to current Monday
@@ -96,14 +95,6 @@ The sun2000 adapter calculates how much of your self-generated solar energy is a
 * statistics: default chart shows energy flows above/below zero line, SOC (hourly only), self-sufficiency and self-consumption on second Y-axis
 * statistics: computed values `selfSufficiency` and `selfConsumption` calculated automatically in all time-series states
 * statistics: data placeholders (`%%solarYield%%`, `%%selfSufficiency%%` etc.) and negated variants (`%%gridExportNeg%%` etc.) for mirrored chart layouts
-
-### 2.4.2 (2026-04-04)
-* fix test-and-release: deploy with 24.x
-* statistics: flexcharts integration — built-in Apache ECharts configuration with bar and line chart support
-* statistics: day-break visualization with alternating shaded areas for hourly charts
-* statistics: per chart-type templates (`statistics.flexCharts.template.hourly` etc.) for full ECharts customization including functions
-* statistics: data placeholders (`%%solarYield%%`, `%%gridExport%%` etc.) allow complete chart layout control via template states
-* statistics: chart output states (`statistics.flexCharts.jsonOutput.hourly` etc.) updated automatically each hour
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 

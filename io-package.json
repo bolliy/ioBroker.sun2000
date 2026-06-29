@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "2.5.0",
+    "version": "2.5.1",
     "news": {
+      "2.5.1": {
+        "en": "fix: update service queue logic ([#283](https://github.com/bolliy/ioBroker.sun2000/discussions/283))\nstatistics fix: adjust reset handling logic to treat significant drops in value as potential resets",
+        "de": "fix: update service queue logic ([#283](https://github.com/bolliy/ioBroker.sun2000/discussions/283))\nstatistics fix: anpassung der reset-handling-logik, um signifikante wertverluste als potenzielle resets zu behandeln",
+        "ru": "исправить: обновить логику очереди обслуживания ([#283](https://github.com/bolliy/ioBroker.sun2000/discussions/283))\nисправление статистики: настройте логику обработки сбросов, чтобы рассматривать значительное снижение стоимости как потенциальные сбросы",
+        "pt": "fix: update service fila logic ([#283](https://github.com/bolliy/ioBroker.sun2000/discussions/283))\nstatistics fix: ajuste a lógica de manipulação de reset para tratar quedas significativas no valor como resets potenciais",
+        "nl": "fix: update service wachtrij logica ([#283](https://github.com/bolliy/ioBroker.sun2000/discussions/283))\nstatistieken fix: aanpassen reset handling logica om significante dalingen in waarde te behandelen als potentiële ressets",
+        "fr": "correction: mise à jour de la logique de la file d'attente de service ([#283](https://github.com/bolliy/ioBroker.sun2000/discussions/283))\ncorrection statistique: ajuster la logique de réinitialisation pour traiter les baisses significatives de valeur comme des réinitialisations potentielles",
+        "it": "correzione: aggiornamento della coda di servizio logica ([#283](https://github.com/bolliy/ioBroker.sun2000/discussions/283))\nstatistiche fix: regolare la gestione del reset logica per trattare gocce significative di valore come potenziali reset",
+        "es": "fix: update service queue logic ([#283](https://github.com/bolliy/ioBroker.sun2000/discussions/283))\nestadística fijado: ajuste la lógica de manejo de reajuste para tratar gotas significativas en valor como posibles reajustes",
+        "pl": "fix: update service queue logic ([# 283] (https: / / github.com / bolliy / ioBroker.sun2000 / discussions / 283))\nstatystyki fix: dostosować logikę obsługi reset w celu traktowania znaczących spadku wartości jako potencjalnych reset",
+        "uk": "виправити: оновити логіку черги ([#283](https://github.com/bolliy/ioBroker.sun2000/discussions/283)))\nвиправлення статистичних даних: регулюйте логіку обробки скидання для обробки значних крапель у значення як потенційні скидання",
+        "zh-cn": "fix:更新服务队列逻辑([#283] (https://github.com/bolliy/ioBroker.sun2000/discussions/283))\n统计修补:调整重置处理逻辑,将价值大幅下降视为潜在重置"
+      },
       "2.5.0": {
         "en": "statistics: added live power chart (statistics.jsonLive)\nrequires node.js >= 22",
         "de": "statistiken: Live Power Chart hinzugefügt (statistics.jsonLive)\nrequires node.js >= 22",
@@ -80,19 +93,6 @@
         "pl": "fix: kolejność przypisywania bitów poprawionych alarmów JSON\nw języku angielskim:\nstatystyki: Zagregowane historyczne zbierane punkty danych w skróty czasowe (np. godzinowe, dzienne, miesięczne, roczne). Dane są przechowywane w ścieżce \"statystyki\" jako JSON.",
         "uk": "фіксувати: порядок відведення біту виправлено тривоги Сонце\nновий стан `inverter.x.emma.activeAlarmSN` і `inverter.x.emma.HistoricalAlarmSN` : emma тривоги [#226](https://github.com/bolliy/ioBroker.sun2000/products/226)\nстатистика: Агрегати історичних зібраних точок даних на часові суми (наприклад, час, щоденно, щомісяця, рік). Дані зберігаються на шляху `statistics` як JSON.",
         "zh-cn": "固定: 修改提醒的位任务顺序 贾森\n新状态`inverter.x.emma.active AlarmSN ' 和`inverter.x.emma. Historical AlarmSN ' : emma警报[# 226](https://github.com/bolliy/ioBroker.sun2000/issues/226)\n统计: 将历史收集的数据点汇总为时间摘要(如小时、每日、每月、每年)。 数据作为JSON储存在路径`统计'中."
-      },
-      "2.3.7": {
-        "en": "deleted deprecated state `collected.usableSurplusPower`",
-        "de": "gelöschter deprecated state `collect.usableSurplusPower `",
-        "ru": "удаленное устаревшее состояние 'collected.usableSurplusPower пункт",
-        "pt": "estado desactualizado excluído `colected.usableSurplusPower `",
-        "nl": "verwijderde verouderde staat  Wat",
-        "fr": "état obsolète supprimé `collected.usableSurplusPower \"",
-        "it": "cancellato stato deprecato `colletto.usableSurplusPower #",
-        "es": "borrado estado deprecatado `collected.usableSurplusPower `",
-        "pl": "usunięty stan zdepregatowany \"collected.usableSurplusPower '",
-        "uk": "вилучена депресована держава `collected.usableSurplusPower й",
-        "zh-cn": "删除已贬值状态“ 已收集。 可使用 SurplusPower `"
       }
     },
     "titleLang": {

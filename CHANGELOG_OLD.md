@@ -1,4 +1,12 @@
 ## Changelog
+## 2.4.2 (2026-04-04)
+* fix test-and-release: deploy with 24.x
+* statistics: flexcharts integration — built-in Apache ECharts configuration with bar and line chart support
+* statistics: day-break visualization with alternating shaded areas for hourly charts
+* statistics: per chart-type templates (`statistics.flexCharts.template.hourly` etc.) for full ECharts customization including functions
+* statistics: data placeholders (`%%solarYield%%`, `%%gridExport%%` etc.) allow complete chart layout control via template states
+* statistics: chart output states (`statistics.flexCharts.jsonOutput.hourly` etc.) updated automatically each hour
+
 ## 2.4.0 (2026-03-14)
 * fix: the order of bit assignment corrected of alarmsJSON
 * new state `inverter.x.emma.activeAlarmSN` and `inverter.x.emma.HistoricalAlarmSN` : emma alarms  [#226](https://github.com/bolliy/ioBroker.sun2000/issues/226)
