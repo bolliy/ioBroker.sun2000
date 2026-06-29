@@ -389,19 +389,6 @@
             "type": "panel",
             "label": "Statistics",
             "items": {
-                "staticLink1": {
-                    "type": "staticLink",
-                    "text": "Information and settings regarding the statistics explained in the wiki",
-                    "href": "https://github.com/bolliy/ioBroker.sun2000/wiki/Statistk-(statistics)",
-                    "button": true,
-                    "icon": "info",
-                    "newLine": true,
-                    "xs": 12,
-                    "sm": 12,
-                    "md": 6,
-                    "lg": 3,
-                    "xl": 3
-                },
                 "stat_liveInterval": {
                     "type": "number",
                     "label": "Live chart interval (min)",
@@ -414,6 +401,19 @@
                     "md": 6,
                     "lg": 4,
                     "xl": 4
+                },
+                "staticLink1": {
+                    "type": "staticLink",
+                    "text": "Information and settings regarding the statistics explained in the wiki",
+                    "href": "https://github.com/bolliy/ioBroker.sun2000/wiki/Statistk-(statistics)",
+                    "button": true,
+                    "icon": "info",
+                    "newLine": true,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 3,
+                    "xl": 3
                 }     
             }
 
