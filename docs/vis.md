@@ -1,8 +1,8 @@
-## Example Vis
+# Example Vis
 
-The picture below shows an example vis showing the energy flow between the different components. In the part, a float diagram shows the battery charge status, power production and power consumption over the last 48 hours. 
+The picture below shows an example vis showing the energy flow between the different components. In the part, a float diagram shows the battery charge status, power production and power consumption over the last 48 hours.
 
-![Screenshot](./images/SunLuna2000Vis-v2.png)
+[![Screenshot](https://github.com/bolliy/ioBroker.sun2000/raw/main/docs/images/SunLuna2000Vis-v2.png)](/bolliy/ioBroker.sun2000/blob/main/docs/images/SunLuna2000Vis-v2.png)
 
 The following states are used in the Vis example:
 
@@ -19,60 +19,56 @@ The following states are used in the Vis example:
 - Grid `Export Today`: sun2000.0.collected.gridExportToday
 - Grid `Import Today`: sun2000.0.collected.gridImportToday
 
-The following additional states are available for output: 
+The following additional states are available for output:
 
 - `Inverter Device Status`: sun2000.0.inverter.0.derived.deviceStatus (e.g 'On-grid', 'Standby: detecting irradiation')
 - `Battery Working Mode`: sun2000.0.inverter.0.battery.workingModeSettings (e.g. 2: 'Maximise Self Consumption')
 - `Battery Running Status`: sun2000.0.inverter.0.battery.derived.runningStatus (e.g. 'running', 'sleep mode')
 - `Inverter Temperature`: sun2000.0.inverter.0.internalTemperature (temperature or '0' if in standby)
 - `Battery Unit Temperature`: sun2000.0.inverter.0.battery.unit.1.batteryTemperature (temperature or '0' if in standby)
-- `Grid Frequency`: sun2000.0.meter.gridFrequency 
-
+- `Grid Frequency`: sun2000.0.meter.gridFrequency
 
 ## Flexcharts support for statistics
 
-The adapter now generates JSON arrays for hourly/daily/weekly/monthly/annual
-statistics in states such as `sun2000.0.statistics.jsonHourly` etc.  These can
-be rendered by the [ioBroker.flexcharts](https://github.com/MyHomeMyData/ioBroker.flexcharts)
-adapter by using a small script or via the built‑in message callback.
+The adapter's [statistics module](https://github.com/bolliy/ioBroker.sun2000/wiki/Statistk-(statistics)) automatically aggregates the raw inverter data into hourly/daily/weekly/monthly/annual time series under `sun2000.0.statistics.*`, including computed `selfSufficiency` and `selfConsumption` ratios. For visualizing this data in VIS, the adapter has built-in support for the [ioBroker.flexcharts](https://github.com/MyHomeMyData/ioBroker.flexcharts) adapter — no scripting or message-box wiring required.
 
-A state `sun2000.0.statistics.flexChartTemplate` is provided where you can store
-an eCharts options object – only the parts you want to customise.  The adapter
-will merge this template into a default chart layout and fill the `xAxis` and
-`series` data automatically.  **Units are read from the statistic definitions
-and injected into the axis label and tooltip; you no longer need to hard‑code
-"kWh" in the template.**
+### Requirements
 
-To request a chart via message box you can send a message with `command: "statistics"`
-and a `message.chart` property equal to `hourly`, `daily`, `weekly`, `monthly`
-or `annual`.  The payload returned is the final chart options object, which
-flexcharts can consume when using `source=script`.
+- **ioBroker.web** – provides the HTTP server (default port `8082`)
+- **ioBroker.flexcharts** – renders the Apache ECharts diagrams
 
-Example script (in JavaScript adapter instance 0):
+Both can be installed via the ioBroker Admin interface.
 
-```js
-onMessage(obj => {
-    if (obj.command === 'statistics') {
-        // forward to sun2000 instance
-        sendTo('sun2000.0', 'statistics', obj.message, res => {
-            // res contains chart options, set a state or return to flexcharts
-            setState('0_userdata.0.flexcharts.sun2000.chart', JSON.stringify(res));
-        });
-    }
-});
+### How it works
+
+Each chart type has its own template state and its own output state. The adapter merges the template into the default layout and rebuilds the output automatically, every hour:
+
+| Template state | Output state |
+| --- | --- |
+| `statistics.flexCharts.template.hourly` | `statistics.flexCharts.jsonOutput.hourly` |
+| `statistics.flexCharts.template.daily` | `statistics.flexCharts.jsonOutput.daily` |
+| `statistics.flexCharts.template.weekly` | `statistics.flexCharts.jsonOutput.weekly` |
+| `statistics.flexCharts.template.monthly` | `statistics.flexCharts.jsonOutput.monthly` |
+| `statistics.flexCharts.template.annual` | `statistics.flexCharts.jsonOutput.annual` |
+
+Leave a template state at its default (`{}`) to use the built-in chart layout, which already includes Solar Yield/Grid Import/Discharge above the zero line, Grid Export/Charge below it, Battery SOC and the self-sufficiency/self-consumption ratios as dashed lines on a second Y-axis, day-break shading for hourly charts, and a zoom slider.
+
+### Embedding a chart in VIS
+
+Add an **iFrame** widget to your VIS view and point it at the flexcharts URL using `source=state`, which reads the chart configuration directly from the corresponding output state — no message box or forwarding script needed:
+
+```
+http://[ioBroker-ip]:8082/flexcharts/echarts.html?source=state&id=sun2000.0.statistics.flexCharts.jsonOutput.hourly
 ```
 
-The default template plots every tracked `targetPath` in a separate line series.
-You can override layout, colours, tooltips etc. via the template state; the
-adapter adds unit strings automatically.  For example, a bare template might
-look like this (no `kWh` anywhere):
+Replace `[ioBroker-ip]` with the address of your ioBroker instance and `sun2000.0` with your actual adapter instance if it differs. Swap `hourly` for `daily`, `weekly`, `monthly` or `annual` for the other chart types. The chart updates automatically whenever the adapter refreshes the output state.
 
-```js
-{
-  title: { text: 'sun2000 – Statistik', left: 'center' },
-  legend: { top: 30 },
-  grid: { left: 50, right: 20, bottom: 50 },
-  colour: ['#5470C6', '#91CC75', '#EE6666'],
-  // tooltip/yAxis formatting will be filled in by adapter based on units
-}
-```
+### Customizing a chart
+
+To change layout, colors or series, edit the corresponding `statistics.flexCharts.template.*` state with an ECharts options object — only the parts you want to override. Series data is inserted via placeholders such as `"%%solarYield%%"`, `"%%gridExport%%"` or `"%%SOC%%"`, each with a negated variant (e.g. `"%%gridExportNeg%%"`) for mirrored, below-zero layouts. Axis/metadata placeholders like `"%%xAxisDataShort%%"`, `"%%chartTitle%%"`, `"%%dayAreas%%"` and `"%%tooltipFormatter%%"` are also available.
+
+To start from the current built-in layout instead of from scratch, write `{"command": "createTemplateFromBuiltin"}` into a template state — the adapter replaces it with a full template generated from the built-in chart, which you can then translate, recolor or extend.
+
+To reset a chart type back to the built-in default, set its template state back to `{}`.
+
+The full placeholder reference, the `statistics.jsonToday` live summary state, and several ready-to-use template examples (minimal bar chart, mirrored layout with SOC/ratios, line chart with area fill, day-break hourly chart, extended yield/ratio overview) are documented on the [Statistics wiki page](https://github.com/bolliy/ioBroker.sun2000/wiki/Statistk-(statistics)).

@@ -69,6 +69,9 @@ The sun2000 adapter calculates how much of your self-generated solar energy is a
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+- (bolliy) emma feat: implement TOU JSON to Modbus register conversion and enhance service queue management
+
 ### 2.5.1 (2026-06-29)
 - (bolliy) fix: update service queue logic ([#283](https://github.com/bolliy/ioBroker.sun2000/discussions/283))
 - (bolliy) statistics fix: adjust reset handling logic to treat significant drops in value as potential resets
