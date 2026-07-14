@@ -479,7 +479,7 @@
                     "type": "number",
                     "label": "delay (ms)",
                     "min" : 0,
-                    "max" : 6000,
+                    "max" : 1000,
                     "newLine": true,
                     "tooltip": "Delay between modbus requests",
                     "xs": 12,
