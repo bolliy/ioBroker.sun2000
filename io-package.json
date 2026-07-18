@@ -148,7 +148,7 @@
     "loglevel": "info",
     "mode": "daemon",
     "type": "energy",
-    "compact": false,
+    "compact": true,
     "connectionType": "local",
     "dataSource": "poll",
     "messagebox": true,
