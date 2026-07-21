@@ -558,7 +558,7 @@ class Sun2000 extends utils.Adapter {
 					duration: 0,
 					modbusId: 0,
 					meter: true,
-					testMode: true,
+					testMode: false,
 					driverClass: driverClasses.emma,
 				});
 			}

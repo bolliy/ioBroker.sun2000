@@ -70,7 +70,9 @@ The sun2000 adapter calculates how much of your self-generated solar energy is a
 	### **WORK IN PROGRESS**
 -->
 ### **WORK IN PROGRESS**
-- (bolliy) emma feat: implement TOU JSON to Modbus register conversion and enhance service queue management
+* (booliy/claude) Optimization of memory usage
+* (bolliy) Added six new EMMA control registers ([#285]https://github.com/bolliy/ioBroker.sun2000/issues/285)
+* (bolliy) Implemented Time-of-Use (TOU) charge/discharge scheduling for register 40004 (EMMA) and 47255 (inverter)
 
 ### 2.5.1 (2026-06-29)
 - (bolliy) fix: update service queue logic ([#283](https://github.com/bolliy/ioBroker.sun2000/discussions/283))
