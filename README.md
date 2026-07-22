@@ -47,21 +47,21 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 
 ## Feature list
 
-* Maximum `5 inverters` (master/slave) can be processed, each with a battery module.
-* `Real-time` values such as input power, output power, charging/discharging power and the grid consumption are read out at a fixed interval. 
-* States are only written for changed data from the inverter. This relieves the burden on the iobroker instance.
-* The states “inputPower” or “activePower” in the “collected” path can be monitored with a “was updated” trigger element. Because these states are always written within the set interval.
-* [`Battery charge control`](https://github.com/bolliy/ioBroker.sun2000/wiki/Battery-control): The battery charging mode of Huawei LUNA2000 batteries can be controlled. Here you can activate and deactivate the battery charging mode to "charging from grid”. In addition, the charging capacity and charging power can be adjusted.
-* [`Force charge discharge battery`](https://github.com/bolliy/ioBroker.sun2000/wiki/Erzwungenes-Laden-und-Entladen-der-Batterie-(Force-charge-discharge-battery)): Forced charge/discharge is usually used to test the battery connected to an inverter. Normally it is not recommended to perform forced charging/discharging. 
-* [`Export Control`](https://github.com/bolliy/ioBroker.sun2000/wiki/Begrenzung-Netzeinspeisung-(Export-Control)): The excess PV energy is fed into the power grid, but not all countries allow users to sell electricity. Some countries have introduced regulations to restrict the sale of electricity to the grid. 
-* [`modbus-proxy`](https://github.com/bolliy/ioBroker.sun2000/wiki/Modbus-Proxy): Third party device such as wallbox, energy manager etc. can receive data even if the modbus interface of inverter is already in use. In addition you can mirror the sun2000 data to another IoBroker instance.
-* Huawei [`SmartLogger`](https://github.com/bolliy/ioBroker.sun2000/wiki/SmartLogger) integration: Monitors and manages the PV power system. The adapter saves the collected data in the same way as it does when read out the inverter directly.
-* Huawei [`Emma`](https://github.com/bolliy/ioBroker.sun2000/wiki/Emma) integration: The Modbus access, network connectivity (WiFi and Ethernet) and the DDSU/DTSU-666H smart meter functions are integrated in one unit - the use of the Sdongle becomes redundant. In addition Huawei EV chargers and load shedding/control (via selected Shelly devices) are supported and "intelligent" controlled.
-* Huawei [`Charger`](https://github.com/bolliy/ioBroker.sun2000/issues/171) via Emma integration: The chargers are automatically recognized and the data is saved in their own path. 
-* [`Statistics`](https://github.com/bolliy/ioBroker.sun2000/wiki/Statistk-(statistics)): Aggregates historical collected datapoints into time-based summaries (e.g. hourly, daily, monthly, yearly).
-These statistics should be able to be visualized in ioBroker VIS using the flexcharts adapter to create interactive diagrams for inverter performance and energy production.
-* [`Surplus Power Control`](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(surplus))
-The sun2000 adapter calculates how much of your self-generated solar energy is available to power devices in your home — instead of sending it to the grid.
+* Up to `5 inverters` (master/slave) supported, each with an optional battery module.
+* `Real-time` values (input/output power, charge/discharge power, grid consumption) are read at a fixed interval; states are only written on changed data to reduce load on the ioBroker instance.
+* [`Battery charge control`](https://github.com/bolliy/ioBroker.sun2000/wiki/Battery-control): control charging mode (e.g. "charge from grid"), charging capacity and power.
+* [`Time-of-Use (TOU) scheduling`](https://github.com/bolliy/ioBroker.sun2000/wiki/Battery-control): define weekly charge/discharge time windows via a simple JSON interface (up to 14 segments/week, German & English day names) — supported for both inverter and EMMA.
+* [`Force charge/discharge battery`](https://github.com/bolliy/ioBroker.sun2000/wiki/Erzwungenes-Laden-und-Entladen-der-Batterie-(Force-charge-discharge-battery)): mainly for testing the connected battery.
+* Battery `charge/discharge efficiency` calculated daily (`collected.derived.chargeEfficiency` / `dischargeEfficiency`), computed once at midnight to avoid intra-day distortion between fast AC and slower BMS register updates.
+* [`Export Control`](https://github.com/bolliy/ioBroker.sun2000/wiki/Begrenzung-Netzeinspeisung-(Export-Control)): limit grid feed-in power (kW or %) where local regulations require it.
+* [`SmartGuard / grid power control`](https://github.com/bolliy/ioBroker.sun2000/issues/285) (EMMA): power supply configuration and mains-fault handling registers.
+* [`modbus-proxy`](https://github.com/bolliy/ioBroker.sun2000/wiki/Modbus-Proxy): lets third-party devices (wallbox, energy manager, …) read data even while the inverter's Modbus interface is in use by the adapter, with automatic direct-read fallback if the cached value is missing or stale.
+* Huawei [`SmartLogger`](https://github.com/bolliy/ioBroker.sun2000/wiki/SmartLogger) integration for monitoring/managing the PV system.
+* Huawei [`Emma`](https://github.com/bolliy/ioBroker.sun2000/wiki/Emma) integration: combines Modbus access, WiFi/Ethernet connectivity and the DDSU/DTSU-666H smart meter in one unit; also supports EV chargers and load control via selected Shelly devices.
+* Huawei [`Charger`](https://github.com/bolliy/ioBroker.sun2000/issues/171) via EMMA: chargers are auto-detected and stored under their own path.
+* [`Statistics`](https://github.com/bolliy/ioBroker.sun2000/wiki/Statistk-(statistics)): historical data aggregated into hourly/daily/weekly/monthly/annual summaries, plus a configurable live power chart (1–15 min interval), with a user-definable **consumption breakdown** into sub-categories (e.g. wallbox, heat pump).
+  Visualized via built-in Apache ECharts configurations (customizable templates) or the ioBroker flexcharts adapter.
+* [`Surplus Power Control`](https://github.com/bolliy/ioBroker.sun2000/wiki/%C3%9Cberschuss-(surplus)): calculates how much self-generated solar power is available for home devices instead of being fed into the grid.
 
 
 ## Changelog
@@ -71,9 +71,9 @@ The sun2000 adapter calculates how much of your self-generated solar energy is a
 -->
 ### 2.6.0 (2026-07-22)
 * (booliy/claude) Optimization of memory usage
-* (bolliy) Added six new EMMA control registers ([#285](https://github.com/bolliy/ioBroker.sun2000/issues/285))
-* (bolliy) Implemented Time-of-Use (TOU)
-* (booliy) modbus-proxy: Direct register reading on cache mismatch
+* (bolliy/claude) Added six new EMMA control registers ([#285](https://github.com/bolliy/ioBroker.sun2000/issues/285))
+* (bolliy/claude) Implemented Time-of-Use (TOU)
+* (booliy/claude) modbus-proxy: Direct register reading on cache mismatch
 
 ### 2.5.1 (2026-06-29)
 - (bolliy) fix: update service queue logic ([#283](https://github.com/bolliy/ioBroker.sun2000/discussions/283))
