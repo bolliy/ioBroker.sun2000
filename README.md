@@ -71,8 +71,9 @@ The sun2000 adapter calculates how much of your self-generated solar energy is a
 -->
 ### 2.6.0 (2026-07-22)
 * (booliy/claude) Optimization of memory usage
-* (bolliy) Added six new EMMA control registers ([#285]https://github.com/bolliy/ioBroker.sun2000/issues/285)
+* (bolliy) Added six new EMMA control registers ([#285](https://github.com/bolliy/ioBroker.sun2000/issues/285))
 * (bolliy) Implemented Time-of-Use (TOU)
+* (booliy) modbus-proxy: Direct register reading on cache mismatch
 
 ### 2.5.1 (2026-06-29)
 - (bolliy) fix: update service queue logic ([#283](https://github.com/bolliy/ioBroker.sun2000/discussions/283))
