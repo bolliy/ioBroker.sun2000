@@ -69,7 +69,7 @@ The sun2000 adapter calculates how much of your self-generated solar energy is a
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.6.0 (2026-07-22)
 * (booliy/claude) Optimization of memory usage
 * (bolliy) Added six new EMMA control registers ([#285]https://github.com/bolliy/ioBroker.sun2000/issues/285)
 * (bolliy) Implemented Time-of-Use (TOU)
@@ -94,12 +94,6 @@ The sun2000 adapter calculates how much of your self-generated solar energy is a
 
 ### 2.4.4 (2026-05-04)
 * statistics fix: add error handling for waitForValue function
-
-### 2.4.3 (2026-04-19)
-* statistics: new state `statistics.jsonToday` — live summary of today's energy values
-* statistics: default chart shows energy flows above/below zero line, SOC (hourly only), self-sufficiency and self-consumption on second Y-axis
-* statistics: computed values `selfSufficiency` and `selfConsumption` calculated automatically in all time-series states
-* statistics: data placeholders (`%%solarYield%%`, `%%selfSufficiency%%` etc.) and negated variants (`%%gridExportNeg%%` etc.) for mirrored chart layouts
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 

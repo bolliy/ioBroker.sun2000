@@ -1,4 +1,10 @@
 ## Changelog
+## 2.4.3 (2026-04-19)
+* statistics: new state `statistics.jsonToday` — live summary of today's energy values
+* statistics: default chart shows energy flows above/below zero line, SOC (hourly only), self-sufficiency and self-consumption on second Y-axis
+* statistics: computed values `selfSufficiency` and `selfConsumption` calculated automatically in all time-series states
+* statistics: data placeholders (`%%solarYield%%`, `%%selfSufficiency%%` etc.) and negated variants (`%%gridExportNeg%%` etc.) for mirrored chart layouts
+
 ## 2.4.2 (2026-04-04)
 * fix test-and-release: deploy with 24.x
 * statistics: flexcharts integration — built-in Apache ECharts configuration with bar and line chart support
