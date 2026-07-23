@@ -52,7 +52,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 * [`Battery charge control`](https://github.com/bolliy/ioBroker.sun2000/wiki/Battery-control): control charging mode (e.g. "charge from grid"), charging capacity and power.
 * [`Time-of-Use (TOU) scheduling`](https://github.com/bolliy/ioBroker.sun2000/wiki/Battery-control): define weekly charge/discharge time windows via a simple JSON interface (up to 14 segments/week, German & English day names) — supported for both inverter and EMMA.
 * [`Force charge/discharge battery`](https://github.com/bolliy/ioBroker.sun2000/wiki/Erzwungenes-Laden-und-Entladen-der-Batterie-(Force-charge-discharge-battery)): mainly for testing the connected battery.
-* Battery `charge/discharge efficiency` calculated daily (`collected.derived.chargeEfficiency` / `dischargeEfficiency`), computed once at midnight to avoid intra-day distortion between fast AC and slower BMS register updates.
+
 * [`Export Control`](https://github.com/bolliy/ioBroker.sun2000/wiki/Begrenzung-Netzeinspeisung-(Export-Control)): limit grid feed-in power (kW or %) where local regulations require it.
 * [`SmartGuard / grid power control`](https://github.com/bolliy/ioBroker.sun2000/issues/285) (EMMA): power supply configuration and mains-fault handling registers.
 * [`modbus-proxy`](https://github.com/bolliy/ioBroker.sun2000/wiki/Modbus-Proxy): lets third-party devices (wallbox, energy manager, …) read data even while the inverter's Modbus interface is in use by the adapter, with automatic direct-read fallback if the cached value is missing or stale.
