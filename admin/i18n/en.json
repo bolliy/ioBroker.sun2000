@@ -10,6 +10,17 @@
     "Energy control": "Energy control",
     "Integration Settings": "Integration Settings",
     "SDongle active": "SDongle active",
+    "Delay between modbus requests": "Delay between modbus requests",
+    "connect delay (ms)": "connect delay (ms)",
+    "Delay after modbus connected": "Delay after modbus connected",
+    "auto-adjust" :  "auto-adjust",
+    "Automatic adjustment of the modbus settings": "Automatic adjustment of the modbus settings",
+    "The `default TOU settings` is interesting for the `charge from the grid` function, which is required for variable energy prices.": "The `default TOU settings` is interesting for the `charge from the grid` function, which is required for variable energy prices.",
+    "Modbus timing": "Modbus timing",
+    "timeout (ms)": "timeout (ms)",
+    "Modbus connection timeout":  "Modbus connection timeout",
+    "delay (ms)": "delay (ms)",
+
     "default TOU settings": "default TOU settings",
     "Live chart update interval in minutes": "Live chart update interval in minutes",
     "Further Register": "Further Register",
@@ -17,7 +28,7 @@
     "This register data is stored in the opject path `sun2000.x.inverter.x.battery.unit`": "This register data is stored in the opject path `sun2000.x.inverter.x.battery.unit`",
     "battery packs": "battery packs",
     "This register data is stored in the opject path `sun2000.x.inverter.x.battery.unit.x.pack`": "This register data is stored in the opject path `sun2000.x.inverter.x.battery.unit.x.pack`",
-    
+
     "Statistics": "Statistics",
     "Live chart interval (min)": "Live chart interval (min)",
     "SDongleA modbus ID": "SDongleA modbus ID",
