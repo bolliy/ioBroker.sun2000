@@ -196,7 +196,7 @@
                 },
                 "chipsTxt": {
                     "type": "staticText",
-                    "text": "Third party device such as wallbox, energy manager etc. can receive and send data even if the modbus interface of inverter is already in use. In addition you can mirror the sun2000 data to another IoBroker instance.",
+                    "text": "ms.text",
                     "newLine": true,
                     "xs": 12,
                     "sm": 12,
@@ -262,7 +262,7 @@
                 },
                 "chipsTxt1": {
                     "type": "staticText",
-                    "text": "This control states are set in the object path `sun2000.0.inverter.x.control.battery`",
+                    "text": "This control states inverter...",
                     "newLine": true,
                     "hidden": "data.integration === 2",
                     "xs": 12,
@@ -273,7 +273,7 @@
                 },
                 "chipsTxt1_1": {
                     "type": "staticText",
-                    "text": "This control states are set in the object path `sun2000.0.emma.control.battery`",
+                    "text": "This control states emma...",
                     "newLine": true,
                     "hidden": "data.integration !== 2",
                     "xs": 12,
@@ -431,7 +431,7 @@
                     "type": "checkbox",
                     "label": "battery units",
                     "newLine": true,
-                    "help": "This register data is stored in the opject path `sun2000.x.inverter.x.battery.unit`",
+                    "help": "fr.batteryunits",
                     "xs": 12,
                     "sm": 12,
                     "md": 6,
@@ -442,7 +442,7 @@
                     "type": "checkbox",
                     "label": "battery packs",
                     "newLine": true,
-                    "help": "This register data is stored in the opject path `sun2000.x.inverter.x.battery.unit.x.pack`",
+                    "help": "fr.batterypacks",
                     "xs": 12,
                     "sm": 12,
                     "md": 6,
@@ -525,7 +525,7 @@
                 },
                 "chipsTxt": {
                     "type": "staticText",
-                    "text": "Do you need help? There are multiple ways of getting support. ",
+                    "text": "Do you need help? There are multiple ways of getting support.",
                     "newLine": true,
                     "xs": 12,
                     "sm": 12,
