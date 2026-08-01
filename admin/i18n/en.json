@@ -33,7 +33,7 @@
     "fr.batterypacks": "This register data is stored in the opject path `sun2000.x.inverter.x.battery.unit.x.pack`",
     "Statistics": "Statistics",
     "Live chart interval (min)": "Live chart interval (min)",
-    "SDongleA modbus ID": "SDongleA modbus ID",
+    "SDongle modbus ID": "SDongle modbus ID",
     "Modbus-proxy": "Modbus-proxy",
     "Modbus tcp proxy for multiple client connections": "Modbus tcp proxy for multiple client connections",
     "Modbus-proxy via TCP is active": "Modbus-proxy via TCP is active",

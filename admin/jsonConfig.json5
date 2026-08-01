@@ -139,7 +139,7 @@
                 }, 
                 "sDongleId": {
                     "type": "text",
-                    "label": "SDongleA modbus ID",
+                    "label": "SDongle modbus ID",
                     "disabled": "data.integration != 0",
                     "newLine": true,
                     "xs": 12,

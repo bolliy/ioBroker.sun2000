@@ -30,7 +30,7 @@
     "Placeholder for future Settings": "Symbol zastępczy dla przyszłych ustawień",
     "SDongle Settings": "Ustawienia Dongle",
     "SDongle active": "SDongle aktywny",
-    "SDongleA modbus ID": "Identyfikator Modbus SDongleA",
+    "SDongle modbus ID": "Identyfikator protokołu Modbus SDongle",
     "SmartLogger Settings": "Ustawienia SmartLoggera",
     "Statistics": "Statystyka",
     "The Meter modbus ID": "Identyfikator Modbus miernika",
