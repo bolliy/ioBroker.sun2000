@@ -30,6 +30,7 @@
     "@iobroker/adapter-core": "^3.4.3",
     "javascript-stringify": "^2.1.0",
     "modbus-serial": "^8.0.25",
+    "suncalc2": "^1.8.1",
     "tcp-port-used": "^1.0.3"
   },
   "devDependencies": {
