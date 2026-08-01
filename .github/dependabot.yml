@@ -31,3 +31,5 @@ updates:
     open-pull-requests-limit: 15
     assignees:
       - 'bolliy'
+    cooldown:
+      default-days: 7
