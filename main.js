@@ -451,122 +451,126 @@ class Sun2000 extends utils.Adapter {
 		await this.setState('info.modbusDelay', { val: this.config.delay, ack: true });
 		await this.setState('info.modbusTcpServer', { val: this.config.ms_active, ack: true });
 		// Load user settings
-		if (this.config.address != '' && this.config.port > 0 && this.config.updateInterval > 0) {
-			this.settings.address = this.config.address;
-			this.settings.port = this.config.port;
-			this.settings.modbusTimeout = this.config.timeout; //ms
-			this.settings.modbusDelay = this.config.delay; //ms
-			this.settings.modbusConnectDelay = this.config.connectDelay; //ms
-			this.settings.modbusAdjust = this.config.autoAdjust;
-			if (this.config.modbusIds !== '') {
-				this.settings.modbusIds = this.config.modbusIds.split(',').map(n => {
-					return Number(n);
-				});
-			} else {
-				this.settings.modbusIds = [];
-			}
-			//SmartDongle
-			this.settings.sd.active = this.config.sd_active;
-			// eslint-disable-next-line no-constant-binary-expression
-			this.settings.sd.sDongleId = Number(this.config.sDongleId) ?? 0;
-			if (this.settings.sd.sDongleId < 0 || this.settings.sd.sDongleId >= 255) {
-				this.settings.sd.active = false;
-			}
-			//this.settings.highInterval = this.config.updateInterval * 1000; //ms
-			//Modbus-Proxy
-			this.settings.ms.address = this.config.ms_address;
-			this.settings.ms.port = this.config.ms_port;
-			this.settings.ms.active = this.config.ms_active;
-			this.settings.ms.log = this.config.ms_log;
-			//SmartLogger
-			this.settings.integration = this.config.integration;
-			this.settings.sl.meterId = this.config.sl_meterId;
-			//battery charge control
-			this.settings.cb.tou = this.config.cb_tou;
-			//further battery register
-			this.settings.ds.batteryUnits = this.config.ds_bu;
-			this.settings.ds.batteryPacks = this.config.ds_bp;
-			//statistics
-			this.settings.statistics = { liveInterval: this.config.stat_liveInterval || 5 }; //min
+		try {
+			if (this.config.address != '' && this.config.port > 0 && this.config.updateInterval > 0) {
+				this.settings.address = this.config.address;
+				this.settings.port = this.config.port;
+				this.settings.modbusTimeout = this.config.timeout; //ms
+				this.settings.modbusDelay = this.config.delay; //ms
+				this.settings.modbusConnectDelay = this.config.connectDelay; //ms
+				this.settings.modbusAdjust = this.config.autoAdjust;
+				if (this.config.modbusIds !== '') {
+					this.settings.modbusIds = this.config.modbusIds.split(',').map(n => {
+						return Number(n);
+					});
+				} else {
+					this.settings.modbusIds = [];
+				}
+				//SmartDongle
+				this.settings.sd.active = this.config.sd_active;
+				// eslint-disable-next-line no-constant-binary-expression
+				this.settings.sd.sDongleId = Number(this.config.sDongleId) ?? 0;
+				if (this.settings.sd.sDongleId < 0 || this.settings.sd.sDongleId >= 255) {
+					this.settings.sd.active = false;
+				}
+				//this.settings.highInterval = this.config.updateInterval * 1000; //ms
+				//Modbus-Proxy
+				this.settings.ms.address = this.config.ms_address;
+				this.settings.ms.port = this.config.ms_port;
+				this.settings.ms.active = this.config.ms_active;
+				this.settings.ms.log = this.config.ms_log;
+				//SmartLogger
+				this.settings.integration = this.config.integration;
+				this.settings.sl.meterId = this.config.sl_meterId;
+				//battery charge control
+				this.settings.cb.tou = this.config.cb_tou;
+				//further battery register
+				this.settings.ds.batteryUnits = this.config.ds_bu;
+				this.settings.ds.batteryPacks = this.config.ds_bp;
+				//statistics
+				this.settings.statistics = { liveInterval: this.config.stat_liveInterval || 5 }; //min
 
-			if (this.settings.modbusAdjust) {
-				await this.setState('info.JSONhealth', { val: '{message: "Adjust modbus settings"}', ack: true });
-			} else {
-				await this.setState('info.JSONhealth', { val: '{message : "Information is collected..."}', ack: true });
-			}
-			//validate modbus Ids
-			if (this.settings.modbusIds.length > 5) {
-				this.adapterDisable(`*** Adapter deactivated, Only a maximum of 5 inverters are allowed! ***`);
-				return;
-			}
-			if (this.settings.integration !== 2 && this.settings.modbusIds.length === 0) {
-				this.adapterDisable(`*** Adapter deactivated, inverter Modbus IDs must be entered! ***`);
-				return;
-			}
-			//ES6 use a for (const [index, item] of array.entries()) of loop
-			for (const [i, id] of this.settings.modbusIds.entries()) {
-				//Inverter
-				if (id >= 250) {
-					this.adapterDisable(`*** Adapter deactivated, inverter modbus Id ${id} is not permitted! ***`);
+				if (this.settings.modbusAdjust) {
+					await this.setState('info.JSONhealth', { val: '{message: "Adjust modbus settings"}', ack: true });
+				} else {
+					await this.setState('info.JSONhealth', { val: '{message : "Information is collected..."}', ack: true });
+				}
+				//validate modbus Ids
+				if (this.settings.modbusIds.length > 5) {
+					this.adapterDisable(`*** Adapter deactivated, Only a maximum of 5 inverters are allowed! ***`);
 					return;
 				}
-				//inverter modbus id 0 does not exist with emma
-				if (this.settings.integration !== 2 || id > 0) {
-					this.devices.push({
-						index: i,
-						duration: 5000,
-						modbusId: id,
-						driverClass: driverClasses.inverter,
-						meter: i == 0 && this.settings.integration === 0,
-					});
+				if (this.settings.integration !== 2 && this.settings.modbusIds.length === 0) {
+					this.adapterDisable(`*** Adapter deactivated, inverter Modbus IDs must be entered! ***`);
+					return;
 				}
-			}
+				//ES6 use a for (const [index, item] of array.entries()) of loop
+				for (const [i, id] of this.settings.modbusIds.entries()) {
+					//Inverter
+					if (id >= 250) {
+						this.adapterDisable(`*** Adapter deactivated, inverter modbus Id ${id} is not permitted! ***`);
+						return;
+					}
+					//inverter modbus id 0 does not exist with emma
+					if (this.settings.integration !== 2 || id > 0) {
+						this.devices.push({
+							index: i,
+							duration: 5000,
+							modbusId: id,
+							driverClass: driverClasses.inverter,
+							meter: i == 0 && this.settings.integration === 0,
+						});
+					}
+				}
 
-			//SDongle
-			if (this.settings.integration === 0 && this.settings.sd.active) {
-				this.devices.push({
-					index: 0,
-					duration: 0,
-					modbusId: this.settings.sd.sDongleId,
-					driverClass: driverClasses.sdongle,
-				});
-			}
-
-			//SmartLogger
-			if (this.settings.integration === 1) {
-				this.devices.push({
-					index: 0,
-					duration: 0,
-					modbusId: 0,
-					driverClass: driverClasses.logger,
-				});
-				if (this.settings.sl.meterId > 0) {
+				//SDongle
+				if (this.settings.integration === 0 && this.settings.sd.active) {
 					this.devices.push({
 						index: 0,
 						duration: 0,
-						meter: true,
-						modbusId: this.settings.sl.meterId,
-						driverClass: driverClasses.loggerMeter,
+						modbusId: this.settings.sd.sDongleId,
+						driverClass: driverClasses.sdongle,
 					});
 				}
-			}
 
-			//EMMA
-			if (this.settings.integration === 2) {
-				this.devices.push({
-					index: 0,
-					duration: 0,
-					modbusId: 0,
-					meter: true,
-					testMode: false,
-					driverClass: driverClasses.emma,
-				});
-			}
+				//SmartLogger
+				if (this.settings.integration === 1) {
+					this.devices.push({
+						index: 0,
+						duration: 0,
+						modbusId: 0,
+						driverClass: driverClasses.logger,
+					});
+					if (this.settings.sl.meterId > 0) {
+						this.devices.push({
+							index: 0,
+							duration: 0,
+							meter: true,
+							modbusId: this.settings.sl.meterId,
+							driverClass: driverClasses.loggerMeter,
+						});
+					}
+				}
 
-			await this.adjustInverval();
-			await this.StartProcess();
-		} else {
-			this.adapterDisable(`*** Adapter deactivated, Adapter Settings incomplete! ***`);
+				//EMMA
+				if (this.settings.integration === 2) {
+					this.devices.push({
+						index: 0,
+						duration: 0,
+						modbusId: 0,
+						meter: true,
+						testMode: false,
+						driverClass: driverClasses.emma,
+					});
+				}
+
+				await this.adjustInverval();
+				await this.StartProcess();
+			} else {
+				this.adapterDisable(`*** Adapter deactivated, Adapter Settings incomplete! ***`);
+			}
+		} catch (err) {
+			this.adapterDisable(`*** Adapter deactivated, Adapter Settings error: ${err.message} ***`);
 		}
 	}
 
