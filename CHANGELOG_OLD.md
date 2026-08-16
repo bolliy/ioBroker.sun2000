@@ -1,4 +1,7 @@
 ## Changelog
+## 2.4.4 (2026-05-04)
+* statistics fix: add error handling for waitForValue function
+
 ## 2.4.3 (2026-04-19)
 * statistics: new state `statistics.jsonToday` — live summary of today's energy values
 * statistics: default chart shows energy flows above/below zero line, SOC (hourly only), self-sufficiency and self-consumption on second Y-axis

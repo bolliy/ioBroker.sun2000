@@ -69,7 +69,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.6.1 (2026-08-16)
 * (bolliy/claude) Fix: consumption breakdown entries (`statistics.dataDef.consumptionBreakdown`) the correct **daily** value in statistics.jsonToday` 
 * (bolliy) fix: enhance error handling and validation in device initialization
 * (bolliy) Added: `consumption.baseValue` field in `statistics.json*` — holds the unreduced total house consumption before breakdown entries are subtracted.
@@ -97,9 +97,6 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 * statistics fix: return weekly range up to current Monday
 * statistics: added support for generating statistics templates directly from built-in charts
 * statistics: improved tooltip formatter - tooltip units are now provided explicitly via tooltip.valueFormatter
-
-### 2.4.4 (2026-05-04)
-* statistics fix: add error handling for waitForValue function
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 

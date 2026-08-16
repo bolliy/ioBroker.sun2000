@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "2.6.0",
+    "version": "2.6.1",
     "news": {
+      "2.6.1": {
+        "en": "Fix: consumption breakdown entries (`statistics.dataDef.consumptionBreakdown`) the correct **daily** value in statistics.jsonToday` \nfix: enhance error handling and validation in device initialization\nAdded: `consumption.baseValue` field in `statistics.json*` — holds the unreduced total house consumption before breakdown entries are subtracted.",
+        "de": "Behoben: Die Einträge zur Verbrauchsaufschlüsselung (`statistics.dataDef.consumptionBreakdown`) enthalten nun den korrekten **täglichen** Wert in statistics.jsonToday.\nBehoben: Verbesserung der Fehlerbehandlung und Validierung bei der Geräteinitialisierung\nNeu hinzugefügt: Das Feld `consumption.baseValue` in `statistics.json*` enthält den unreduzierten Gesamtverbrauch des Haushalts, bevor die einzelnen Aufschlüsselungsposten abgezogen werden.",
+        "ru": "Исправление: записи о структуре потребления (`statistics.dataDef.consumptionBreakdown`) отображают правильное значение **ежедневно** в файле statistics.jsonToday`.\nИсправление: улучшена обработка ошибок и проверка данных при инициализации устройства.\nДобавлено поле `consumption.baseValue` в файле `statistics.json*` — содержит общее потребление электроэнергии в доме до вычета данных о расходе.",
+        "pt": "Correção: as entradas de detalhamento do consumo (`statistics.dataDef.consumptionBreakdown`) agora contêm o valor **diário** correto em statistics.jsonToday.\nCorreção: aprimoramento do tratamento de erros e da validação na inicialização do dispositivo.\nAdicionado: o campo `consumption.baseValue` em `statistics.json*` — armazena o consumo total da casa, sem deduções, antes da subtração dos valores discriminados.",
+        "nl": "Correctie: de gegevens in het overzicht van het verbruik (`statistics.dataDef.consumptionBreakdown`) bevatten nu de correcte **dagelijkse** waarde in statistics.jsonToday.\nOplossing: verbeterde foutafhandeling en validatie bij apparaatinitialisatie.\nToegevoegd: het veld `consumption.baseValue` in `statistics.json*` bevat het totale, niet-gereduceerde energieverbruik van het huishouden voordat de afzonderlijke verbruiksartikelen worden afgetrokken.",
+        "fr": "Correction : les valeurs correctes pour la ventilation de la consommation (`statistics.dataDef.consumptionBreakdown`) dans `statistics.jsonToday` sont désormais affichées.\nCorrection : amélioration de la gestion des erreurs et de la validation lors de l'initialisation du périphérique\nAjout : champ `consumption.baseValue` dans `statistics.json*` — contient la consommation totale non réduite du logement avant que les entrées détaillées ne soient soustraites.",
+        "it": "Correzione: le voci di ripartizione dei consumi (`statistics.dataDef.consumptionBreakdown`) mostrano il valore **giornaliero** corretto in statistics.jsonToday.\nCorrezione: migliorare la gestione degli errori e la convalida nell'inizializzazione del dispositivo\nAggiunto: il campo `consumption.baseValue` in `statistics.json*` contiene il consumo totale della casa non ridotto prima della sottrazione delle voci di ripartizione.",
+        "es": "Corrección: las entradas de desglose del consumo (`statistics.dataDef.consumptionBreakdown`) tienen el valor **diario** correcto en statistics.jsonToday.\nCorrección: mejora del manejo de errores y la validación en la inicialización del dispositivo.\nAñadido: campo `consumption.baseValue` en `statistics.json*`: contiene el consumo total de la vivienda sin reducir antes de que se resten las entradas de desglose.",
+        "pl": "Naprawiono: wpisy dotyczące podziału zużycia (`statistics.dataDef.consumptionBreakdown`) mają poprawną wartość **dzienną** w pliku statistics.jsonToday`\nnaprawiono: ulepszono obsługę błędów i walidację podczas inicjalizacji urządzenia\nDodano: pole `consumption.baseValue` w `statistics.json*` — przechowuje całkowite zużycie energii w domu przed odjęciem wpisów dotyczących podziału.",
+        "uk": "Виправлення: записи розподілу споживання (`statistics.dataDef.consumptionBreakdown`) мають правильне **щоденне** значення у statistics.jsonToday`\nвиправлення: покращено обробку помилок та перевірку під час ініціалізації пристрою\nДодано: поле `consumption.baseValue` у `statistics.json*` — містить незменшене загальне споживання будинку до віднімання записів розподілу.",
+        "zh-cn": "修复：将 statistics.jsonToday 中的消费细分条目（`statistics.dataDef.consumptionBreakdown`）的**每日**值修正为正确的值。\n修复：增强设备初始化过程中的错误处理和验证\n新增：`statistics.json*` 中的 `consumption.baseValue` 字段 — 保存扣除细分条目之前的未减少的总家庭消耗量。"
+      },
       "2.6.0": {
         "en": "Optimization of memory usage\nAdded six new EMMA control registers ([#285]https://github.com/bolliy/ioBroker.sun2000/issues/285)\nImplemented Time-of-Use (TOU)",
         "de": "Optimierung der Speichernutzung\nHinzugefügt sechs neue EMMA-Kontrollregister ([#285]https://github.com/bolliy/ioBroker.sun2000/issues/285)\nImplementierte Nutzungszeit (TOU)",
@@ -80,19 +93,6 @@
         "pl": "statystyki: nowy stan 'statistics.jsonToday' - streszczenie dzisiejszych wartości energetycznych",
         "uk": "статистика: новий стан `statistics.jsonToday`` — живий підсумок цін на сьогодні",
         "zh-cn": "统计:新国家`统计学.json Today'——今日能源价值实况摘要"
-      },
-      "2.4.2": {
-        "en": "fix test-and-release: deploy with 24.x",
-        "de": "fix test-and-release: einsatz mit 24.x",
-        "ru": "исправление тест-и-релиз: развертывание с 24.x",
-        "pt": "corrigir teste e liberação: implantar com 24.x",
-        "nl": "fix test-and-release: inzet met 24.x",
-        "fr": "correction test-and-release: déployer avec 24.x",
-        "it": "fix test-and-release: implementare con 24.x",
-        "es": "fijar prueba y liberación: desplegar con 24.x",
-        "pl": "fix test- and- release: rozmieszczanie z 24.x",
-        "uk": "виправити тест-і-випуск: розгортання з 24.x",
-        "zh-cn": "固定测试和释放:部署24x"
       }
     },
     "titleLang": {
