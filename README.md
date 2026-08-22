@@ -69,6 +69,10 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+* (bolliy) update devDependencies to latest versions
+* (bolliy) fix: update day-start baseline handling of consumption breakdown 
+
 ### 2.6.1 (2026-08-16)
 * (bolliy/claude) Fix: consumption breakdown entries (`statistics.dataDef.consumptionBreakdown`) the correct **daily** value in statistics.jsonToday` 
 * (bolliy) fix: enhance error handling and validation in device initialization
