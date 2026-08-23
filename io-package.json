@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "2.6.1",
+    "version": "2.6.2",
     "news": {
+      "2.6.2": {
+        "en": "update devDependencies to latest versions\nfix: update day-start baseline handling of consumption breakdown",
+        "de": "update devAbhängigkeiten zu den neuesten Versionen\nfix: update day-start baseline handhabung der verbrauchsaufgliederung",
+        "ru": "обновление DevDependencies до последних версий\nисправление: обновление начальной линии обработки пробоя потребления",
+        "pt": "atualizar devDependências para versões mais recentes\ncorreção: atualização do tratamento de base do início do dia da desagregação do consumo",
+        "nl": "update devDependencies naar de nieuwste versies\nfix: bijwerking van de dagstartbehandeling van het verbruik",
+        "fr": "mettre à jour devDependences vers les dernières versions\ncorrectif: mise à jour du traitement de la ventilation de la consommation au début du jour",
+        "it": "aggiornare devDependencies alle ultime versioni\ncorrezione: aggiornamento day-start baseline gestione della ripartizione dei consumi",
+        "es": "actualizaciones devDependencies a versiones más recientes\nfijación: actualización de la gestión de la base de inicio de día del desglose del consumo",
+        "pl": "aktualizacja devDevendencies do najnowszych wersji\nfix: update day-start bazowego postępowania z podziałem zużycia",
+        "uk": "оновлення devDependencies в останні версії\nвиправити: оновлення денного запуску базового використання розбиття споживання",
+        "zh-cn": "更新对最新版本的依赖性\n固定:更新消费细目的日启动基线处理"
+      },
       "2.6.1": {
         "en": "Fix: consumption breakdown entries (`statistics.dataDef.consumptionBreakdown`) the correct **daily** value in statistics.jsonToday` \nfix: enhance error handling and validation in device initialization\nAdded: `consumption.baseValue` field in `statistics.json*` — holds the unreduced total house consumption before breakdown entries are subtracted.",
         "de": "Behoben: Die Einträge zur Verbrauchsaufschlüsselung (`statistics.dataDef.consumptionBreakdown`) enthalten nun den korrekten **täglichen** Wert in statistics.jsonToday.\nBehoben: Verbesserung der Fehlerbehandlung und Validierung bei der Geräteinitialisierung\nNeu hinzugefügt: Das Feld `consumption.baseValue` in `statistics.json*` enthält den unreduzierten Gesamtverbrauch des Haushalts, bevor die einzelnen Aufschlüsselungsposten abgezogen werden.",
@@ -80,19 +93,6 @@
         "pl": "statystyki naprawić: dodać obsługę błędów dla funkcji waitForValue",
         "uk": "виправлення статистичних даних: Додавання обробки помилок для очікування",
         "zh-cn": "统计修补: 添加waitForValue函数的错误处理"
-      },
-      "2.4.3": {
-        "en": "statistics: new state `statistics.jsonToday` — live summary of today's energy values",
-        "de": "statistik: new state `statistics.jsonToday` — Live-Zusammenfassung der heutigen Energiewerte",
-        "ru": "статистика: новый государственный «statistics.jsonToday» — живое резюме сегодняшних энергетических ценностей",
-        "pt": "estatística: novo estado `statistics.jsonToday` — resumo ao vivo dos valores energéticos atuais",
-        "nl": "statistieken: nieuwe staat statistiek.jsonVandaag de dag een live samenvatting van de huidige energiewaarden",
-        "fr": "statistiques: nouvel état \"statistics.jsonAujourd'hui\" — résumé en direct des valeurs énergétiques actuelles",
-        "it": "statistiche: nuovo stato `statistics.jsonToday` — sintesi dal vivo dei valori energetici di oggi",
-        "es": "estadística: nuevo estado `estadística.jsonToday` — resumen en vivo de los valores energéticos de hoy",
-        "pl": "statystyki: nowy stan 'statistics.jsonToday' - streszczenie dzisiejszych wartości energetycznych",
-        "uk": "статистика: новий стан `statistics.jsonToday`` — живий підсумок цін на сьогодні",
-        "zh-cn": "统计:新国家`统计学.json Today'——今日能源价值实况摘要"
       }
     },
     "titleLang": {

@@ -69,9 +69,9 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Placeholder for the next version (at the beginning of the line):
 	### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 2.6.2 (2026-08-23)
 * (bolliy) update devDependencies to latest versions
-* (bolliy) fix: update day-start baseline handling of consumption breakdown 
+* (bolliy) fix: update day-start baseline handling of consumption breakdown
 
 ### 2.6.1 (2026-08-16)
 * (bolliy/claude) Fix: consumption breakdown entries (`statistics.dataDef.consumptionBreakdown`) the correct **daily** value in statistics.jsonToday` 
@@ -96,11 +96,6 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 * (bolliy) statistics: if no battery is present, the charts are generated without battery information (SOC, charge, discharge).
 * (bolliy) fix emma: update register addresses of meter.activePowerL1-L3 ([#282](https://github.com/bolliy/ioBroker.sun2000/issues/282))
 * (bolliy) requires node.js >= 22
-
-### 2.4.5 (2026-05-14)
-* statistics fix: return weekly range up to current Monday
-* statistics: added support for generating statistics templates directly from built-in charts
-* statistics: improved tooltip formatter - tooltip units are now provided explicitly via tooltip.valueFormatter
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 

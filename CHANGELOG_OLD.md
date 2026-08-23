@@ -1,4 +1,9 @@
 ## Changelog
+## 2.4.5 (2026-05-14)
+* statistics fix: return weekly range up to current Monday
+* statistics: added support for generating statistics templates directly from built-in charts
+* statistics: improved tooltip formatter - tooltip units are now provided explicitly via tooltip.valueFormatter
+
 ## 2.4.4 (2026-05-04)
 * statistics fix: add error handling for waitForValue function
 
