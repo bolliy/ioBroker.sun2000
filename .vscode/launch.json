@@ -29,7 +29,7 @@
             //"cwd": "${workspaceFolder}/.dev-server/default",
             "stopOnEntry": true,
             "sourceMaps": true,
-             "sourceMapPathOverrides": {
+            "sourceMapPathOverrides": {
 		            "${workspaceFolder}/.dev-server/default/node_modules/iobroker.sun2000/*" : "${workspaceFolder}/*"
                 
 	          },
