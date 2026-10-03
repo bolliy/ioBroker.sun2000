@@ -165,35 +165,35 @@
         "condition": {
           "operand": "and",
           "rules": [
-            "oldVersion<=0.18.1",
-            "newVersion>0.18.1"
+            "oldVersion<=2.6.2",
+            "newVersion>2.6.2"
           ]
         },
         "title": {
-          "en": "node.js 20.x or higher required",
-          "de": "node.js 20.x oder höher erforderlich",
-          "ru": "node.js 20.x или выше требуется",
-          "pt": "node.js 20.x ou superior requerido",
-          "nl": "node.js 20.x of hoger vereist",
-          "fr": "node.js 20.x ou plus requis",
-          "it": "node.js 20.x o superiore richiesto",
-          "es": "node.js 20.x o superior requerido",
-          "pl": "node.js 20,x lub wyższa wymagana",
-          "uk": "node.js 20.x або вище потрібно",
-          "zh-cn": "节点.js 20.x或更高"
+          "en": "Units for some control values ​​have changed.",
+          "de": "Einheiten für einige Steuerwerte (control) haben sich geändert.",
+          "ru": "Единицы измерения некоторых управляющих значений изменились.",
+          "pt": "As unidades para alguns valores de controle mudaram.",
+          "nl": "Eenheden voor sommige besturingswaarden zijn gewijzigd.",
+          "fr": "Les unités de certaines valeurs de contrôle ont changé.",
+          "it": "Le unità per alcuni valori di controllo sono cambiate.",
+          "es": "Las unidades para algunos valores de control han cambiado.",
+          "pl": "Jednostki niektórych wartości sterujących uległy zmianie.",
+          "uk": "Одиниці деяких керуючих значень змінилися.",
+          "zh-cn": "某些控制值的单位已更改。"
         },
         "text": {
-          "en": "Please try to stay current with your Node.js version because the support is limited in time. As of now all Node.js versions below 20.x are no longer supported. (End Of Life).",
-          "de": "Bitte versuchen Sie die Node.js-Version aktuell zu halten, da die Unterstützung zeitlich begrenzt ist. Ab sofort werden alle Node.js Versionen unter 20.x nicht mehr unterstützt. (End Of Life).",
-          "ru": "Пожалуйста, попытайтесь оставаться в курсе своей версии Node.js, потому что поддержка ограничена во времени. На данный момент все версии Node.js ниже 20.x больше не поддерживаются. (Конец жизни).",
-          "pt": "Por favor, tente manter-se atual com sua versão Node.js porque o suporte é limitado a tempo. A partir de agora todas as versões do Node.js abaixo de 20.x não são mais suportadas. (End Of Life).",
-          "nl": "Probeer om actueel te blijven met uw Node.js-versie omdat de ondersteuning beperkt is in de tijd. Vanaf nu worden alle Node.js versies onder 20.x niet meer ondersteund. (Einde van het leven).",
-          "fr": "Veuillez essayer de rester à jour avec votre version Node.js car le support est limité dans le temps. Toutes les versions de Node.js sous 20.x ne sont plus prises en charge. (Fin de vie).",
-          "it": "Si prega di cercare di rimanere corrente con la versione Node.js perché il supporto è limitato nel tempo. A partire da ora tutte le versioni Node.js inferiori a 20.x non sono più supportate. (End Of Life).",
-          "es": "Por favor, trate de mantenerse actualizado con su versión Node.js porque el soporte es limitado en el tiempo. A partir de ahora todas las versiones Node.js debajo de 20.x ya no están soportadas. (End Of Life).",
-          "pl": "Proszę spróbować pozostać na bieżąco z wersją Node.js ponieważ wsparcie jest ograniczone w czasie. Od teraz wszystkie wersje Node.js poniżej 20.x nie są już obsługiwane. (Koniec życia).",
-          "uk": "Будь-ласка, будь ласка, намагайтеся постійно триматися з версією Node.js, оскільки підтримка обмежена в часі. Зараз всі версії Node.js нижче 20.x не підтримуються. (Для життя).",
-          "zh-cn": "请尝试保留您的 Node.js 版本, 因为支持时间有限 。 到目前为止,20x以下的所有Node.js版本不再被支持. (寿终."
+          "en": "Please note that the units for the controls `battery.tou.maximumPowerForChargingFromGrid` and `grid.maximumFeedGridPower` have been changed from kW (kilowatts) to W (watts).",
+          "de": "Bitte beachten Sie, dass die Einheiten für die controls `battery.tou.maximumPowerForChargingFromGrid` und `grid.maximumFeedGridPower` von kW (Kilowatt) auf W (Watt) geändert wurden.",
+          "ru": "Пожалуйста, обратите внимание, что единицы измерения для элементов управления `battery.tou.maximumPowerForChargingFromGrid` и `grid.maximumFeedGridPower` были изменены с kW (киловатт) на W (ватт).",
+          "pt": "Por favor, note que as unidades para os controles `battery.tou.maximumPowerForChargingFromGrid` e `grid.maximumFeedGridPower` foram alteradas de kW (quilowatts) para W (watts).",
+          "nl": "Let op dat de eenheden voor de besturingselementen `battery.tou.maximumPowerForChargingFromGrid` en `grid.maximumFeedGridPower` zijn gewijzigd van kW (kilowatt) naar W (watt).",
+          "fr": "Veuillez noter que les unités pour les commandes `battery.tou.maximumPowerForChargingFromGrid` et `grid.maximumFeedGridPower` ont été modifiées de kW (kilowatts) à W (watts).",
+          "it": "Si prega di notare che le unità per i controlli `battery.tou.maximumPowerForChargingFromGrid` e `grid.maximumFeedGridPower` sono state modificate da kW (kilowatt) a W (watt).",
+          "es": "Por favor, tenga en cuenta que las unidades para los controles `battery.tou.maximumPowerForChargingFromGrid` y `grid.maximumFeedGridPower` han sido cambiadas de kW (kilovatios) a W (vatios).",
+          "pl": "Proszę zauważyć, że jednostki dla sterowania `battery.tou.maximumPowerForChargingFromGrid` i `grid.maximumFeedGridPower` zostały zmienione z kW (kilowatów) na W (watów).",
+          "uk": "Будь ласка, зверніть увагу, що одиниці виміру для елементів керування `battery.tou.maximumPowerForChargingFromGrid` і `grid.maximumFeedGridPower` були змінені з kW (кіловатт) на W (ватт).",
+          "zh-cn": "请注意，控制项 `battery.tou.maximumPowerForChargingFromGrid` 和 `grid.maximumFeedGridPower` 的单位已从 kW (千瓦) 更改为 W (瓦)。"
         },
         "level": "info",
         "buttons": [
