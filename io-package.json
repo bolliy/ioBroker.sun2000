@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "2.6.2",
+    "version": "2.7.0",
     "news": {
+      "2.7.0": {
+        "en": "breaking change:\nUnits for the control values ​​`battery.tou.maximumPowerForChargingFromGrid` and `grid.maximumFeedGridPower` have been changed from kW to W to allow for adjustments of less than 1 kW. ([#300] (https://github.com/bolliy/ioBroker.sun2000/discussions/300))\nfix: Ensure that unacknowledged control states occurring during startup are correctly processed in the service queues.",
+        "de": "Kurswechsel:\nEinheiten für die Steuerwerte `Battery.tou.MaximumPowerForChargingFromGrid` und `Grid.MaximumFeedGridPower` wurden von kW auf W geändert, um Anpassungen unter 1 kW zu ermöglichen. ([#300] (https://github.com/bolliy/ioBroker.sun2000/discussions/300))\nFix: Stellen Sie sicher, dass unbestätigte Kontrollzustände beim Start korrekt verarbeitet werden.",
+        "ru": "критическое изменение:\nЕдиницы измерения контрольных значений «Battery.tou.Максимальная мощность для зарядки от сети» и «Grid.Максимальная мощность питающей сети» были изменены с кВт на Вт, чтобы их можно было регулировать менее 1 кВт. ([#300] (https://github.com/bolliy/ioBroker.sun2000/discussions/300))\nисправление: убедитесь, что неподтвержденные контрольные состояния, возникающие во время запуска, правильно обрабатываются в очередях обслуживания.",
+        "pt": "mudança radical:\nAs unidades dos valores de controle `battery.tou.maximumPowerForChargingFromGrid` e `grid.maximumFeedGridPower` foram alteradas de kW para W para permitir ajustes de menos de 1 kW. ([#300] (https://github.com/bolliy/ioBroker.sun2000/discussions/300))\ncorreção: verifique se os estados de controle não confirmados durante a inicialização são processados nas filas de serviço.",
+        "nl": "belangrijke verandering:\nDe eenheden voor de controlewaarden `Battery.tou.MaximumPowerForChargingFromGrid` en `Grid.MaximumFeedGridPower` zijn gewijzigd van kW naar W om aanpassingen van minder dan 1 kW mogelijk te maken. ([#300] (https://github.com/bolliy/ioBroker.sun2000/discussions/300))\nOplossing: Zorg ervoor dat controletoestanden die niet worden erkend tijdens het opstarten correct worden verwerkt in de servicewachtrijen.",
+        "fr": "changement décisif :\nLes unités des valeurs de contrôle « Battery.tou.MaximumPowerForChargingFromGrid » et « Grid.MaximumFeedGridPower » sont passées de kW à W pour permettre des réglages de moins de 1 kW. ([#300] (https://github.com/bolliy/ioBroker.sun2000/discussions/300))\nfix : Assurez-vous que les états de contrôle non reconnus au démarrage sont correctement traités dans les files d'attente.",
+        "it": "cambio decisivo:\nLe unità per i valori di controllo `battery.tou.maximumpowerforChargingFromGrid` e `grid.maximumFeedGridPower` sono state cambiate da kW a W per regolazioni inferiori a 1 kW. #300 https://github.com/bolliy/ioBroker.sun2000/discussions/300\nfix: Si assicuri che i controlli non riconosciuti all'avvio siano elaborati correttamente nelle code di servizio.",
+        "es": "cambio radical:\nLas unidades de los valores de control `Battery.ToU.MaximumPowerForChargingFromGrid` y `Grid.MaximumFeedGridPower` se han cambiado de kW a W para permitir ajustes de menos de 1 kW. ([#300] (https://github.com/bolliy/ioBroker.sun2000/discussions/300))\nsolución: Asegúrese de que los estados de control no confirmados durante el inicio se procesan correctamente en las colas de servicio.",
+        "pl": "przełomowa zmiana:\nJednostki dla wartości kontrolnych „Battery.tou.MaximumPowerForChargingFromGrid” i „Grid.MaximumFeedGridPower „zostały zmienione z kW na W, aby umożliwić regulację mniejszą niż 1 kW. ([#300] (https://github.com/bolliy/ioBroker.sun2000/discussions/300))\npoprawka: Upewnij się, że niepotwierdzone stany kontrolne występujące podczas uruchamiania są poprawnie przetwarzane w kolejkach usług.",
+        "uk": "Порушення змін:\nБлоки для контрольних значень `Battery.tou.MaximumPowerForChargingFromGrid` та `Grid.MaximumFeedGridPower` були змінені з кВт на Вт, щоб дозволити регулювати менше 1 кВт. ([#300] (https://github.com/bolliy/ioBroker.sun2000/discussions/300))\nВиправлення: Переконайтеся, що невизнані контрольні стани, що виникають під час запуску, правильно обробляються в чергах служб.",
+        "zh-cn": "重大变化：\n控制值 “battery.tou.maximumPowerforChargingForChargingFromGrid” 和 “Grid.maximumFeedGridPower” 的单位已从 kW 更改为 W，允许调整小于 1 kW。([#300] (https://github.com/bolliy/ioBroker.sun2000/discussions/300))\n修复：确保在服务队列中正确处理启动期间发生的未确认的控制状态。"
+      },
       "2.6.2": {
         "en": "update devDependencies to latest versions\nfix: update day-start baseline handling of consumption breakdown",
         "de": "update devAbhängigkeiten zu den neuesten Versionen\nfix: update day-start baseline handhabung der verbrauchsaufgliederung",
@@ -80,19 +93,6 @@
         "pl": "statystyki naprawić: wrócić tygodniowy zakres do bieżącego poniedziałku\nstatystyki: dodano wsparcie dla tworzenia szablonów statystycznych bezpośrednio z wykresów built- in\nstatystyki: ulepszone formatowanie podpowiedzi narzędziowej - jednostki podpowiedzi są teraz wyraźnie dostarczane za pośrednictwem tooltip.valueFormatter",
         "uk": "статистика виправити: повернути щотижневий діапазон до поточного понеділка\nстатистика: додана підтримка створення шаблонів статистики безпосередньо з вбудованих діаграм\nстатистика: поліпшений форматувальник інструментів - блоки інструментів тепер забезпечують явно через tooltip.valueFormatter",
         "zh-cn": "统计修补:截至本星期一的每周返回范围\n统计:为直接从内建图表生成统计模板提供更多支持\n统计:改进后的工具提示用于物质-工具提示单位现在通过工具提示明确提供. valueFormatter"
-      },
-      "2.4.4": {
-        "en": "statistics fix: add error handling for waitForValue function",
-        "de": "statistik fix: Fehlerbehandlung für waitForValue-Funktion hinzufügen",
-        "ru": "исправление статистики: добавьте обработку ошибок в функцию WaitForValue",
-        "pt": "estatística corrigir: adicionar o tratamento de erro para a função waitForValue",
-        "nl": "statistieken fix: voeg fout behandeling voor waitForValue functie",
-        "fr": "correction statistique : ajouter la gestion des erreurs pour la fonction waitForValue",
-        "it": "statistiche fix: aggiungere la gestione degli errori per la funzione WaitForValue",
-        "es": "estadística fijado: añadir error de manejo para waitForValue función",
-        "pl": "statystyki naprawić: dodać obsługę błędów dla funkcji waitForValue",
-        "uk": "виправлення статистичних даних: Додавання обробки помилок для очікування",
-        "zh-cn": "统计修补: 添加waitForValue函数的错误处理"
       }
     },
     "titleLang": {

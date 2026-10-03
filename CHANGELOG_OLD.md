@@ -1,4 +1,13 @@
 ## Changelog
+## 2.5.0 (2026-06-09)
+* (bolliy) statistics: added live power chart (statistics.jsonLive)
+* (bolliy) statistics: consumption breakdown — breakdown values are now subtracted from the total `consumption` entry so the lower chart panel shows the remainder separately from the breakdown series
+* (bolliy) statistics: `xAxisFormatter` for the live chart only labels full-hour ticks to avoid clutter
+* (bolliy) statistics: tooltip formatter refactored — `formatTooltipValue(unit, negative, decimals)` helper used consistently across all series
+* (bolliy) statistics: if no battery is present, the charts are generated without battery information (SOC, charge, discharge).
+* (bolliy) fix emma: update register addresses of meter.activePowerL1-L3 ([#282](https://github.com/bolliy/ioBroker.sun2000/issues/282))
+* (bolliy) requires node.js >= 22
+
 ## 2.4.5 (2026-05-14)
 * statistics fix: return weekly range up to current Monday
 * statistics: added support for generating statistics templates directly from built-in charts

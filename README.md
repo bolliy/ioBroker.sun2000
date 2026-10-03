@@ -70,7 +70,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	### **WORK IN PROGRESS**
 	Add draft entries here while the next release is still being finalized.
 -->
-### **WORK IN PROGRESS**
+### 2.7.0 (2026-10-03)
 * breaking change:
  	* (bolliy) Units for the control values ​​`battery.tou.maximumPowerForChargingFromGrid` and `grid.maximumFeedGridPower` have been changed from kW to W to allow for adjustments of less than 1 kW. ([#300] (https://github.com/bolliy/ioBroker.sun2000/discussions/300))
 * (bolliy) fix: Ensure that unacknowledged control states occurring during startup are correctly processed in the service queues.
@@ -93,15 +93,6 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 ### 2.5.1 (2026-06-29)
 - (bolliy) fix: update service queue logic ([#283](https://github.com/bolliy/ioBroker.sun2000/discussions/283))
 - (bolliy) statistics fix: adjust reset handling logic to treat significant drops in value as potential resets
-
-### 2.5.0 (2026-06-09)
-* (bolliy) statistics: added live power chart (statistics.jsonLive)
-* (bolliy) statistics: consumption breakdown — breakdown values are now subtracted from the total `consumption` entry so the lower chart panel shows the remainder separately from the breakdown series
-* (bolliy) statistics: `xAxisFormatter` for the live chart only labels full-hour ticks to avoid clutter
-* (bolliy) statistics: tooltip formatter refactored — `formatTooltipValue(unit, negative, decimals)` helper used consistently across all series
-* (bolliy) statistics: if no battery is present, the charts are generated without battery information (SOC, charge, discharge).
-* (bolliy) fix emma: update register addresses of meter.activePowerL1-L3 ([#282](https://github.com/bolliy/ioBroker.sun2000/issues/282))
-* (bolliy) requires node.js >= 22
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 
