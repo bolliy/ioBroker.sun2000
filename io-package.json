@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "2.7.0",
+    "version": "2.7.1",
     "news": {
+      "2.7.1": {
+        "en": "update devDependencies to latest versions\nAllow decimal values for ​​`battery.tou.maximumPowerForChargingFromGrid` and `grid.maximumFeedGridPower`. ([#300](https://github.com/bolliy/ioBroker.sun2000/discussions/300))",
+        "de": "devDependencies auf die neueste Version updaten\nErlauben Sie Dezimalwerte für `Battery.tou.MaximumPowerForChargingFromGrid` und `Grid.MaximumFeedGridPower`. ([#300] (https://github.com/bolliy/ioBroker.sun2000/discussions/300))",
+        "ru": "обновите devDependencies до последних версий\nРазрешите десятичные значения значений «Battery.Tou. максимальная мощность для зарядки от сети» и «Grid.Максимальная мощность питающей сети». ([#300] (https://github.com/bolliy/ioBroker.sun2000/discussions/300))",
+        "pt": "atualize devDependencies para a última\nPermita valores decimais para `battery.tou.maximumPowerForChargingFromGrid` e `grid.maximumFeedGridPower`. ([#300] (https://github.com/bolliy/ioBroker.sun2000/discussions/300))",
+        "nl": "DevDependencies updaten naar de nieuwste versies\nSta decimale waarden toe voor `Battery.tou.MaximumPowerForChargingFromGrid` en `Grid.MaximumFeedGridPower`. ([#300] (https://github.com/bolliy/ioBroker.sun2000/discussions/300))",
+        "fr": "mettre à jour DevDependencies\nAutorisez les décimales pour `Battery.tou.MaximumPowerForChargingFromGrid` et `Grid.MaximumFeedGridPower`. ([#300] (https://github.com/bolliy/ioBroker.sun2000/discussions/300))",
+        "it": "aggiorna devDependencies all'ultima versione\nPermetta valori decimali per `battery.tou.MaximumPowerForChargingFromGrid` e `grid.MaximumFeedGridPower`. ([#300] (https://github.com/bolliy/ioBroker.sun2000/discussions/300))",
+        "es": "actualizar devDependencies a la última versión\nPermitir valores decimales para `Battery.ToU.MaximumPowerForChargingFromGid` y `Grid.MaximumFeedGridPower`. ([#300] (https://github.com/bolliy/ioBroker.sun2000/discussions/300))",
+        "pl": "zaktualizuj DevDependencies do najnowszych wersji\nZezwalaj na wartości dziesiętne dla `Battery.tou.MaximumPowerForChargingFromGrid` i `Grid.MaximumFeedGridPower`. ([#300] (https://github.com/bolliy/ioBroker.sun2000/discussions/300))",
+        "uk": "оновити devDependencies до останніх версій\nДозволити десяткові значення для `Battery.tou.MaximumPowerForChargingFromGrid` та `Grid.MaximumFeedGridPower`. ([#300] (https://github.com/bolliy/ioBroker.sun2000/discussions/300))",
+        "zh-cn": "将开发依赖项更新到最新版本\n允许 “Battery.tou.maximumPowerforChargingFromGrid” 和 “Grid.maximumFeedGridPower” 的十进制值。([#300] (https://github.com/bolliy/ioBroker.sun2000/discussions/300))"
+      },
       "2.7.0": {
         "en": "fix: Ensure that unacknowledged control states occurring during startup are correctly processed in the service queues.",
         "de": "Fix: Stellt sicher, dass unbestätigte Steuerzustände, die während des Startvorgangs auftreten, in den Dienstwarteschlangen korrekt verarbeitet werden.",
@@ -80,19 +93,6 @@
         "pl": "statystyki: dodany live power chart (statistics.jsonLive)\nrequires node.js >= 22",
         "uk": "статистика: додано графік живої потужності (statistics.jsonLive)\nrequires node.js >= 22",
         "zh-cn": "统计:增加的实电图(统计学.jsonLive)"
-      },
-      "2.4.5": {
-        "en": "statistics fix: return weekly range up to current Monday\nstatistics: added support for generating statistics templates directly from built-in charts\nstatistics: improved tooltip formatter - tooltip units are now provided explicitly via tooltip.valueFormatter",
-        "de": "statistik fix: wöchentliche Rückgabe bis zum aktuellen Montag\nstatistik: unterstützung für die erstellung von statistiken vorlagen direkt aus integrierten diagrammen\nstatistiken: verbesserter Tooltip-Formater - Tooltip-Einheiten werden nun explizit über tooltip.valueFormatter bereitgestellt",
-        "ru": "исправление статистики: еженедельный диапазон возврата до текущего понедельника\nстатистика: добавлена поддержка для создания шаблонов статистики непосредственно из встроенных диаграмм\nстатистика: улучшенный инструментальный формататор - инструментальные блоки теперь предоставляются явно через tooltip.value",
-        "pt": "estatística correção: retorno semanal intervalo até a segunda-feira atual\nestatística: suporte adicionado para gerar modelos estatísticos diretamente de gráficos embutidos\nestatísticas: a dica de formatação melhorada - as unidades de dica são agora fornecidas explicitamente via tooltip.valueFormatter",
-        "nl": "statistieken fix: retour wekelijkse bereik tot de huidige maandag\nstatistieken: extra ondersteuning voor het genereren van statistieken templates rechtstreeks uit ingebouwde grafieken\nstatistieken: verbeterde tooltip formatter - tooltip-eenheden worden nu expliciet geleverd via tooltip.valueFormatter",
-        "fr": "correction statistique: retour hebdomadaire jusqu'à lundi actuel\nstatistiques: appui supplémentaire à la production de modèles de statistiques directement à partir de graphiques intégrés\nstatistiques: amélioration de l'outil pour la matière - les unités d'outil sont désormais fournies explicitement via tooltip.valueFormatter",
-        "it": "statistiche fix: rientro settimanale fino al lunedì corrente\nstatistiche: aggiunto il supporto per la generazione di modelli di statistiche direttamente da grafici incorporati\nstatistiche: migliorato tooltip formatter - le unità tooltip sono ora fornite esplicitamente tramite tooltip.valueFormatter",
-        "es": "solucion de estadísticas: retorno semanal hasta el lunes actual\nestadística: apoyo añadido para generar plantillas de estadísticas directamente desde gráficos incorporados\nestadística: mejorada herramienta formatter - unidades de punta de herramientas se proporcionan ahora explícitamente a través de tooltip.valueFormatter",
-        "pl": "statystyki naprawić: wrócić tygodniowy zakres do bieżącego poniedziałku\nstatystyki: dodano wsparcie dla tworzenia szablonów statystycznych bezpośrednio z wykresów built- in\nstatystyki: ulepszone formatowanie podpowiedzi narzędziowej - jednostki podpowiedzi są teraz wyraźnie dostarczane za pośrednictwem tooltip.valueFormatter",
-        "uk": "статистика виправити: повернути щотижневий діапазон до поточного понеділка\nстатистика: додана підтримка створення шаблонів статистики безпосередньо з вбудованих діаграм\nстатистика: поліпшений форматувальник інструментів - блоки інструментів тепер забезпечують явно через tooltip.valueFormatter",
-        "zh-cn": "统计修补:截至本星期一的每周返回范围\n统计:为直接从内建图表生成统计模板提供更多支持\n统计:改进后的工具提示用于物质-工具提示单位现在通过工具提示明确提供. valueFormatter"
       }
     },
     "titleLang": {

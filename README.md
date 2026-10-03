@@ -70,7 +70,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	### **WORK IN PROGRESS**
 	Add draft entries here while the next release is still being finalized.
 -->
-### **WORK IN PROGRESS**
+### 2.7.1 (2026-10-03)
 * (bolliy) update devDependencies to latest versions
 * (bolliy) Allow decimal values for ​​`battery.tou.maximumPowerForChargingFromGrid` and `grid.maximumFeedGridPower`. ([#300](https://github.com/bolliy/ioBroker.sun2000/discussions/300))
 
@@ -91,10 +91,6 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 * (bolliy/claude) Added six new EMMA control registers ([#285](https://github.com/bolliy/ioBroker.sun2000/issues/285))
 * (bolliy/claude) Implemented Time-of-Use (TOU)
 * (booliy/claude) modbus-proxy: Direct register reading on cache mismatch
-
-### 2.5.1 (2026-06-29)
-- (bolliy) fix: update service queue logic ([#283](https://github.com/bolliy/ioBroker.sun2000/discussions/283))
-- (bolliy) statistics fix: adjust reset handling logic to treat significant drops in value as potential resets
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 

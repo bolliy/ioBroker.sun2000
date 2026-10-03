@@ -1,4 +1,8 @@
 ## Changelog
+## 2.5.1 (2026-06-29)
+- (bolliy) fix: update service queue logic ([#283](https://github.com/bolliy/ioBroker.sun2000/discussions/283))
+- (bolliy) statistics fix: adjust reset handling logic to treat significant drops in value as potential resets
+
 ## 2.5.0 (2026-06-09)
 * (bolliy) statistics: added live power chart (statistics.jsonLive)
 * (bolliy) statistics: consumption breakdown — breakdown values are now subtracted from the total `consumption` entry so the lower chart panel shows the remainder separately from the breakdown series
