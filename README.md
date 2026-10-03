@@ -70,9 +70,8 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	### **WORK IN PROGRESS**
 	Add draft entries here while the next release is still being finalized.
 -->
-### 2.7.0 (2026-10-03)
-* breaking change:
- 	* (bolliy) Units for the control values ​​`battery.tou.maximumPowerForChargingFromGrid` and `grid.maximumFeedGridPower` have been changed from kW to W to allow for adjustments of less than 1 kW. ([#300] (https://github.com/bolliy/ioBroker.sun2000/discussions/300))
+### **WORK IN PROGRESS**
+* (bolliy) Allow decimal values for ​​`battery.tou.maximumPowerForChargingFromGrid` and `grid.maximumFeedGridPower`. ([#300] (https://github.com/bolliy/ioBroker.sun2000/discussions/300))
 * (bolliy) fix: Ensure that unacknowledged control states occurring during startup are correctly processed in the service queues.
 
 ### 2.6.2 (2026-08-23)
