@@ -1,4 +1,10 @@
 ## Changelog
+## 2.6.0 (2026-07-22)
+* (booliy/claude) Optimization of memory usage
+* (bolliy/claude) Added six new EMMA control registers ([#285](https://github.com/bolliy/ioBroker.sun2000/issues/285))
+* (bolliy/claude) Implemented Time-of-Use (TOU)
+* (booliy/claude) modbus-proxy: Direct register reading on cache mismatch
+
 ## 2.5.1 (2026-06-29)
 - (bolliy) fix: update service queue logic ([#283](https://github.com/bolliy/ioBroker.sun2000/discussions/283))
 - (bolliy) statistics fix: adjust reset handling logic to treat significant drops in value as potential resets

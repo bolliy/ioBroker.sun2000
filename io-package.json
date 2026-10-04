@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "2.7.1",
+    "version": "2.7.2",
     "news": {
+      "2.7.2": {
+        "en": "fix: disabled the adapter install/update pop-up message\nfix control.externalPower: prevent negative values",
+        "de": "Fix: Popup-Meldung zum Adapter-Installation/Update deaktiviert\nfix Control.ExternalPower: Negative Werte vermeiden",
+        "ru": "исправлено: отключено всплывающее сообщение об установке/обновлении адаптера\nисправить Control.ExternalPower: предотвратить отрицательные значения",
+        "pt": "correção: desativou o pop-up de instalação/atualização\nfix control.externalPower: evite valores negativos",
+        "nl": "oplossing: het pop-upbericht voor het installeren/updaten van de adapter uitgeschakeld\nfix Control.ExternalPower: voorkom negatieve waarden",
+        "fr": "fix : message contextuel d'installation/mise à jour de l'adaptateur désactivé\nfix Control.ExternalPower : évitez les valeurs négatives",
+        "it": "fix: disabilitato il pop-up di installazione/aggiornamento\nfix Control.externalPower: evita valori negativi",
+        "es": "solución: desactivó el mensaje emergente Install/Update del adaptador\nfix Control.ExternalPower: evitar valores negativos",
+        "pl": "poprawka: wyłączył wyskakujący komunikat instalacji/aktualizacja adaptera\nfix control.ExternalPower: zapobiegaj wartościom ujemnym",
+        "uk": "виправлення: відключено спливаюче повідомлення про встановлення/оновлення адаптера\nвиправлення контролю.externalPower: запобігання негативним значенням",
+        "zh-cn": "修复：禁用了适配器安装/更新弹出消息\n修复 control.externalPower：防止负值"
+      },
       "2.7.1": {
         "en": "update devDependencies to latest versions\nAllow decimal values for ​​`battery.tou.maximumPowerForChargingFromGrid` and `grid.maximumFeedGridPower`. ([#300](https://github.com/bolliy/ioBroker.sun2000/discussions/300))",
         "de": "devDependencies auf die neueste Version updaten\nErlauben Sie Dezimalwerte für `Battery.tou.MaximumPowerForChargingFromGrid` und `Grid.MaximumFeedGridPower`. ([#300] (https://github.com/bolliy/ioBroker.sun2000/discussions/300))",
@@ -80,19 +93,6 @@
         "pl": "fix: update service queue logic ([# 283] (https: / / github.com / bolliy / ioBroker.sun2000 / discussions / 283))\nstatystyki fix: dostosować logikę obsługi reset w celu traktowania znaczących spadku wartości jako potencjalnych reset",
         "uk": "виправити: оновити логіку черги ([#283](https://github.com/bolliy/ioBroker.sun2000/discussions/283)))\nвиправлення статистичних даних: регулюйте логіку обробки скидання для обробки значних крапель у значення як потенційні скидання",
         "zh-cn": "fix:更新服务队列逻辑([#283] (https://github.com/bolliy/ioBroker.sun2000/discussions/283))\n统计修补:调整重置处理逻辑,将价值大幅下降视为潜在重置"
-      },
-      "2.5.0": {
-        "en": "statistics: added live power chart (statistics.jsonLive)\nrequires node.js >= 22",
-        "de": "statistiken: Live Power Chart hinzugefügt (statistics.jsonLive)\nrequires node.js >= 22",
-        "ru": "статистика: добавлена живая диаграмма мощности (statistics.jsonLive)\nrequires node.js >= 22",
-        "pt": "estatísticas: gráfico de potência ao vivo adicionado (statistics.jsonLive)\nrequires node.js >= 22",
-        "nl": "statistieken: toegevoegde live power chart (statistics.jsonLive)",
-        "fr": "statistiques: tableau de puissance en direct ajouté (statistiques.jsonLive)\nrequires node.js >= 22",
-        "it": "statistiche: aggiunto live power chart (statistics.jsonLive)\nrequires node.js >= 22",
-        "es": "estadística: añadido gráfico de potencia en vivo (statistics.jsonLive)\nrequires node.js >= 22",
-        "pl": "statystyki: dodany live power chart (statistics.jsonLive)\nrequires node.js >= 22",
-        "uk": "статистика: додано графік живої потужності (statistics.jsonLive)\nrequires node.js >= 22",
-        "zh-cn": "统计:增加的实电图(统计学.jsonLive)"
       }
     },
     "titleLang": {
