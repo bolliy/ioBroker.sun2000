@@ -70,6 +70,10 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	### **WORK IN PROGRESS**
 	Add draft entries here while the next release is still being finalized.
 -->
+### **WORK IN PROGRESS**
+* (bolliy) fix: disabled the adapter install/update pop-up message
+* (bolliy) fix control.externalPower: prevent negative values
+
 ### 2.7.1 (2026-10-03)
 * (bolliy) update devDependencies to latest versions
 * (bolliy) Allow decimal values for ​​`battery.tou.maximumPowerForChargingFromGrid` and `grid.maximumFeedGridPower`. ([#300](https://github.com/bolliy/ioBroker.sun2000/discussions/300))
