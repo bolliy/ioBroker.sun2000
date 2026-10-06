@@ -643,16 +643,28 @@ class Sun2000 extends utils.Adapter {
 					this.isReady = this.isConnected && !ret.errno;
 				}
 				// after 2 Minutes
+				/* Anmerkung: Die Fehlermeldung "Modbus: Error rate is too high" kann auch auftreten, wenn die Modbus-IDs der Wechselrichter nicht korrekt konfiguriert sind. Bitte überprüfen Sie die Konfiguration und stellen Sie sicher, dass die richtigen Modbus-IDs für Ihre Wechselrichter eingestellt sind.
+				   ret.error == 102 werden zwar Daten gelesen, aber im eingestellten Zeitintervall nicht alle Register gelesen. Dies kann auf eine zu hohe Anzahl von Wechselrichtern oder eine zu kurze Abfragezeit zurückzuführen sein. In diesem Fall sollten Sie die Abfrageintervalle erhöhen, um die Fehlerquote zu senken.
+				   modbusInfo.errorRate > 0.02 bedeutet, dass mehr als 2% der Modbus-Kommunikation fehlerhaft ist. Dies kann auf eine schlechte Verbindung, Störungen oder eine Überlastung des sDongles hinweisen. 
+				*/
 				if (this.toggleRunWatchDog) {
 					if (ret.errno) {
 						this.logger.warn(ret.message);
-						if (modbusInfo.errorRate > 0.02) {
-							this.logger.warn(`Modbus: Error rate is too high: ${modbusInfo.errorRate}%`);
-							/*
-							this.logger.warn(
-								`Please read in the wiki https://github.com/bolliy/ioBroker.sun2000/wiki/Fehlerprotokollierung-und-Fehlerbehebung-(troubleshooting) for possible solutions!`,
-							);
-							*/
+						//not all data can be read
+						if (ret.error === 102) {
+							if (modbusInfo.errorRate > 0.02) {
+								this.logger.warn(`Error rate of the Modbus communication is too high: ${modbusInfo.errorRate}%`);
+								//sDongle
+								if (this.settings.integration === 0) {
+									this.logger.warn(`Check the sDongle firmware version and ensure no other device interferes with the Modbus communication!`);
+								} else {
+									this.logger.warn(
+										`Ensure that no other device interferes with the Modbus communication - otherwise, use the internal Modbus proxy!!`,
+									);
+								}
+							} else {
+								this.logger.warn(`Please increase the polling interval in the adapter settings so that all data is read.`);
+							}
 						}
 					}
 					const obj = { ...ret, modbus: { ...this.modbusClient.info } };
