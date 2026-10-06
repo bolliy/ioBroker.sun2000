@@ -636,7 +636,8 @@ class Sun2000 extends utils.Adapter {
 					this.setState('info.JSONhealth', { val: '{errno:1, message: "Can\'t connect to inverter"}', ack: true });
 				}
 				const ret = this.state.CheckReadError(this.settings.lowInterval * 2);
-				this.logger.debug(JSON.stringify(this.modbusClient.info));
+				const modbusInfo = this.modbusClient.info;
+				this.logger.debug(JSON.stringify(modbusInfo));
 
 				if (!this.isReady) {
 					this.isReady = this.isConnected && !ret.errno;
@@ -645,6 +646,14 @@ class Sun2000 extends utils.Adapter {
 				if (this.toggleRunWatchDog) {
 					if (ret.errno) {
 						this.logger.warn(ret.message);
+						if (modbusInfo.errorRate > 0.02) {
+							this.logger.warn(`Modbus: Error rate is too high: ${modbusInfo.errorRate}%`);
+							/*
+							this.logger.warn(
+								`Please read in the wiki https://github.com/bolliy/ioBroker.sun2000/wiki/Fehlerprotokollierung-und-Fehlerbehebung-(troubleshooting) for possible solutions!`,
+							);
+							*/
+						}
 					}
 					const obj = { ...ret, modbus: { ...this.modbusClient.info } };
 					this.setState('info.JSONhealth', { val: JSON.stringify(obj), ack: true });
@@ -652,9 +661,6 @@ class Sun2000 extends utils.Adapter {
 				if (this.modbusServer) {
 					!this.modbusServer.isConnected && this.modbusServer.connect();
 					if (this.settings.ms.log) {
-						//const stat = this.modbusServer.info?.stat;
-						//object is not empty
-						//if (Object.keys(stat).length > 0) this.log.info('Modbus tcp server: '+JSON.stringify(this.modbusServer.info));
 						this.logger.info(`Modbus-proxy: ${JSON.stringify(this.modbusServer.info)}`);
 					}
 				}
