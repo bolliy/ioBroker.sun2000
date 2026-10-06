@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "2.7.2",
+    "version": "2.7.3",
     "news": {
+      "2.7.3": {
+        "en": "An incorrect bracket was used when converting the number to an array",
+        "de": "Bei der Umwandlung der Zahl in ein Array wurde eine falsche Klammer verwendet",
+        "ru": "При преобразовании числа в массив использовалась неправильная скобка",
+        "pt": "Um colchete incorreto foi usado ao converter o número em matriz",
+        "nl": "Er is een verkeerd haakje gebruikt bij het omzetten van het getal naar een array",
+        "fr": "Un crochet incorrect a été utilisé lors de la conversion du chiffre en tableau",
+        "it": "È stata usata una parentesi errata per convertire il numero",
+        "es": "Se usó un corchete incorrecto al convertir el número en una matriz",
+        "pl": "Podczas konwersji liczby na tablicę użyto nieprawidłowego nawiasu",
+        "uk": "Неправильна дужка була використана при перетворенні числа в масив",
+        "zh-cn": "将数字转换为数组时使用了错误的括号"
+      },
       "2.7.2": {
         "en": "fix: disabled the adapter install/update pop-up message\nfix control.externalPower: prevent negative values",
         "de": "Fix: Popup-Meldung zum Adapter-Installation/Update deaktiviert\nfix Control.ExternalPower: Negative Werte vermeiden",
@@ -80,19 +93,6 @@
         "pl": "Optymalizacja wykorzystania pamięci\nDodano sześć nowych rejestrów kontroli EMMA ([# 285] https: / / github.com / bolliy / ioBroker.sun2000 / issues / 285)\nWdrożony czas użytkowania (TOU)",
         "uk": "Оптимізація використання пам'яті\nДодано шість нових реєстрів контролю EMMA ([#285]https://github.com/bolliy/ioBroker.sun2000/products/285)\nРеалізовано часовий пошук (TOU)",
         "zh-cn": "优化内存使用\n增加了六个新的EMMA控制登记册([#285]https://github.com/bolliy/ioBroker.sun2000/issues/285)\n使用时间(TOU)"
-      },
-      "2.5.1": {
-        "en": "fix: update service queue logic ([#283](https://github.com/bolliy/ioBroker.sun2000/discussions/283))\nstatistics fix: adjust reset handling logic to treat significant drops in value as potential resets",
-        "de": "fix: update service queue logic ([#283](https://github.com/bolliy/ioBroker.sun2000/discussions/283))\nstatistics fix: anpassung der reset-handling-logik, um signifikante wertverluste als potenzielle resets zu behandeln",
-        "ru": "исправить: обновить логику очереди обслуживания ([#283](https://github.com/bolliy/ioBroker.sun2000/discussions/283))\nисправление статистики: настройте логику обработки сбросов, чтобы рассматривать значительное снижение стоимости как потенциальные сбросы",
-        "pt": "fix: update service fila logic ([#283](https://github.com/bolliy/ioBroker.sun2000/discussions/283))\nstatistics fix: ajuste a lógica de manipulação de reset para tratar quedas significativas no valor como resets potenciais",
-        "nl": "fix: update service wachtrij logica ([#283](https://github.com/bolliy/ioBroker.sun2000/discussions/283))\nstatistieken fix: aanpassen reset handling logica om significante dalingen in waarde te behandelen als potentiële ressets",
-        "fr": "correction: mise à jour de la logique de la file d'attente de service ([#283](https://github.com/bolliy/ioBroker.sun2000/discussions/283))\ncorrection statistique: ajuster la logique de réinitialisation pour traiter les baisses significatives de valeur comme des réinitialisations potentielles",
-        "it": "correzione: aggiornamento della coda di servizio logica ([#283](https://github.com/bolliy/ioBroker.sun2000/discussions/283))\nstatistiche fix: regolare la gestione del reset logica per trattare gocce significative di valore come potenziali reset",
-        "es": "fix: update service queue logic ([#283](https://github.com/bolliy/ioBroker.sun2000/discussions/283))\nestadística fijado: ajuste la lógica de manejo de reajuste para tratar gotas significativas en valor como posibles reajustes",
-        "pl": "fix: update service queue logic ([# 283] (https: / / github.com / bolliy / ioBroker.sun2000 / discussions / 283))\nstatystyki fix: dostosować logikę obsługi reset w celu traktowania znaczących spadku wartości jako potencjalnych reset",
-        "uk": "виправити: оновити логіку черги ([#283](https://github.com/bolliy/ioBroker.sun2000/discussions/283)))\nвиправлення статистичних даних: регулюйте логіку обробки скидання для обробки значних крапель у значення як потенційні скидання",
-        "zh-cn": "fix:更新服务队列逻辑([#283] (https://github.com/bolliy/ioBroker.sun2000/discussions/283))\n统计修补:调整重置处理逻辑,将价值大幅下降视为潜在重置"
       }
     },
     "titleLang": {

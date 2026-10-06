@@ -70,7 +70,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	### **WORK IN PROGRESS**
 	Add draft entries here while the next release is still being finalized.
 -->
-### **WORK IN PROGRESS**
+### 2.7.3 (2026-10-06)
 * (bolliy) An incorrect bracket was used when converting the number to an array
 
 ### 2.7.2 (2026-10-04)
@@ -87,11 +87,6 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 ### 2.6.2 (2026-08-23)
 * (bolliy) update devDependencies to latest versions
 * (bolliy) fix: update day-start baseline handling of consumption breakdown
-
-### 2.6.1 (2026-08-16)
-* (bolliy/claude) Fix: consumption breakdown entries (`statistics.dataDef.consumptionBreakdown`) the correct **daily** value in statistics.jsonToday` 
-* (bolliy) fix: enhance error handling and validation in device initialization
-* (bolliy) Added: `consumption.baseValue` field in `statistics.json*` — holds the unreduced total house consumption before breakdown entries are subtracted.
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 
