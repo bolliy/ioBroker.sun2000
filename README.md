@@ -70,6 +70,9 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	### **WORK IN PROGRESS**
 	Add draft entries here while the next release is still being finalized.
 -->
+### **WORK IN PROGRESS**
+* (bolliy) An incorrect bracket was used when converting the number to an array
+
 ### 2.7.2 (2026-10-04)
 * (bolliy) fix: disabled the adapter install/update pop-up message
 * (bolliy) fix control.externalPower: prevent negative values
