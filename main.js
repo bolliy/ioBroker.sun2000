@@ -491,9 +491,9 @@ class Sun2000 extends utils.Adapter {
 				this.settings.statistics = { liveInterval: this.config.stat_liveInterval || 5 }; //min
 
 				if (this.settings.modbusAdjust) {
-					await this.setState('info.JSONhealth', { val: '{message: "Adjust modbus settings"}', ack: true });
+					await this.setState('info.JSONhealth', { val: JSON.stringify({ message: 'Adjust modbus settings' }), ack: true });
 				} else {
-					await this.setState('info.JSONhealth', { val: '{message : "Information is collected..."}', ack: true });
+					await this.setState('info.JSONhealth', { val: JSON.stringify({ message: 'Information is collected...' }), ack: true });
 				}
 				//validate modbus Ids
 				if (this.settings.modbusIds.length > 5) {
@@ -657,7 +657,7 @@ class Sun2000 extends utils.Adapter {
 		const cur = {
 			success: stat.successSumCounter ?? 0,
 			errors: stat.errorSumCounter ?? 0,
-			timeouts: stat.ETIMEDOUT ?? 0,
+			timeouts: stat.modbus_ETIMEDOUT ?? 0,
 		};
 		this._lastModbusStat = cur;
 		const success = Math.max(0, cur.success - prev.success);
