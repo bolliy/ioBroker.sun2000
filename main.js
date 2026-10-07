@@ -633,7 +633,7 @@ class Sun2000 extends utils.Adapter {
 			}
 			if (!this.settings.modbusAdjust) {
 				if (!this.isConnected) {
-					this.setState('info.JSONhealth', { val: '{errno:1, message: "Can\'t connect to inverter"}', ack: true });
+					this.setState('info.JSONhealth', JSON.stringify({ val: '{errno:1, message: "Can\'t connect to inverter"}', ack: true }));
 				}
 				const ret = this.state.CheckReadError(this.settings.lowInterval * 2);
 				const modbusInfo = this.modbusClient.info;
@@ -645,15 +645,15 @@ class Sun2000 extends utils.Adapter {
 				// after 2 Minutes
 				/* Anmerkung: Die Fehlermeldung "Modbus: Error rate is too high" kann auch auftreten, wenn die Modbus-IDs der Wechselrichter nicht korrekt konfiguriert sind. Bitte überprüfen Sie die Konfiguration und stellen Sie sicher, dass die richtigen Modbus-IDs für Ihre Wechselrichter eingestellt sind.
 				   ret.error == 102 werden zwar Daten gelesen, aber im eingestellten Zeitintervall nicht alle Register gelesen. Dies kann auf eine zu hohe Anzahl von Wechselrichtern oder eine zu kurze Abfragezeit zurückzuführen sein. In diesem Fall sollten Sie die Abfrageintervalle erhöhen, um die Fehlerquote zu senken.
-				   modbusInfo.errorRate > 0.02 bedeutet, dass mehr als 2% der Modbus-Kommunikation fehlerhaft ist. Dies kann auf eine schlechte Verbindung, Störungen oder eine Überlastung des sDongles hinweisen. 
+				   modbusInfo.stat.errorRate > 2 bedeutet, dass mehr als 2% der Modbus-Kommunikation fehlerhaft ist. Dies kann auf eine schlechte Verbindung, Störungen oder eine Überlastung des sDongles hinweisen. 
 				*/
 				if (this.toggleRunWatchDog) {
 					if (ret.errno) {
 						this.logger.warn(ret.message);
 						//not all data can be read
 						if (ret.errno === 102) {
-							if (modbusInfo.errorRate > 2) {
-								this.logger.warn(`Error rate of the Modbus communication is too high: ${modbusInfo.errorRate}%`);
+							if (modbusInfo.stat.errorRate > 2) {
+								this.logger.warn(`Error rate of the Modbus communication is too high: ${modbusInfo.stat.errorRate}%`);
 								//sDongle
 								if (this.settings.integration === 0) {
 									this.logger.warn(`Check the sDongle firmware version and ensure no other device interferes with the Modbus communication!`);
@@ -683,7 +683,7 @@ class Sun2000 extends utils.Adapter {
 			this.lastStateUpdatedHigh = 0;
 
 			if (sinceLastUpdate > this.settings.lowInterval * 10) {
-				this.setState('info.JSONhealth', { val: '{errno:2, message: "Internal loop error"}', ack: true });
+				this.setState('info.JSONhealth', JSON.stringify({ val: '{errno:2, message: "Internal loop error"}', ack: true }));
 				this.logger.error('watchdog: Internal loop error! Restart adapter...');
 				this.restart();
 			}
