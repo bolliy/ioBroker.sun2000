@@ -651,8 +651,8 @@ class Sun2000 extends utils.Adapter {
 					if (ret.errno) {
 						this.logger.warn(ret.message);
 						//not all data can be read
-						if (ret.error === 102) {
-							if (modbusInfo.errorRate > 0.02) {
+						if (ret.errno === 102) {
+							if (modbusInfo.errorRate > 2) {
 								this.logger.warn(`Error rate of the Modbus communication is too high: ${modbusInfo.errorRate}%`);
 								//sDongle
 								if (this.settings.integration === 0) {
