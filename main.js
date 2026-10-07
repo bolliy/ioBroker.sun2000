@@ -620,6 +620,87 @@ class Sun2000 extends utils.Adapter {
 		this.logger.debug('### DataPolling STOP ###');
 	}
 
+	/**
+	 * Logs a warning when a condition becomes active, repeats it at most every repeatMs
+	 * while the condition persists and logs an info message when it is over.
+	 *
+	 * @param {string} key - unique key of the condition
+	 * @param {boolean} active - is the condition currently active?
+	 * @param {() => string} msgFn - creates the warning text (only called if a warning is written)
+	 * @param {string} [okMsg] - info text on recovery
+	 * @param {number} [repeatMs] - minimum time between two repeated warnings
+	 */
+	_warnOnChange(key, active, msgFn, okMsg, repeatMs = 30 * 60 * 1000) {
+		this._warnState ??= {};
+		const s = (this._warnState[key] ??= { active: false, last: 0 });
+		const now = Date.now();
+		if (active) {
+			if (!s.active || now - s.last >= repeatMs) {
+				this.logger.warn(msgFn());
+				s.last = now;
+			}
+			s.active = true;
+		} else if (s.active) {
+			s.active = false;
+			this.logger.info(okMsg ?? `${key}: back to normal.`);
+		}
+	}
+
+	/**
+	 * Modbus statistics since the last call (difference of the cumulative counters).
+	 *
+	 * @param {object} [stat] - modbusClient.info.stat
+	 * @returns {{success:number, errors:number, timeouts:number, total:number, rate:number}} rate is a fraction (0.02 = 2%)
+	 */
+	_modbusWindowStat(stat = {}) {
+		const prev = this._lastModbusStat ?? { success: 0, errors: 0, timeouts: 0 };
+		const cur = {
+			success: stat.successSumCounter ?? 0,
+			errors: stat.errorSumCounter ?? 0,
+			timeouts: stat.ETIMEDOUT ?? 0,
+		};
+		this._lastModbusStat = cur;
+		const success = Math.max(0, cur.success - prev.success);
+		const errors = Math.max(0, cur.errors - prev.errors);
+		const timeouts = Math.max(0, cur.timeouts - prev.timeouts);
+		const total = success + errors;
+		return { success, errors, timeouts, total, rate: total > 0 ? Math.round((errors / total) * 1000) / 1000 : 0 };
+	}
+
+	/**
+	 * Evaluates the error rate of one window. Warns only after several consecutive
+	 * windows above the threshold (no premature complaints) and informs on recovery.
+	 *
+	 * @param {{total:number, errors:number, timeouts:number, rate:number}} win - result of _modbusWindowStat()
+	 * @returns {boolean} true if the error rate is currently considered too high
+	 */
+	_checkModbusErrorRate(win) {
+		const HIGH_RATE = 0.02; // 2 %
+		const MIN_SAMPLES = 20; // too few requests - no meaningful rate
+		const WINDOWS_BEFORE_WARN = 3; // consecutive windows above the threshold
+
+		if (win.total >= MIN_SAMPLES) {
+			this._highRateWindows = win.rate > HIGH_RATE ? (this._highRateWindows ?? 0) + 1 : 0;
+		}
+		const high = (this._highRateWindows ?? 0) >= WINDOWS_BEFORE_WARN;
+
+		this._warnOnChange(
+			'modbus-errorrate',
+			high,
+			() => {
+				let msg = `Error rate of the Modbus communication is too high: ${(win.rate * 100).toFixed(1)}% (${win.errors}/${win.total} requests, ${win.timeouts} timeouts) in the last window.`;
+				if (this.settings.integration === 0) {
+					msg += ' Check the sDongle firmware version, switch off the real-time update in FusionSolar and increase the polling interval.';
+				} else {
+					msg += ' Ensure that no other device interferes with the Modbus communication - otherwise use the internal Modbus proxy.';
+				}
+				return `${msg} See wiki: https://github.com/bolliy/ioBroker.sun2000/wiki/Fehlerprotokollierung-und-Fehlerbehebung-(troubleshooting)`;
+			},
+			'Error rate of the Modbus communication is back to normal.',
+		);
+		return high;
+	}
+
 	runWatchDog() {
 		this.watchDogHandle && this.clearInterval(this.watchDogHandle);
 		this.watchDogHandle = this.setInterval(() => {
@@ -632,42 +713,37 @@ class Sun2000 extends utils.Adapter {
 				this.setState('info.connection', this.isConnected, true);
 			}
 			if (!this.settings.modbusAdjust) {
-				if (!this.isConnected) {
-					this.setState('info.JSONhealth', JSON.stringify({ val: '{errno:1, message: "Can\'t connect to inverter"}', ack: true }));
-				}
-				const ret = this.state.CheckReadError(this.settings.lowInterval * 2);
+				const check = this.state.CheckReadError(this.settings.lowInterval * 2);
+				// not connected: a consistent health result (errno 1) instead of two competing writes
+				const ret = this.isConnected ? check : { errno: 1, message: "Can't connect to inverter", detail: check };
 				const modbusInfo = this.modbusClient.info;
-				this.logger.debug(JSON.stringify(modbusInfo));
+				this.logger.debug(() => JSON.stringify(modbusInfo));
 
 				if (!this.isReady) {
 					this.isReady = this.isConnected && !ret.errno;
 				}
-				// after 2 Minutes
-				/* Anmerkung: Die Fehlermeldung "Modbus: Error rate is too high" kann auch auftreten, wenn die Modbus-IDs der Wechselrichter nicht korrekt konfiguriert sind. Bitte überprüfen Sie die Konfiguration und stellen Sie sicher, dass die richtigen Modbus-IDs für Ihre Wechselrichter eingestellt sind.
-				   ret.error == 102 werden zwar Daten gelesen, aber im eingestellten Zeitintervall nicht alle Register gelesen. Dies kann auf eine zu hohe Anzahl von Wechselrichtern oder eine zu kurze Abfragezeit zurückzuführen sein. In diesem Fall sollten Sie die Abfrageintervalle erhöhen, um die Fehlerquote zu senken.
-				   modbusInfo.stat.errorRate > 2 bedeutet, dass mehr als 2% der Modbus-Kommunikation fehlerhaft ist. Dies kann auf eine schlechte Verbindung, Störungen oder eine Überlastung des sDongles hinweisen. 
-				*/
+
+				/* The following checks run only every second cycle (toggleRunWatchDog), i.e. every 2 * lowInterval.
+				   101: no data could be read at all - check the adapter configuration (IP, port, modbus IDs).
+				   102: data are read, but not all registers within the configured interval - too many devices or too short polling interval.
+				   A high error rate can also occur if the modbus IDs of the inverters are not configured correctly.
+				   Warnings are written when a problem occurs, repeated every 30 minutes at most and a recovery is logged. */
 				if (this.toggleRunWatchDog) {
-					if (ret.errno) {
-						this.logger.warn(ret.message);
-						//not all data can be read
-						if (ret.errno === 102) {
-							if (modbusInfo.stat.errorRate > 2) {
-								this.logger.warn(`Error rate of the Modbus communication is too high: ${modbusInfo.stat.errorRate}%`);
-								//sDongle
-								if (this.settings.integration === 0) {
-									this.logger.warn(`Check the sDongle firmware version and ensure no other device interferes with the Modbus communication!`);
-								} else {
-									this.logger.warn(
-										`Ensure that no other device interferes with the Modbus communication - otherwise, use the internal Modbus proxy!!`,
-									);
-								}
-							} else {
-								this.logger.warn(`Please increase the polling interval in the adapter settings so that all data is read.`);
-							}
-						}
-					}
-					const obj = { ...ret, modbus: { ...this.modbusClient.info } };
+					const win = this._modbusWindowStat(modbusInfo.stat);
+					this._lastWindow = win;
+					const rateHigh = this._checkModbusErrorRate(win);
+
+					this._warnOnChange('health-101', ret.errno === 101, () => ret.message, 'Data can be read from the device again.');
+					this._warnOnChange(
+						'health-102',
+						ret.errno === 102,
+						() =>
+							rateHigh ? ret.message : `${ret.message} Please increase the polling interval in the adapter settings so that all data is read.`,
+						'All data can be read again.',
+					);
+				}
+				if (this.toggleRunWatchDog || !this.isConnected) {
+					const obj = { ...ret, modbus: { ...modbusInfo }, window: this._lastWindow };
 					this.setState('info.JSONhealth', { val: JSON.stringify(obj), ack: true });
 				}
 				if (this.modbusServer) {
@@ -683,7 +759,7 @@ class Sun2000 extends utils.Adapter {
 			this.lastStateUpdatedHigh = 0;
 
 			if (sinceLastUpdate > this.settings.lowInterval * 10) {
-				this.setState('info.JSONhealth', JSON.stringify({ val: '{errno:2, message: "Internal loop error"}', ack: true }));
+				this.setState('info.JSONhealth', { val: JSON.stringify({ errno: 2, message: 'Internal loop error' }), ack: true });
 				this.logger.error('watchdog: Internal loop error! Restart adapter...');
 				this.restart();
 			}
