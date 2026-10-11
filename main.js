@@ -657,21 +657,28 @@ class Sun2000 extends utils.Adapter {
 		const cur = {
 			success: stat.successSumCounter ?? 0,
 			errors: stat.errorSumCounter ?? 0,
-			timeouts: stat.modbus_ETIMEDOUT ?? 0,
+			timeouts: stat.ETIMEDOUT ?? 0,
 		};
 		this._lastModbusStat = cur;
 		const success = Math.max(0, cur.success - prev.success);
 		const errors = Math.max(0, cur.errors - prev.errors);
 		const timeouts = Math.max(0, cur.timeouts - prev.timeouts);
 		const total = success + errors;
-		return { success, errors, timeouts, total, rate: total > 0 ? Math.round((errors / total) * 1000) / 1000 : 0 };
+		return {
+			success,
+			errors,
+			timeouts,
+			total,
+			errorRate: total > 0 ? Math.round((errors / total) * 1000) / 1000 : 0,
+			timeoutRate: total > 0 ? Math.round((timeouts / total) * 1000) / 1000 : 0,
+		};
 	}
 
 	/**
 	 * Evaluates the error rate of one window. Warns only after several consecutive
 	 * windows above the threshold (no premature complaints) and informs on recovery.
 	 *
-	 * @param {{total:number, errors:number, timeouts:number, rate:number}} win - result of _modbusWindowStat()
+	 * @param {{total:number, errors:number, timeouts:number, errorRate:number}} win - result of _modbusWindowStat()
 	 * @returns {boolean} true if the error rate is currently considered too high
 	 */
 	_checkModbusErrorRate(win) {
@@ -680,24 +687,9 @@ class Sun2000 extends utils.Adapter {
 		const WINDOWS_BEFORE_WARN = 3; // consecutive windows above the threshold
 
 		if (win.total >= MIN_SAMPLES) {
-			this._highRateWindows = win.rate > HIGH_RATE ? (this._highRateWindows ?? 0) + 1 : 0;
+			this._highRateWindows = win.errorRate > HIGH_RATE ? (this._highRateWindows ?? 0) + 1 : 0;
 		}
 		const high = (this._highRateWindows ?? 0) >= WINDOWS_BEFORE_WARN;
-
-		this._warnOnChange(
-			'modbus-errorrate',
-			high,
-			() => {
-				let msg = `Error rate of the Modbus communication is too high: ${(win.rate * 100).toFixed(1)}% (${win.errors}/${win.total} requests, ${win.timeouts} timeouts) in the last window.`;
-				if (this.settings.integration === 0) {
-					msg += ' Check the sDongle firmware version, switch off the real-time update in FusionSolar and increase the polling interval.';
-				} else {
-					msg += ' Ensure that no other device interferes with the Modbus communication - otherwise use the internal Modbus proxy.';
-				}
-				return `${msg} See wiki: https://github.com/bolliy/ioBroker.sun2000/wiki/Fehlerprotokollierung-und-Fehlerbehebung-(troubleshooting)`;
-			},
-			'Error rate of the Modbus communication is back to normal.',
-		);
 		return high;
 	}
 
@@ -715,7 +707,7 @@ class Sun2000 extends utils.Adapter {
 			if (!this.settings.modbusAdjust) {
 				const check = this.state.CheckReadError(this.settings.lowInterval * 2);
 				// not connected: a consistent health result (errno 1) instead of two competing writes
-				const ret = this.isConnected ? check : { errno: 1, message: "Can't connect to inverter", detail: check };
+				const ret = this.isConnected ? check : { errno: 1, message: "Can't connect to device", detail: check };
 				const modbusInfo = this.modbusClient.info;
 				this.logger.debug(() => JSON.stringify(modbusInfo));
 
@@ -733,13 +725,31 @@ class Sun2000 extends utils.Adapter {
 					this._lastWindow = win;
 					const rateHigh = this._checkModbusErrorRate(win);
 
+					//Can't read data from device
 					this._warnOnChange('health-101', ret.errno === 101, () => ret.message, 'Data can be read from the device again.');
+					//Data can be read, but not all data within the configured interval
 					this._warnOnChange(
 						'health-102',
 						ret.errno === 102,
-						() =>
-							rateHigh ? ret.message : `${ret.message} Please increase the polling interval in the adapter settings so that all data is read.`,
+						() => (rateHigh ? ret.message : `Please increase the polling interval in the adapter settings so that all data is read.`),
 						'All data can be read again.',
+					);
+					//Error rate of the Modbus communication is too high
+					this._warnOnChange(
+						'modbus-errorrate',
+						rateHigh,
+						() => {
+							let msg;
+							if (win.timeoutRate > 0.01) {
+								msg = ` Too many timeout errors occurred during Modbus communication. Current Timeout rate: ${(win.timeoutRate * 100).toFixed(1)}%`;
+							} else {
+								msg = ` Too many other errors occurred during Modbus communication. Current Error rate: ${(win.errorRate * 100).toFixed(1)}%`;
+							}
+							msg += ' Check that all device units are running the latest firmware. Otherwise the Modbus communication can be unstable.';
+							msg += ' Ensure that no other device interferes with the Modbus communication, otherwise use the internal Modbus proxy.';
+							return `${msg} See wiki: https://github.com/bolliy/ioBroker.sun2000/wiki/Fehlerprotokollierung-und-Fehlerbehebung-(troubleshooting)`;
+						},
+						'Error rate of the Modbus communication is back to normal.',
 					);
 				}
 				if (this.toggleRunWatchDog || !this.isConnected) {
