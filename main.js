@@ -684,7 +684,7 @@ class Sun2000 extends utils.Adapter {
 	_checkModbusErrorRate(win) {
 		const HIGH_RATE = 0.02; // 2 %
 		const MIN_SAMPLES = 20; // too few requests - no meaningful rate
-		const WINDOWS_BEFORE_WARN = 3; // consecutive windows above the threshold
+		const WINDOWS_BEFORE_WARN = 2; // consecutive windows above the threshold
 
 		if (win.total >= MIN_SAMPLES) {
 			this._highRateWindows = win.errorRate > HIGH_RATE ? (this._highRateWindows ?? 0) + 1 : 0;
@@ -707,7 +707,7 @@ class Sun2000 extends utils.Adapter {
 			if (!this.settings.modbusAdjust) {
 				const check = this.state.CheckReadError(this.settings.lowInterval * 2);
 				// not connected: a consistent health result (errno 1) instead of two competing writes
-				const ret = this.isConnected ? check : { errno: 1, message: "Can't connect to device", detail: check };
+				let ret = this.isConnected ? check : { errno: 1, message: "Can't connect to device", detail: check };
 				const modbusInfo = this.modbusClient.info;
 				this.logger.debug(() => JSON.stringify(modbusInfo));
 
@@ -734,6 +734,9 @@ class Sun2000 extends utils.Adapter {
 						() => (rateHigh ? ret.message : `Please increase the polling interval in the adapter settings so that all data is read.`),
 						'All data can be read again.',
 					);
+					if (!ret.errno && rateHigh) {
+						ret = { errno: 2, message: 'Error rate of the Modbus communication is too high' };
+					}
 					//Error rate of the Modbus communication is too high
 					this._warnOnChange(
 						'modbus-errorrate',
