@@ -731,7 +731,7 @@ class Sun2000 extends utils.Adapter {
 					this._warnOnChange(
 						'health-102',
 						ret.errno === 102,
-						() => (rateHigh ? ret.message : `Please increase the polling interval in the adapter settings so that all data is read.`),
+						() => (win.timeoutRate > 0.01 ? ret.message : `Please increase the polling interval in the adapter settings so that all data is read.`),
 						'All data can be read again.',
 					);
 					if (!ret.errno && rateHigh) {
