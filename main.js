@@ -756,7 +756,7 @@ class Sun2000 extends utils.Adapter {
 					);
 				}
 				if (this.toggleRunWatchDog || !this.isConnected) {
-					const obj = { ...ret, modbus: { ...modbusInfo }, window: this._lastWindow };
+					const obj = { ...ret, modbus: { ...modbusInfo, currentStat: this._lastWindow } };
 					this.setState('info.JSONhealth', { val: JSON.stringify(obj), ack: true });
 				}
 				if (this.modbusServer) {
