@@ -735,7 +735,7 @@ class Sun2000 extends utils.Adapter {
 						'All data can be read again.',
 					);
 					if (!ret.errno && rateHigh) {
-						ret = { errno: 2, message: 'Error rate of the Modbus communication is too high' };
+						ret = { errno: 103, message: 'Error rate of the Modbus communication is too high' };
 					}
 					//Error rate of the Modbus communication is too high
 					this._warnOnChange(

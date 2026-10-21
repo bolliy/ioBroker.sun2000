@@ -70,6 +70,9 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	### **WORK IN PROGRESS**
 	Add draft entries here while the next release is still being finalized.
 -->
+### **WORK IN PROGRESS**
+* (bolliy) enhance error messages for Modbus communication and improve error rate calculations
+
 ### 2.7.3 (2026-10-06)
 * (bolliy) An incorrect bracket was used when converting the number to an array
 
