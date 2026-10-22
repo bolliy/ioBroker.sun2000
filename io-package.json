@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "2.7.3",
+    "version": "2.7.4",
     "news": {
+      "2.7.4": {
+        "en": "enhance error messages for Modbus communication and improve error rate calculations",
+        "de": "Fehlermeldungen für Modbus-Kommunikation verbessern und Fehlerraten berechnen",
+        "ru": "улучшить сообщения об ошибках для связи по Modbus и улучшить вычисления частоты ошибок",
+        "pt": "melhore as mensagens de erro na comunicação Modbus e os cálculos da taxa de erro",
+        "nl": "foutmeldingen voor Modbus-communicatie verbeteren en de berekeningen van het foutenpercentage verbeteren",
+        "fr": "améliorer les messages d'erreur pour les communications Modbus et les calculs du taux d'erreur",
+        "it": "migliorare i messaggi di errore per la comunicazione Modbus e il tasso di errore",
+        "es": "mejorar los mensajes de error para la comunicación Modbus y los cálculos de la tasa de errores",
+        "pl": "ulepszanie komunikatów o błędach dla komunikacji Modbus i poprawa obliczeń wskaźnika błędów",
+        "uk": "покращити повідомлення про помилки для зв'язку Modbus та покращити обчислення частоти помилок",
+        "zh-cn": "增强 Modbus 通信的错误消息并改进错误率计算"
+      },
       "2.7.3": {
         "en": "An incorrect bracket was used when converting the number to an array",
         "de": "Bei der Umwandlung der Zahl in ein Array wurde eine falsche Klammer verwendet",
@@ -80,19 +93,6 @@
         "pl": "Naprawiono: wpisy dotyczące podziału zużycia (`statistics.dataDef.consumptionBreakdown`) mają poprawną wartość **dzienną** w pliku statistics.jsonToday`\nnaprawiono: ulepszono obsługę błędów i walidację podczas inicjalizacji urządzenia\nDodano: pole `consumption.baseValue` w `statistics.json*` — przechowuje całkowite zużycie energii w domu przed odjęciem wpisów dotyczących podziału.",
         "uk": "Виправлення: записи розподілу споживання (`statistics.dataDef.consumptionBreakdown`) мають правильне **щоденне** значення у statistics.jsonToday`\nвиправлення: покращено обробку помилок та перевірку під час ініціалізації пристрою\nДодано: поле `consumption.baseValue` у `statistics.json*` — містить незменшене загальне споживання будинку до віднімання записів розподілу.",
         "zh-cn": "修复：将 statistics.jsonToday 中的消费细分条目（`statistics.dataDef.consumptionBreakdown`）的**每日**值修正为正确的值。\n修复：增强设备初始化过程中的错误处理和验证\n新增：`statistics.json*` 中的 `consumption.baseValue` 字段 — 保存扣除细分条目之前的未减少的总家庭消耗量。"
-      },
-      "2.6.0": {
-        "en": "Optimization of memory usage\nAdded six new EMMA control registers ([#285]https://github.com/bolliy/ioBroker.sun2000/issues/285)\nImplemented Time-of-Use (TOU)",
-        "de": "Optimierung der Speichernutzung\nHinzugefügt sechs neue EMMA-Kontrollregister ([#285]https://github.com/bolliy/ioBroker.sun2000/issues/285)\nImplementierte Nutzungszeit (TOU)",
-        "ru": "Оптимизация использования памяти\nДобавлено шесть новых регистров управления EMMA ([#285]https://github.com/bolliy/ioBroker.sun2000/issues/285)\nВремя использования (TOU)",
-        "pt": "Otimização do uso da memória\nAdicionado seis novos registos de controlo EMMA ([#285]https://github.com/bolliy/ioBroker.sun2000/issues/285)\nTempo de Utilização Aplicado (TOU)",
-        "nl": "Optimalisatie van het geheugengebruik\nZes nieuwe EMMA-controleregisters toegevoegd ([#285]https://github.com/bolliy/ioBroker.sun2000/issues/285)\nGeïmplementeerde gebruiksduur (TOU)",
-        "fr": "Optimisation de l'utilisation de la mémoire\nAjout de six nouveaux registres de contrôle EMMA ([#285]https://github.com/bolliy/ioBroker.sun2000/issues/285)\nDélai d'utilisation mis en œuvre",
-        "it": "Ottimizzazione dell'utilizzo della memoria\nAggiunto sei nuovi registri di controllo EMMA ([#285]https://github.com/bolliy/ioBroker.sun2000/issues/285)\nTempo di utilizzo implementato (TOU)",
-        "es": "Optimización del uso de memoria\nSe agregaron seis nuevos registros de control EMMA ([#285]https://github.com/bolliy/ioBroker.sun2000/issues/285)\nTiempo de uso aplicado (TOU)",
-        "pl": "Optymalizacja wykorzystania pamięci\nDodano sześć nowych rejestrów kontroli EMMA ([# 285] https: / / github.com / bolliy / ioBroker.sun2000 / issues / 285)\nWdrożony czas użytkowania (TOU)",
-        "uk": "Оптимізація використання пам'яті\nДодано шість нових реєстрів контролю EMMA ([#285]https://github.com/bolliy/ioBroker.sun2000/products/285)\nРеалізовано часовий пошук (TOU)",
-        "zh-cn": "优化内存使用\n增加了六个新的EMMA控制登记册([#285]https://github.com/bolliy/ioBroker.sun2000/issues/285)\n使用时间(TOU)"
       }
     },
     "titleLang": {

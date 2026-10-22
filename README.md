@@ -70,7 +70,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	### **WORK IN PROGRESS**
 	Add draft entries here while the next release is still being finalized.
 -->
-### **WORK IN PROGRESS**
+### 2.7.4 (2026-10-22)
 * (bolliy) enhance error messages for Modbus communication and improve error rate calculations
 
 ### 2.7.3 (2026-10-06)
@@ -86,10 +86,6 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 
 ### 2.7.0 (2026-08-23)
 * (bolliy) fix: Ensure that unacknowledged control states occurring during startup are correctly processed in the service queues.
-
-### 2.6.2 (2026-08-23)
-* (bolliy) update devDependencies to latest versions
-* (bolliy) fix: update day-start baseline handling of consumption breakdown
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 
