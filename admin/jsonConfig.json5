@@ -490,7 +490,7 @@
                 "connectDelay": {
                     "type": "number",
                     "label": "connect delay (ms)",
-                    "min" : 2000,
+                    "min" : 0,
                     "max" : 10000,
                     "newLine": true,
                     "tooltip": "Delay after modbus connected",
