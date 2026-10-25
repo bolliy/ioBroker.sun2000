@@ -353,10 +353,10 @@ class Sun2000 extends utils.Adapter {
 				Sentry.captureMessage('sun2000.adapterStatistics', 'info');
 			});
 
-			this.logger.debug('sun2000: anonymous statistics sent via Sentry');
+			this.logger.silly('sun2000: anonymous statistics sent via Sentry');
 		} catch (e) {
 			// Never let statistics reporting affect adapter operation
-			this.logger.debug(`sun2000: statistics reporting failed silently: ${e.message}`);
+			this.logger.silly(`sun2000: statistics reporting failed silently: ${e.message}`);
 		}
 	}
 
@@ -584,9 +584,9 @@ class Sun2000 extends utils.Adapter {
 		}
 
 		const start = new Date().getTime();
-		this.logger.debug(`### DataPolling START ${Math.round((start - this.lastTimeUpdated) / 1000)} sec ###`);
+		this.logger.silly(`### DataPolling START ${Math.round((start - this.lastTimeUpdated) / 1000)} sec ###`);
 		if (this.lastTimeUpdated > 0 && (start - this.lastTimeUpdated) / 1000 > this.settings.highInterval / 1000 + 1) {
-			this.logger.debug(`Interval ${(start - this.lastTimeUpdated) / 1000} sec`);
+			this.logger.silly(`Interval ${(start - this.lastTimeUpdated) / 1000} sec`);
 		}
 		this.lastTimeUpdated = start;
 		const nextLoop = this.settings.highInterval - (start % this.settings.highInterval) + start;
@@ -617,7 +617,7 @@ class Sun2000 extends utils.Adapter {
 		this.pollingTimer = this.setTimeout(() => {
 			this.dataPolling(); //recursiv
 		}, timeLeft(nextLoop));
-		this.logger.debug('### DataPolling STOP ###');
+		this.logger.silly('### DataPolling STOP ###');
 	}
 
 	/**
@@ -697,10 +697,9 @@ class Sun2000 extends utils.Adapter {
 		this.watchDogHandle && this.clearInterval(this.watchDogHandle);
 		this.watchDogHandle = this.setInterval(() => {
 			const sinceLastUpdate = new Date().getTime() - this.lastTimeUpdated; //ms
-			this.logger.debug(`### Watchdog: time since last update ${sinceLastUpdate / 1000} sec`);
+			this.logger.silly(`### Watchdog: time since last update ${sinceLastUpdate / 1000} sec`);
 			const lastIsConnected = this.isConnected;
 			this.isConnected = this.lastStateUpdatedHigh > 0 || this.lastStateUpdatedLow > 0;
-
 			if (this.isConnected !== lastIsConnected) {
 				this.setState('info.connection', this.isConnected, true);
 			}
@@ -709,7 +708,7 @@ class Sun2000 extends utils.Adapter {
 				// not connected: a consistent health result (errno 1) instead of two competing writes
 				let ret = this.isConnected ? check : { errno: 1, message: "Can't connect to device", detail: check };
 				const modbusInfo = this.modbusClient.info;
-				this.logger.debug(() => JSON.stringify(modbusInfo));
+				this.logger.silly(JSON.stringify({ ...ret, modbusInfo }));
 
 				if (!this.isReady) {
 					this.isReady = this.isConnected && !ret.errno;
@@ -731,29 +730,31 @@ class Sun2000 extends utils.Adapter {
 					this._warnOnChange(
 						'health-102',
 						ret.errno === 102,
-						() => (win.timeoutRate > 0.01 ? ret.message : `Please increase the polling interval in the adapter settings so that all data is read.`),
+						() => {
+							let msg = ret.message;
+							if (win.errorRate < 0.01) {
+								msg += `Please increase the polling interval in the adapter settings so that all data is read.`;
+							}
+							return msg;
+						},
 						'All data can be read again.',
 					);
-					if (!ret.errno && rateHigh) {
-						ret = { errno: 103, message: 'Error rate of the Modbus communication is too high' };
-					}
 					//Error rate of the Modbus communication is too high
 					this._warnOnChange(
 						'modbus-errorrate',
 						rateHigh,
 						() => {
-							let msg;
-							if (win.timeoutRate > 0.01) {
-								msg = ` Too many timeout errors occurred during Modbus communication. Current Timeout rate: ${(win.timeoutRate * 100).toFixed(1)}%`;
-							} else {
-								msg = ` Too many other errors occurred during Modbus communication. Current Error rate: ${(win.errorRate * 100).toFixed(1)}%`;
-							}
+							let msg = `Too many errors occurred during Modbus communication. Current Error rate: ${(win.errorRate * 100).toFixed(1)}% .`;
 							msg += ' Check that all device units are running the latest firmware. Otherwise the Modbus communication can be unstable.';
 							msg += ' Ensure that no other device interferes with the Modbus communication, otherwise use the internal Modbus proxy.';
 							return `${msg} See wiki: https://github.com/bolliy/ioBroker.sun2000/wiki/Fehlerprotokollierung-und-Fehlerbehebung-(troubleshooting)`;
 						},
 						'Error rate of the Modbus communication is back to normal.',
 					);
+
+					if (rateHigh) {
+						ret = { errno: 3, message: 'Modbus communication error rate too high' };
+					}
 				}
 				if (this.toggleRunWatchDog || !this.isConnected) {
 					const obj = { ...ret, modbus: { ...modbusInfo, currentStat: this._lastWindow } };
