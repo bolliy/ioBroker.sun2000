@@ -728,7 +728,7 @@ class Sun2000 extends utils.Adapter {
 
 					if (!this.isConnected) {
 						ret = { errno: 1, message: "Can't connect to device(s)" };
-					} else if (rateHigh) {
+					} else if (rateHigh && !ret.errno) {
 						ret = { errno: 3, message: 'Modbus communication error rate too high' };
 					}
 					//Can't read data from device
