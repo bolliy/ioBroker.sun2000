@@ -700,13 +700,14 @@ class Sun2000 extends utils.Adapter {
 			this.logger.silly(`### Watchdog: time since last update ${sinceLastUpdate / 1000} sec`);
 			const lastIsConnected = this.isConnected;
 			this.isConnected = this.lastStateUpdatedHigh > 0 || this.lastStateUpdatedLow > 0;
+			//this.isConnected = this.modbusClient.isOpen();
 			if (this.isConnected !== lastIsConnected) {
 				this.setState('info.connection', this.isConnected, true);
 			}
 			if (!this.settings.modbusAdjust) {
 				const check = this.state.CheckReadError(this.settings.lowInterval * 2);
 				// not connected: a consistent health result (errno 1) instead of two competing writes
-				let ret = this.isConnected ? check : { errno: 1, message: "Can't connect to device", detail: check };
+				let ret = this.isConnected ? check : { errno: 1, message: "Can't connect to device" };
 				const modbusInfo = this.modbusClient.info;
 				this.logger.silly(JSON.stringify({ ...ret, modbusInfo }));
 
