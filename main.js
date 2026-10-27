@@ -627,10 +627,10 @@ class Sun2000 extends utils.Adapter {
 	 * @param {string} key - unique key of the condition
 	 * @param {boolean} active - is the condition currently active?
 	 * @param {() => string} msgFn - creates the warning text (only called if a warning is written)
-	 * @param {string} [okMsg] - info text on recovery
+	 * @param {() => string} [okMsgFn] - info text on recovery
 	 * @param {number} [repeatMs] - minimum time between two repeated warnings
 	 */
-	_warnOnChange(key, active, msgFn, okMsg, repeatMs = 30 * 60 * 1000) {
+	_warnOnChange(key, active, msgFn, okMsgFn, repeatMs = 30 * 60 * 1000) {
 		this._warnState ??= {};
 		const s = (this._warnState[key] ??= { active: false, last: 0 });
 		const now = Date.now();
@@ -642,7 +642,7 @@ class Sun2000 extends utils.Adapter {
 			s.active = true;
 		} else if (s.active) {
 			s.active = false;
-			this.logger.info(okMsg ?? `${key}: back to normal.`);
+			this.logger.info(okMsgFn?.() ?? `${key}: back to normal.`);
 		}
 	}
 
@@ -697,19 +697,20 @@ class Sun2000 extends utils.Adapter {
 		this.watchDogHandle && this.clearInterval(this.watchDogHandle);
 		this.watchDogHandle = this.setInterval(() => {
 			const sinceLastUpdate = new Date().getTime() - this.lastTimeUpdated; //ms
-			this.logger.silly(`### Watchdog: time since last update ${sinceLastUpdate / 1000} sec`);
+			this.logger.silly(`watchdog: time since last update ${sinceLastUpdate / 1000} sec`);
 			const lastIsConnected = this.isConnected;
 			this.isConnected = this.lastStateUpdatedHigh > 0 || this.lastStateUpdatedLow > 0;
+			this.logger.silly(
+				`watchdog: lastStateUpdatedHigh ${this.lastStateUpdatedHigh} lastStateUpdatedLow ${this.lastStateUpdatedLow} isConnected ${this.isConnected}`,
+			);
 			//this.isConnected = this.modbusClient.isOpen();
 			if (this.isConnected !== lastIsConnected) {
 				this.setState('info.connection', this.isConnected, true);
 			}
 			if (!this.settings.modbusAdjust) {
 				const check = this.state.CheckReadError(this.settings.lowInterval * 2);
-				// not connected: a consistent health result (errno 1) instead of two competing writes
-				let ret = this.isConnected ? check : { errno: 1, message: "Can't connect to device" };
+				let ret = check;
 				const modbusInfo = this.modbusClient.info;
-				this.logger.silly(JSON.stringify({ ...ret, modbusInfo }));
 
 				if (!this.isReady) {
 					this.isReady = this.isConnected && !ret.errno;
@@ -725,8 +726,18 @@ class Sun2000 extends utils.Adapter {
 					this._lastWindow = win;
 					const rateHigh = this._checkModbusErrorRate(win);
 
+					if (!this.isConnected) {
+						ret = { errno: 1, message: "Can't connect to device(s)" };
+					} else if (rateHigh) {
+						ret = { errno: 3, message: 'Modbus communication error rate too high' };
+					}
 					//Can't read data from device
-					this._warnOnChange('health-101', ret.errno === 101, () => ret.message, 'Data can be read from the device again.');
+					this._warnOnChange(
+						'health-101',
+						ret.errno === 101,
+						() => ret.message,
+						() => 'Data can be read from the device(s) again.',
+					);
 					//Data can be read, but not all data within the configured interval
 					this._warnOnChange(
 						'health-102',
@@ -738,28 +749,38 @@ class Sun2000 extends utils.Adapter {
 							}
 							return msg;
 						},
-						'All data can be read again.',
+						() => 'All data can be read again.',
 					);
+
 					//Error rate of the Modbus communication is too high
 					this._warnOnChange(
 						'modbus-errorrate',
-						rateHigh,
+						ret.errno === 3,
 						() => {
-							let msg = `Too many errors occurred during Modbus communication. Current Error rate: ${(win.errorRate * 100).toFixed(1)}% .`;
-							msg += ' Check that all device units are running the latest firmware. Otherwise the Modbus communication can be unstable.';
+							let msg = `Too many errors occurred during Modbus communication. Current Error rate: ${(win.errorRate * 100).toFixed(1)}%.`;
 							msg += ' Ensure that no other device interferes with the Modbus communication, otherwise use the internal Modbus proxy.';
+							msg += ' Check that all device units are running the latest firmware. Otherwise the Modbus communication can be unstable.';
 							return `${msg} See wiki: https://github.com/bolliy/ioBroker.sun2000/wiki/Fehlerprotokollierung-und-Fehlerbehebung-(troubleshooting)`;
 						},
-						'Error rate of the Modbus communication is back to normal.',
+						() => 'Error rate of the Modbus communication is back to normal.',
 					);
-
-					if (rateHigh) {
-						ret = { errno: 3, message: 'Modbus communication error rate too high' };
-					}
+					//Can't connect to device(s)
+					/*
+					this._warnOnChange(
+						'error-no-connection',
+						ret.errno === 1,
+						() => `Can't connect to device(s). Check the adapter configuration (IP, port, modbus IDs) and the network connection.`,
+						() => {
+							this._highRateWindows = 0;
+							return 'Connection to device(s) is back to normal.';
+						},
+					);
+					*/
 				}
 				if (this.toggleRunWatchDog || !this.isConnected) {
 					const obj = { ...ret, modbus: { ...modbusInfo, currentStat: this._lastWindow } };
 					this.setState('info.JSONhealth', { val: JSON.stringify(obj), ack: true });
+					this.logger.silly(JSON.stringify(obj));
 				}
 				if (this.modbusServer) {
 					!this.modbusServer.isConnected && this.modbusServer.connect();
