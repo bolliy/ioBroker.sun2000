@@ -693,75 +693,73 @@ class Sun2000 extends utils.Adapter {
 
 			let ret = this.state.CheckReadError(this.settings.lowInterval * 2);
 			const modbusInfo = this.modbusClient.info;
+			const win = this._modbusWindowStat(modbusInfo.stat);
+			this._lastWindow = win;
+			const rateHigh = this._checkModbusErrorRate(win);
 
 			if (!this.isReady) {
 				this.isReady = this.isConnected && !ret?.errno;
 			}
 
-			/* 
-			101: no data could be read at all - check the adapter configuration (IP, port, modbus IDs).
-			102: data are read, but not all registers within the configured interval - too many devices or too short polling interval.
-			*/
-			const win = this._modbusWindowStat(modbusInfo.stat);
-			this._lastWindow = win;
-			const rateHigh = this._checkModbusErrorRate(win);
-
 			if (!this.isConnected) {
 				ret = { errno: 1, message: "Can't connect to device" };
 			}
-			if (!ret?.errno && rateHigh) {
-				ret = { errno: 3, message: 'Modbus communication error rate too high' };
+			//not first watchdog run
+			if (lastIsConnected !== undefined) {
+				if (!ret?.errno && rateHigh) {
+					ret = { errno: 3, message: 'Modbus communication error rate too high' };
+				}
+				//Can't read data from device
+				this.logger.warnOnChange('health-101', ret?.errno === 101, () => ret.message, 'Data can be read from the device again.');
+				//Data can be read, but not all data within the configured interval
+				this.logger.warnOnChange(
+					'health-102',
+					ret?.errno === 102,
+					() => {
+						let msg = ret.message;
+						if (win.errorRate < 0.01) {
+							msg += `Please increase the polling interval in the adapter settings so that all data is read.`;
+						}
+						return msg;
+					},
+					'All data can be read again.',
+				);
+
+				//Can't connect to device(s)
+				this.logger.warnOnChange(
+					'no-connection',
+					ret?.errno === 1,
+					() => {
+						const lastError = this.modbusClient.lastError;
+						const msg = lastError.message ? `${lastError.message} ${lastError?.description}` : "Can't connect to device.";
+						return msg;
+					},
+					() => {
+						this._highRateWindows = 0;
+						return 'Connection to device is back to normal.';
+					},
+				);
+
+				//Error rate of the Modbus communication is too high
+				this.logger.warnOnChange(
+					'modbus-errorrate',
+					ret?.errno === 3,
+					() => {
+						let msg = `Too many errors occurred during Modbus communication.`;
+						msg += ` Current Error rate: ${(win.errorRate * 100).toFixed(1)}%.`;
+						//timeout rate greater than 2%
+						if (win.timeoutRate >= 0.02) {
+							msg += ` further, current timeout rate: ${(win.timeoutRate * 100).toFixed(1)}%.`;
+							msg += ' Ensure that no other device interferes with the Modbus communication, otherwise use the internal Modbus proxy.';
+						} else {
+							msg += ' It could also be due to incorrectly configured Modbus IDs.';
+						}
+						msg += ' Check that all device units are running the latest firmware. Otherwise the Modbus communication can be unstable.';
+						return `${msg} See wiki: https://github.com/bolliy/ioBroker.sun2000/wiki/Fehlerprotokollierung-und-Fehlerbehebung-(troubleshooting)`;
+					},
+					'Error rate of the Modbus communication is back to normal.',
+				);
 			}
-			//Can't read data from device
-			this.logger.warnOnChange('health-101', ret?.errno === 101, () => ret.message, 'Data can be read from the device again.');
-			//Data can be read, but not all data within the configured interval
-			this.logger.warnOnChange(
-				'health-102',
-				ret?.errno === 102,
-				() => {
-					let msg = ret.message;
-					if (win.errorRate < 0.01) {
-						msg += `Please increase the polling interval in the adapter settings so that all data is read.`;
-					}
-					return msg;
-				},
-				'All data can be read again.',
-			);
-
-			//Can't connect to device(s)
-			this.logger.warnOnChange(
-				'no-connection',
-				ret?.errno === 1,
-				() => {
-					const lastError = this.modbusClient.lastError;
-					const msg = lastError.message ? `${lastError.message} ${lastError?.description}` : "Can't connect to device.";
-					return msg;
-				},
-				() => {
-					this._highRateWindows = 0;
-					return 'Connection to device is back to normal.';
-				},
-			);
-
-			//Error rate of the Modbus communication is too high
-			this.logger.warnOnChange(
-				'modbus-errorrate',
-				ret?.errno === 3,
-				() => {
-					let msg = `Too many errors occurred during Modbus communication.`;
-					msg += ` Current Error rate: ${(win.errorRate * 100).toFixed(1)}%.`;
-					//timeout rate greater than 2%
-					if (win.timeoutRate >= 0.02) {
-						msg += ` further, current timeout rate: ${(win.timeoutRate * 100).toFixed(1)}%.`;
-						msg += ' Ensure that no other device interferes with the Modbus communication, otherwise use the internal Modbus proxy.';
-					} else {
-						msg += ' It could also be due to incorrectly configured Modbus IDs.';
-					}
-					msg += ' Check that all device units are running the latest firmware. Otherwise the Modbus communication can be unstable.';
-					return `${msg} See wiki: https://github.com/bolliy/ioBroker.sun2000/wiki/Fehlerprotokollierung-und-Fehlerbehebung-(troubleshooting)`;
-				},
-				'Error rate of the Modbus communication is back to normal.',
-			);
 
 			if (this.modbusServer) {
 				!this.modbusServer.isConnected && this.modbusServer.connect();
