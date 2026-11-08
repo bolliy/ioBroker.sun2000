@@ -734,7 +734,6 @@ class Sun2000 extends utils.Adapter {
 						let msg = "Can't connect to ";
 						switch (this.config.integration) {
 							case 0:
-								//msg += ` Check that the SmartDongle is connected to the inverter and that the correct Modbus ID is configured.`;
 								msg += `SmartDongle. ${lastError.message ? lastError.message : ''}`;
 								break;
 							case 1:
