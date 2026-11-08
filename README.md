@@ -72,6 +72,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 -->
 ### **WORK IN PROGRESS**
 * (bolliy) Adapter log have been reduced to the bare essentials. This makes it easier to categorize timeouts and connection issues, particularly those involving the sDongle.
+* (bolliy) update devDependencies
 
 ### 2.7.4 (2026-10-22)
 * (bolliy) enhance error messages for Modbus communication and improve error rate calculations
