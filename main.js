@@ -731,7 +731,19 @@ class Sun2000 extends utils.Adapter {
 					ret?.errno === 1,
 					() => {
 						const lastError = this.modbusClient.lastError;
-						const msg = lastError.message ? `${lastError.message} ${lastError?.description}` : "Can't connect to device.";
+						let msg = "Can't connect to ";
+						switch (this.config.integration) {
+							case 0:
+								//msg += ` Check that the SmartDongle is connected to the inverter and that the correct Modbus ID is configured.`;
+								msg += `SmartDongle. ${lastError.message ? lastError.message : ''}`;
+								break;
+							case 1:
+								msg += `Smartlogger. Check that Modbus TCP is enabled on the Smartlogger and that the correct IP address is configured. ${lastError.message ? lastError.message : ''}`;
+								break;
+							case 2:
+								msg += `Emma. Check that Modbus TCP is enabled on the Emma and that the correct IP address is configured. ${lastError.message ? lastError.message : ''}`;
+								break;
+						}
 						return msg;
 					},
 					() => {
