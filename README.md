@@ -70,7 +70,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	### **WORK IN PROGRESS**
 	Add draft entries here while the next release is still being finalized.
 -->
-### **WORK IN PROGRESS**
+### 2.7.5 (2026-11-08)
 * (bolliy) Adapter log have been reduced to the bare essentials. This makes it easier to categorize timeouts and connection issues, particularly those involving the sDongle.
 * (bolliy) update devDependencies
 
@@ -87,9 +87,6 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 ### 2.7.1 (2026-10-03)
 * (bolliy) update devDependencies to latest versions
 * (bolliy) Allow decimal values for ​​`battery.tou.maximumPowerForChargingFromGrid` and `grid.maximumFeedGridPower`. ([#300](https://github.com/bolliy/ioBroker.sun2000/discussions/300))
-
-### 2.7.0 (2026-08-23)
-* (bolliy) fix: Ensure that unacknowledged control states occurring during startup are correctly processed in the service queues.
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 

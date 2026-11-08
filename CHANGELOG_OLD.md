@@ -1,4 +1,7 @@
 ## Changelog
+## 2.7.0 (2026-08-23)
+* (bolliy) fix: Ensure that unacknowledged control states occurring during startup are correctly processed in the service queues.
+
 ## 2.6.2 (2026-08-23)
 * (bolliy) update devDependencies to latest versions
 * (bolliy) fix: update day-start baseline handling of consumption breakdown

@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "sun2000",
-    "version": "2.7.4",
+    "version": "2.7.5",
     "news": {
+      "2.7.5": {
+        "en": "Adapter log have been reduced to the bare essentials. This makes it easier to categorize timeouts and connection issues, particularly those involving the sDongle.\nupdate devDependencies",
+        "de": "Adapterlog wurde auf das Nötigste reduziert. Das erleichtert die Kategorisierung von Timeouts und Verbindungsproblemen, vor allem mit dem sDongle.\ndevDependencies aktualisieren",
+        "ru": "Журнал адаптеров сведен к самому необходимому. Это упрощает классификацию тайм-аутов и проблем с подключением, особенно связанных с sDongle.\nобновить зависимости разработчиков",
+        "pt": "O log do adaptador foi reduzido ao essencial. Isso facilita a categorização de tempos limite e problemas de conexão, especialmente com o SDongle.\natualizar devDependencies",
+        "nl": "Het adapterlogboek is beperkt tot het essentiële. Dit maakt het eenvoudiger om time-outs en verbindingsproblemen te categoriseren, met name wanneer het om de SDongle gaat.\nDeV-afhankelijkheden bijwerken",
+        "fr": "Le journal des adaptateurs a été réduit à l'essentiel. Cela permet de classer plus facilement les délais et les problèmes de connexion, notamment ceux liés au Dongle.\nmettre à jour DevDependencies",
+        "it": "I log degli adattatori sono stati ridotti all'essenziale. Ciò semplifica la classificazione di timeout e problemi di connessione, in particolare con SDongle.\naggiorna DevDependences",
+        "es": "El registro del adaptador se ha reducido a lo esencial. Esto facilita la clasificación de los tiempos de espera y los problemas de conexión, especialmente los relacionados con el SDongle.\nactualizar devDependencies",
+        "pl": "Dziennik adaptera został zredukowany do niezbędnych rzeczy. Ułatwia to kategoryzowanie limitów czasu i problemów z połączeniem, szczególnie tych związanych z SDongle.\nzaktualizuj DevDependencies",
+        "uk": "Журнал адаптера був зведений до найнеобхіднішого. Це полегшує класифікацію тайм-аутів та проблем із підключенням, особливо тих, що стосуються SDongle.\nоновити DevЗалежності",
+        "zh-cn": "适配器日志已简化为基本内容。这样可以更轻松地对超时和连接问题进行分类，尤其是那些涉及 sDongle 的问题。\n更新开发依赖关系"
+      },
       "2.7.4": {
         "en": "enhance error messages for Modbus communication and improve error rate calculations",
         "de": "Fehlermeldungen für Modbus-Kommunikation verbessern und Fehlerraten berechnen",
@@ -80,19 +93,6 @@
         "pl": "aktualizacja devDevendencies do najnowszych wersji\nfix: update day-start bazowego postępowania z podziałem zużycia",
         "uk": "оновлення devDependencies в останні версії\nвиправити: оновлення денного запуску базового використання розбиття споживання",
         "zh-cn": "更新对最新版本的依赖性\n固定:更新消费细目的日启动基线处理"
-      },
-      "2.6.1": {
-        "en": "Fix: consumption breakdown entries (`statistics.dataDef.consumptionBreakdown`) the correct **daily** value in statistics.jsonToday` \nfix: enhance error handling and validation in device initialization\nAdded: `consumption.baseValue` field in `statistics.json*` — holds the unreduced total house consumption before breakdown entries are subtracted.",
-        "de": "Behoben: Die Einträge zur Verbrauchsaufschlüsselung (`statistics.dataDef.consumptionBreakdown`) enthalten nun den korrekten **täglichen** Wert in statistics.jsonToday.\nBehoben: Verbesserung der Fehlerbehandlung und Validierung bei der Geräteinitialisierung\nNeu hinzugefügt: Das Feld `consumption.baseValue` in `statistics.json*` enthält den unreduzierten Gesamtverbrauch des Haushalts, bevor die einzelnen Aufschlüsselungsposten abgezogen werden.",
-        "ru": "Исправление: записи о структуре потребления (`statistics.dataDef.consumptionBreakdown`) отображают правильное значение **ежедневно** в файле statistics.jsonToday`.\nИсправление: улучшена обработка ошибок и проверка данных при инициализации устройства.\nДобавлено поле `consumption.baseValue` в файле `statistics.json*` — содержит общее потребление электроэнергии в доме до вычета данных о расходе.",
-        "pt": "Correção: as entradas de detalhamento do consumo (`statistics.dataDef.consumptionBreakdown`) agora contêm o valor **diário** correto em statistics.jsonToday.\nCorreção: aprimoramento do tratamento de erros e da validação na inicialização do dispositivo.\nAdicionado: o campo `consumption.baseValue` em `statistics.json*` — armazena o consumo total da casa, sem deduções, antes da subtração dos valores discriminados.",
-        "nl": "Correctie: de gegevens in het overzicht van het verbruik (`statistics.dataDef.consumptionBreakdown`) bevatten nu de correcte **dagelijkse** waarde in statistics.jsonToday.\nOplossing: verbeterde foutafhandeling en validatie bij apparaatinitialisatie.\nToegevoegd: het veld `consumption.baseValue` in `statistics.json*` bevat het totale, niet-gereduceerde energieverbruik van het huishouden voordat de afzonderlijke verbruiksartikelen worden afgetrokken.",
-        "fr": "Correction : les valeurs correctes pour la ventilation de la consommation (`statistics.dataDef.consumptionBreakdown`) dans `statistics.jsonToday` sont désormais affichées.\nCorrection : amélioration de la gestion des erreurs et de la validation lors de l'initialisation du périphérique\nAjout : champ `consumption.baseValue` dans `statistics.json*` — contient la consommation totale non réduite du logement avant que les entrées détaillées ne soient soustraites.",
-        "it": "Correzione: le voci di ripartizione dei consumi (`statistics.dataDef.consumptionBreakdown`) mostrano il valore **giornaliero** corretto in statistics.jsonToday.\nCorrezione: migliorare la gestione degli errori e la convalida nell'inizializzazione del dispositivo\nAggiunto: il campo `consumption.baseValue` in `statistics.json*` contiene il consumo totale della casa non ridotto prima della sottrazione delle voci di ripartizione.",
-        "es": "Corrección: las entradas de desglose del consumo (`statistics.dataDef.consumptionBreakdown`) tienen el valor **diario** correcto en statistics.jsonToday.\nCorrección: mejora del manejo de errores y la validación en la inicialización del dispositivo.\nAñadido: campo `consumption.baseValue` en `statistics.json*`: contiene el consumo total de la vivienda sin reducir antes de que se resten las entradas de desglose.",
-        "pl": "Naprawiono: wpisy dotyczące podziału zużycia (`statistics.dataDef.consumptionBreakdown`) mają poprawną wartość **dzienną** w pliku statistics.jsonToday`\nnaprawiono: ulepszono obsługę błędów i walidację podczas inicjalizacji urządzenia\nDodano: pole `consumption.baseValue` w `statistics.json*` — przechowuje całkowite zużycie energii w domu przed odjęciem wpisów dotyczących podziału.",
-        "uk": "Виправлення: записи розподілу споживання (`statistics.dataDef.consumptionBreakdown`) мають правильне **щоденне** значення у statistics.jsonToday`\nвиправлення: покращено обробку помилок та перевірку під час ініціалізації пристрою\nДодано: поле `consumption.baseValue` у `statistics.json*` — містить незменшене загальне споживання будинку до віднімання записів розподілу.",
-        "zh-cn": "修复：将 statistics.jsonToday 中的消费细分条目（`statistics.dataDef.consumptionBreakdown`）的**每日**值修正为正确的值。\n修复：增强设备初始化过程中的错误处理和验证\n新增：`statistics.json*` 中的 `consumption.baseValue` 字段 — 保存扣除细分条目之前的未减少的总家庭消耗量。"
       }
     },
     "titleLang": {
