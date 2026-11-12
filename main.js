@@ -15,6 +15,7 @@ const { driverClasses, dataRefreshRate } = require(`${__dirname}/lib/types.js`);
 const { getAstroDate, isSunshine } = require(`${__dirname}/lib/tools.js`);
 const Logger = require(`${__dirname}/lib/logging.js`);
 const ConfigMap = require(`${__dirname}/lib/controls/config_map.js`);
+const tools = require(`${__dirname}/lib/tools.js`);
 
 class Sun2000 extends utils.Adapter {
 	/**
@@ -669,6 +670,8 @@ class Sun2000 extends utils.Adapter {
 	}
 
 	runWatchDog() {
+		tools.wait(this, 6000);
+
 		this.watchDogHandle && this.clearInterval(this.watchDogHandle);
 		this.watchDogHandle = this.setInterval(() => {
 			const sinceLastUpdate = new Date().getTime() - this.lastTimeUpdated; //ms
@@ -680,6 +683,7 @@ class Sun2000 extends utils.Adapter {
 			}
 
 			const lastIsConnected = this.isConnected;
+			//--
 			this.isConnected = this.lastStateUpdatedHigh > 0 || this.lastStateUpdatedLow > 0;
 			this.logger.silly(
 				`watchdog: lastStateUpdatedHigh ${this.lastStateUpdatedHigh} lastStateUpdatedLow ${this.lastStateUpdatedLow} isConnected ${this.isConnected}`,
@@ -786,7 +790,7 @@ class Sun2000 extends utils.Adapter {
 			//this.toggleRunWatchDog = !this.toggleRunWatchDog;
 			this.lastStateUpdatedLow = 0;
 			this.lastStateUpdatedHigh = 0;
-		}, this.settings.lowInterval);
+		}, this.settings.lowInterval * 2);
 	}
 
 	adapterDisable(errMsg) {
