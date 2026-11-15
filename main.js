@@ -710,8 +710,6 @@ class Sun2000 extends utils.Adapter {
 			if (!ret?.errno && rateHigh) {
 				ret = { errno: 3, message: 'Modbus communication error rate too high' };
 			}
-			//Can't read data from device
-			this.logger.warnOnChange('health-101', ret?.errno === 101, ret.message, 'Data can be read from the device again.');
 			//Data can be read, but not all data within the configured interval
 			this.logger.warnOnChange('health-102', ret?.errno === 102, ret.message, 'All data can be read again.');
 
