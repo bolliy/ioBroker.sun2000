@@ -15,7 +15,6 @@ const { driverClasses, dataRefreshRate } = require(`${__dirname}/lib/types.js`);
 const { getAstroDate, isSunshine } = require(`${__dirname}/lib/tools.js`);
 const Logger = require(`${__dirname}/lib/logging.js`);
 const ConfigMap = require(`${__dirname}/lib/controls/config_map.js`);
-const tools = require(`${__dirname}/lib/tools.js`);
 
 class Sun2000 extends utils.Adapter {
 	/**
@@ -232,7 +231,7 @@ class Sun2000 extends utils.Adapter {
 		}
 		this.modbusClient = new ModbusConnect(this, this.settings);
 		this.modbusClient.setCallback(this.endOfmodbusAdjust.bind(this));
-		this.dataPolling();
+		this.dataPolling(); //fire and forget
 		this.runWatchDog();
 
 		if (this.settings.ms?.active) {
@@ -650,6 +649,10 @@ class Sun2000 extends utils.Adapter {
 		};
 	}
 
+	get lastModbusWindowStat() {
+		return this._lastWindow || {};
+	}
+
 	/**
 	 * Evaluates the error rate of one window. Warns only after several consecutive
 	 * windows above the threshold (no premature complaints) and informs on recovery.
@@ -670,7 +673,13 @@ class Sun2000 extends utils.Adapter {
 	}
 
 	runWatchDog() {
-		tools.wait(this, 6000);
+		this.setTimeout(() => {
+			//simple test at an early stage
+			this.isConnected = this.lastStateUpdatedHigh > 0 || this.lastStateUpdatedLow > 0;
+			if (this.isConnected) {
+				this.setState('info.connection', this.isConnected, true);
+			}
+		}, 30000);
 
 		this.watchDogHandle && this.clearInterval(this.watchDogHandle);
 		this.watchDogHandle = this.setInterval(() => {
@@ -681,21 +690,14 @@ class Sun2000 extends utils.Adapter {
 				this.logger.error('watchdog: Internal loop error! Restart adapter...');
 				this.restart();
 			}
-
+			//Highlevel error handling: 1: no connection, 2: internal loop error, 3: modbus error rate too high
+			let ret = this.state.CheckReadError(this.settings.lowInterval * 2);
+			this.logger.silly(`watchdog: checkReadError ${JSON.stringify(ret)}`);
 			const lastIsConnected = this.isConnected;
-			//--
-			this.isConnected = this.lastStateUpdatedHigh > 0 || this.lastStateUpdatedLow > 0;
-			this.logger.silly(
-				`watchdog: lastStateUpdatedHigh ${this.lastStateUpdatedHigh} lastStateUpdatedLow ${this.lastStateUpdatedLow} isConnected ${this.isConnected}`,
-			);
-
+			this.isConnected = ret.errno !== 101;
 			if (this.isConnected !== lastIsConnected) {
 				this.setState('info.connection', this.isConnected, true);
 			}
-
-			//Highlevel error handling: 1: no connection, 2: internal loop error, 3: modbus error rate too high
-
-			let ret = this.state.CheckReadError(this.settings.lowInterval * 2);
 			const modbusInfo = this.modbusClient.info;
 			const win = this._modbusWindowStat(modbusInfo.stat);
 			this._lastWindow = win;
@@ -705,76 +707,39 @@ class Sun2000 extends utils.Adapter {
 				this.isReady = this.isConnected && !ret?.errno;
 			}
 
-			if (!this.isConnected) {
-				ret = { errno: 1, message: "Can't connect to device" };
+			if (!ret?.errno && rateHigh) {
+				ret = { errno: 3, message: 'Modbus communication error rate too high' };
 			}
-			//not first watchdog run
-			if (lastIsConnected !== undefined) {
-				if (!ret?.errno && rateHigh) {
-					ret = { errno: 3, message: 'Modbus communication error rate too high' };
-				}
-				//Can't read data from device
-				this.logger.warnOnChange('health-101', ret?.errno === 101, () => ret.message, 'Data can be read from the device again.');
-				//Data can be read, but not all data within the configured interval
-				this.logger.warnOnChange(
-					'health-102',
-					ret?.errno === 102,
-					() => {
-						let msg = ret.message;
-						if (win.errorRate < 0.01) {
-							msg += `Please increase the polling interval in the adapter settings so that all data is read.`;
-						}
-						return msg;
-					},
-					'All data can be read again.',
-				);
+			//Can't read data from device
+			this.logger.warnOnChange('health-101', ret?.errno === 101, ret.message, 'Data can be read from the device again.');
+			//Data can be read, but not all data within the configured interval
+			this.logger.warnOnChange('health-102', ret?.errno === 102, ret.message, 'All data can be read again.');
 
-				//Can't connect to device(s)
-				this.logger.warnOnChange(
-					'no-connection',
-					ret?.errno === 1,
-					() => {
-						const lastError = this.modbusClient.lastError;
-						let msg = "Can't connect to ";
-						switch (this.config.integration) {
-							case 0:
-								msg += `SmartDongle. ${lastError.message ? lastError.message : ''}`;
-								break;
-							case 1:
-								msg += `Smartlogger. Check that Modbus TCP is enabled on the Smartlogger and that the correct IP address is configured. ${lastError.message ? lastError.message : ''}`;
-								break;
-							case 2:
-								msg += `Emma. Check that Modbus TCP is enabled on the Emma and that the correct IP address is configured. ${lastError.message ? lastError.message : ''}`;
-								break;
-						}
-						return msg;
-					},
-					() => {
-						this._highRateWindows = 0;
-						return 'Connection to device is back to normal.';
-					},
-				);
+			//Can't connect to device(s)
+			this.logger.warnOnChange('no-connection', ret?.errno === 101, ret.message, () => {
+				this._highRateWindows = 0;
+				return 'Connection to device is back to normal.';
+			});
 
-				//Error rate of the Modbus communication is too high
-				this.logger.warnOnChange(
-					'modbus-errorrate',
-					ret?.errno === 3,
-					() => {
-						let msg = `Too many errors occurred during Modbus communication.`;
-						msg += ` Current Error rate: ${(win.errorRate * 100).toFixed(1)}%.`;
-						//timeout rate greater than 2%
-						if (win.timeoutRate >= 0.02) {
-							msg += ` further, current timeout rate: ${(win.timeoutRate * 100).toFixed(1)}%.`;
-							msg += ' Ensure that no other device interferes with the Modbus communication, otherwise use the internal Modbus proxy.';
-						} else {
-							msg += ' It could also be due to incorrectly configured Modbus IDs.';
-						}
-						msg += ' Check that all device units are running the latest firmware. Otherwise the Modbus communication can be unstable.';
-						return `${msg} See wiki: https://github.com/bolliy/ioBroker.sun2000/wiki/Fehlerprotokollierung-und-Fehlerbehebung-(troubleshooting)`;
-					},
-					'Error rate of the Modbus communication is back to normal.',
-				);
-			}
+			//Error rate of the Modbus communication is too high
+			this.logger.warnOnChange(
+				'modbus-errorrate',
+				ret?.errno === 3,
+				() => {
+					let msg = `Too many errors occurred during Modbus communication.`;
+					msg += ` Current Error rate: ${(win.errorRate * 100).toFixed(1)}%.`;
+					//timeout rate greater than 2%
+					if (win.timeoutRate >= 0.02) {
+						msg += ` further, current timeout rate: ${(win.timeoutRate * 100).toFixed(1)}%.`;
+						msg += ' Ensure that no other device interferes with the Modbus communication, otherwise use the internal Modbus proxy.';
+					} else {
+						msg += ' It could also be due to incorrectly configured Modbus IDs.';
+					}
+					msg += ' Check that all device units are running the latest firmware. Otherwise the Modbus communication can be unstable.';
+					return `${msg} See wiki: https://github.com/bolliy/ioBroker.sun2000/wiki/Fehlerprotokollierung-und-Fehlerbehebung-(troubleshooting)`;
+				},
+				'Error rate of the Modbus communication is back to normal.',
+			);
 
 			if (this.modbusServer) {
 				!this.modbusServer.isConnected && this.modbusServer.connect();
