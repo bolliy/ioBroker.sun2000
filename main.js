@@ -720,7 +720,7 @@ class Sun2000 extends utils.Adapter {
 			});
 
 			//Can't connect to device(s)
-			this.logger.warnOnChange('health-104', ret?.errno === 101, ret.message, () => {
+			this.logger.warnOnChange('health-104', ret?.errno === 104, ret.message, () => {
 				this._highRateWindows = 0;
 				return 'reachable of device is back to normal.';
 			});
