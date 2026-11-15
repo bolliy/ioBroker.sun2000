@@ -714,9 +714,15 @@ class Sun2000 extends utils.Adapter {
 			this.logger.warnOnChange('health-102', ret?.errno === 102, ret.message, 'All data can be read again.');
 
 			//Can't connect to device(s)
-			this.logger.warnOnChange('no-connection', ret?.errno === 101, ret.message, () => {
+			this.logger.warnOnChange('health-101', ret?.errno === 101, ret.message, () => {
 				this._highRateWindows = 0;
 				return 'Connection to device is back to normal.';
+			});
+
+			//Can't connect to device(s)
+			this.logger.warnOnChange('health-104', ret?.errno === 101, ret.message, () => {
+				this._highRateWindows = 0;
+				return 'reachable of device is back to normal.';
 			});
 
 			//Error rate of the Modbus communication is too high
