@@ -710,24 +710,27 @@ class Sun2000 extends utils.Adapter {
 			if (!ret?.errno && rateHigh) {
 				ret = { errno: 3, message: 'Modbus communication error rate too high' };
 			}
-			//Data can be read, but not all data within the configured interval
-			this.logger.warnOnChange('health-102', ret?.errno === 102, ret.message, 'All data can be read again.');
 
 			//Can't connect to device(s)
-			this.logger.warnOnChange('health-101', ret?.errno === 101, ret.message, () => {
+			this.logger.warnOnChange('101', ret?.errno === 101, ret.message, () => {
 				this._highRateWindows = 0;
 				return 'Connection to device is back to normal.';
 			});
 
+			//Data can be read, but not all data within the configured interval
+			this.logger.warnOnChange('102', ret?.errno === 102, ret.message, 'All data can be read again.');
+
+			this.logger.warnOnChange('103', ret?.errno === 103, ret.message, 'All devices are reachable again');
+
 			//Can't connect to device(s)
-			this.logger.warnOnChange('health-104', ret?.errno === 104, ret.message, () => {
+			this.logger.warnOnChange('104', ret?.errno === 104, ret.message, () => {
 				this._highRateWindows = 0;
 				return 'reachable of device is back to normal.';
 			});
 
 			//Error rate of the Modbus communication is too high
 			this.logger.warnOnChange(
-				'modbus-errorrate',
+				'errorrate',
 				ret?.errno === 3,
 				() => {
 					let msg = `Too many errors occurred during Modbus communication.`;
