@@ -694,7 +694,7 @@ class Sun2000 extends utils.Adapter {
 			let ret = this.state.CheckReadError(this.settings.lowInterval * 2);
 			this.logger.silly(`watchdog: checkReadError ${JSON.stringify(ret)}`);
 			const lastIsConnected = this.isConnected;
-			this.isConnected = ret.errno !== 101;
+			this.isConnected = ret.errno !== 101 && ret.error !== 103;
 			if (this.isConnected !== lastIsConnected) {
 				this.setState('info.connection', this.isConnected, true);
 			}
