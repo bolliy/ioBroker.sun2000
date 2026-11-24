@@ -74,6 +74,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 * (bolliy) add states for working status of battery packs ([#307](https://github.com/bolliy/ioBroker.sun2000/issues/307))
 * (bolliy) optimized reduced error logging
 * (bolliy) "startup" and "Shutdown" states, the role type has been changed from "switch" to "button."
+* (bolliy) Added the message "help": a description of the states and messages for AI agents (e.g. pi-agent), and common. supportedMessages.help
 
 ### 2.7.5 (2026-11-08)
 * (bolliy) Adapter log have been reduced to the bare essentials. This makes it easier to categorize timeouts and connection issues, particularly those involving the sDongle.

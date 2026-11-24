@@ -7,6 +7,8 @@
 // you need to create an adapter
 const utils = require('@iobroker/adapter-core');
 
+const { getHelp } = require(`${__dirname}/lib/help.js`);
+
 // Load your modules here, e.g.:
 const Registers = require(`${__dirname}/lib/register.js`);
 const ModbusConnect = require(`${__dirname}/lib/modbus/modbus_connect.js`);
@@ -853,6 +855,12 @@ class Sun2000 extends utils.Adapter {
 	// handle incoming messages (used by flexcharts script source)
 	onMessage(obj) {
 		if (typeof obj === 'object' && obj.message) {
+			if (obj?.command === 'help') {
+				if (obj.callback) {
+					this.sendTo(obj.from, obj.command, getHelp(this.namespace), obj.callback);
+				}
+				return;
+			}
 			// support a dedicated command 'statistics' to generate chart data
 			if (obj.command === 'statistics') {
 				if (this.state.statistics && typeof this.state.statistics.handleFlexMessage === 'function') {
