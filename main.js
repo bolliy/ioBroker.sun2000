@@ -696,7 +696,7 @@ class Sun2000 extends utils.Adapter {
 			let ret = this.state.CheckReadError(this.settings.lowInterval * 2);
 			this.logger.silly(`watchdog: checkReadError ${JSON.stringify(ret)}`);
 			const lastIsConnected = this.isConnected;
-			this.isConnected = ret.errno !== 101 && ret.error !== 103;
+			this.isConnected = ret.errno !== 101 && ret.errno !== 103;
 			if (this.isConnected !== lastIsConnected) {
 				this.setState('info.connection', this.isConnected, true);
 			}
@@ -709,13 +709,13 @@ class Sun2000 extends utils.Adapter {
 				this.isReady = this.isConnected && !ret?.errno;
 			}
 
-			if ((!ret?.errno || ret.errno === 102) && rateHigh) {
+			if (rateHigh && this.isConnected) {
 				ret = { errno: 3, message: 'Modbus communication error rate too high' };
 			}
 			//Error rate of the Modbus communication is too high
 			this.logger.warnOnChange(
 				'errorrate',
-				ret?.errno === 3,
+				rateHigh,
 				() => {
 					let msg = `Too many errors occurred during Modbus communication.`;
 					msg += ` Current Error rate: ${(win.errorRate * 100).toFixed(1)}%.`;
