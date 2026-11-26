@@ -708,7 +708,7 @@ class Sun2000 extends utils.Adapter {
 			if (!this.isReady) {
 				this.isReady = this.isConnected && !ret?.errno;
 			}
-			if (this.this.isConnected) {
+			if (this.isConnected) {
 				if (rateHigh) {
 					ret = { errno: 3, message: 'Modbus communication error rate too high' };
 				}
