@@ -708,29 +708,30 @@ class Sun2000 extends utils.Adapter {
 			if (!this.isReady) {
 				this.isReady = this.isConnected && !ret?.errno;
 			}
-
-			if (rateHigh && this.isConnected) {
-				ret = { errno: 3, message: 'Modbus communication error rate too high' };
+			if (this.this.isConnected) {
+				if (rateHigh) {
+					ret = { errno: 3, message: 'Modbus communication error rate too high' };
+				}
+				//Error rate of the Modbus communication is too high
+				this.logger.warnOnChange(
+					'errorrate',
+					rateHigh,
+					() => {
+						let msg = `Too many errors occurred during Modbus communication.`;
+						msg += ` Current Error rate: ${(win.errorRate * 100).toFixed(1)}%.`;
+						//timeout rate greater than 2%
+						if (win.timeoutRate >= 0.02) {
+							msg += ` further, current timeout rate: ${(win.timeoutRate * 100).toFixed(1)}%.`;
+							msg += ' Ensure that no other device interferes with the Modbus communication, otherwise use the internal Modbus proxy.';
+						} else {
+							msg += ' It could also be due to incorrectly configured Modbus IDs.';
+						}
+						msg += ' Check that all device units are running the latest firmware. Otherwise the Modbus communication can be unstable.';
+						return `${msg} See wiki: https://github.com/bolliy/ioBroker.sun2000/wiki/Fehlerprotokollierung-und-Fehlerbehebung-(troubleshooting)`;
+					},
+					'Error rate of the Modbus communication is back to normal.',
+				);
 			}
-			//Error rate of the Modbus communication is too high
-			this.logger.warnOnChange(
-				'errorrate',
-				rateHigh,
-				() => {
-					let msg = `Too many errors occurred during Modbus communication.`;
-					msg += ` Current Error rate: ${(win.errorRate * 100).toFixed(1)}%.`;
-					//timeout rate greater than 2%
-					if (win.timeoutRate >= 0.02) {
-						msg += ` further, current timeout rate: ${(win.timeoutRate * 100).toFixed(1)}%.`;
-						msg += ' Ensure that no other device interferes with the Modbus communication, otherwise use the internal Modbus proxy.';
-					} else {
-						msg += ' It could also be due to incorrectly configured Modbus IDs.';
-					}
-					msg += ' Check that all device units are running the latest firmware. Otherwise the Modbus communication can be unstable.';
-					return `${msg} See wiki: https://github.com/bolliy/ioBroker.sun2000/wiki/Fehlerprotokollierung-und-Fehlerbehebung-(troubleshooting)`;
-				},
-				'Error rate of the Modbus communication is back to normal.',
-			);
 
 			if (this.modbusServer) {
 				!this.modbusServer.isConnected && this.modbusServer.connect();
