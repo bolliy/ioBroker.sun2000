@@ -70,13 +70,12 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	### **WORK IN PROGRESS**
 	Add draft entries here while the next release is still being finalized.
 -->
-### **WORK IN PROGRESS**
+### 2.8.0 (2026-11-26)
 * (bolliy) add states for working status of battery packs ([#307](https://github.com/bolliy/ioBroker.sun2000/issues/307))
 * (bolliy) optimized reduced error logging
 * (bolliy) "startup" and "Shutdown" states, the role type has been changed from "switch" to "button."
 * (bolliy) Added the message "help": `sendTo('sun2000.0', 'help')`returns a description of the states and messages for AI agents (e.g. pi-agent), and common. supportedMessages.help
 * (bolliy) Standby detection adjusted due to new huawei firmware
-
 
 ### 2.7.5 (2026-11-08)
 * (bolliy) Adapter log have been reduced to the bare essentials. This makes it easier to categorize timeouts and connection issues, particularly those involving the sDongle.
@@ -91,10 +90,6 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 ### 2.7.2 (2026-10-04)
 * (bolliy) fix: disabled the adapter install/update pop-up message
 * (bolliy) fix control.externalPower: prevent negative values
-
-### 2.7.1 (2026-10-03)
-* (bolliy) update devDependencies to latest versions
-* (bolliy) Allow decimal values for ​​`battery.tou.maximumPowerForChargingFromGrid` and `grid.maximumFeedGridPower`. ([#300](https://github.com/bolliy/ioBroker.sun2000/discussions/300))
 
 [Older changelogs can be found there](CHANGELOG_OLD.md)
 

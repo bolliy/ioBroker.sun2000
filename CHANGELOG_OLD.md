@@ -1,4 +1,8 @@
 ## Changelog
+## 2.7.1 (2026-10-03)
+* (bolliy) update devDependencies to latest versions
+* (bolliy) Allow decimal values for ​​`battery.tou.maximumPowerForChargingFromGrid` and `grid.maximumFeedGridPower`. ([#300](https://github.com/bolliy/ioBroker.sun2000/discussions/300))
+
 ## 2.7.0 (2026-08-23)
 * (bolliy) fix: Ensure that unacknowledged control states occurring during startup are correctly processed in the service queues.
 
