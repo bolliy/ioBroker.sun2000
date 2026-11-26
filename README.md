@@ -70,7 +70,7 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	### **WORK IN PROGRESS**
 	Add draft entries here while the next release is still being finalized.
 -->
-### **WORK IN PROGRESS**
+### 2.8.0 (2026-11-26)
 * (bolliy) add states for working status of battery packs ([#307](https://github.com/bolliy/ioBroker.sun2000/issues/307))
 * (bolliy) optimized reduced error logging
 * (bolliy) "startup" and "Shutdown" states, the role type has been changed from "switch" to "button."
