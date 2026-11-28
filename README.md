@@ -72,13 +72,14 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 -->
 ### **WORK IN PROGRESS**
 - (bolliy/claude) Added the `help` message: `sendTo('sun2000.0', 'help')` returns a description for AI agents and script authors (`collected` and `collected.sumDaily` states, surplus control, battery control, TOU windows, feed-in limit, how to act) with links to the wiki.
-- (bolliy) add "button" state for reset inverter reg 40205
+- (bolliy) control: Control: new control state `.inverter.x.control.reset` for resetting the inverter 
+- (bolly) added inverter firmware/software version states in `.inverter.x.info`
 
 ### 2.8.0 (2026-11-26)
 * (bolliy) add states for working status of battery packs ([#307](https://github.com/bolliy/ioBroker.sun2000/issues/307))
 * (bolliy) optimized reduced error logging
 * (bolliy) "startup" and "Shutdown" states, the role type has been changed from "switch" to "button."
-* (bolliy) Added the message "help": `sendTo('sun2000.0', 'help')`returns a description of the states and messages for AI agents (e.g. pi-agent), and common. supportedMessages.help
+* (bolliy) added the message "help": `sendTo('sun2000.0', 'help')`returns a description of the states and messages for AI agents (e.g. pi-agent), and common. supportedMessages.help
 * (bolliy) Standby detection adjusted due to new huawei firmware
 
 ### 2.7.5 (2026-11-08)
