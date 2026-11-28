@@ -71,7 +71,8 @@ browse in the [wiki](https://github.com/bolliy/ioBroker.sun2000/wiki)
 	Add draft entries here while the next release is still being finalized.
 -->
 ### **WORK IN PROGRESS**
-- (bolliy) Added the `help` message: `sendTo('sun2000.0', 'help')` returns a description for AI agents and script authors (`collected` and `collected.sumDaily` states, surplus control, battery control, TOU windows, feed-in limit, how to act) with links to the wiki.
+- (bolliy/claude) Added the `help` message: `sendTo('sun2000.0', 'help')` returns a description for AI agents and script authors (`collected` and `collected.sumDaily` states, surplus control, battery control, TOU windows, feed-in limit, how to act) with links to the wiki.
+- (bolliy) add "button" state for reset inverter reg 40205
 
 ### 2.8.0 (2026-11-26)
 * (bolliy) add states for working status of battery packs ([#307](https://github.com/bolliy/ioBroker.sun2000/issues/307))
